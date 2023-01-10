@@ -34,10 +34,22 @@ function App() {
   //   console.log("cash counted", cashCounted)
   // }, [cashCounted])
 
+const clearAll = () => {
+  setCashCounted(0);
+  setReceipts(0);
+  setFloat(0);
+  setCashSales(0);
+  setCreditCardTips(0)
+  setPizzaAdults(0);
+  setPizzaChildren(0);
+  setPizzaServers(0)
+}
+
 
   return (
     <div className="App">
 
+<button onClick={clearAll}>Clear all</button>
 
       <label>Cash counted</label>
       <input value={cashCounted} onChange={(e) => setCashCounted(e.target.value)}></input>
