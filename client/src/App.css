@@ -1,15 +1,171 @@
 /* || RESET */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: var(--color1);
+  background-color: var(--color0);
 }
 
 .App {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  
+}
 
+@media only screen and (max-width: 400px) {
+  * {
+    font-size: 0.8rem;
+  }
+}
+
+:root {
+  --color0: black;
+  --color1: white;
+  --color2: #E5E5E5;
+  --color3: darkblue;
+  --color4: blue; 
+  --color5: rgb(247, 196, 67);
+  --color6: dimgrey;
+}
+
+.clear-all-div {
+  /* background-color: red; */
+  display: flex;
+justify-content: center;
+}
+
+.clear-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: var(--color1);
+  background-color: var(--color3);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  margin: 1em;
+}
+
+.clear-all:hover {background-color: var(--color4)}
+
+.clear-all:active {
+  background-color: var(--color3);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+section {
+  margin: 1em;
+  display: flex;
+  flex-direction: column; 
+}
+
+label {
+  font-weight: 600;
+  /* margin: 0.5em 0 0.5em 0; */
+}
+
+.th, .server {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ width: 90%;
+}
+
+
+.margin-top {
+  margin-top: 2em;
+}
+
+.thirty-three {
+  width: 19%;
+  text-align: center;
+  margin: 0.2em;
+}
+
+.inline-label {
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* white-space: nowrap; */
+}
+
+.money-input, .pizza-input, .tips-input {
+  margin: 1em auto;
+  height: 3em;
+  width: 6em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inline {
+  display: flex;
+}
+
+.info {
+  background-color: blue;
+  border-radius: 50px;
+  width: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.5em 0;
+}
+
+input {
+  background-color: var(--color1);
+  color: var(--color0)
+  /* height: 3em; */
+}
+
+.money {
+
+}
+
+.pizza {
+
+
+
+}
+
+.tips {
+
+
+}
+
+.servers {
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.server {
+  /* display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around; */
+}
+
+.summary {
+
+
+}
+
+.error-message {
+  background-color: black;
+  color: white;
+  padding: 1em;
 }
 

@@ -15,19 +15,38 @@ function App() {
 
   const [cashCounted, setCashCounted] = useState(0);
   const [receipts, setReceipts] = useState(0);
-  const totalCash = parseInt(cashCounted) + parseInt(receipts)
+  const totalCash = parseFloat(cashCounted) + parseFloat(receipts)
   const [float, setFloat] = useState(0);
   const [cashSales, setCashSales] = useState(0);
-  const cashTips = parseInt(cashCounted) - parseInt(cashSales) - parseInt(float)
+  const cashTips = parseFloat(cashCounted) - parseFloat(cashSales) - parseFloat(float)
   const [creditCardTips, setCreditCardTips] = useState(0)
-  const totalTips = parseInt(cashTips) + parseInt(creditCardTips)
+  const totalTips = parseFloat(cashTips) + parseFloat(creditCardTips)
   const [pizzaAdults, setPizzaAdults] = useState(0)
   const [pizzaChildren, setPizzaChildren] = useState(0)
   const [pizzaServers, setPizzaServers] = useState(0)
-  const pizzaTips = (parseInt(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100) + (parseInt(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100)
+  const pizzaTips = (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100) + (parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100)
   const tipsAfterPizzaParty = totalTips - pizzaTips
   const kitchenTips = tipsAfterPizzaParty * kitchenTipsPercent / 100;
   const frontTips = tipsAfterPizzaParty * frontTipsPercent / 100;
+
+
+  const [totalCashInfo, setTotalCashInfo] = useState(false)
+  const [totalHoursInfo, setTotalHoursInfo] = useState(false)
+
+  const showTotalCashInfo = (e) => {
+    e.preventDefault();
+    setTotalCashInfo(prev => !prev)
+  }
+
+  const showTotalHoursInfo = (e) => {
+    e.preventDefault();
+    setTotalHoursInfo(prev => !prev)
+  }
+
+
+
+
+
 
   const [server1Hours, setServer1Hours] = useState(0);
   const [server2Hours, setServer2Hours] = useState(0);
@@ -49,13 +68,22 @@ function App() {
   const [assistant2Name, setAssistant2Name] = useState("");
   const [assistant3Name, setAssistant3Name] = useState("");
 
-  const totalHours = parseInt(server1Hours) + parseInt(server2Hours) + parseInt(server3Hours) + parseInt(server4Hours) + parseInt(server5Hours) + parseInt(assistant1Hours) * assistantTips / 100 + parseInt(assistant2Hours) * assistantTips / 100 + parseInt(assistant3Hours) * assistantTips / 100;
+  const totalHours = parseFloat(server1Hours) + parseFloat(server2Hours) + parseFloat(server3Hours) + parseFloat(server4Hours) + parseFloat(server5Hours) + parseFloat(assistant1Hours) * assistantTips / 100 + parseFloat(assistant2Hours) * assistantTips / 100 + parseFloat(assistant3Hours) * assistantTips / 100;
 
-  const tipsPerHour = frontTips/totalHours
+  const tipsPerHour = () => {
+    if (isNaN(frontTips / totalHours)) {
+      return 0
+    } else {
+      return frontTips / totalHours
+    }
+  }
+
 
   // useEffect(() => {
-  //   console.log("cash counted", cashCounted)
-  // }, [cashCounted])
+  //   console.log(tipsPerHour)
+  // }, [tipsPerHour])
+
+
 
   const clearAll = () => {
     setCashCounted(0);
@@ -66,135 +94,239 @@ function App() {
     setPizzaAdults(0);
     setPizzaChildren(0);
     setPizzaServers(0)
+    setServer1Name("");
+    setServer2Name("");
+    setServer3Name("");
+    setServer4Name("");
+    setServer5Name("");
+    setAssistant1Name("");
+    setAssistant2Name("");
+    setAssistant3Name("");
+    setServer1Hours(0);
+    setServer2Hours(0);
+    setServer3Hours(0);
+    setServer4Hours(0);
+    setServer5Hours(0);
+    setAssistant1Hours(0);
+    setAssistant2Hours(0);
+    setAssistant3Hours(0);
   }
 
 
   return (
     <div className="App">
 
-      <button onClick={clearAll}>Clear all</button>
+      <div className='clear-all-div'>
+        <button className="clear-all" onClick={clearAll}>Clear all</button>
+      </div>
 
-      <label>Cash counted</label>
-      <input value={cashCounted} onChange={(e) => setCashCounted(e.target.value)}></input>
 
-      <label>Receipts</label>
-      <input value={receipts} onChange={(e) => setReceipts(e.target.value)}></input>
+      <section className='money'>
 
-      <label>TOTAL CASH</label>
-      <>{totalCash}</>
+        <div className='inline'>
+          <label className='inline-label'>Cash counted</label>
+          <input className='money-input' value={cashCounted} onChange={(e) => setCashCounted(e.target.value)}></input>
+        </div>
 
-      <label>Float</label>
-      <input value={float} onChange={(e) => setFloat(e.target.value)}></input>
+        <div className='inline'>
+          <label className='inline-label'>Receipts</label>
+          <input className='money-input' value={receipts} onChange={(e) => setReceipts(e.target.value)}></input>
+        </div>
 
-      <label>Cash sales</label>
-      <input value={cashSales} onChange={(e) => setCashSales(e.target.value)}></input>
+        <div className='inline'>
+          <label className='inline-label' onClick={showTotalCashInfo}>TOTAL CASH <div className="info" onClick={showTotalHoursInfo}>i</div></label>
+          <div className='money-input'>{totalCash}</div>
+        </div>
 
-      <label>Cash tips</label>
-      <>{cashTips}</>
+        {totalCashInfo && <div>Cash counted + receipts</div>}
 
-      <label>Credit card tips</label>
-      <input value={creditCardTips} onChange={(e) => setCreditCardTips(e.target.value)}></input>
+        <div className='inline'>
+          <label className='inline-label'>Float</label>
+          <input className='money-input' value={float} onChange={(e) => setFloat(e.target.value)}></input>
+        </div>
 
-      <label>Total tips</label>
-      <>{cashTips}</>
+        <div className='inline'>
+          <label className='inline-label'>Cash sales</label>
+          <input className='money-input' value={cashSales} onChange={(e) => setCashSales(e.target.value)}></input>
+        </div>
 
-      <label>Pizza making adults</label>
-      <input value={pizzaAdults} onChange={(e) => setPizzaAdults(e.target.value)}></input>
+        <div className='inline'>
+          <label className='inline-label'>Cash tips</label>
+          <div className='money-input'>{cashTips}</div>
+        </div>
 
-      <label>Pizza making children</label>
-      <input value={pizzaChildren} onChange={(e) => setPizzaChildren(e.target.value)}></input>
+        <div className='inline'>
+          <label className='inline-label'>Credit card tips</label>
+          <input className='money-input' value={creditCardTips} onChange={(e) => setCreditCardTips(e.target.value)}></input>
+        </div>
 
-      <label>Pizza making servers</label>
-      <input value={pizzaServers} onChange={(e) => setPizzaServers(e.target.value)}></input>
+        <div className='inline'>
+          <label className='inline-label'>Total tips</label>
+          <div className='money-input'>{cashTips}</div>
+        </div>
 
-      <label>Pizza making tips</label>
-      <>{pizzaTips}</>
+      </section>
 
-      <label>Tips after Pizza party</label>
-      <>{tipsAfterPizzaParty}</>
+      <section className='pizza'>
 
-      <label>Kitchen tips</label>
-      <>{kitchenTips}</>
+        <div className='inline'>
+          <label className='inline-label'>Pizza making adults</label>
+          <input className='pizza-input' value={pizzaAdults} onChange={(e) => setPizzaAdults(e.target.value)}></input>
+        </div>
 
-      <label>Front tips</label>
-      <>{frontTips}</>
+        <div className='inline'>
+          <label className='inline-label'>Pizza making children</label>
+          <input className='pizza-input' value={pizzaChildren} onChange={(e) => setPizzaChildren(e.target.value)}></input>
+        </div>
 
-      <label>Server 1 name</label>
-      <input value={server1Name} onChange={(e) => setServer1Name(e.target.value)}></input>
-      <label>Server actual hours</label>
-      <input value={server1Hours} onChange={(e) => setServer1Hours(e.target.value)}></input>
-      <label>Server hours for tips</label>
-      {parseInt(server1Hours) * fullTips / 100}
-      <label>Total tips</label>
-      {tipsPerHour*server1Hours}
+        <div className='inline'>
+          <label className='inline-label'>Pizza making servers</label>
+          <input className='pizza-input' value={pizzaServers} onChange={(e) => setPizzaServers(e.target.value)}></input>
+        </div>
 
-      <label>Server 2 name</label>
-      <input value={server2Name} onChange={(e) => setServer2Name(e.target.value)}></input>
-      <label>Server actual hours</label>
-      <input value={server2Hours} onChange={(e) => setServer2Hours(e.target.value)}></input>
-      <label>Server hours for tips</label>
-      {parseInt(server2Hours) * fullTips / 100}
-      <label>Total tips</label>
-      {tipsPerHour*server2Hours}
+        <div className='inline'>
+          <label className='inline-label'>Pizza making tips</label>
+          <div className='pizza-input'>{pizzaTips}</div>
+        </div>
 
-      <label>Server 3 name</label>
-      <input value={server3Name} onChange={(e) => setServer3Name(e.target.value)}></input>
-      <label>Server actual hours</label>
-      <input value={server3Hours} onChange={(e) => setServer3Hours(e.target.value)}></input>
-      <label>Server hours for tips</label>
-      {parseInt(server3Hours) * fullTips / 100}
-      <label>Total tips</label>
-      {tipsPerHour*server3Hours}
+      </section>
 
-      <label>Server 4 name</label>
-      <input value={server4Name} onChange={(e) => setServer4Name(e.target.value)}></input>
-      <label>Server actual hours</label>
-      <input value={server4Hours} onChange={(e) => setServer4Hours(e.target.value)}></input>
-      <label>Server hours for tips</label>
-      {parseInt(server1Hours) * fullTips / 100}
-      <label>Total tips</label>
-      {tipsPerHour*server4Hours}
+      <section className='tips'>
 
-      <label>Server 5 name</label>
-      <input value={server5Name} onChange={(e) => setServer5Name(e.target.value)}></input>
-      <label>Server actual hours</label>
-      <input value={server5Hours} onChange={(e) => setServer5Hours(e.target.value)}></input>
-      <label>Server hours for tips</label>
-      {parseInt(server5Hours) * fullTips / 100}
-      <label>Total tips</label>
-      {tipsPerHour*server5Hours}
+        <div className='inline'>
+          <label className='inline-label'>Tips after Pizza party</label>
+          <div className='tips-input'>{tipsAfterPizzaParty}</div>
+        </div>
 
-      <label>Assistant server 1 name</label>
-      <input value={assistant1Name} onChange={(e) => setAssistant1Name(e.target.value)}></input>
-      <label>Assistant Server actual hours</label>
-      <input value={assistant1Hours} onChange={(e) => setAssistant1Hours(e.target.value)}></input>
-      <label>Server hours for tips</label>
-      {parseInt(assistant1Hours) * assistantTips / 100}
-      <label>Total tips</label>
-      {tipsPerHour*assistant1Hours*assistantTips/100}
 
-      <label>Assistant server 2 name</label>
-      <input value={assistant2Name} onChange={(e) => setAssistant2Name(e.target.value)}></input>
-      <label>Assistant Server actual hours</label>
-      <input value={assistant2Hours} onChange={(e) => setAssistant2Hours(e.target.value)}></input>
-      <label>Server hours for tips</label>
-      {parseInt(assistant2Hours) * assistantTips / 100}
+        <div className='inline'>
+          <label className='inline-label'>Kitchen tips</label>
+          <div className='tips-input'>{kitchenTips}</div>
+        </div>
 
-      <label>Assistant server 3 name</label>
-      <input value={assistant3Name} onChange={(e) => setAssistant3Name(e.target.value)}></input>
-      <label>Assistant Server actual hours</label>
-      <input value={assistant3Hours} onChange={(e) => setAssistant3Hours(e.target.value)}></input>
-      <label>Server hours for tips</label>
-      {parseInt(assistant3Hours) * assistantTips / 100}
 
-      <label>TOTAL HOURS for tips</label>
-      {totalHours}
+        <div className='inline'>
+          <label className='inline-label'>Front tips</label>
+          <div className='tips-input'>{frontTips}</div>
+        </div>
 
-      <label>NEW FLOAT</label>
-      {cashCounted - frontTips - pizzaTips}
 
-<label>TOTAL TIPS per HOUR</label>
-{tipsPerHour.toFixed(2)}
+      </section>
+
+      <section className='servers'>
+
+        <div className='th'>
+          <div className='thirty-three'>Server</div>
+          <div className='thirty-three'>Actual hours</div>
+          <div className='thirty-three'>Hours for tips</div>
+          <div className='thirty-three'>Tips</div>
+        </div>
+
+
+        <div className='server'>
+          <input type="text" required value={server1Name} placeholder="Name" className="thirty-three input-width" onChange={(e) => setServer1Name(e.target.value)}></input>
+          <input value={(server1Hours)} className="thirty-three input-width" onChange={(e) => setServer1Hours(e.target.value)}></input>
+          <div className="thirty-three">{(parseFloat(server1Hours) * fullTips / 100).toFixed(2)}</div>
+          <div className="thirty-three">{(frontTips / totalHours * server1Hours).toFixed(2)}</div>
+        </div>
+
+
+        <div className='server'>
+          <input value={server2Name} placeholder="Name" className="thirty-three input-width" onChange={(e) => setServer2Name(e.target.value)}></input>
+          <input value={server2Hours} className="thirty-three input-width" onChange={(e) => setServer2Hours(e.target.value)}></input>
+          <div className="thirty-three">{(parseFloat(server2Hours) * fullTips / 100).toFixed(2)}</div>
+          <div className="thirty-three">{(frontTips / totalHours * server2Hours).toFixed(2)}</div>
+        </div>
+
+        <div className='server'>
+          <input value={server3Name} placeholder="Name" className="thirty-three input-width" onChange={(e) => setServer3Name(e.target.value)}></input>
+          <input value={server3Hours} className="thirty-three input-width" onChange={(e) => setServer3Hours(e.target.value)}></input>
+          <div className="thirty-three">{(parseFloat(server3Hours) * fullTips / 100).toFixed(2)}</div>
+          <div className="thirty-three">{(frontTips / totalHours * server3Hours).toFixed(2)}</div>
+        </div>
+
+        <div className='server'>
+          <input value={server4Name} placeholder="Name" className="thirty-three input-width" onChange={(e) => setServer4Name(e.target.value)}></input>
+          <input value={server4Hours} className="thirty-three input-width" onChange={(e) => setServer4Hours(e.target.value)}></input>
+          <div className="thirty-three">{(parseFloat(server4Hours) * fullTips / 100).toFixed(2)}</div>
+          <div className="thirty-three">{(frontTips / totalHours * server4Hours).toFixed(2)}</div>
+        </div>
+
+        <div className='server'>
+          <input value={server5Name} placeholder="Name" className="thirty-three input-width" onChange={(e) => setServer5Name(e.target.value)}></input>
+          <input value={server5Hours} className="thirty-three input-width" onChange={(e) => setServer5Hours(e.target.value)}></input>
+          <div className="thirty-three">{(parseFloat(server5Hours) * fullTips / 100).toFixed(2)}</div>
+          <div className="thirty-three">{(frontTips / totalHours * server5Hours).toFixed(2)}</div>
+        </div>
+
+
+        <div className='th margin-top'>
+          <div className='thirty-three'>Server</div>
+          <div className='thirty-three'>Actual hours</div>
+          <div className='thirty-three'>Hours for tips</div>
+          <div className='thirty-three'>Tips</div>
+        </div>
+
+        <div className='server'>
+          <input value={assistant1Name} placeholder="Name" className="thirty-three input-width" onChange={(e) => setAssistant1Name(e.target.value)}></input>
+          <input value={assistant1Hours} className="thirty-three input-width" onChange={(e) => setAssistant1Hours(e.target.value)}></input>
+          <div className="thirty-three">{(parseFloat(assistant1Hours) * assistantTips / 100).toFixed(2)}</div>
+          <div className="thirty-three">{(frontTips / totalHours * assistant1Hours * assistantTips/100).toFixed(2)}</div>
+        </div>
+
+        <div className='server'>
+          <input value={assistant2Name} placeholder="Name" className="thirty-three input-width" onChange={(e) => setAssistant2Name(e.target.value)}></input>
+          <input value={assistant2Hours} className="thirty-three input-width" onChange={(e) => setAssistant2Hours(e.target.value)}></input>
+          <div className="thirty-three">{(parseFloat(assistant2Hours) * assistantTips / 100).toFixed(2)}</div>
+          <div className="thirty-three">{(frontTips / totalHours * assistant2Hours * assistantTips/100).toFixed(2)}</div>
+        </div>
+
+        <div className='server'>
+          <input value={assistant3Name} placeholder="Name" className="thirty-three input-width" onChange={(e) => setAssistant3Name(e.target.value)}></input>
+          <input value={assistant3Hours} className="thirty-three input-width" onChange={(e) => setAssistant3Hours(e.target.value)}></input>
+          <div className="thirty-three">{(parseFloat(assistant3Hours) * assistantTips / 100).toFixed(2)}</div>
+          <div className="thirty-three">{(frontTips / totalHours * assistant3Hours * assistantTips/100).toFixed(2)}</div>
+        </div>
+
+      </section>
+
+
+      <section className='summary'>
+
+        <div className='inline'>
+          <label className='inline-label'>TOTAL HOURS <div className="info" onClick={showTotalHoursInfo}>i</div></label>
+
+          <div className='tips-input'>
+            {
+              !isNaN(totalHours.toFixed(2)) &&
+              totalHours.toFixed(2)
+
+            }
+
+            {isNaN(totalHours.toFixed(2))
+              &&
+              <div className='error-message'>Actual hours field cannot be empty. Set to 0 if necessary.</div>
+            }
+
+
+          </div>
+
+        </div>
+        {totalHoursInfo && <div>Total hours considered for tips. It takes into consideration the difference between server and server support.</div>}
+
+        <div className='inline'>
+          <label className='inline-label'>TIPS per HOUR</label>
+          <div className='tips-input'>{tipsPerHour().toFixed(2)}</div>
+        </div>
+
+        <div className='inline'>
+          <label className='inline-label'>NEW FLOAT</label>
+          <div className='tips-input'>{cashCounted - frontTips - pizzaTips}</div>
+        </div>
+
+      </section>
+
+
 
 
     </div>
