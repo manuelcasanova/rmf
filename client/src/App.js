@@ -80,6 +80,14 @@ function App() {
   const [assistant2Name, setAssistant2Name] = useState("");
   const [assistant3Name, setAssistant3Name] = useState("");
 
+  const [pizzaMaking1Hours, setPizzaMaking1Hours] = useState(0);
+  const [pizzaMaking2Hours, setPizzaMaking2Hours] = useState(0);
+  const [pizzaMaking3Hours, setPizzaMaking3Hours] = useState(0);
+
+  const [pizzaMaking1Name, setPizzaMaking1Name] = useState("");
+  const [pizzaMaking2Name, setPizzaMaking2Name] = useState("");
+  const [pizzaMaking3Name, setPizzaMaking3Name] = useState("");
+
   const totalHours = parseFloat(server1Hours) + parseFloat(server2Hours) + parseFloat(server3Hours) + parseFloat(server4Hours) + parseFloat(server5Hours) + parseFloat(assistant1Hours) * assistantTips / 100 + parseFloat(assistant2Hours) * assistantTips / 100 + parseFloat(assistant3Hours) * assistantTips / 100;
 
   const tipsPerHour = () => {
@@ -119,6 +127,13 @@ function App() {
     setAssistant1Hours(0);
     setAssistant2Hours(0);
     setAssistant3Hours(0);
+    setPizzaMaking1Hours(0);
+    setPizzaMaking2Hours(0);
+    setPizzaMaking3Hours(0);
+    setPizzaMaking1Name("");
+    setPizzaMaking2Name("");
+    setPizzaMaking3Name("");
+
   }
 
   const clearServers = () => {
@@ -138,6 +153,12 @@ function App() {
     setAssistant1Hours(0);
     setAssistant2Hours(0);
     setAssistant3Hours(0);
+    setPizzaMaking1Hours(0);
+    setPizzaMaking2Hours(0);
+    setPizzaMaking3Hours(0);
+    setPizzaMaking1Name("");
+    setPizzaMaking2Name("");
+    setPizzaMaking3Name("");
   }
 
 
@@ -149,7 +170,7 @@ function App() {
     setCreditCardTips(500)
     setPizzaAdults(10);
     setPizzaChildren(10);
-    setPizzaServers(1)
+    setPizzaServers(2)
     setServer1Name("Manuel");
     setServer2Name("Dom");
     setServer3Name("Suz");
@@ -158,6 +179,10 @@ function App() {
     setServer2Hours(5);
     setServer3Hours(4);
     setAssistant1Hours(4);
+    setPizzaMaking1Hours(0);
+    setPizzaMaking2Hours(0);
+    setPizzaMaking1Name("Liz");
+    setPizzaMaking2Name("Akasha");
   }
 
 
@@ -285,7 +310,7 @@ function App() {
 
         <section className='servers'>
 
-          <div className='th'>
+          <div className='th margin-top margin-bottom'>
             <div className='thirty-three'>Server</div>
             <div className='thirty-three'>Hours</div>
             <div className='thirty-three'>100%</div>
@@ -330,7 +355,7 @@ function App() {
           </div>
 
 
-          <div className='th margin-top'>
+          <div className='th margin-top margin-bottom'>
             <div className='thirty-three'>Support</div>
             <div className='thirty-three'>Hours</div>
             <div className='thirty-three'>40%</div>
@@ -358,10 +383,24 @@ function App() {
             <div className="thirty-three">{frontTips !=="0" && assistant3Hours !=="" && server1Hours > 0 &&(frontTips / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}</div>
           </div>
 
-          <div className='th margin-top'>
+          <div className='th margin-top margin-bottom'>
             <div className='thirty-three'>Pizza making</div>
-            <div className='thirty-three'>Hours</div>
             <div className='thirty-three'>Tips</div>
+          </div>
+
+          <div className='server'>
+            <input value={pizzaMaking1Name} onChange={(e) => setPizzaMaking1Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
+            <div className="thirty-three">{pizzaTips !=="0" && (pizzaServers === "1" || pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
+          </div>
+
+          <div className='server'>
+            <input value={pizzaMaking2Name} onChange={(e) => setPizzaMaking2Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
+            <div className="thirty-three">{pizzaTips !=="0" && (pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
+          </div>
+
+          <div className='server'>
+            <input value={pizzaMaking3Name} onChange={(e) => setPizzaMaking3Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
+            <div className="thirty-three">{pizzaTips !=="0" && pizzaServers === "3" && (pizzaTips / pizzaServers).toFixed(2)}</div>
           </div>
 
         </section>
