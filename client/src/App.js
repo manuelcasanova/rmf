@@ -28,6 +28,7 @@ function App() {
   const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
   const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
   const frontTips = (tipsAfterPizzaParty * frontTipsPercent / 100).toFixed(2);
+  const perServer = pizzaTips / pizzaServers;
 
   const [totalCashInfo, setTotalCashInfo] = useState(false)
   const [totalHoursInfo, setTotalHoursInfo] = useState(false)
@@ -98,9 +99,6 @@ function App() {
     }
   }
 
-  // useEffect(() => {
-  //   console.log(typeof frontTips)
-  // }, [server1Hours])
 
   const clearAll = () => {
     setCashCounted(0);
@@ -214,7 +212,12 @@ function App() {
 
           <div className='inline'>
             <label className='inline-label' onClick={showTotalCashInfo}>TOTAL CASH <div className="info" onClick={showTotalHoursInfo}>i</div></label>
-            <div className='money-input'>{cashCounted !== "" && cashCounted !== "0" && totalCash.toFixed(2)}</div>
+            <div className='money-input'>{!isNaN(totalCash.toFixed(2)) && totalCash.toFixed(2)}</div>
+
+            {isNaN(totalCash.toFixed(2))
+              &&
+              <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+            }
           </div>
 
           {totalCashInfo && <div className='info-message'>Cash counted + receipts</div>}
@@ -234,8 +237,13 @@ function App() {
 
           <div className='inline'>
             <label className='inline-label'>Cash tips<div className="info" onClick={showCashTipsInfo}>i</div></label>
-            <div className='money-input'>{cashCounted !== "" && cashCounted !== "0" && cashTips}</div>
+            <div className='money-input'>{!isNaN(cashTips) && cashTips}</div>
+            {isNaN(cashTips)
+              &&
+              <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+            }
           </div>
+
 
           {cashTipsInfo && <div className='info-message'>Total cash - Float - Cash sales = Cash tips</div>}
 
@@ -248,7 +256,11 @@ function App() {
 
           <div className='inline'>
             <label className='inline-label'>Total tips</label>
-            <div className='money-input'>{cashCounted !== "" && cashCounted !== "0" && (parseInt(cashTips) + parseInt(creditCardTips)).toFixed(2)}</div>
+            <div className='money-input'>{!isNaN(cashTips) && (parseInt(cashTips) + parseInt(creditCardTips)).toFixed(2)}</div>
+            {isNaN(cashTips)
+              &&
+              <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+            }
           </div>
 
         </section>
@@ -273,11 +285,24 @@ function App() {
           <div className='inline'>
             <label className='inline-label'>Pizza making tips</label>
             <div className='pizza-input'>{!isNaN(pizzaTips) && pizzaTips.toFixed(2)}</div>
+            {isNaN(pizzaTips)
+              &&
+              <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+            }
           </div>
+
+          {/* <div className='inline'>
+            <label className='inline-label'>Per server</label>
+            <div className='pizza-input'>{pizzaAdults !== "" && pizzaAdults !== 0 && pizzaAdults !== "0" && pizzaServers !== "0" && pizzaServers !== 0 && pizzaServers !== "" && (pizzaTips / pizzaServers).toFixed(2)}</div>
+          </div> */}
 
           <div className='inline'>
             <label className='inline-label'>Per server</label>
-            <div className='pizza-input'>{!isNaN(pizzaServers) || pizzaServers !== "0" &&  (pizzaTips / pizzaServers).toFixed(2)}</div>
+            <div className='pizza-input'>{!isNaN(perServer) && perServer.toFixed(2)}</div>
+            {isNaN(perServer)
+              &&
+              <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+            }
           </div>
 
         </section>
@@ -287,18 +312,30 @@ function App() {
           <div className='inline'>
             <label className='inline-label'>Tips after Pizza party</label>
             <div className='tips-input'>{!isNaN(pizzaTips) && tipsAfterPizzaParty}</div>
+            {isNaN(pizzaTips)
+              &&
+              <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+            }
           </div>
 
 
           <div className='inline'>
             <label className='inline-label'>Kitchen tips</label>
             <div className='tips-input'>{!isNaN(pizzaTips) && kitchenTips}</div>
+            {isNaN(pizzaTips)
+              &&
+              <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+            }
           </div>
 
 
           <div className='inline'>
             <label className='inline-label'>Front tips</label>
             <div className='tips-input'>{!isNaN(pizzaTips) && frontTips}</div>
+            {isNaN(pizzaTips)
+              &&
+              <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+            }
           </div>
 
 
@@ -321,37 +358,37 @@ function App() {
           <div className='server'>
             <input type="text" required value={server1Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setServer1Name(e.target.value)}></input>
             <input type="number" value={(server1Hours)} className="thirty-three input-width nameinput" onChange={(e) => setServer1Hours(e.target.value)}></input>
-            <div className="thirty-three">{frontTips !=="0" && server1Hours !=="" &&(parseFloat(server1Hours) * fullTips / 100).toFixed(2)}</div>
-            <div className="thirty-three">{frontTips !=="0" && server1Hours !=="" && server1Hours > 0 &&(frontTips / totalHours * server1Hours).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && server1Hours !== "" && (parseFloat(server1Hours) * fullTips / 100).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && server1Hours !== "" && server1Hours > 0 && (frontTips / totalHours * server1Hours).toFixed(2)}</div>
           </div>
 
 
           <div className='server'>
             <input value={server2Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setServer2Name(e.target.value)}></input>
             <input type="number" value={server2Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer2Hours(e.target.value)}></input>
-            <div className="thirty-three">{frontTips !=="0" && server2Hours !=="" &&(parseFloat(server2Hours) * fullTips / 100).toFixed(2)}</div>
-            <div className="thirty-three">{frontTips !=="0" && server2Hours !=="" && server1Hours > 0 &&(frontTips / totalHours * server2Hours).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && server2Hours !== "" && (parseFloat(server2Hours) * fullTips / 100).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && server2Hours !== "" && server1Hours > 0 && (frontTips / totalHours * server2Hours).toFixed(2)}</div>
           </div>
 
           <div className='server'>
             <input value={server3Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setServer3Name(e.target.value)}></input>
             <input type="number" value={server3Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer3Hours(e.target.value)}></input>
-            <div className="thirty-three">{frontTips !=="0" && server3Hours !=="" &&(parseFloat(server3Hours) * fullTips / 100).toFixed(2)}</div>
-            <div className="thirty-three">{frontTips !=="0" && server3Hours !=="" && server1Hours > 0 &&(frontTips / totalHours * server3Hours).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && server3Hours !== "" && (parseFloat(server3Hours) * fullTips / 100).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && server3Hours !== "" && server1Hours > 0 && (frontTips / totalHours * server3Hours).toFixed(2)}</div>
           </div>
 
           <div className='server'>
             <input value={server4Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setServer4Name(e.target.value)}></input>
             <input type="number" value={server4Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer4Hours(e.target.value)}></input>
-            <div className="thirty-three">{frontTips !=="0" && server4Hours !=="" &&(parseFloat(server4Hours) * fullTips / 100).toFixed(2)}</div>
-            <div className="thirty-three">{frontTips !=="0" && server4Hours !=="" && server1Hours > 0 &&(frontTips / totalHours * server4Hours).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && server4Hours !== "" && (parseFloat(server4Hours) * fullTips / 100).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && server4Hours !== "" && server1Hours > 0 && (frontTips / totalHours * server4Hours).toFixed(2)}</div>
           </div>
 
           <div className='server'>
             <input value={server5Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setServer5Name(e.target.value)}></input>
             <input type="number" value={server5Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer5Hours(e.target.value)}></input>
-            <div className="thirty-three">{frontTips !=="0" && server5Hours !=="" &&(parseFloat(server5Hours) * fullTips / 100).toFixed(2)}</div>
-            <div className="thirty-three">{frontTips !=="0" && server5Hours !=="" && server1Hours > 0 &&(frontTips / totalHours * server5Hours).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && server5Hours !== "" && (parseFloat(server5Hours) * fullTips / 100).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && server5Hours !== "" && server1Hours > 0 && (frontTips / totalHours * server5Hours).toFixed(2)}</div>
           </div>
 
 
@@ -365,22 +402,22 @@ function App() {
           <div className='server'>
             <input value={assistant1Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setAssistant1Name(e.target.value)}></input>
             <input type="number" value={assistant1Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant1Hours(e.target.value)}></input>
-            <div className="thirty-three">{frontTips !=="0" && assistant1Hours !=="" &&(parseFloat(assistant1Hours) * assistantTips / 100).toFixed(2)}</div>
-            <div className="thirty-three">{frontTips !=="0" && assistant1Hours !=="" && server1Hours > 0 &&(frontTips / totalHours * assistant1Hours * assistantTips / 100).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && assistant1Hours !== "" && (parseFloat(assistant1Hours) * assistantTips / 100).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && assistant1Hours !== "" && server1Hours > 0 && (frontTips / totalHours * assistant1Hours * assistantTips / 100).toFixed(2)}</div>
           </div>
 
           <div className='server'>
             <input value={assistant2Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setAssistant2Name(e.target.value)}></input>
             <input type="number" value={assistant2Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant2Hours(e.target.value)}></input>
-            <div className="thirty-three">{frontTips !=="0" && assistant2Hours !=="" &&(parseFloat(assistant2Hours) * assistantTips / 100).toFixed(2)}</div>
-            <div className="thirty-three">{frontTips !=="0" && assistant2Hours !=="" && server1Hours > 0 &&(frontTips / totalHours * assistant2Hours * assistantTips / 100).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && assistant2Hours !== "" && (parseFloat(assistant2Hours) * assistantTips / 100).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && assistant2Hours !== "" && server1Hours > 0 && (frontTips / totalHours * assistant2Hours * assistantTips / 100).toFixed(2)}</div>
           </div>
 
           <div className='server'>
             <input value={assistant3Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setAssistant3Name(e.target.value)}></input>
             <input type="number" value={assistant3Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant3Hours(e.target.value)}></input>
-            <div className="thirty-three">{frontTips !=="0" && assistant3Hours !=="" &&(parseFloat(assistant3Hours) * assistantTips / 100).toFixed(2)}</div>
-            <div className="thirty-three">{frontTips !=="0" && assistant3Hours !=="" && server1Hours > 0 &&(frontTips / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && assistant3Hours !== "" && (parseFloat(assistant3Hours) * assistantTips / 100).toFixed(2)}</div>
+            <div className="thirty-three">{frontTips !== "0" && assistant3Hours !== "" && server1Hours > 0 && (frontTips / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}</div>
           </div>
 
           <div className='th margin-top margin-bottom'>
@@ -390,17 +427,17 @@ function App() {
 
           <div className='server'>
             <input value={pizzaMaking1Name} onChange={(e) => setPizzaMaking1Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
-            <div className="thirty-three">{pizzaTips !=="0" && (pizzaServers === "1" || pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
+            <div className="thirty-three">{pizzaTips !== "0" && (pizzaServers === 1 || pizzaServers === 2 || pizzaServers === 3 || pizzaServers === "1" || pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
           </div>
 
           <div className='server'>
             <input value={pizzaMaking2Name} onChange={(e) => setPizzaMaking2Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
-            <div className="thirty-three">{pizzaTips !=="0" && (pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
+            <div className="thirty-three">{pizzaTips !== "0" && (pizzaServers === 2 || pizzaServers === 3 || pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
           </div>
 
           <div className='server'>
             <input value={pizzaMaking3Name} onChange={(e) => setPizzaMaking3Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
-            <div className="thirty-three">{pizzaTips !=="0" && pizzaServers === "3" && (pizzaTips / pizzaServers).toFixed(2)}</div>
+            <div className="thirty-three">{pizzaTips !== 0 && pizzaServers === 3 || pizzaServers === "3" && (pizzaTips / pizzaServers).toFixed(2)}</div>
           </div>
 
         </section>
@@ -420,7 +457,7 @@ function App() {
 
               {isNaN(totalHours.toFixed(2))
                 &&
-                <div className='error-message'>Actual hours field cannot be empty. Set to 0 if necessary.</div>
+                <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
               }
 
 
@@ -436,7 +473,7 @@ function App() {
 
           <div className='inline'>
             <label className='inline-label'>NEW FLOAT</label>
-            <div className='tips-input'>{cashCounted !== "0" && cashCounted !=="" && (cashCounted - frontTips - pizzaTips).toFixed(2)}</div>
+            <div className='tips-input'>{cashCounted !== "0" && cashCounted !== "" && (cashCounted - frontTips - pizzaTips).toFixed(2)}</div>
           </div>
 
         </section>

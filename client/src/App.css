@@ -23,11 +23,8 @@
 :root {
   --color0: black;
   --color1: white;
-  --color2: #E5E5E5;
-  --color3: darkblue;
-  --color4: blue; 
-  --color5: rgb(247, 196, 67);
-  --color6: dimgrey;
+  --color2: purple;
+  --color3: rgb(146, 53, 146); 
 }
 
 .seccion {
@@ -51,17 +48,17 @@ justify-content: center;
   text-decoration: none;
   outline: none;
   color: var(--color1);
-  background-color: var(--color3);
+  background-color: var(--color2);
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
   margin: 1em;
 }
 
-.clear-all:hover {background-color: var(--color4)}
+.clear-all:hover {background-color: var(--color3)}
 
 .clear-all:active {
-  background-color: var(--color3);
+  background-color: var(--color2);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -150,11 +147,11 @@ label {
   font-style: italic;
   text-align: center;
   margin: 0 2em 0 2em;
-  border: 3px double white;
+  border: 3px double var(--color1);;
   border-radius: 20px;
   padding: 1em;
-  background-color: white;
-  color: black
+  background-color: var(--color1);;
+  color: var(--color0);
 }
 
 input {
@@ -198,8 +195,8 @@ align-items: center;
 }
 
 .error-message {
-  /* background-color: black;
-  color: white;
+  /* background-color: var(--color0);;
+  color: var(--color1);;
   padding: 1em;
   font-size: small; */
 
@@ -207,13 +204,15 @@ align-items: center;
 
   font-style: italic;
   text-align: center;
-  /* margin: 0 2em 0 2em; */
-  /* border: 3px double white; */
+  margin: 0 2em 0 2em;
+  border: 3px double var(--color1);
   border-radius: 20px;
   padding: 1em;
-  background-color: white;
-  color: black;
+  background-color: var(--color1);
+  color: var(--color0);
   font-size: small;
+  display: flex;
+  align-items: center;
 }
 
 
