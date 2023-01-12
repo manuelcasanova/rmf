@@ -9,16 +9,16 @@
 }
 
 .App {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
+  margin-bottom: 5em;
+  justify-content: center;
+  align-items: center
 }
 
-@media only screen and (max-width: 400px) {
-  * {
-    font-size: 0.8rem;
-  }
-}
+
+
 
 :root {
   --color0: black;
@@ -28,6 +28,10 @@
   --color4: blue; 
   --color5: rgb(247, 196, 67);
   --color6: dimgrey;
+}
+
+.seccion {
+  max-width: 600px;
 }
 
 .clear-all-div {
@@ -62,6 +66,7 @@ justify-content: center;
   transform: translateY(4px);
 }
 
+
 section {
   margin: 1em;
   display: flex;
@@ -89,24 +94,37 @@ label {
   width: 19%;
   text-align: center;
   margin: 0.2em;
-}
-
-.inline-label {
-  width: 50vw;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.inline-label {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   /* white-space: nowrap; */
 }
 
-.money-input, .pizza-input, .tips-input {
-  margin: 1em auto;
+.money-input, 
+.pizza-input, 
+.tips-input {
+  margin: 0.5em auto;
   height: 3em;
   width: 6em;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 900;
+  font-size: 1.5em;
+}
+
+.nameinput {
+  height: 3em;
+  font-size: 120%;
 }
 
 .inline {
@@ -121,6 +139,18 @@ label {
   justify-content: center;
   align-items: center;
   margin: 0 0.5em 0;
+  cursor: pointer;
+}
+
+.info-message {
+  font-style: italic;
+  text-align: center;
+  margin: 0 2em 0 2em;
+  border: 3px double white;
+  border-radius: 20px;
+  padding: 1em;
+  background-color: white;
+  color: black
 }
 
 input {
@@ -164,8 +194,35 @@ align-items: center;
 }
 
 .error-message {
-  background-color: black;
+  /* background-color: black;
   color: white;
   padding: 1em;
+  font-size: small; */
+
+
+
+  font-style: italic;
+  text-align: center;
+  /* margin: 0 2em 0 2em; */
+  /* border: 3px double white; */
+  border-radius: 20px;
+  padding: 1em;
+  background-color: white;
+  color: black;
+  font-size: small;
 }
 
+
+@media only screen and (max-width: 400px) {
+  * {
+    font-size: 0.9rem;
+  }
+
+  .clear-all {
+    font-size: 14px;
+  }
+
+  .error-message {
+    font-size: 0.5em;
+  }
+}
