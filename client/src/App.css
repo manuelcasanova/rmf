@@ -8,23 +8,24 @@
   background-color: var(--color0);
 }
 
+
+
 .App {
-  /* height: 100vh; */
+  height: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 5em;
   justify-content: center;
-  align-items: center
+  align-items: center;
+
 }
 
-
-
-
 :root {
+
   --color0: black;
   --color1: white;
-  --color2: purple;
-  --color3: rgb(146, 53, 146); 
+  --color2: rgb(246, 233, 233);
+
 }
 
 .seccion {
@@ -47,15 +48,15 @@ justify-content: center;
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: var(--color1);
-  background-color: var(--color2);
+  color: var(--color0);
+  background-color: var(--color1);
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
   margin: 1em;
 }
 
-.clear-all:hover {background-color: var(--color3)}
+.clear-all:hover {background-color: var(--color2)}
 
 .clear-all:active {
   background-color: var(--color2);
@@ -141,6 +142,7 @@ label {
   align-items: center;
   margin: 0 0.5em 0;
   cursor: pointer;
+  color: white;
 }
 
 .info-message {
@@ -204,7 +206,7 @@ align-items: center;
 
   font-style: italic;
   text-align: center;
-  margin: 0 2em 0 2em;
+  /* margin: 0 2em 0 2em; */
   border: 3px double var(--color1);
   border-radius: 20px;
   padding: 1em;

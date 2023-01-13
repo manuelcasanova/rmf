@@ -28,13 +28,16 @@ function App() {
   const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
   const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
   const frontTips = (tipsAfterPizzaParty * frontTipsPercent / 100).toFixed(2);
-  const perServer = pizzaTips / pizzaServers;
+  const perServer = pizzaServers >= 1 && (pizzaTips / pizzaServers).toFixed(2);
+
+
 
   const [totalCashInfo, setTotalCashInfo] = useState(false)
   const [totalHoursInfo, setTotalHoursInfo] = useState(false)
   const [cashSalesInfo, setCashSalesInfo] = useState(false)
   const [cashTipsInfo, setCashTipsInfo] = useState(false)
   const [creditCardTipsInfo, setCreditCardTipsInfo] = useState(false)
+  const [newFloatInfo, setNewFloatInfo] = useState(false)
 
   const showTotalCashInfo = (e) => {
     e.preventDefault();
@@ -59,6 +62,11 @@ function App() {
   const showCreditCardTipsInfo = (e) => {
     e.preventDefault();
     setCreditCardTipsInfo(prev => !prev)
+  }
+
+  const showNewFloatInfo = (e) => {
+    e.preventDefault();
+    setNewFloatInfo(prev => !prev)
   }
 
   const [server1Hours, setServer1Hours] = useState(0);
@@ -97,6 +105,10 @@ function App() {
     } else {
       return frontTips / totalHours
     }
+  }
+
+  const roundToTwo = (num) => {
+    return +(Math.round(num + "e+2") + "e-2");
   }
 
 
@@ -194,9 +206,9 @@ function App() {
         </div>
 
 
-        <div className='clear-all-div'>
+        {/* {<div className='clear-all-div'>
           <button className="clear-all" onClick={test}>Set an example</button>
-        </div>
+        </div>} */}
 
         <section className='money'>
 
@@ -245,7 +257,7 @@ function App() {
           </div>
 
 
-          {cashTipsInfo && <div className='info-message'>Total cash - Float - Cash sales = Cash tips</div>}
+          {cashTipsInfo && <div className='info-message'>Cash tips = Total cash - Float - Cash sales</div>}
 
           <div className='inline'>
             <label className='inline-label'>Credit card tips<div className="info" onClick={showCreditCardTipsInfo}>i</div></label>
@@ -256,7 +268,7 @@ function App() {
 
           <div className='inline'>
             <label className='inline-label'>Total tips</label>
-            <div className='money-input'>{!isNaN(cashTips) && (parseInt(cashTips) + parseInt(creditCardTips)).toFixed(2)}</div>
+            <div className='money-input'>{!isNaN(cashTips) && (roundToTwo(cashTips) + roundToTwo(creditCardTips))}</div>
             {isNaN(cashTips)
               &&
               <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
@@ -279,7 +291,7 @@ function App() {
 
           <div className='inline'>
             <label className='inline-label'>Pizza making servers</label>
-            <input type="number" className='pizza-input' value={pizzaServers} onChange={(e) => setPizzaServers(e.target.value)}></input>
+            <input type="number" max="3" className='pizza-input' value={pizzaServers} onChange={(e) => setPizzaServers(e.target.value)}></input>
           </div>
 
           <div className='inline'>
@@ -298,11 +310,12 @@ function App() {
 
           <div className='inline'>
             <label className='inline-label'>Per server</label>
-            <div className='pizza-input'>{!isNaN(perServer) && perServer.toFixed(2)}</div>
-            {isNaN(perServer)
+            <div className='pizza-input'>{!perServer < "1" && perServer !== "Infinity" && !isNaN(perServer) && roundToTwo(perServer)}</div>
+{/* 
+            {pizzaServers !== "1" && pizzaServers !== "2" && pizzaServers !== "3"
               &&
-              <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
-            }
+              <div className='error-message'>Only accepts 1, 2 or 3.</div>
+            } */}
           </div>
 
         </section>
@@ -437,7 +450,7 @@ function App() {
 
           <div className='server'>
             <input value={pizzaMaking3Name} onChange={(e) => setPizzaMaking3Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
-            <div className="thirty-three">{pizzaTips !== 0 && pizzaServers === 3 || pizzaServers === "3" && (pizzaTips / pizzaServers).toFixed(2)}</div>
+            <div className="thirty-three">{(pizzaTips !== 0 && (pizzaServers === 3 || pizzaServers === "3")) && (pizzaTips / pizzaServers).toFixed(2)}</div>
           </div>
 
         </section>
@@ -468,13 +481,15 @@ function App() {
 
           <div className='inline'>
             <label className='inline-label'>TIPS per HOUR</label>
-            <div className='tips-input'>{totalHours !== "0" && tipsPerHour().toFixed(2)}</div>
+            <div className='tips-input'>{totalHours !== "0" && tipsPerHour !== "Infinity" && tipsPerHour().toFixed(2)}</div>
           </div>
 
           <div className='inline'>
-            <label className='inline-label'>NEW FLOAT</label>
+            <label className='inline-label'>NEW FLOAT <div className="info" onClick={showNewFloatInfo}>i</div></label>
             <div className='tips-input'>{cashCounted !== "0" && cashCounted !== "" && (cashCounted - frontTips - pizzaTips).toFixed(2)}</div>
           </div>
+
+          {newFloatInfo && <div className='info-message'>New float = Cash counted - Pizza making tips - front tips</div>}
 
         </section>
 
