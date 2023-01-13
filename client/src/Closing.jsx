@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Now from './Now';
 
 export default function Closing() {
   const fullTips = 100;
@@ -14,6 +15,8 @@ export default function Closing() {
   const handleToggle = () => {
     setToggle(prev => !prev)
   }
+
+  const now = Now()
 
 
   const [cashCounted, setCashCounted] = useState(0);
@@ -202,10 +205,12 @@ export default function Closing() {
   return (
     <div className={toggle ? "App day-mode" : "App night-mode"}>
 
-      <label class="switch">
+      <label className="switch">
         <input type="checkbox" onChange={handleToggle} />
-        <span class="slider round"></span>
+        <span className="slider round"></span>
       </label>
+
+      <div className='switch'>{now}</div>
 
       <div className='seccion'>
 
