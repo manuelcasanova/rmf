@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useNavigate, Link } from 'react-router-dom';
 import Now from './Now';
 
 export default function Closing() {
+
+  const navigate = useNavigate()
+
   const fullTips = 100;
   const assistantTips = 40;
   const kidsPizzaPrice = 25;
@@ -16,8 +20,11 @@ export default function Closing() {
     setToggle(prev => !prev)
   }
 
-  const now = Now()
+  useEffect(() => {
+    console.log("toggle", toggle)
+  }, [toggle])
 
+  const now = Now()
 
   const [cashCounted, setCashCounted] = useState(0);
   const [receipts, setReceipts] = useState(0);
@@ -205,6 +212,7 @@ export default function Closing() {
   return (
     <div className={toggle ? "App day-mode" : "App night-mode"}>
 
+
       <label className="switch">
         <input type="checkbox" onChange={handleToggle} />
         <span className="slider round"></span>
@@ -214,7 +222,8 @@ export default function Closing() {
 
       <div className='seccion'>
 
-
+<div className='title'>Morning Shift</div>
+<Link to='/night' className='subtitle'>Change shift</Link>
 
         <div className='clear-all-div'>
           <button className="clear-all" onClick={clearAll}>Clear all</button>
