@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import Now from './Now';
 
+import PmButton from './PmButton';
+
 export default function Closing() {
 
   const navigate = useNavigate()
@@ -10,6 +12,7 @@ export default function Closing() {
   const assistantTips = 40;
   const kidsPizzaPrice = 25;
   const adultsPizzaPrice = 40;
+  const adultsCocktailPrice = 25;
   const pizzaTipsPercent = 10;
   const kitchenTipsPercent = 30;
   const frontTipsPercent = 70;
@@ -35,9 +38,10 @@ export default function Closing() {
   const [creditCardTips, setCreditCardTips] = useState(0)
   const totalTips = parseFloat(cashTips) + parseFloat(creditCardTips)
   const [pizzaAdults, setPizzaAdults] = useState(0)
+  const [cocktailAdults, setCocktailAdults] = useState(0)
   const [pizzaChildren, setPizzaChildren] = useState(0)
   const [pizzaServers, setPizzaServers] = useState(0)
-  const pizzaTips = (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100) + (parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100)
+  const pizzaTips = (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100) + (parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100 + (parseFloat(cocktailAdults) * adultsCocktailPrice * pizzaTipsPercent / 100))
   const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
   const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
   const frontTips = (tipsAfterPizzaParty * frontTipsPercent / 100).toFixed(2);
@@ -212,6 +216,7 @@ export default function Closing() {
   return (
     <div className={toggle ? "App day-mode" : "App night-mode"}>
 
+      <div className='seccion'>
 
       <label className="switch">
         <input type="checkbox" onChange={handleToggle} />
@@ -220,10 +225,10 @@ export default function Closing() {
 
       <div className='switch'>{now}</div>
 
-      <div className='seccion'>
+        
 
 <div className='title'>Morning Shift</div>
-<Link to='/night' className='subtitle'>Change shift</Link>
+<Link to='/night' className='subtitle'><PmButton toggle={toggle}/></Link>
 
         <div className='clear-all-div'>
           <button className="clear-all" onClick={clearAll}>Clear all</button>
@@ -306,6 +311,11 @@ export default function Closing() {
           <div className='inline'>
             <label className='inline-label'>Pizza making adults</label>
             <input type="number" className='pizza-input' value={pizzaAdults} onChange={(e) => setPizzaAdults(e.target.value)}></input>
+          </div>
+
+          <div className='inline'>
+            <label className='inline-label'>Cocktail making adults</label>
+            <input type="number" className='pizza-input' value={cocktailAdults} onChange={(e) => setCocktailAdults(e.target.value)}></input>
           </div>
 
           <div className='inline'>

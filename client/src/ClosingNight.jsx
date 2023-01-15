@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState } from "react";
 import Now from './Now';
-
+import AmButton from "./AmButton";
 
 
 export default function ClosingNight () {
@@ -30,7 +30,7 @@ export default function ClosingNight () {
       <div className='seccion'>
 
       <div className='title'>Night Shift</div>
-<Link to='/closing' className='subtitle'>Change shift</Link>
+<Link to='/closing'>< AmButton /></Link>
 
 
       </div>
