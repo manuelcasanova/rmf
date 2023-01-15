@@ -307,7 +307,7 @@ export default function Closing() {
 
           <div className='inline'>
             <label className='inline-label'>Total tips</label>
-            <div className='money-input'>{!isNaN(cashTips) && (roundToTwo(cashTips) + roundToTwo(creditCardTips))}</div>
+            <div className='money-input'>{!isNaN(cashTips) && roundToTwo((roundToTwo(cashTips) + roundToTwo(creditCardTips)))}</div>
             {isNaN(cashTips)
               &&
               <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
