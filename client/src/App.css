@@ -216,7 +216,6 @@ label {
   border-radius: 20px;
   padding: 1em;
   background-color: var(--color1);
-  ;
   color: var(--color0);
 }
 
@@ -228,7 +227,15 @@ input {
 
 .money {}
 
-.pizza {}
+.pizza {
+  display: none;
+}
+
+.pmserv {
+
+  margin-left: 2em;
+}
+
 
 .tips {}
 
@@ -236,7 +243,6 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .server {

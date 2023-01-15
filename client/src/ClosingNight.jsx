@@ -29,8 +29,9 @@ export default function ClosingNight () {
 
       <div className='seccion'>
 
-      <div className='title'>Night Shift</div>
+      <div className='title'>Night Shift <div className="info-message margin-top">SOON AVAILABLE!</div></div>
 <Link to='/closing'>< AmButton /></Link>
+
 
 
       </div>

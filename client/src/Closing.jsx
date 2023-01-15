@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import Now from './Now';
 
+
 import PmButton from './PmButton';
 
 export default function Closing() {
@@ -23,9 +24,9 @@ export default function Closing() {
     setToggle(prev => !prev)
   }
 
-  useEffect(() => {
-    console.log("toggle", toggle)
-  }, [toggle])
+  // useEffect(() => {
+  //   console.log("toggle", toggle)
+  // }, [toggle])
 
   const now = Now()
 
@@ -55,6 +56,8 @@ export default function Closing() {
   const [cashTipsInfo, setCashTipsInfo] = useState(false)
   const [creditCardTipsInfo, setCreditCardTipsInfo] = useState(false)
   const [newFloatInfo, setNewFloatInfo] = useState(false)
+  const [pizzaParties, setPizzaParties] = useState(false)
+
 
   const showTotalCashInfo = (e) => {
     e.preventDefault();
@@ -84,6 +87,11 @@ export default function Closing() {
   const showNewFloatInfo = (e) => {
     e.preventDefault();
     setNewFloatInfo(prev => !prev)
+  }
+
+  const showPizzaParties = (e) => {
+    e.preventDefault();
+    setPizzaParties(prev => !prev)
   }
 
   const [server1Hours, setServer1Hours] = useState(0);
@@ -216,8 +224,6 @@ export default function Closing() {
   return (
     <div className={toggle ? "App day-mode" : "App night-mode"}>
 
-      <div className='seccion'>
-
       <label className="switch">
         <input type="checkbox" onChange={handleToggle} />
         <span className="slider round"></span>
@@ -225,10 +231,14 @@ export default function Closing() {
 
       <div className='switch'>{now}</div>
 
-        
+      <div className='seccion'>
 
-<div className='title'>Morning Shift</div>
-<Link to='/night' className='subtitle'><PmButton toggle={toggle}/></Link>
+
+
+
+
+        <div className='title'>Morning Shift</div>
+        <Link to='/night' className='subtitle'><PmButton toggle={toggle} /></Link>
 
         <div className='clear-all-div'>
           <button className="clear-all" onClick={clearAll}>Clear all</button>
@@ -306,7 +316,11 @@ export default function Closing() {
 
         </section>
 
-        <section className='pizza'>
+<div className='clear-all-div'>
+        <button className='clear-all' onClick={showPizzaParties}>Pizza parties?</button>
+        </div>
+
+        <section className={pizzaParties ? '' : 'pizza'}>
 
           <div className='inline'>
             <label className='inline-label'>Pizza making adults</label>
@@ -352,10 +366,6 @@ export default function Closing() {
   } */}
           </div>
 
-        </section>
-
-        <section className='tips'>
-
           <div className='inline'>
             <label className='inline-label'>Tips after Pizza party</label>
             <div className='tips-input'>{!isNaN(pizzaTips) && tipsAfterPizzaParty}</div>
@@ -364,6 +374,10 @@ export default function Closing() {
               <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
             }
           </div>
+
+        </section>
+
+        <section className='tips'>
 
 
           <div className='inline'>
@@ -467,27 +481,44 @@ export default function Closing() {
             <div className="thirty-three">{frontTips !== "0" && assistant3Hours !== "" && server1Hours > 0 && (frontTips / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}</div>
           </div>
 
-          <div className='th margin-top margin-bottom'>
-            <div className='thirty-three'>Pizza making</div>
-            <div className='thirty-three'>Tips</div>
-          </div>
+          
 
-          <div className='server'>
-            <input value={pizzaMaking1Name} onChange={(e) => setPizzaMaking1Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
-            <div className="thirty-three">{pizzaTips !== "0" && (pizzaServers === 1 || pizzaServers === 2 || pizzaServers === 3 || pizzaServers === "1" || pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
-          </div>
-
-          <div className='server'>
-            <input value={pizzaMaking2Name} onChange={(e) => setPizzaMaking2Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
-            <div className="thirty-three">{pizzaTips !== "0" && (pizzaServers === 2 || pizzaServers === 3 || pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
-          </div>
-
-          <div className='server'>
-            <input value={pizzaMaking3Name} onChange={(e) => setPizzaMaking3Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
-            <div className="thirty-three">{(pizzaTips !== 0 && (pizzaServers === 3 || pizzaServers === "3")) && (pizzaTips / pizzaServers).toFixed(2)}</div>
-          </div>
 
         </section>
+
+
+        <section className={pizzaParties ? '' : 'pizza'}>
+
+
+<div className='pmserv'>
+
+
+<div className='th margin-top margin-bottom'>
+  <div className='thirty-three'>Pizza making</div>
+  <div className='thirty-three'>Tips</div>
+</div>
+
+<div className='server'>
+  <input value={pizzaMaking1Name} onChange={(e) => setPizzaMaking1Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
+  <div className="thirty-three">{pizzaTips !== "0" && (pizzaServers === 1 || pizzaServers === 2 || pizzaServers === 3 || pizzaServers === "1" || pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
+</div>
+
+<div className='server'>
+  <input value={pizzaMaking2Name} onChange={(e) => setPizzaMaking2Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
+  <div className="thirty-three">{pizzaTips !== "0" && (pizzaServers === 2 || pizzaServers === 3 || pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
+</div>
+
+<div className='server'>
+  <input value={pizzaMaking3Name} onChange={(e) => setPizzaMaking3Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
+  <div className="thirty-three">{(pizzaTips !== 0 && (pizzaServers === 3 || pizzaServers === "3")) && (pizzaTips / pizzaServers).toFixed(2)}</div>
+</div>
+
+</div>
+
+</section>
+
+
+
 
 
         <section className='summary'>
