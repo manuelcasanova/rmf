@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Now from './Now';
-
-
 import PmButton from './PmButton';
 
 export default function Closing() {
-
-  const navigate = useNavigate()
 
   const fullTips = 100;
   const assistantTips = 40;
