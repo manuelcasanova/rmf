@@ -167,7 +167,9 @@ export default function ClosingNight() {
     setReceipts(0);
     setFloat(0);
     setCashSalesAM(0);
+    setCashSalesPrintOut(0);
     setCreditCardsTipsAM(0)
+    setCreditCardsTipsPrintOut(0)
     setPizzaAdults(0);
     setPizzaChildren(0);
     setPizzaServers(0)
