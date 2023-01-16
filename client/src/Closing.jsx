@@ -329,7 +329,7 @@ export default function Closing() {
           </div>
 
           <div className='inline'>
-            <label className='inline-label'>Pizza making children</label>
+            <label className='inline-label'>Pizza making children / Cocktail making adults</label>
             <input type="number" className='pizza-input' value={pizzaChildren} onChange={(e) => setPizzaChildren(e.target.value)}></input>
           </div>
 

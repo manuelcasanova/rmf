@@ -33,8 +33,9 @@ export default function ClosingNight() {
   const [cashSalesPrintOut, setCashSalesPrintOut] = useState(0)
   const cashSalesPM = (cashSalesPrintOut - cashSalesAM).toFixed(2)
   const cashTips = (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
-  const [creditCardTips, setCreditCardTips] = useState(0)
-  const totalTips = parseFloat(cashTips) + parseFloat(creditCardTips)
+  const [creditCardsTipsAM, setCreditCardsTipsAM] = useState(0)
+  const [creditCardsTipsPrintOut, setCreditCardsTipsPrintOut] = useState(0)
+  const totalTips = parseFloat(cashTips) + parseFloat(creditCardsTipsPrintOut) - parseFloat(creditCardsTipsAM)
   const [pizzaAdults, setPizzaAdults] = useState(0)
   const [cocktailAdults, setCocktailAdults] = useState(0)
   const [pizzaChildren, setPizzaChildren] = useState(0)
@@ -52,7 +53,9 @@ export default function ClosingNight() {
   const [cashSalesAMInfo, setCashSalesAMInfo] = useState(false)
   const [cashSalesPrintOutInfo, setCashSalesPrintOutInfo] = useState(false)
   const [cashTipsInfo, setCashTipsInfo] = useState(false)
-  const [creditCardTipsInfo, setCreditCardTipsInfo] = useState(false)
+  const [creditCardsTipsAMInfo, setCreditCardsTipsAMInfo] = useState(false)
+  const [creditCardsTipsPMInfo, setCreditCardsTipsPMInfo] = useState(false)
+  const [creditCardsPrintOutInfo, setCreditCardsTipsPrintOutInfo] = useState(false)
   const [newFloatInfo, setNewFloatInfo] = useState(false)
   const [pizzaParties, setPizzaParties] = useState(false)
   const [cashSalesPMInfo, setCashSalesPMInfo] = useState(false)
@@ -88,9 +91,19 @@ export default function ClosingNight() {
     setCashTipsInfo(prev => !prev)
   }
 
-  const showCreditCardTipsInfo = (e) => {
+  const showCreditCardsTipsAMInfo = (e) => {
     e.preventDefault();
-    setCreditCardTipsInfo(prev => !prev)
+    setCreditCardsTipsAMInfo(prev => !prev)
+  }
+
+  const showCreditCardsTipsPrintOutInfo = (e) => {
+    e.preventDefault();
+    setCreditCardsTipsPrintOutInfo(prev => !prev)
+  }
+
+  const showCreditCardsTipsPMInfo = (e) => {
+    e.preventDefault();
+    setCreditCardsTipsPMInfo(prev => !prev)
   }
 
   const showNewFloatInfo = (e) => {
@@ -154,7 +167,7 @@ export default function ClosingNight() {
     setReceipts(0);
     setFloat(0);
     setCashSalesAM(0);
-    setCreditCardTips(0)
+    setCreditCardsTipsAM(0)
     setPizzaAdults(0);
     setPizzaChildren(0);
     setPizzaServers(0)
@@ -214,7 +227,7 @@ export default function ClosingNight() {
     setReceipts(10);
     setFloat(400);
     setCashSalesAM(500);
-    setCreditCardTips(500)
+    setCreditCardsTipsAM(500)
     setPizzaAdults(10);
     setPizzaChildren(10);
     setPizzaServers(2)
@@ -314,7 +327,7 @@ export default function ClosingNight() {
 
 
 <div className='inline'>
-  <label className='inline-label'>Cash tips<div className="info" onClick={showCashTipsInfo}>i</div></label>
+  <label className='inline-label'>Cash tips PM<div className="info" onClick={showCashTipsInfo}>i</div></label>
   <div className='money-input'>{!isNaN(cashTips) && cashTips}</div>
   {isNaN(cashTips)
     &&
@@ -326,15 +339,36 @@ export default function ClosingNight() {
 {cashTipsInfo && <div className='info-message'>Cash tips = Total cash - Float - Cash sales</div>}
 
 <div className='inline'>
-  <label className='inline-label'>Credit card tips<div className="info" onClick={showCreditCardTipsInfo}>i</div></label>
-  <input type="number" className='money-input' value={creditCardTips} onChange={(e) => setCreditCardTips(e.target.value)}></input>
+  <label className='inline-label'>Credit card tips AM<div className="info" onClick={showCreditCardsTipsAMInfo}>i</div></label>
+  <input type="number" className='money-input' value={creditCardsTipsAM} onChange={(e) => setCreditCardsTipsAM(e.target.value)}></input>
 </div>
 
-{creditCardTipsInfo && <div className='info-message'>Tips paid on print out</div>}
+{creditCardsTipsAMInfo && <div className='info-message'>Credit Card tips from the AM shift</div>}
+
 
 <div className='inline'>
-  <label className='inline-label'>Total tips</label>
-  <div className='money-input'>{!isNaN(cashTips) && roundToTwo((roundToTwo(cashTips) + roundToTwo(creditCardTips)))}</div>
+  <label className='inline-label'>Credit card tips Print Out<div className="info" onClick={showCreditCardsTipsPrintOutInfo}>i</div></label>
+  <input type="number" className='money-input' value={creditCardsTipsPrintOut} onChange={(e) => setCreditCardsTipsPrintOut(e.target.value)}></input>
+</div>
+
+{creditCardsPrintOutInfo && <div className='info-message'>Credit Card tips from the Print Out</div>}
+
+<div className='inline'>
+  <label className='inline-label'>Credit card tips PM<div className="info" onClick={showCreditCardsTipsPMInfo}>i</div></label>
+  <div className='money-input'>{!isNaN(cashTips) && roundToTwo((roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))}</div>
+  {isNaN(cashTips)
+    &&
+    <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+  }
+</div>
+
+{creditCardsTipsPMInfo && <div className='info-message'>CC tips PM shift = CC tips on Print Out - CC tips AM shift</div>}
+
+
+
+<div className='inline'>
+  <label className='inline-label'>Total Tips PM</label>
+  <div className='money-input'>{!isNaN(cashTips) && roundToTwo((roundToTwo(cashTips) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))}</div>
   {isNaN(cashTips)
     &&
     <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
@@ -361,7 +395,7 @@ export default function ClosingNight() {
           </div>
 
           <div className='inline'>
-            <label className='inline-label'>Pizza making children</label>
+            <label className='inline-label'>Pizza making children / Cocktail making adults</label>
             <input type="number" className='pizza-input' value={pizzaChildren} onChange={(e) => setPizzaChildren(e.target.value)}></input>
           </div>
 
