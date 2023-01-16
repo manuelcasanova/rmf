@@ -397,7 +397,7 @@ export default function ClosingNight() {
           </div>
 
           <div className='inline'>
-            <label className='inline-label'>Pizza making children / Cocktail making adults</label>
+            <label className='inline-label'>Pizza making children</label>
             <input type="number" className='pizza-input' value={pizzaChildren} onChange={(e) => setPizzaChildren(e.target.value)}></input>
           </div>
 
