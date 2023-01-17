@@ -1,9 +1,5 @@
 /* || RESET */
 
-.test {
-  background-color: white;
-}
-
 :root {
   background-color: black;
 }
@@ -22,7 +18,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 5em;
+  /* margin-bottom: 5em; */
+  padding-bottom: 5em;
   justify-content: center;
   align-items: center;
 
@@ -364,12 +361,12 @@ input:checked+.slider:before {
   border-radius: 50%;
 }
 
-/* ALL CSS AM/PM */
+/* ALL CSS AM */
 
 .AmButton, .PmButton {
   background-color: var(--color1);
   width: 5.6em;
-  height: 2.5em;
+  height: 2.4em;
   margin: auto;
   display: flex;
   justify-content: flex-end;
@@ -378,12 +375,20 @@ input:checked+.slider:before {
   border-radius: 34px;
 }
 
+.PmButton {
+  padding: 0.5em;
+}
+
 .word {
   background-color: var(--color1);
   margin-right: 0.5em;
   margin: 0em 0.5em 0em 0.1em;
   font-weight: 700;
   color: var(--color0);
+}
+
+.wordpm {
+  margin: 0em 0.1em 0em 0.5em;
 }
 
 .circle {

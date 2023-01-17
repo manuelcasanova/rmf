@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import {ReactToPrint} from 'react-to-print'
 import Now from './Now';
-import PmButton from './PmButton';
+import AmButton from './AmButton';
 
 export default function Closing() {
 
@@ -218,7 +219,19 @@ export default function Closing() {
 
 
   return (
-    <div className={toggle ? "App day-mode" : "App night-mode"}>
+    <div>
+    {/* <ReactToPrint
+    trigger ={()=>{
+      return <button>Print the table</button>
+    }}
+    content={()=>this.componentRef}
+    documentTitle="new document"
+    pageStyle="print"
+    
+    /> */}
+    <div 
+    // ref={element=>(this.componentRef=element)} 
+    className={toggle ? "App day-mode" : "App night-mode"}>
 
       <label className="switch">
         <input type="checkbox" onChange={handleToggle} />
@@ -233,8 +246,8 @@ export default function Closing() {
 
 
 
-        <div className='title'>Morning Shift</div>
-        <Link to='/night' className='subtitle'><PmButton toggle={toggle} /></Link>
+        <div className='title'>Shift</div>
+        <Link to='/night' className='subtitle'><AmButton toggle={toggle} /></Link>
 
         <div className='clear-all-div'>
           <button className="clear-all" onClick={clearAll}>Clear all</button>
@@ -557,6 +570,7 @@ export default function Closing() {
 
 
       </div>
+    </div>
     </div>
   )
 }

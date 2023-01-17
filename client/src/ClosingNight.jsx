@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState } from "react";
 import Now from './Now';
-import AmButton from "./AmButton";
+import PmButton from "./PmButton";
 
 export default function ClosingNight() {
 
@@ -261,8 +261,8 @@ export default function ClosingNight() {
 
       <div className='seccion'>
 
-        <div className='title'>Night Shift</div>
-        <Link to='/closing'>< AmButton /></Link>
+        <div className='title'>Shift</div>
+        <Link to='/closing'>< PmButton /></Link>
 
         <div className='clear-all-div'>
           <button className="clear-all" onClick={clearAll}>Clear all</button>

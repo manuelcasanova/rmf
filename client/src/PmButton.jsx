@@ -3,7 +3,7 @@ export default function PmButton () {
     <div className="PmButton">
 
 <div className="circle"></div>
-<div className="word">P.M.</div>
+<div className="word wordpm">P.M.</div>
 
 
     </div>
