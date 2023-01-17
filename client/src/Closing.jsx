@@ -54,6 +54,7 @@ export default function Closing() {
   const [creditCardTipsInfo, setCreditCardTipsInfo] = useState(false)
   const [newFloatInfo, setNewFloatInfo] = useState(false)
   const [pizzaParties, setPizzaParties] = useState(false)
+  const [supportServerInfo, setSupportServerInfo] = useState(true)
 
 
   const showTotalCashInfo = (e) => {
@@ -89,6 +90,11 @@ export default function Closing() {
   const showPizzaParties = (e) => {
     e.preventDefault();
     setPizzaParties(prev => !prev)
+  }
+
+  const showSupportServerInfo = (e) => {
+    e.preventDefault();
+    setSupportServerInfo(prev => !prev)
   }
 
   const [server1Hours, setServer1Hours] = useState(0);
@@ -367,13 +373,25 @@ export default function Closing() {
 
           <div className='inline'>
             <label className='inline-label'>Per server</label>
-            <div className='pizza-input'>{!perServer < "1" && perServer !== "Infinity" && !isNaN(perServer) && roundToTwo(perServer)}</div>
-            {/* 
-  {pizzaServers !== "1" && pizzaServers !== "2" && pizzaServers !== "3"
+            <div className='pizza-input'>
+              {
+              !perServer < "1" 
+              && !perServer < 1 
+              && perServer !== "Infinity" 
+              && !isNaN(perServer) 
+              // pizzaServers === "1" || pizzaServers === "2" || pizzaServers === "3" || pizzaServers === 1 || pizzaServers === 2 || pizzaServers === 3
+              && roundToTwo(perServer)}</div>
+            
+  {/* {pizzaServers !== "1" && pizzaServers !== "2" && pizzaServers !== "3"
     &&
     <div className='error-message'>Only accepts 1, 2 or 3.</div>
   } */}
           </div>
+
+{pizzaTips !==0 && supportServerInfo && 
+  <div className='error-message'>Do not forget that the pizza making servers may have as well work as support over the shift. Tip accordingly.</div>
+}
+          
 
           <div className='inline'>
             <label className='inline-label'>Tips after Pizza party</label>

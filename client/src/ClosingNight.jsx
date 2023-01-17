@@ -59,7 +59,7 @@ export default function ClosingNight() {
   const [newFloatInfo, setNewFloatInfo] = useState(false)
   const [pizzaParties, setPizzaParties] = useState(false)
   const [cashSalesPMInfo, setCashSalesPMInfo] = useState(false)
-
+  const [supportServerInfo, setSupportServerInfo] = useState(true)
 
   const showTotalCashInfo = (e) => {
     e.preventDefault();
@@ -114,6 +114,11 @@ export default function ClosingNight() {
   const showPizzaParties = (e) => {
     e.preventDefault();
     setPizzaParties(prev => !prev)
+  }
+
+  const showSupportServerInfo = (e) => {
+    e.preventDefault();
+    setSupportServerInfo(prev => !prev)
   }
 
 
@@ -429,6 +434,10 @@ export default function ClosingNight() {
     <div className='error-message'>Only accepts 1, 2 or 3.</div>
   } */}
           </div>
+
+          {pizzaTips !==0 && supportServerInfo && 
+  <div className='error-message'>Do not forget that the pizza making servers may have as well work as support over the shift. Tip accordingly.</div>
+}
 
           <div className='inline'>
             <label className='inline-label'>Tips after Pizza party</label>
