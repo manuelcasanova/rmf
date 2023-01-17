@@ -1,6 +1,14 @@
+//Hooks
+
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+
+//Libraries
+
 import {ReactToPrint} from 'react-to-print'
+
+//Components
+
 import Now from './Now';
 import AmButton from './AmButton';
 
