@@ -61,6 +61,7 @@ export default function Closing() {
   const [newFloatInfo, setNewFloatInfo] = useState(false)
   const [pizzaParties, setPizzaParties] = useState(false)
   const [supportServerInfo, setSupportServerInfo] = useState(true)
+  const [colors, setColors] = useState(false)
 
 
   const showTotalCashInfo = (e) => {
@@ -102,6 +103,12 @@ export default function Closing() {
     e.preventDefault();
     setSupportServerInfo(prev => !prev)
   }
+
+  const showColors = () => {
+    // e.preventDefault();
+    setColors(prev => !prev)
+  }
+
 
   const [server1Hours, setServer1Hours] = useState(0);
   const [server2Hours, setServer2Hours] = useState(0);
@@ -234,18 +241,35 @@ export default function Closing() {
 
   const componentRef = useRef();
 
+  const [color, setColor] = useState("black")
+
   return (
-    <div>
+    <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
       <div
         ref={componentRef}
 
-        className={toggle ? "App day-mode" : "App night-mode"}>
+        className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
-        <label className="switch">
+
+
+        <div className='color-toggle' onClick={showColors}>Brush</div>
+
+
+        {colors && <div className='colors'>
+        <div className='color black' onClick={(e) => setColor("black")}></div>
+          <div className='color white' onClick={(e) => setColor("white")}></div>
+          <div className='color pink' onClick={(e) => setColor("pink")}></div>
+          <div className='color blue' onClick={(e) => setColor("blue")}></div>
+          <div className='color green' onClick={(e) => setColor("green")}></div>
+          <div className='color red' onClick={(e) => setColor("red")}></div>
+        </div>}
+
+        {/* <label className="switch">
           <input type="checkbox" onChange={handleToggle} />
           <span className="slider round"></span>
-        </label>
+        </label> */}
+
 
         <div className='switch'>{now}</div>
 
@@ -619,10 +643,12 @@ export default function Closing() {
 
         </div>
       </div>
-      <div  className={toggle ? "App day-mode" : "App night-mode"}>
+      <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
-     
-        
+
+      
+
+
         <ReactToPrint
           trigger={() => {
             return <button className='clear-all'>Print</button>

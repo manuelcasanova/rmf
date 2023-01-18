@@ -35,9 +35,15 @@
   --color0: white;
   --color1: black;
   --color2: rgb(43, 43, 43);
-
 }
 
+
+
+.top-toggle {
+  display: flex;
+  flex-direction: row;
+
+}
 
 .seccion {
   max-width: 600px;
@@ -285,6 +291,75 @@ input {
   .error-message {
     font-size: 0.5em;
   }
+}
+
+.color-toggle {
+position: absolute;
+/* right: 90%; */
+top: 2%;
+left: 5%;
+cursor: pointer
+}
+
+.colors {
+  position: absolute;
+  top: 4%;
+  left: 5%
+}
+
+.color {
+  border-radius: 50px;
+  margin-top: 1em;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.black {
+  background-color: black;
+  color: black;
+  --color0: black;
+  --color1: white;
+  --color2: rgb(43, 43, 43);
+}
+
+.white {
+  background-color: white;
+  color: white;
+  --color0: white;
+  --color1: black;
+  --color2: rgb(43, 43, 43);
+}
+
+.pink {
+  background-color: pink;
+  color: pink;
+  --color0: pink;
+  --color1: purple;
+  --color2: rgb(43, 43, 43);
+}
+
+.blue {
+  background-color: blue;
+  color: blue;
+  --color0: blue;
+  --color1: lightblue;
+  --color2: rgb(43, 43, 43);
+}
+
+.green {
+  background-color: green;
+  color: green;
+  --color0: green;
+  --color1: lightgreen;
+  --color2: rgb(43, 43, 43);
+}
+
+.red {
+  background-color: coral;
+  color: coral;
+  --color0: coral;
+  --color1: darkred;
+  --color2: rgb(43, 43, 43);
 }
 
 /* TOGGLE BUTTON */
