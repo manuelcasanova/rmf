@@ -61,7 +61,10 @@ export default function Closing() {
   const [newFloatInfo, setNewFloatInfo] = useState(false)
   const [pizzaParties, setPizzaParties] = useState(false)
   const [supportServerInfo, setSupportServerInfo] = useState(true)
+
   const [colors, setColors] = useState(false)
+const [summary, setSummary] = useState(false)
+
 
 
   const showTotalCashInfo = (e) => {
@@ -108,6 +111,12 @@ export default function Closing() {
     // e.preventDefault();
     setColors(prev => !prev)
   }
+
+  const showSummary = () => {
+    // e.preventDefault();
+    setSummary(prev => !prev)
+  }
+
 
 
   const [server1Hours, setServer1Hours] = useState(0);
@@ -239,15 +248,17 @@ export default function Closing() {
     setPizzaMaking2Name("Akasha");
   }
 
-  const componentRef = useRef();
-
   const [color, setColor] = useState("black")
 
+  const componentRef = useRef();
+
   return (
+
+
     <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
       <div
-        ref={componentRef}
+
 
         className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
@@ -257,12 +268,12 @@ export default function Closing() {
 
 
         {colors && <div className='colors'>
-        <div className='color black' onClick={(e) => setColor("black")}></div>
-          <div className='color white' onClick={(e) => setColor("white")}></div>
-          <div className='color pink' onClick={(e) => setColor("pink")}></div>
-          <div className='color blue' onClick={(e) => setColor("blue")}></div>
-          <div className='color green' onClick={(e) => setColor("green")}></div>
-          <div className='color red' onClick={(e) => setColor("red")}></div>
+          <div className='color black white-line' onClick={(e) => setColor("black")}></div>
+          <div className='color white black-line' onClick={(e) => setColor("white")}></div>
+          <div className='color pink black-line' onClick={(e) => setColor("pink")}></div>
+          <div className='color blue black-line' onClick={(e) => setColor("blue")}></div>
+          <div className='color green black-line' onClick={(e) => setColor("green")}></div>
+          <div className='color red black-line' onClick={(e) => setColor("red")}></div>
         </div>}
 
         {/* <label className="switch">
@@ -407,7 +418,7 @@ export default function Closing() {
             </div>
 
             <div className='inline'>
-              <label className='inline-label'>Pizza making tips</label>
+              <label className='inline-label'>Pizza/Cocktail making tips</label>
               <div className='pizza-input'>{!isNaN(pizzaTips) && pizzaTips.toFixed(2)}</div>
               {isNaN(pizzaTips)
                 &&
@@ -643,22 +654,109 @@ export default function Closing() {
 
         </div>
       </div>
+
+
+<div>
+<button className='clear-all' onClick={showSummary}>Show summary</button>
+
+</div>
+
+
+
+{summary && 
       <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
+<ReactToPrint
+  trigger={() => {
+    return <button className='clear-all'>Print</button>
+  }}
+  content={() => componentRef.current}
+  documentTitle="new document"
+  pageStyle="print"
 
+/>
+
+<div className='print-component' ref={componentRef}>
+  <div className='print-line'>{now}</div>
+  <div className='print-line'>Cash counted: {cashCounted}$</div>
+  <div className='print-line'>Receipts: {receipts}$</div>
+  <div className='print-line'>TOTAL CASH: {totalCash}$</div>
+  <div className='print-line'>Float: {float}$</div>
+  <div className='print-line'>Cash sales: {cashSales}$</div>
+  <div className='print-line'>Cash tips: {cashTips}$</div>
+  <div className='print-line'>Credit card tips: {creditCardTips}$</div>
+  <div className='print-line'>TOTAL TIPS: {totalTips}$</div>
+  <div className='print-line'></div>
+  <div className='print-line'>Pizza making Tips: {pizzaTips}$</div>
+  <div className='print-line'>Kitchen Tips: {kitchenTips}$</div>
+  <div className='print-line'>Front Tips: {frontTips}$</div>
+  <div className='print-line'>Total hours: {totalHours.toFixed(2)}</div>
+  <div className='print-line'>Tips per hour: {tipsPerHour().toFixed(2)}$</div>
+  <div className='print-line'>NEW FLOAT: {(cashCounted - frontTips - pizzaTips).toFixed(2)}$</div>
+  <div className='print-line'></div>
+  <div className='print-line'>TIPS DISTRIBUTION:</div>
+
+  <div className='print-servers-tip'>
+
+    {server1Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{server1Name}</div>
+      <div className='server-details'>{server1Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * server1Hours).toFixed(2)}$</div>
+    </div>}
+
+    {server2Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{server2Name}</div>
+      <div className='server-details'>{server2Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * server2Hours).toFixed(2)}$</div>
+    </div>}
+
+    {server3Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{server3Name}</div>
+      <div className='server-details'>{server3Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * server3Hours).toFixed(2)}$</div>
+    </div>}
+
+    {server4Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{server4Name}</div>
+      <div className='server-details'>{server4Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * server4Hours).toFixed(2)}$</div>
+    </div>}
+
+
+    {server5Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{server5Name}</div>
+      <div className='server-details'>{server5Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * server5Hours).toFixed(2)}$</div>
+    </div>}
+
+    {assistant1Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{assistant1Name}</div>
+      <div className='server-details'>{assistant1Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * assistant1Hours).toFixed(2)}$</div>
+    </div>}
+
+    {assistant2Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{assistant2Name}</div>
+      <div className='server-details'>{assistant2Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * assistant2Hours).toFixed(2)}$</div>
+    </div>}
+
+    {assistant3Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{assistant3Name}</div>
+      <div className='server-details'>{assistant3Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * assistant3Hours).toFixed(2)}$</div>
+    </div>}
+
+  </div>
+
+</div>
+
+
+
+
+</div>
+}
       
-
-
-        <ReactToPrint
-          trigger={() => {
-            return <button className='clear-all'>Print</button>
-          }}
-          content={() => componentRef.current}
-          documentTitle="new document"
-          pageStyle="print"
-
-        />
-      </div>
 
     </div>
   )
