@@ -12,6 +12,11 @@ import ReactToPrint from 'react-to-print'
 import Now from './Now';
 import AmButton from './AmButton';
 
+//Images
+
+import brush from './images/brush.png'
+import brushWhite from './images/brush-white.png'
+
 export default function Closing() {
 
   const fullTips = 100;
@@ -248,6 +253,9 @@ const [summary, setSummary] = useState(false)
     setPizzaMaking2Name("Akasha");
   }
 
+
+
+
   const [color, setColor] = useState("black")
 
   const componentRef = useRef();
@@ -261,10 +269,15 @@ const [summary, setSummary] = useState(false)
 
 
         className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
+   
 
+{color === 'black' &&
+        <><img className='brush' src={brushWhite} alt="Brush" onClick={showColors} /></>
+  }
 
-
-        <div className='color-toggle' onClick={showColors}>Brush</div>
+{color !== 'black' &&
+        <><img className='brush' src={brush} alt="Brush" onClick={showColors} /></>
+  }
 
 
         {colors && <div className='colors'>
@@ -656,11 +669,17 @@ const [summary, setSummary] = useState(false)
       </div>
 
 
-<div>
+{!summary && <div className='padding-bottom'>
 <button className='clear-all' onClick={showSummary}>Show summary</button>
 
 </div>
+}
 
+
+{summary && <div>
+<button className='clear-all' onClick={showSummary}>X</button>
+
+</div>}
 
 
 {summary && 
@@ -668,7 +687,7 @@ const [summary, setSummary] = useState(false)
 
 <ReactToPrint
   trigger={() => {
-    return <button className='clear-all'>Print</button>
+    return <button className='clear-all'>Print summary</button>
   }}
   content={() => componentRef.current}
   documentTitle="new document"

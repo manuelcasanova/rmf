@@ -37,8 +37,6 @@
   --color2: rgb(43, 43, 43);
 }
 
-
-
 .top-toggle {
   display: flex;
   flex-direction: row;
@@ -298,18 +296,29 @@ position: absolute;
 /* right: 90%; */
 top: 2%;
 left: 5%;
-cursor: pointer
+
+}
+
+.brush {
+  position: absolute;
+  top: 2%;
+  left: 5%;
+  width: 40px;
+ 
 }
 
 .colors {
   position: absolute;
-  top: 4%;
-  left: 5%
+  display: flex;
+  flex-direction: row;
+  top: 1%;
+  left: 12%
 }
 
 .color {
   border-radius: 50px;
   margin-top: 1em;
+  margin-left: 1em;
   width: 1.5em;
   height: 1.5em;
 }
@@ -451,6 +460,11 @@ input:checked+.slider:before {
   justify-content: flex-start;
   padding-bottom: 5em;
   padding-top: 2em;
+}
+
+.padding-bottom {
+  padding-bottom: 5em;
+
 }
 
 .print-line {
