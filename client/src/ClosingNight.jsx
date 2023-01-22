@@ -12,7 +12,12 @@ import ReactToPrint from 'react-to-print'
 import Now from './Now';
 import PmButton from "./PmButton";
 
-export default function ClosingNight() {
+//Images
+
+import brush from './images/brush.png'
+import brushWhite from './images/brush-white.png'
+
+export default function ClosingNight({color, setColor}) {
 
   const fullTips = 100;
   const assistantTips = 40;
@@ -269,14 +274,24 @@ export default function ClosingNight() {
   const componentRef = useRef();
 
 
-  const [color, setColor] = useState("black")
+
 
   return (
     <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
-      <div ref={componentRef} className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
+<div
 
-      <div className='color-toggle' onClick={showColors}>Brush</div>
+
+className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
+
+
+{color === 'black' &&
+<><img className='brush' src={brushWhite} alt="Brush" onClick={showColors} /></>
+}
+
+{color !== 'black' &&
+<><img className='brush' src={brush} alt="Brush" onClick={showColors} /></>
+}
 
 
 {colors && <div className='colors'>

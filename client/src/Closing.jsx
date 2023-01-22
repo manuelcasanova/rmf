@@ -17,7 +17,7 @@ import AmButton from './AmButton';
 import brush from './images/brush.png'
 import brushWhite from './images/brush-white.png'
 
-export default function Closing() {
+export default function Closing({color, setColor}) {
 
   const fullTips = 100;
   const assistantTips = 40;
@@ -256,7 +256,7 @@ const [summary, setSummary] = useState(false)
 
 
 
-  const [color, setColor] = useState("black")
+
 
   const componentRef = useRef();
 
