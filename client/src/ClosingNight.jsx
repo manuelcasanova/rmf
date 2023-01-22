@@ -76,6 +76,7 @@ export default function ClosingNight({color, setColor}) {
   const [supportServerInfo, setSupportServerInfo] = useState(true)
   const [colors, setColors] = useState(false)
   const [summary, setSummary] = useState(false)
+  const [redLine, setRedLine] = useState(false)
 
   const showTotalCashInfo = (e) => {
     e.preventDefault();
@@ -145,6 +146,11 @@ export default function ClosingNight({color, setColor}) {
   const showSummary = () => {
     // e.preventDefault();
     setSummary(prev => !prev)
+  }
+
+  const showRedLine = () => {
+    // e.preventDefault();
+    setRedLine(prev => !prev)
   }
 
 
@@ -342,7 +348,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
             </div>
 
             <div className='inline'>
-              <label className='inline-label' onClick={showTotalCashInfo}>TOTAL CASH <div className="info" onClick={showTotalHoursInfo}>i</div></label>
+              <label className='inline-label' onClick={showTotalCashInfo}>TOTAL CASH <div className={color !== 'blue' ? "info" : "info-red"} onClick={showTotalHoursInfo}>i</div></label>
               <div className='money-input'>{!isNaN(totalCash.toFixed(2)) && totalCash.toFixed(2)}</div>
 
               {isNaN(totalCash.toFixed(2))
@@ -362,7 +368,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
             </div>
 
             <div className='inline'>
-              <label className='inline-label'>Cash sales AM<div className="info" onClick={showCashSalesAMInfo}>i</div></label>
+              <label className='inline-label'>Cash sales AM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashSalesAMInfo}>i</div></label>
 
               <input type="number" className='money-input' value={cashSalesAM} onChange={(e) => setCashSalesAM(e.target.value)}
                 onClick={(e) => setCashSalesAM("")}
@@ -373,7 +379,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
             {cashSalesAMInfo && <div className='info-message'>Cash sales from the AM shift</div>}
 
             <div className='inline'>
-              <label className='inline-label'>Cash sales Print Out<div className="info" onClick={showCashSalesPrintOutInfo}>i</div></label>
+              <label className='inline-label'>Cash sales Print Out<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashSalesPrintOutInfo}>i</div></label>
 
               <input type="number" className='money-input' value={cashSalesPrintOut} onChange={(e) => setCashSalesPrintOut(e.target.value)} onClick={(e) => setCashSalesPrintOut("")}
                 onFocus={(e) => setCashSalesPrintOut("")}></input>
@@ -384,7 +390,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
 
             <div className='inline'>
-              <label className='inline-label'>Cash sales PM<div className="info" onClick={showCashSalesPMInfo}>i</div></label>
+              <label className='inline-label'>Cash sales PM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashSalesPMInfo}>i</div></label>
               <div className='money-input'>{!isNaN(cashSalesPM) && cashSalesPM}</div>
               {isNaN(cashSalesPM)
                 &&
@@ -396,7 +402,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
 
             <div className='inline'>
-              <label className='inline-label'>Cash tips PM<div className="info" onClick={showCashTipsInfo}>i</div></label>
+              <label className='inline-label'>Cash tips PM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashTipsInfo}>i</div></label>
               <div className='money-input'>{!isNaN(cashTips) && cashTips}</div>
               {isNaN(cashTips)
                 &&
@@ -408,7 +414,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
             {cashTipsInfo && <div className='info-message'>Cash tips = Total cash - Float - Cash sales</div>}
 
             <div className='inline'>
-              <label className='inline-label'>Credit card tips AM<div className="info" onClick={showCreditCardsTipsAMInfo}>i</div></label>
+              <label className='inline-label'>Credit card tips AM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsAMInfo}>i</div></label>
               <input type="number" className='money-input' value={creditCardsTipsAM} onChange={(e) => setCreditCardsTipsAM(e.target.value)} onClick={(e) => setCreditCardsTipsAM("")}
                 onFocus={(e) => setCreditCardsTipsAM("")}></input>
             </div>
@@ -417,7 +423,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
 
             <div className='inline'>
-              <label className='inline-label'>Credit card tips Print Out<div className="info" onClick={showCreditCardsTipsPrintOutInfo}>i</div></label>
+              <label className='inline-label'>Credit card tips Print Out<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPrintOutInfo}>i</div></label>
               <input type="number" className='money-input' value={creditCardsTipsPrintOut} onChange={(e) => setCreditCardsTipsPrintOut(e.target.value)} onClick={(e) => setCreditCardsTipsPrintOut("")}
                 onFocus={(e) => setCreditCardsTipsPrintOut("")}></input>
             </div>
@@ -425,7 +431,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
             {creditCardsPrintOutInfo && <div className='info-message'>Credit Card tips from the Print Out</div>}
 
             <div className='inline'>
-              <label className='inline-label'>Credit card tips PM<div className="info" onClick={showCreditCardsTipsPMInfo}>i</div></label>
+              <label className='inline-label'>Credit card tips PM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPMInfo}>i</div></label>
               <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && roundToTwo((roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))}</div>
               {!creditCardsTipsAM && creditCardsTipsAM !== 0
                 &&
@@ -448,8 +454,16 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
           </section>
 
-          <div className='clear-all-div'>
-            <button className='clear-all' onClick={showPizzaParties}>Pizza parties?</button>
+          <div
+            className='pizza-making-question'
+          >
+            Pizza parties or Pizza making for children?
+
+            <div className='yes-no'>
+              {!pizzaParties && <button className='clear-all' onClick={showPizzaParties}>Yes</button>}
+              {!pizzaParties && <button className={redLine ? 'clear-all red-line' : 'clear-all'} onClick={showRedLine}>No</button>}
+            </div>
+            {pizzaParties && <button className='clear-all' onClick={showPizzaParties}>No</button>}
           </div>
 
 
@@ -660,7 +674,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
           <section className='summary'>
 
             <div className='inline'>
-              <label className='inline-label'>TOTAL HOURS <div className="info" onClick={showTotalHoursInfo}>i</div></label>
+              <label className='inline-label'>TOTAL HOURS <div className={color !== 'blue' ? "info" : "info-red"} onClick={showTotalHoursInfo}>i</div></label>
 
               <div className='tips-input'>
                 {
@@ -686,7 +700,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
             </div>
 
             <div className='inline'>
-              <label className='inline-label'>NEW FLOAT <div className="info" onClick={showNewFloatInfo}>i</div></label>
+              <label className='inline-label'>NEW FLOAT <div className={color !== 'blue' ? "info" : "info-red"} onClick={showNewFloatInfo}>i</div></label>
               <div className='tips-input'>{cashCounted !== "0" && cashCounted !== "" && (cashCounted - frontTips - pizzaTips).toFixed(2)}</div>
             </div>
 

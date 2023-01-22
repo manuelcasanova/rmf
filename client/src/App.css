@@ -208,6 +208,18 @@ label {
   color: white;
 }
 
+.info-red {
+  background-color: red;
+  border-radius: 50px;
+  width: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.5em 0;
+  cursor: pointer;
+  color: white;
+}
+
 .info-message {
   font-style: italic;
   text-align: center;
@@ -377,6 +389,23 @@ left: 5%;
 
 .white-line {
   border: 1px solid white;
+}
+
+.pizza-making-question {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.yes-no {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: row;
+}
+
+.red-line {
+  background-color: red;
 }
 
 /* TOGGLE BUTTON */
