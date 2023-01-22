@@ -75,6 +75,7 @@ export default function ClosingNight({color, setColor}) {
   const [cashSalesPMInfo, setCashSalesPMInfo] = useState(false)
   const [supportServerInfo, setSupportServerInfo] = useState(true)
   const [colors, setColors] = useState(false)
+  const [summary, setSummary] = useState(false)
 
   const showTotalCashInfo = (e) => {
     e.preventDefault();
@@ -141,6 +142,10 @@ export default function ClosingNight({color, setColor}) {
     setColors(prev => !prev)
   }
 
+  const showSummary = () => {
+    // e.preventDefault();
+    setSummary(prev => !prev)
+  }
 
 
   const [server1Hours, setServer1Hours] = useState(0);
@@ -700,20 +705,118 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
       </div>
 
+      {!summary && <div className='padding-bottom'>
+<button className='clear-all' onClick={showSummary}>Show summary</button>
+
+</div>
+}
+
+
+{summary && <div>
+<button className='clear-all' onClick={showSummary}>X</button>
+
+</div>}
+
+
+{summary && 
       <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
+<ReactToPrint
+  trigger={() => {
+    return <button className='clear-all'>Print summary</button>
+  }}
+  content={() => componentRef.current}
+  documentTitle="new document"
+  pageStyle="print"
+
+/>
+
+<div className='print-component' ref={componentRef}>
+  <div className='print-line'>{now}</div>
+  <div className='print-line'>Cash counted: {cashCounted}$</div>
+  <div className='print-line'>Receipts: {receipts}$</div>
+  <div className='print-line'>TOTAL CASH: {totalCash}$</div>
+  <div className='print-line'>Float: {float}$</div>
+  <div className='print-line'>Cash sales AM: {cashSalesAM}$</div>
+  <div className='print-line'>Cash sales Print Out: {cashSalesPrintOut}$</div>
+  <div className='print-line'>Cash sales PM: {cashSalesPM}$</div>
+  <div className='print-line'>Cash tips: {cashTips}$</div>
+  <div className='print-line'>Credit card tips AM: {creditCardsTipsAM}$</div>
+  <div className='print-line'>Credit card tips Print Out: {creditCardsTipsPrintOut}$</div>
+  <div className='print-line'>Credit card tips PM: {roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)}$</div>
+  <div className='print-line'>TOTAL TIPS PM: {(roundToTwo(cashTips) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)).toFixed(2)}$</div>
+  <div className='print-line'></div>
+  <div className='print-line'>Pizza making Tips: {pizzaTips}$</div>
+  <div className='print-line'>Kitchen Tips: {kitchenTips}$</div>
+  <div className='print-line'>Front Tips: {frontTips}$</div>
+  <div className='print-line'>Total hours: {totalHours.toFixed(2)}</div>
+  <div className='print-line'>Tips per hour: {tipsPerHour().toFixed(2)}$</div>
+  <div className='print-line'>NEW FLOAT: {(cashCounted - frontTips - pizzaTips).toFixed(2)}$</div>
+  <div className='print-line'></div>
+  <div className='print-line'>TIPS DISTRIBUTION:</div>
+
+  <div className='print-servers-tip'>
+
+    {server1Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{server1Name}</div>
+      <div className='server-details'>{server1Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * server1Hours).toFixed(2)}$</div>
+    </div>}
+
+    {server2Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{server2Name}</div>
+      <div className='server-details'>{server2Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * server2Hours).toFixed(2)}$</div>
+    </div>}
+
+    {server3Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{server3Name}</div>
+      <div className='server-details'>{server3Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * server3Hours).toFixed(2)}$</div>
+    </div>}
+
+    {server4Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{server4Name}</div>
+      <div className='server-details'>{server4Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * server4Hours).toFixed(2)}$</div>
+    </div>}
 
 
-        <ReactToPrint
-          trigger={() => {
-            return <button className='clear-all'>Print</button>
-          }}
-          content={() => componentRef.current}
-          documentTitle="new document"
-          pageStyle="print"
+    {server5Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{server5Name}</div>
+      <div className='server-details'>{server5Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * server5Hours).toFixed(2)}$</div>
+    </div>}
 
-        />
-      </div>
+    {assistant1Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{assistant1Name}</div>
+      <div className='server-details'>{assistant1Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * assistant1Hours).toFixed(2)}$</div>
+    </div>}
+
+    {assistant2Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{assistant2Name}</div>
+      <div className='server-details'>{assistant2Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * assistant2Hours).toFixed(2)}$</div>
+    </div>}
+
+    {assistant3Hours !== 0 && <div className='print-server'>
+      <div className='server-details'>{assistant3Name}</div>
+      <div className='server-details'>{assistant3Hours} hours </div>
+      <div className='server-details'>{(frontTips / totalHours * assistant3Hours).toFixed(2)}$</div>
+    </div>}
+
+  </div>
+
+</div>
+
+
+
+
+</div>
+}
+      
+
     </div>
   )
 }
