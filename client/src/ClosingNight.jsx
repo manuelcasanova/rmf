@@ -470,7 +470,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
           <section className={pizzaParties ? '' : 'pizza'}>
 
             <div className='inline'>
-              <label className='inline-label'>Pizza making adults</label>
+              <label className='inline-label'>Pizza party adults</label>
               <input type="number" className='pizza-input' value={pizzaAdults} onChange={(e) => setPizzaAdults(e.target.value)} onClick={(e) => setPizzaAdults("")}
                 onFocus={(e) => setPizzaAdults("")}></input>
             </div>
@@ -482,13 +482,13 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
             </div>
 
             <div className='inline'>
-              <label className='inline-label'>Pizza making children</label>
+              <label className='inline-label'>Pizza party children</label>
               <input type="number" className='pizza-input' value={pizzaChildren} onChange={(e) => setPizzaChildren(e.target.value)} onClick={(e) => setPizzaChildren("")}
                 onFocus={(e) => setPizzaChildren("")}></input>
             </div>
 
             <div className='inline'>
-              <label className='inline-label'>Pizza making servers</label>
+              <label className='inline-label'>Pizza party servers</label>
               <input type="number" max="3" className='pizza-input' value={pizzaServers} onChange={(e) => setPizzaServers(e.target.value)} onClick={(e) => setPizzaServers("")}
                 onFocus={(e) => setPizzaServers("")}></input>
             </div>
@@ -771,53 +771,53 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
   <div className='print-servers-tip'>
 
-    {server1Hours !== 0 && <div className='print-server'>
+  {server1Hours !== 0 && server1Hours !== "0" && <div className='print-server'>
       <div className='server-details'>{server1Name}</div>
       <div className='server-details'>{server1Hours} hours </div>
       <div className='server-details'>{(frontTips / totalHours * server1Hours).toFixed(2)}$</div>
     </div>}
 
-    {server2Hours !== 0 && <div className='print-server'>
+    {server2Hours !== 0 && server2Hours !== "0" &&  <div className='print-server'>
       <div className='server-details'>{server2Name}</div>
       <div className='server-details'>{server2Hours} hours </div>
       <div className='server-details'>{(frontTips / totalHours * server2Hours).toFixed(2)}$</div>
     </div>}
 
-    {server3Hours !== 0 && <div className='print-server'>
+    {server3Hours !== 0 && server3Hours !== "0" &&  <div className='print-server'>
       <div className='server-details'>{server3Name}</div>
       <div className='server-details'>{server3Hours} hours </div>
       <div className='server-details'>{(frontTips / totalHours * server3Hours).toFixed(2)}$</div>
     </div>}
 
-    {server4Hours !== 0 && <div className='print-server'>
+    {server4Hours !== 0 && server4Hours !== "0" &&  <div className='print-server'>
       <div className='server-details'>{server4Name}</div>
       <div className='server-details'>{server4Hours} hours </div>
       <div className='server-details'>{(frontTips / totalHours * server4Hours).toFixed(2)}$</div>
     </div>}
 
 
-    {server5Hours !== 0 && <div className='print-server'>
+    {server5Hours !== 0 && server5Hours !== "0" &&  <div className='print-server'>
       <div className='server-details'>{server5Name}</div>
       <div className='server-details'>{server5Hours} hours </div>
       <div className='server-details'>{(frontTips / totalHours * server5Hours).toFixed(2)}$</div>
     </div>}
 
-    {assistant1Hours !== 0 && <div className='print-server'>
+    {assistant1Hours !== 0 && assistant1Hours !== "0" && <div className='print-server'>
       <div className='server-details'>{assistant1Name}</div>
       <div className='server-details'>{assistant1Hours} hours </div>
-      <div className='server-details'>{(frontTips / totalHours * assistant1Hours).toFixed(2)}$</div>
+      <div className='server-details'>{(frontTips / totalHours * assistant1Hours * assistantTips / 100).toFixed(2)}$</div>
     </div>}
 
-    {assistant2Hours !== 0 && <div className='print-server'>
+    {assistant2Hours !== 0 && assistant2Hours !== "0" && assistant2Hours !== 0 && <div className='print-server'>
       <div className='server-details'>{assistant2Name}</div>
       <div className='server-details'>{assistant2Hours} hours </div>
-      <div className='server-details'>{(frontTips / totalHours * assistant2Hours).toFixed(2)}$</div>
+      <div className='server-details'>{(frontTips / totalHours * assistant2Hours * assistantTips / 100).toFixed(2)}$</div>
     </div>}
 
-    {assistant3Hours !== 0 && <div className='print-server'>
+    {assistant3Hours !== 0 && assistant3Hours !== "0" && <div className='print-server'>
       <div className='server-details'>{assistant3Name}</div>
       <div className='server-details'>{assistant3Hours} hours </div>
-      <div className='server-details'>{(frontTips / totalHours * assistant3Hours).toFixed(2)}$</div>
+      <div className='server-details'>{(frontTips / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}$</div>
     </div>}
 
   </div>
