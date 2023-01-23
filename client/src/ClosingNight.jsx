@@ -27,6 +27,7 @@ export default function ClosingNight({color, setColor}) {
   const pizzaTipsPercent = 10;
   const kitchenTipsPercent = 30;
   const frontTipsPercent = 70;
+  const sundaysPizzaTip = 5;
 
   const [toggle, setToggle] = useState(false);
 
@@ -53,8 +54,9 @@ export default function ClosingNight({color, setColor}) {
   const [pizzaAdults, setPizzaAdults] = useState(0)
   const [cocktailAdults, setCocktailAdults] = useState(0)
   const [pizzaChildren, setPizzaChildren] = useState(0)
+  const [sundaysServerHours, setSundaysServerHours] = useState(0)
   const [pizzaServers, setPizzaServers] = useState(0)
-  const pizzaTips = (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100) + (parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100 + (parseFloat(cocktailAdults) * adultsCocktailPrice * pizzaTipsPercent / 100))
+  const pizzaTips = (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100) + (parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100 + (parseFloat(cocktailAdults) * adultsCocktailPrice * pizzaTipsPercent / 100) + (parseFloat(sundaysServerHours) * sundaysPizzaTip))
   const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
   const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
   const frontTips = (tipsAfterPizzaParty * frontTipsPercent / 100).toFixed(2);
@@ -74,6 +76,8 @@ export default function ClosingNight({color, setColor}) {
   const [pizzaParties, setPizzaParties] = useState(false)
   const [cashSalesPMInfo, setCashSalesPMInfo] = useState(false)
   const [supportServerInfo, setSupportServerInfo] = useState(true)
+const [sundaysInfo, setSundaysInfo] = useState(false)
+
   const [colors, setColors] = useState(false)
   const [summary, setSummary] = useState(false)
   const [redLine, setRedLine] = useState(false)
@@ -136,6 +140,11 @@ export default function ClosingNight({color, setColor}) {
   const showSupportServerInfo = (e) => {
     e.preventDefault();
     setSupportServerInfo(prev => !prev)
+  }
+
+  const showSundaysInfo = (e) => {
+    e.preventDefault();
+    setSundaysInfo(prev => !prev)
   }
 
   const showColors = () => {
@@ -486,6 +495,16 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
               <input type="number" className='pizza-input' value={pizzaChildren} onChange={(e) => setPizzaChildren(e.target.value)} onClick={(e) => setPizzaChildren("")}
                 onFocus={(e) => setPizzaChildren("")}></input>
             </div>
+
+            <div className='inline'>
+              <label className='inline-label'>Sunday's pizza making server hours <div className={color !== 'blue' ? "info" : "info-red"} onClick={showSundaysInfo}>i</div></label>
+              <input type="number" className='pizza-input' value={sundaysServerHours} onChange={(e) => setSundaysServerHours(e.target.value)} onClick={(e) => setSundaysServerHours("")}
+                onFocus={(e) => setSundaysServerHours("")}></input>
+            </div>
+
+
+            {sundaysInfo && <div className='info-message'>Sunday's pizza maker gets {sundaysPizzaTip} $ per hour worked</div>}
+
 
             <div className='inline'>
               <label className='inline-label'>Pizza party servers</label>
