@@ -405,7 +405,9 @@ left: 5%;
 }
 
 .red-line {
-  background-color: red;
+  /* background-color: red; */
+  color: red;
+  /* border-color: red; */
 }
 
 /* TOGGLE BUTTON */
