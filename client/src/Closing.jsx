@@ -418,10 +418,6 @@ export default function Closing({ color, setColor }) {
             {pizzaParties && <button className='clear-all' onClick={showPizzaParties}>No</button>}
           </div>
 
-          {/* /////// NEXT: CREATE INFO TO EXPLAIN PIZZA MAKING FOR CHILDREN. or better. include an input for how many hours the pizza making for children worked. */}
-
-          {/* ALSO CHANGE RED LINE TO BORDDER COLOR NOT BACKGROUND */}
-
           <section className={pizzaParties ? '' : 'pizza'}>
 
             <div className='inline'>
