@@ -24,6 +24,7 @@ export default function ClosingNight({color, setColor}) {
   const kidsPizzaPrice = 25;
   const adultsPizzaPrice = 40;
   const adultsCocktailPrice = 25;
+  const fieldTripPrice = 12.19;
   const pizzaTipsPercent = 10;
   const kitchenTipsPercent = 30;
   const frontTipsPercent = 70;
@@ -54,13 +55,24 @@ export default function ClosingNight({color, setColor}) {
   const [pizzaAdults, setPizzaAdults] = useState(0)
   const [cocktailAdults, setCocktailAdults] = useState(0)
   const [pizzaChildren, setPizzaChildren] = useState(0)
+  const [fieldTrip, setFieldTrip] = useState(0)
   const [sundaysServerHours, setSundaysServerHours] = useState(0)
   const [pizzaServers, setPizzaServers] = useState(0)
-  const pizzaTips = (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100) + (parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100 + (parseFloat(cocktailAdults) * adultsCocktailPrice * pizzaTipsPercent / 100) + (parseFloat(sundaysServerHours) * sundaysPizzaTip))
+  const pizzaTips = 
+  (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100) 
+  + 
+  parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100 
+  + 
+  (parseFloat(cocktailAdults) * adultsCocktailPrice * pizzaTipsPercent / 100) 
+  + 
+  (parseFloat(sundaysServerHours) * sundaysPizzaTip)
+  +
+  (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+  
   const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
   const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
   const frontTips = (tipsAfterPizzaParty * frontTipsPercent / 100).toFixed(2);
-  const perServer = pizzaServers >= 1 && (pizzaTips / pizzaServers).toFixed(2);
+  // const perServer = pizzaServers >= 1 && (pizzaTips / pizzaServers).toFixed(2);
 
 
 
@@ -137,10 +149,10 @@ const [sundaysInfo, setSundaysInfo] = useState(false)
     setPizzaParties(prev => !prev)
   }
 
-  const showSupportServerInfo = (e) => {
-    e.preventDefault();
-    setSupportServerInfo(prev => !prev)
-  }
+  // const showSupportServerInfo = (e) => {
+  //   e.preventDefault();
+  //   setSupportServerInfo(prev => !prev)
+  // }
 
   const showSundaysInfo = (e) => {
     e.preventDefault();
@@ -183,13 +195,13 @@ const [sundaysInfo, setSundaysInfo] = useState(false)
   const [assistant2Name, setAssistant2Name] = useState("");
   const [assistant3Name, setAssistant3Name] = useState("");
 
-  const [pizzaMaking1Hours, setPizzaMaking1Hours] = useState(0);
-  const [pizzaMaking2Hours, setPizzaMaking2Hours] = useState(0);
-  const [pizzaMaking3Hours, setPizzaMaking3Hours] = useState(0);
+  // const [pizzaMaking1Hours, setPizzaMaking1Hours] = useState(0);
+  // const [pizzaMaking2Hours, setPizzaMaking2Hours] = useState(0);
+  // const [pizzaMaking3Hours, setPizzaMaking3Hours] = useState(0);
 
-  const [pizzaMaking1Name, setPizzaMaking1Name] = useState("");
-  const [pizzaMaking2Name, setPizzaMaking2Name] = useState("");
-  const [pizzaMaking3Name, setPizzaMaking3Name] = useState("");
+  // const [pizzaMaking1Name, setPizzaMaking1Name] = useState("");
+  // const [pizzaMaking2Name, setPizzaMaking2Name] = useState("");
+  // const [pizzaMaking3Name, setPizzaMaking3Name] = useState("");
 
   const totalHours = parseFloat(server1Hours) + parseFloat(server2Hours) + parseFloat(server3Hours) + parseFloat(server4Hours) + parseFloat(server5Hours) + parseFloat(assistant1Hours) * assistantTips / 100 + parseFloat(assistant2Hours) * assistantTips / 100 + parseFloat(assistant3Hours) * assistantTips / 100;
 
@@ -233,12 +245,12 @@ const [sundaysInfo, setSundaysInfo] = useState(false)
     setAssistant1Hours(0);
     setAssistant2Hours(0);
     setAssistant3Hours(0);
-    setPizzaMaking1Hours(0);
-    setPizzaMaking2Hours(0);
-    setPizzaMaking3Hours(0);
-    setPizzaMaking1Name("");
-    setPizzaMaking2Name("");
-    setPizzaMaking3Name("");
+    // setPizzaMaking1Hours(0);
+    // setPizzaMaking2Hours(0);
+    // setPizzaMaking3Hours(0);
+    // setPizzaMaking1Name("");
+    // setPizzaMaking2Name("");
+    // setPizzaMaking3Name("");
 
   }
 
@@ -259,37 +271,37 @@ const [sundaysInfo, setSundaysInfo] = useState(false)
     setAssistant1Hours(0);
     setAssistant2Hours(0);
     setAssistant3Hours(0);
-    setPizzaMaking1Hours(0);
-    setPizzaMaking2Hours(0);
-    setPizzaMaking3Hours(0);
-    setPizzaMaking1Name("");
-    setPizzaMaking2Name("");
-    setPizzaMaking3Name("");
+    // setPizzaMaking1Hours(0);
+    // setPizzaMaking2Hours(0);
+    // setPizzaMaking3Hours(0);
+    // setPizzaMaking1Name("");
+    // setPizzaMaking2Name("");
+    // setPizzaMaking3Name("");
   }
 
 
-  const test = () => {
-    setCashCounted(990);
-    setReceipts(10);
-    setFloat(400);
-    setCashSalesAM(500);
-    setCreditCardsTipsAM(500)
-    setPizzaAdults(10);
-    setPizzaChildren(10);
-    setPizzaServers(2)
-    setServer1Name("Manuel");
-    setServer2Name("Dom");
-    setServer3Name("Suz");
-    setAssistant1Name("Jasmine");
-    setServer1Hours(5);
-    setServer2Hours(5);
-    setServer3Hours(4);
-    setAssistant1Hours(4);
-    setPizzaMaking1Hours(0);
-    setPizzaMaking2Hours(0);
-    setPizzaMaking1Name("Liz");
-    setPizzaMaking2Name("Akasha");
-  }
+  // const test = () => {
+  //   setCashCounted(990);
+  //   setReceipts(10);
+  //   setFloat(400);
+  //   setCashSalesAM(500);
+  //   setCreditCardsTipsAM(500)
+  //   setPizzaAdults(10);
+  //   setPizzaChildren(10);
+  //   setPizzaServers(2)
+  //   setServer1Name("Manuel");
+  //   setServer2Name("Dom");
+  //   setServer3Name("Suz");
+  //   setAssistant1Name("Jasmine");
+  //   setServer1Hours(5);
+  //   setServer2Hours(5);
+  //   setServer3Hours(4);
+  //   setAssistant1Hours(4);
+  //   // setPizzaMaking1Hours(0);
+  //   // setPizzaMaking2Hours(0);
+  //   // setPizzaMaking1Name("Liz");
+  //   // setPizzaMaking2Name("Akasha");
+  // }
 
   const componentRef = useRef();
 
@@ -497,6 +509,12 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
             </div>
 
             <div className='inline'>
+              <label className='inline-label'>Field Trip</label>
+              <input type="number" className='pizza-input' value={fieldTrip} onChange={(e) => setFieldTrip(e.target.value)} onClick={(e) => setFieldTrip(0)}
+                onFocus={(e) => setFieldTrip(0)}></input>
+            </div>
+
+            <div className='inline'>
               <label className='inline-label'>Sunday's pizza making server hours <div className={color !== 'blue' ? "info" : "info-red"} onClick={showSundaysInfo}>i</div></label>
               <input type="number" className='pizza-input' value={sundaysServerHours} onChange={(e) => setSundaysServerHours(e.target.value)} onClick={(e) => setSundaysServerHours("")}
                 onFocus={(e) => setSundaysServerHours("")}></input>
@@ -527,8 +545,8 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 </div> */}
 
             <div className='inline'>
-              <label className='inline-label'>Per server</label>
-              <div className='pizza-input'>{!perServer < "1" && perServer !== "Infinity" && !isNaN(perServer) && roundToTwo(perServer)}</div>
+              {/* <label className='inline-label'>Per server</label> */}
+              {/* <div className='pizza-input'>{!perServer < "1" && perServer !== "Infinity" && !isNaN(perServer) && roundToTwo(perServer)}</div> */}
               {/* 
   {pizzaServers !== "1" && pizzaServers !== "2" && pizzaServers !== "3"
     &&
@@ -659,7 +677,22 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
           </section>
 
-          <section className={pizzaParties ? '' : 'pizza'}>
+          <section className='servers'>
+            <div className='th margin-top margin-bottom'>
+              <div className='thirty-three'>Pizza instructors</div>
+              <div className="thirty-three"></div>
+              <div className="thirty-three"></div>
+              <div className="thirty-three">{!isNaN(pizzaTips) && pizzaTips.toFixed(2)}</div>
+
+              {/* here */}
+
+
+
+
+            </div>
+          </section>
+
+          {/* <section className={pizzaParties ? '' : 'pizza'}>
 
 
             <div className='pmserv'>
@@ -687,7 +720,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
             </div>
 
-          </section>
+          </section> */}
 
 
           <section className='summary'>
@@ -715,7 +748,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
             <div className='inline'>
               <label className='inline-label'>TIPS per HOUR</label>
-              <div className='tips-input'>{totalHours !== "0" && tipsPerHour !== "Infinity" && tipsPerHour().toFixed(2)}</div>
+              <div className='tips-input'>{totalHours !== 0 && tipsPerHour !== "Infinity" && tipsPerHour().toFixed(2)}</div>
             </div>
 
             <div className='inline'>
