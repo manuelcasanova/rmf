@@ -116,6 +116,20 @@
   margin: 1em;
 }
 
+.clear-all-x {
+  width: 50px; /* Adjust the width and height for the desired circle size */
+  height: 50px;
+  border-radius: 50%;
+  font-weight: 900;
+  border: 2px solid black;
+  color: red;
+  text-align: center;
+  /* line-height: 50px; */
+  font-size: 100%; /* Adjust the font size */
+  padding: 5px; /* Add padding for some spacing between text and border */
+  cursor: pointer;
+}
+
 .clear-all:hover {
   background-color: var(--color2)
 }
@@ -173,6 +187,16 @@ label {
   /* white-space: nowrap; */
 }
 
+.inline-label-small {
+  /* width: 50%; */
+  margin: 0 0.5em 0 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* white-space: nowrap; */
+}
+
 .money-input,
 .pizza-input,
 .tips-input {
@@ -187,6 +211,36 @@ label {
   font-size: 1.5em;
 }
 
+.cash-input {
+  margin: 0.5em auto;
+  padding: 0.5em;
+  height: 1em;
+  width: 3em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+.cash-input-small {
+  margin: 0.5em auto;
+  padding: 0.5em;
+  height: 1em;
+  width: 5em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+.white-font {
+  color: white;
+}
+
 .nameinput {
   height: 3em;
   font-size: 120%;
@@ -194,6 +248,7 @@ label {
 
 .inline {
   display: flex;
+
 }
 
 .info {

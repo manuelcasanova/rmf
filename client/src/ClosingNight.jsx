@@ -36,19 +36,45 @@ export default function ClosingNight({color, setColor}) {
     setToggle(prev => !prev)
   }
 
-
-
-
   const now = Now()
+
+  const [hundred, setHundred] = useState(0);
+  const [fifty, setFifty] = useState(0);
+  const [twenty, setTwenty] = useState(0);
+  const [ten, setTen] = useState(0);
+  const [five, setFive] = useState(0);
+  const [two, setTwo] = useState(0);
+  const [one, setOne] = useState(0);
+  const [quarter, setQuarter] = useState(0);
+
+  let cash =
+    (
+      parseFloat(hundred * 100) +
+      parseFloat(fifty * 50) +
+      parseFloat(twenty * 20) +
+      parseFloat(ten * 10) +
+      parseFloat(five * 5) +
+      parseFloat(two * 2) +
+      parseFloat(one * 1) +
+      parseFloat(quarter * 0.25)
+    ).toFixed(2);
 
   const [cashCounted, setCashCounted] = useState(0);
   const [receipts, setReceipts] = useState(0);
-  const totalCash = parseFloat(cashCounted) + parseFloat(receipts)
+  const totalCash = cash > 0 ? parseFloat(cash) + parseFloat(receipts) : parseFloat(cashCounted) + parseFloat(receipts);
+
+
+
   const [float, setFloat] = useState(0);
   const [cashSalesAM, setCashSalesAM] = useState(0);
   const [cashSalesPrintOut, setCashSalesPrintOut] = useState(0)
   const cashSalesPM = (cashSalesPrintOut - cashSalesAM).toFixed(2)
-  const cashTips = (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
+  const cashTips = (
+    cash > 0
+      ? (parseFloat(cash) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
+      : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
+  );
+  
   const [creditCardsTipsAM, setCreditCardsTipsAM] = useState(0)
   const [creditCardsTipsPrintOut, setCreditCardsTipsPrintOut] = useState(0)
   const totalTips = parseFloat(cashTips) + parseFloat(creditCardsTipsPrintOut) - parseFloat(creditCardsTipsAM)
@@ -89,6 +115,7 @@ export default function ClosingNight({color, setColor}) {
   const [cashSalesPMInfo, setCashSalesPMInfo] = useState(false)
   const [supportServerInfo, setSupportServerInfo] = useState(true)
 const [sundaysInfo, setSundaysInfo] = useState(false)
+const [cashCount, setCashCount] = useState(false) 
 
   const [colors, setColors] = useState(false)
   const [summary, setSummary] = useState(false)
@@ -147,6 +174,20 @@ const [sundaysInfo, setSundaysInfo] = useState(false)
   const showPizzaParties = (e) => {
     e.preventDefault();
     setPizzaParties(prev => !prev)
+  }
+
+  const showCashCount = (e) => {
+    e.preventDefault();
+    setCashCount(prev => !prev)
+    setHundred(0)
+    setFifty(0)
+    setTwenty(0)
+    setTen(0)
+    setFive(0)
+    setTwo(0)
+    setOne(0)
+    setQuarter(0)
+    setCashCounted(0)
   }
 
   // const showSupportServerInfo = (e) => {
@@ -251,7 +292,19 @@ const [sundaysInfo, setSundaysInfo] = useState(false)
     // setPizzaMaking1Name("");
     // setPizzaMaking2Name("");
     // setPizzaMaking3Name("");
-
+    setHundred(0);
+    setFifty(0);
+    setTwenty(0);
+    setTen(0);
+    setFive(0);
+    setTwo(0);
+    setOne(0);
+    setQuarter(0);
+    setPizzaAdults(0);
+    setCocktailAdults(0);
+    setPizzaChildren(0);
+    setFieldTrip(0);
+    setPizzaServers(0);
   }
 
   const clearServers = () => {
@@ -280,28 +333,30 @@ const [sundaysInfo, setSundaysInfo] = useState(false)
   }
 
 
-  // const test = () => {
-  //   setCashCounted(990);
-  //   setReceipts(10);
-  //   setFloat(400);
-  //   setCashSalesAM(500);
-  //   setCreditCardsTipsAM(500)
-  //   setPizzaAdults(10);
-  //   setPizzaChildren(10);
-  //   setPizzaServers(2)
-  //   setServer1Name("Manuel");
-  //   setServer2Name("Dom");
-  //   setServer3Name("Suz");
-  //   setAssistant1Name("Jasmine");
-  //   setServer1Hours(5);
-  //   setServer2Hours(5);
-  //   setServer3Hours(4);
-  //   setAssistant1Hours(4);
-  //   // setPizzaMaking1Hours(0);
-  //   // setPizzaMaking2Hours(0);
-  //   // setPizzaMaking1Name("Liz");
-  //   // setPizzaMaking2Name("Akasha");
-  // }
+  const test = () => {
+    setCashCounted(990);
+    setReceipts(10);
+    setFloat(550.5);
+    setCashSalesAM(500);
+    setCashSalesPrintOut(900);
+    setCreditCardsTipsAM(500)
+    setCreditCardsTipsPrintOut(1000);
+    setPizzaAdults(10);
+    setPizzaChildren(10);
+    setPizzaServers(2)
+    setServer1Name("Manuel");
+    setServer2Name("Dom");
+    setServer3Name("Suz");
+    setAssistant1Name("Jasmine");
+    setServer1Hours(5);
+    setServer2Hours(5);
+    setServer3Hours(4);
+    setAssistant1Hours(4);
+    // setPizzaMaking1Hours(0);
+    // setPizzaMaking2Hours(0);
+    // setPizzaMaking1Name("Liz");
+    // setPizzaMaking2Name("Akasha");
+  }
 
   const componentRef = useRef();
 
@@ -353,15 +408,130 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
           </div>
 
 
+          <div
+            className='pizza-making-question'
+          >
+
+
+            <div className='yes-no'>
+              {!cashCount && <button className='clear-all' onClick={showCashCount}>Support for Cash Counting</button>}
+              {/* {!cashCount && <button className='clear-all' onClick={showRedLine}>No</button>} */}
+            </div>
+            {cashCount && <button className='clear-all' onClick={showCashCount}>x</button>}
+            {cashCount &&
+              <div>
+
+                {/* HERE */}
+                <div className='inline'>
+                  <label className='inline-label-small'>100 $</label>
+                  <input type="number" className='cash-input-small' value={hundred} onChange={(e) => setHundred(e.target.value)}
+                    onClick={(e) => setHundred("")}
+                    onFocus={(e) => setHundred("")}
+                  ></input>
+                  <label className='inline-label-small'>{hundred * 100} $</label>
+
+                </div>
+
+                <div className='inline'>
+                  <label className='inline-label-small'>50 $</label>
+                  <input type="number" className='cash-input-small' value={fifty} onChange={(e) => setFifty(e.target.value)}
+                    onClick={(e) => setFifty("")}
+                    onFocus={(e) => setFifty("")}
+                  ></input>
+                  <label className='inline-label-small'>{fifty * 50} $</label>
+
+                </div>
+
+                <div className='inline'>
+                  <label className='inline-label-small'>20 $</label>
+                  <input type="number" className='cash-input-small' value={twenty} onChange={(e) => setTwenty(e.target.value)}
+                    onClick={(e) => setTwenty("")}
+                    onFocus={(e) => setTwenty("")}
+                  ></input>
+                  <label className='inline-label-small'>{twenty * 20} $</label>
+
+                </div>
+
+                <div className='inline'>
+                  <label className='inline-label-small'>10 $</label>
+                  <input type="number" className='cash-input-small' value={ten} onChange={(e) => setTen(e.target.value)}
+                    onClick={(e) => setTen("")}
+                    onFocus={(e) => setTen("")}
+                  ></input>
+                  <label className='inline-label-small'>{ten * 10} $</label>
+
+                </div>
+
+                <div className='inline'>
+                  <label className='inline-label-small'>5 $</label>
+                  <input type="number" className='cash-input-small' value={five} onChange={(e) => setFive(e.target.value)}
+                    onClick={(e) => setFive("")}
+                    onFocus={(e) => setFive("")}
+                  ></input>
+                  <label className='inline-label-small'>{five * 5} $</label>
+
+                </div>
+
+                <div className='inline'>
+                  <label className='inline-label-small'>2 $</label>
+                  <input type="number" className='cash-input-small' value={two} onChange={(e) => setTwo(e.target.value)}
+                    onClick={(e) => setTwo("")}
+                    onFocus={(e) => setTwo("")}
+                  ></input>
+                  <label className='inline-label-small'>{two * 2} $</label>
+
+                </div>
+
+                <div className='inline'>
+                  <label className='inline-label-small'>1 $</label>
+                  <input type="number" className='cash-input-small' value={one} onChange={(e) => setOne(e.target.value)}
+                    onClick={(e) => setOne("")}
+                    onFocus={(e) => setOne("")}
+                  ></input>
+                  <label className='inline-label-small'>{one * 1} $</label>
+
+                </div>
+
+                <div className='inline'>
+                  <label className='inline-label-small'>.25 c</label>
+                  <input type="number" className='cash-input-small' value={quarter} onChange={(e) => setQuarter(e.target.value)}
+                    onClick={(e) => setQuarter("")}
+                    onFocus={(e) => setQuarter("")}
+                  ></input>
+                  <label className='inline-label-small'>{quarter * 0.25} $</label>
+
+                </div>
+
+
+
+              </div>}
+          </div>
+
+          {/* {<div className='clear-all-div'>
+            <button className="clear-all" onClick={test}>Set an example</button>
+          </div>} */}
+
           <section className='money'>
 
-            <div className='inline'>
-              <label className='inline-label'>Cash counted</label>
-              <input type="number" className='money-input' value={cashCounted} onChange={(e) => setCashCounted(e.target.value)}
-                onClick={(e) => setCashCounted("")}
-                onFocus={(e) => setCashCounted("")}
-              ></input>
-            </div>
+          {!cashCount && (
+
+<div className='inline'>
+  <label className='inline-label'>Cash counted</label>
+  <input type="number" className='money-input' value={cashCounted} onChange={(e) => setCashCounted(e.target.value)}
+    onClick={(e) => setCashCounted("")}
+    onFocus={(e) => setCashCounted("")}
+  ></input>
+</div>
+)}
+
+{cashCount && (
+
+<div className='inline'>
+  <label className='inline-label'>Cash counted</label>
+  <div className='money-input'>{cash}</div>
+</div>
+)}
+
 
             <div className='inline'>
               <label className='inline-label'>Receipts</label>
@@ -524,11 +694,11 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
             {sundaysInfo && <div className='info-message'>Sunday's pizza maker gets {sundaysPizzaTip} $ per hour worked</div>}
 
 
-            <div className='inline'>
+            {/* <div className='inline'>
               <label className='inline-label'>Pizza party servers</label>
               <input type="number" max="3" className='pizza-input' value={pizzaServers} onChange={(e) => setPizzaServers(e.target.value)} onClick={(e) => setPizzaServers("")}
                 onFocus={(e) => setPizzaServers("")}></input>
-            </div>
+            </div> */}
 
             <div className='inline'>
               <label className='inline-label'>Pizza making tips</label>
@@ -750,10 +920,23 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
               <label className='inline-label'>TIPS per HOUR</label>
               <div className='tips-input'>{totalHours !== 0 && tipsPerHour !== "Infinity" && tipsPerHour().toFixed(2)}</div>
             </div>
-
             <div className='inline'>
               <label className='inline-label'>NEW FLOAT <div className={color !== 'blue' ? "info" : "info-red"} onClick={showNewFloatInfo}>i</div></label>
-              <div className='tips-input'>{cashCounted !== "0" && cashCounted !== "" && (cashCounted - frontTips - pizzaTips).toFixed(2)}</div>
+              <div className='tips-input'>
+
+                {
+
+                  // cashCounted !== 0 || cash !== 0
+
+                  // &&
+
+                  // (cashCounted - frontTips - pizzaTips).toFixed(2)
+                  (cash > 0 ? (cash - frontTips - pizzaTips) : (cashCounted - frontTips - pizzaTips)).toFixed(2)
+
+
+
+
+                }</div>
             </div>
 
             {newFloatInfo && <div className='info-message'>New float = Cash counted - Pizza making tips - front tips</div>}
@@ -799,7 +982,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
 <div className='print-component' ref={componentRef}>
   <div className='print-line'>{now}</div>
-  <div className='print-line'>Cash counted: {cashCounted}$</div>
+  <div className='print-line'>Cash counted: {cash > 0 ? cash : cashCounted}$</div>
   <div className='print-line'>Receipts: {receipts}$</div>
   <div className='print-line'>TOTAL CASH: {totalCash}$</div>
   <div className='print-line'>Float: {float}$</div>
@@ -817,7 +1000,7 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
   <div className='print-line'>Front Tips: {frontTips}$</div>
   <div className='print-line'>Total hours: {totalHours.toFixed(2)}</div>
   <div className='print-line'>Tips per hour: {tipsPerHour().toFixed(2)}$</div>
-  <div className='print-line'>NEW FLOAT: {(cashCounted - frontTips - pizzaTips).toFixed(2)}$</div>
+  <div className='print-line'>NEW FLOAT: {(cash > 0 ? (cash - frontTips - pizzaTips) : (cashCounted - frontTips - pizzaTips)).toFixed(2)}$</div>
   <div className='print-line'></div>
   <div className='print-line'>TIPS DISTRIBUTION:</div>
 
