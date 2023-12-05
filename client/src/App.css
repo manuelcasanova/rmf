@@ -317,6 +317,22 @@ input {
   align-items: center;
 }
 
+.instructors {
+  display: flex;
+  flex-direction: column;
+}
+.instructor {
+  margin-bottom: 1em;
+}
+
+.instructor-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1em;
+  
+}
+
 .server {
   /* display: flex;
   flex-direction: row;

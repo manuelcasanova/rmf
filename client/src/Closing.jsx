@@ -40,7 +40,7 @@ export default function Closing({ color, setColor }) {
   const now = Now()
 
 
- 
+
   const [hundred, setHundred] = useState(0);
   const [fifty, setFifty] = useState(0);
   const [twenty, setTwenty] = useState(0);
@@ -64,7 +64,7 @@ export default function Closing({ color, setColor }) {
 
   const [cashCounted, setCashCounted] = useState(0);
   const [receipts, setReceipts] = useState(0);
-  
+
   const totalCash = cash > 0 ? parseFloat(cash) + parseFloat(receipts) : parseFloat(cashCounted) + parseFloat(receipts);
 
   const [float, setFloat] = useState(0);
@@ -108,10 +108,11 @@ export default function Closing({ color, setColor }) {
   const [newFloatInfo, setNewFloatInfo] = useState(false)
   const [pizzaParties, setPizzaParties] = useState(false)
   const [supportServerInfo, setSupportServerInfo] = useState(true)
-  const [cashCount, setCashCount] = useState(false) 
+  const [cashCount, setCashCount] = useState(false)
 
   const [colors, setColors] = useState(false)
   const [summary, setSummary] = useState(false)
+  const [instructors, setInstructors] = useState(false)
   const [redLine, setRedLine] = useState(false)
 
 
@@ -151,7 +152,7 @@ export default function Closing({ color, setColor }) {
     setPizzaParties(prev => !prev)
   }
 
-  
+
   const showCashCount = (e) => {
     e.preventDefault();
     setCashCount(prev => !prev)
@@ -179,6 +180,11 @@ export default function Closing({ color, setColor }) {
   const showSummary = () => {
     // e.preventDefault();
     setSummary(prev => !prev)
+  }
+
+  const showInstructors = () => {
+    // e.preventDefault();
+    setInstructors(prev => !prev)
   }
 
   const showRedLine = () => {
@@ -215,6 +221,23 @@ export default function Closing({ color, setColor }) {
   // const [pizzaMaking1Name, setPizzaMaking1Name] = useState("");
   // const [pizzaMaking2Name, setPizzaMaking2Name] = useState("");
   // const [pizzaMaking3Name, setPizzaMaking3Name] = useState("");
+
+  const [instructor1Adults, setInstructor1Adults] = useState(0);
+  const [instructor2Adults, setInstructor2Adults] = useState(0);
+  const [instructor3Adults, setInstructor3Adults] = useState(0);
+
+  const [instructor1Cocktail, setInstructor1Cocktail] = useState(0);
+  const [instructor2Cocktail, setInstructor2Cocktail] = useState(0);
+  const [instructor3Cocktail, setInstructor3Cocktail] = useState(0);
+
+  const [instructor1Children, setInstructor1Children] = useState(0);
+  const [instructor2Children, setInstructor2Children] = useState(0);
+  const [instructor3Children, setInstructor3Children] = useState(0);
+
+  const [instructor1FieldTrip, setInstructor1FieldTrip] = useState(0);
+  const [instructor2FieldTrip, setInstructor2FieldTrip] = useState(0);
+  const [instructor3FieldTrip, setInstructor3FieldTrip] = useState(0);
+
 
   const totalHours = parseFloat(server1Hours) + parseFloat(server2Hours) + parseFloat(server3Hours) + parseFloat(server4Hours) + parseFloat(server5Hours) + parseFloat(assistant1Hours) * assistantTips / 100 + parseFloat(assistant2Hours) * assistantTips / 100 + parseFloat(assistant3Hours) * assistantTips / 100;
 
@@ -278,6 +301,18 @@ export default function Closing({ color, setColor }) {
     setPizzaChildren(0);
     setFieldTrip(0);
     setPizzaServers(0);
+    setInstructor1Adults(0);
+    setInstructor2Adults(0);
+    setInstructor3Adults(0);
+    setInstructor1Cocktail(0);
+    setInstructor2Cocktail(0);
+    setInstructor3Cocktail(0);
+    setInstructor1Children(0);
+    setInstructor2Children(0);
+    setInstructor3Children(0);
+    setInstructor1FieldTrip(0);
+    setInstructor2FieldTrip(0);
+    setInstructor3FieldTrip(0);
   }
 
   const clearServers = () => {
@@ -303,6 +338,18 @@ export default function Closing({ color, setColor }) {
     // setPizzaMaking1Name("");
     // setPizzaMaking2Name("");
     // setPizzaMaking3Name("");
+    setInstructor1Adults(0);
+    setInstructor2Adults(0);
+    setInstructor3Adults(0);
+    setInstructor1Cocktail(0);
+    setInstructor2Cocktail(0);
+    setInstructor3Cocktail(0);
+    setInstructor1Children(0);
+    setInstructor2Children(0);
+    setInstructor3Children(0);
+    setInstructor1FieldTrip(0);
+    setInstructor2FieldTrip(0);
+    setInstructor3FieldTrip(0);
   }
 
 
@@ -382,7 +429,7 @@ export default function Closing({ color, setColor }) {
             <button className="clear-all" onClick={clearAll}>Clear all</button>
           </div>
 
-          
+
           <div
             className='pizza-making-question'
           >
@@ -396,7 +443,7 @@ export default function Closing({ color, setColor }) {
             {cashCount &&
               <div>
 
-              
+
                 <div className='inline'>
                   <label className='inline-label-small'>100 $</label>
                   <input type="number" className='cash-input-small' value={hundred} onChange={(e) => setHundred(e.target.value)}
@@ -489,7 +536,7 @@ export default function Closing({ color, setColor }) {
 
 
           <section className='money'>
-          
+
             {!cashCount && (
 
               <div className='inline'>
@@ -805,14 +852,11 @@ export default function Closing({ color, setColor }) {
               <div className="thirty-three"></div>
               <div className="thirty-three"></div>
               <div className="thirty-three">{!isNaN(pizzaTips) && pizzaTips.toFixed(2)}</div>
-
-              {/* here */}
-
-
-
-
             </div>
           </section>
+
+
+
 
           {/* <section className={pizzaParties ? '' : 'pizza'}>
 
@@ -844,11 +888,73 @@ export default function Closing({ color, setColor }) {
 
           </section> */}
 
+          <div className='pizza-making-question'>
+
+            {!instructors && <div className='padding-bottom'>
+              <button className='clear-all' onClick={showInstructors}>More than one pizza maker?</button>
+
+            </div>
+            }
+
+
+            {instructors && <div>
+              <button className='clear-all-x' onClick={showInstructors}>X</button>
+
+            </div>}
+
+            {instructors &&
+              <div className='instructors'>
+
+                <div className='instructor'>
+                  <div className='instructor-detail'>Instructor 1:</div>
+
+
+                  
+
+
+
+                  <div className='instructor-detail'>Adults:
+                  <input type="number" value={instructor1Adults} className="thirty-three input-width nameinput" onChange={(e) => setInstructor1Adults(e.target.value)} onFocus={(e) => setInstructor1Adults(0)} onClick={(e) => setInstructor1Adults(0)}></input>
+              <div className="thirty-three">{frontTips !== 0 && instructor1Adults !== "" && (parseFloat(instructor1Adults) * adultsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+              
+                  </div>
+                  <div className='instructor-detail'>Cocktail:</div>
+                  <div className='instructor-detail'>Children:</div>
+                  <div className='instructor-detail'>Field Trip:</div>
+                  <div className='instructor-detail'>Total:</div>
+                </div>
+                <div className='instructor'>
+                  <div className='instructor-detail'>Instructor 2:</div>
+                  <div className='instructor-detail'>Adults:</div>
+                  <div className='instructor-detail'>Cocktail:</div>
+                  <div className='instructor-detail'>Children:</div>
+                  <div className='instructor-detail'>Field Trip:</div>
+                  <div className='instructor-detail'>Total:</div>
+                </div>
+                <div className='instructor'>
+                  <div className='instructor-detail'>Instructor 3:</div>
+                  <div className='instructor-detail'>Adults:</div>
+                  <div className='instructor-detail'>Cocktail:</div>
+                  <div className='instructor-detail'>Children:</div>
+                  <div className='instructor-detail'>Field Trip:</div>
+                  <div className='instructor-detail'>Total:</div>
+                </div>
+              </div>
+            }
+          </div>
+
 
 
 
 
           <section className='summary'>
+
+
+
+
+
+
+
 
             <div className='inline'>
               <label className='inline-label'>TOTAL HOURS <div className={color !== 'blue' ? "info" : "info-red"} onClick={showTotalHoursInfo}>i</div></label>
@@ -934,7 +1040,7 @@ export default function Closing({ color, setColor }) {
           <div className='print-component' ref={componentRef}>
             <div className='print-line'>{now}</div>
             <div className='print-line'>Cash counted: {cash > 0 ? cash : cashCounted}$</div>
-{/* HERE */}
+            {/* HERE */}
             <div className='print-line'>Receipts: {receipts}$</div>
             <div className='print-line'>TOTAL CASH: {totalCash}$</div>
             <div className='print-line'>Float: {float}$</div>
@@ -949,7 +1055,7 @@ export default function Closing({ color, setColor }) {
             <div className='print-line'>Total hours: {totalHours.toFixed(2)}</div>
             <div className='print-line'>Tips per hour: {tipsPerHour().toFixed(2)}$</div>
             <div className='print-line'>NEW FLOAT: {(cash > 0 ? (cash - frontTips - pizzaTips) : (cashCounted - frontTips - pizzaTips)).toFixed(2)}$</div>
-{/* HERe */}
+            {/* HERe */}
             <div className='print-line'></div>
             <div className='print-line'>TIPS DISTRIBUTION:</div>
 
