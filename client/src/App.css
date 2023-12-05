@@ -224,6 +224,10 @@ label {
   font-size: 1.5em;
 }
 
+.server-name-width {
+  width:50%;
+}
+
 .cash-input-small {
   margin: 0.5em auto;
   padding: 0.5em;

@@ -717,7 +717,7 @@ export default function Closing({ color, setColor }) {
           <section className='servers'>
 
             <div className='th margin-top margin-bottom'>
-              <div className='thirty-three'>Server</div>
+              <div className='thirty-three server-name-width'>Server</div>
               <div className='thirty-three'>Hours</div>
               <div className='thirty-three'>100%</div>
               <div className='thirty-three'>Tips</div>
@@ -725,7 +725,7 @@ export default function Closing({ color, setColor }) {
 
 
             <div className='server'>
-              <input type="text" required value={server1Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setServer1Name(e.target.value)}></input>
+              <input type="text" required value={server1Name} placeholder="Name" className="thirty-three input-width nameinput server-name-width" onChange={(e) => setServer1Name(e.target.value)}></input>
               <input type="number" value={(server1Hours)} className="thirty-three input-width nameinput" onChange={(e) => setServer1Hours(e.target.value)} onClick={(e) => setServer1Hours(0)}
                 onFocus={(e) => setServer1Hours(0)}></input>
               <div className="thirty-three">{frontTips !== 0 && server1Hours !== "" && (parseFloat(server1Hours) * fullTips / 100).toFixed(2)}</div>
@@ -734,7 +734,7 @@ export default function Closing({ color, setColor }) {
 
 
             <div className='server'>
-              <input value={server2Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setServer2Name(e.target.value)}></input>
+              <input value={server2Name} placeholder="Name" className="thirty-three server-name-width nameinput" onChange={(e) => setServer2Name(e.target.value)}></input>
               <input type="number" value={server2Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer2Hours(e.target.value)} onClick={(e) => setServer2Hours(0)}
                 onFocus={(e) => setServer2Hours(0)}></input>
               <div className="thirty-three">{frontTips !== 0 && server2Hours !== "" && (parseFloat(server2Hours) * fullTips / 100).toFixed(2)}</div>
@@ -742,7 +742,7 @@ export default function Closing({ color, setColor }) {
             </div>
 
             <div className='server'>
-              <input value={server3Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setServer3Name(e.target.value)}></input>
+              <input value={server3Name} placeholder="Name" className="thirty-three server-name-width nameinput" onChange={(e) => setServer3Name(e.target.value)}></input>
               <input type="number" value={server3Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer3Hours(e.target.value)} onClick={(e) => setServer3Hours(0)}
                 onFocus={(e) => setServer3Hours(0)}></input>
               <div className="thirty-three">{frontTips !== 0 && server3Hours !== "" && (parseFloat(server3Hours) * fullTips / 100).toFixed(2)}</div>
@@ -750,7 +750,7 @@ export default function Closing({ color, setColor }) {
             </div>
 
             <div className='server'>
-              <input value={server4Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setServer4Name(e.target.value)}></input>
+              <input value={server4Name} placeholder="Name" className="thirty-three server-name-width  nameinput" onChange={(e) => setServer4Name(e.target.value)}></input>
               <input type="number" value={server4Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer4Hours(e.target.value)} onClick={(e) => setServer4Hours(0)}
                 onFocus={(e) => setServer4Hours(0)}></input>
               <div className="thirty-three">{frontTips !== 0 && server4Hours !== "" && (parseFloat(server4Hours) * fullTips / 100).toFixed(2)}</div>
@@ -758,7 +758,7 @@ export default function Closing({ color, setColor }) {
             </div>
 
             <div className='server'>
-              <input value={server5Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setServer5Name(e.target.value)}></input>
+              <input value={server5Name} placeholder="Name" className="thirty-three server-name-width nameinput" onChange={(e) => setServer5Name(e.target.value)}></input>
               <input type="number" value={server5Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer5Hours(e.target.value)} onClick={(e) => setServer5Hours(0)}
                 onFocus={(e) => setServer5Hours(0)}></input>
               <div className="thirty-three">{frontTips !== 0 && server5Hours !== "" && (parseFloat(server5Hours) * fullTips / 100).toFixed(2)}</div>
@@ -767,28 +767,28 @@ export default function Closing({ color, setColor }) {
 
 
             <div className='th margin-top margin-bottom'>
-              <div className='thirty-three'>Support</div>
+              <div className='thirty-three server-name-width'>Support</div>
               <div className='thirty-three'>Hours</div>
               <div className='thirty-three'>40%</div>
               <div className='thirty-three'>Tips</div>
             </div>
 
             <div className='server'>
-              <input value={assistant1Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setAssistant1Name(e.target.value)}></input>
+              <input value={assistant1Name} placeholder="Name" className="thirty-three server-name-width  nameinput" onChange={(e) => setAssistant1Name(e.target.value)}></input>
               <input type="number" value={assistant1Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant1Hours(e.target.value)} onFocus={(e) => setAssistant1Hours(0)} onClick={(e) => setAssistant1Hours(0)}></input>
               <div className="thirty-three">{frontTips !== 0 && assistant1Hours !== "" && (parseFloat(assistant1Hours) * assistantTips / 100).toFixed(2)}</div>
               <div className="thirty-three">{frontTips !== 0 && assistant1Hours !== "" && server1Hours > 0 && (frontTips / totalHours * assistant1Hours * assistantTips / 100).toFixed(2)}</div>
             </div>
 
             <div className='server'>
-              <input value={assistant2Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setAssistant2Name(e.target.value)}></input>
+              <input value={assistant2Name} placeholder="Name" className="thirty-three server-name-width nameinput" onChange={(e) => setAssistant2Name(e.target.value)}></input>
               <input type="number" value={assistant2Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant2Hours(e.target.value)} onFocus={(e) => setAssistant2Hours(0)} onClick={(e) => setAssistant2Hours(0)}></input>
               <div className="thirty-three">{frontTips !== 0 && assistant2Hours !== "" && (parseFloat(assistant2Hours) * assistantTips / 100).toFixed(2)}</div>
               <div className="thirty-three">{frontTips !== 0 && assistant2Hours !== "" && server1Hours > 0 && (frontTips / totalHours * assistant2Hours * assistantTips / 100).toFixed(2)}</div>
             </div>
 
             <div className='server'>
-              <input value={assistant3Name} placeholder="Name" className="thirty-three input-width nameinput" onChange={(e) => setAssistant3Name(e.target.value)}></input>
+              <input value={assistant3Name} placeholder="Name" className="thirty-three server-name-width nameinput" onChange={(e) => setAssistant3Name(e.target.value)}></input>
               <input type="number" value={assistant3Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant3Hours(e.target.value)} onFocus={(e) => setAssistant3Hours(0)} onClick={(e) => setAssistant1Hours(0)}></input>
               <div className="thirty-three">{frontTips !== 0 && assistant3Hours !== "" && (parseFloat(assistant3Hours) * assistantTips / 100).toFixed(2)}</div>
               <div className="thirty-three">{frontTips !== 0 && assistant3Hours !== "" && server1Hours > 0 && (frontTips / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}</div>
