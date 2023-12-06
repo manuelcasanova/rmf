@@ -121,7 +121,7 @@
   height: 50px;
   border-radius: 50%;
   font-weight: 900;
-  border: 2px solid black;
+  border: 2px solid transparent;
   color: red;
   text-align: center;
   /* line-height: 50px; */
@@ -361,7 +361,13 @@ input {
   border: 1px solid #ffc107; /* Border color matches the background */
   border-radius: 10px;
   font-weight: bold;
-  
+  text-align: center;
+}
+
+.warning-message-inside {
+  background-color: #ffc107; /* Yellow background */
+  color: #721c24; /* Dark red text color */
+  margin: 0.5em 0 0.5em 0;
 }
 
 .error-message {
