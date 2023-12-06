@@ -323,24 +323,46 @@ input {
 }
 .instructor {
   margin-bottom: 1em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
 }
+
+
 
 .instructor-detail {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   margin: 1em;
+  align-items: center;
+}
+
+.instructor-detail > div,
+.instructor-detail > input {
+  flex: 1;
+  text-align: center;
+  width: 33.33%; /* Each div (or input) takes up 33.33% of the container width */
   
 }
 
-.server {
-  /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around; */
+.instructor-detail > div:first-child {
+  text-align: left;
 }
 
-.summary {}
+.instructor-detail-input {
+  height: 2.5em;
+}
+
+.warning-message {
+  background-color: #ffc107; /* Yellow background */
+  color: #721c24; /* Dark red text color */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ffc107; /* Border color matches the background */
+  border-radius: 10px;
+  font-weight: bold;
+  
+}
 
 .error-message {
   /* background-color: var(--color0);;

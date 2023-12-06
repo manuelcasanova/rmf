@@ -185,6 +185,7 @@ export default function Closing({ color, setColor }) {
   const showInstructors = () => {
     // e.preventDefault();
     setInstructors(prev => !prev)
+    clearInstructors()
   }
 
   const showRedLine = () => {
@@ -238,6 +239,40 @@ export default function Closing({ color, setColor }) {
   const [instructor2FieldTrip, setInstructor2FieldTrip] = useState(0);
   const [instructor3FieldTrip, setInstructor3FieldTrip] = useState(0);
 
+  const totalInstructor1 = parseFloat(
+    (parseFloat(instructor1Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor1Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor1Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor1FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+
+  ).toFixed(2)
+
+const totalInstructor3 = parseFloat(
+  (parseFloat(instructor3Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
+  +
+  (parseFloat(instructor3Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
+  +
+  (parseFloat(instructor3Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
+  +
+  (parseFloat(instructor3FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+
+).toFixed(2)
+
+const totalInstructor2 = parseFloat(
+  (parseFloat(instructor2Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
+  +
+  (parseFloat(instructor2Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
+  +
+  (parseFloat(instructor2Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
+  +
+  (parseFloat(instructor2FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+
+).toFixed(2)
+
+const totalInstructors = totalInstructor1 + totalInstructor2 + totalInstructor3
 
   const totalHours = parseFloat(server1Hours) + parseFloat(server2Hours) + parseFloat(server3Hours) + parseFloat(server4Hours) + parseFloat(server5Hours) + parseFloat(assistant1Hours) * assistantTips / 100 + parseFloat(assistant2Hours) * assistantTips / 100 + parseFloat(assistant3Hours) * assistantTips / 100;
 
@@ -313,6 +348,9 @@ export default function Closing({ color, setColor }) {
     setInstructor1FieldTrip(0);
     setInstructor2FieldTrip(0);
     setInstructor3FieldTrip(0);
+    showInstructors();
+    setPizzaParties(prev => !prev)
+    
   }
 
   const clearServers = () => {
@@ -338,6 +376,21 @@ export default function Closing({ color, setColor }) {
     // setPizzaMaking1Name("");
     // setPizzaMaking2Name("");
     // setPizzaMaking3Name("");
+    setInstructor1Adults(0);
+    setInstructor2Adults(0);
+    setInstructor3Adults(0);
+    setInstructor1Cocktail(0);
+    setInstructor2Cocktail(0);
+    setInstructor3Cocktail(0);
+    setInstructor1Children(0);
+    setInstructor2Children(0);
+    setInstructor3Children(0);
+    setInstructor1FieldTrip(0);
+    setInstructor2FieldTrip(0);
+    setInstructor3FieldTrip(0);
+  }
+
+  const clearInstructors = () => {
     setInstructor1Adults(0);
     setInstructor2Adults(0);
     setInstructor3Adults(0);
@@ -858,6 +911,8 @@ export default function Closing({ color, setColor }) {
 
 
 
+
+
           {/* <section className={pizzaParties ? '' : 'pizza'}>
 
 
@@ -905,40 +960,153 @@ export default function Closing({ color, setColor }) {
             {instructors &&
               <div className='instructors'>
 
+
+
+{ parseInt(totalInstructors) !== parseInt(pizzaTips) && 
+
+<section className='servers'>
+  <div className='warning-message'>Warning!! The pizza instructors' tips and the tips distributed amongst the 3 instructors do not match! The sum of the total tips for the three instructors must match the total pizza instructor tips shown above.</div>
+</section>
+}
+
                 <div className='instructor'>
                   <div className='instructor-detail'>Instructor 1:</div>
 
 
-                  
 
 
 
-                  <div className='instructor-detail'>Adults:
-                  <input type="number" value={instructor1Adults} className="thirty-three input-width nameinput" onChange={(e) => setInstructor1Adults(e.target.value)} onFocus={(e) => setInstructor1Adults(0)} onClick={(e) => setInstructor1Adults(0)}></input>
-              <div className="thirty-three">{frontTips !== 0 && instructor1Adults !== "" && (parseFloat(instructor1Adults) * adultsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
-              
+
+                  <div className='instructor-detail'>
+
+                    <div>Adults:</div>
+                    <input type="number" value={instructor1Adults} className="instructor-detail-input" onChange={(e) => setInstructor1Adults(e.target.value)} onFocus={(e) => setInstructor1Adults(0)} onClick={(e) => setInstructor1Adults(0)}></input>
+                    <div >{frontTips !== 0 && instructor1Adults !== "" && (parseFloat(instructor1Adults) * adultsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
-                  <div className='instructor-detail'>Cocktail:</div>
-                  <div className='instructor-detail'>Children:</div>
-                  <div className='instructor-detail'>Field Trip:</div>
-                  <div className='instructor-detail'>Total:</div>
+
+                  <div className='instructor-detail'>
+
+                    <div>Cocktail:</div>
+                    <input type="number" value={instructor1Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor1Cocktail(e.target.value)} onFocus={(e) => setInstructor1Cocktail(0)} onClick={(e) => setInstructor1Cocktail(0)}></input>
+                    <div >{frontTips !== 0 && instructor1Cocktail !== "" && (parseFloat(instructor1Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+                  </div>
+
+                  <div className='instructor-detail'>
+
+                    <div>Children:</div>
+                    <input type="number" value={instructor1Children} className="instructor-detail-input" onChange={(e) => setInstructor1Children(e.target.value)} onFocus={(e) => setInstructor1Children(0)} onClick={(e) => setInstructor1Children(0)}></input>
+                    <div >{frontTips !== 0 && instructor1Children !== "" && (parseFloat(instructor1Children) * kidsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+                  </div>
+
+                  <div className='instructor-detail'>
+
+                    <div>Field Trip:</div>
+                    <input type="number" value={instructor1FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor1FieldTrip(e.target.value)} onFocus={(e) => setInstructor1FieldTrip(0)} onClick={(e) => setInstructor1FieldTrip(0)}></input>
+                    <div >{frontTips !== 0 && instructor1FieldTrip !== "" && (parseFloat(instructor1FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+                  </div>
+
+
+
+                  <div className='instructor-detail'>Total Instructor 1: {parseFloat(
+                    (parseFloat(instructor1Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
+                    +
+                    (parseFloat(instructor1Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
+                    +
+                    (parseFloat(instructor1Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
+                    +
+                    (parseFloat(instructor1FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+
+                  ).toFixed(2)} $</div>
+
                 </div>
+
+
                 <div className='instructor'>
                   <div className='instructor-detail'>Instructor 2:</div>
-                  <div className='instructor-detail'>Adults:</div>
-                  <div className='instructor-detail'>Cocktail:</div>
-                  <div className='instructor-detail'>Children:</div>
-                  <div className='instructor-detail'>Field Trip:</div>
-                  <div className='instructor-detail'>Total:</div>
+
+
+
+
+
+
+                  <div className='instructor-detail'>
+
+                    <div>Adults:</div>
+                    <input type="number" value={instructor2Adults} className="instructor-detail-input" onChange={(e) => setInstructor2Adults(e.target.value)} onFocus={(e) => setInstructor2Adults(0)} onClick={(e) => setInstructor2Adults(0)}></input>
+                    <div >{frontTips !== 0 && instructor2Adults !== "" && (parseFloat(instructor2Adults) * adultsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+                  </div>
+
+                  <div className='instructor-detail'>
+
+                    <div>Cocktail:</div>
+                    <input type="number" value={instructor2Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor2Cocktail(e.target.value)} onFocus={(e) => setInstructor2Cocktail(0)} onClick={(e) => setInstructor2Cocktail(0)}></input>
+                    <div >{frontTips !== 0 && instructor2Cocktail !== "" && (parseFloat(instructor2Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+                  </div>
+
+                  <div className='instructor-detail'>
+
+                    <div>Children:</div>
+                    <input type="number" value={instructor2Children} className="instructor-detail-input" onChange={(e) => setInstructor2Children(e.target.value)} onFocus={(e) => setInstructor2Children(0)} onClick={(e) => setInstructor2Children(0)}></input>
+                    <div >{frontTips !== 0 && instructor2Children !== "" && (parseFloat(instructor2Children) * kidsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+                  </div>
+
+                  <div className='instructor-detail'>
+
+                    <div>Field Trip:</div>
+                    <input type="number" value={instructor2FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor2FieldTrip(e.target.value)} onFocus={(e) => setInstructor2FieldTrip(0)} onClick={(e) => setInstructor2FieldTrip(0)}></input>
+                    <div >{frontTips !== 0 && instructor2FieldTrip !== "" && (parseFloat(instructor2FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+                  </div>
+
+
+
+                  <div className='instructor-detail'>Total Instructor 1: {totalInstructor2} $</div>
+
                 </div>
+
+
                 <div className='instructor'>
                   <div className='instructor-detail'>Instructor 3:</div>
-                  <div className='instructor-detail'>Adults:</div>
-                  <div className='instructor-detail'>Cocktail:</div>
-                  <div className='instructor-detail'>Children:</div>
-                  <div className='instructor-detail'>Field Trip:</div>
-                  <div className='instructor-detail'>Total:</div>
+
+
+
+
+
+
+                  <div className='instructor-detail'>
+
+                    <div>Adults:</div>
+                    <input type="number" value={instructor3Adults} className="instructor-detail-input" onChange={(e) => setInstructor3Adults(e.target.value)} onFocus={(e) => setInstructor3Adults(0)} onClick={(e) => setInstructor3Adults(0)}></input>
+                    <div >{frontTips !== 0 && instructor3Adults !== "" && (parseFloat(instructor3Adults) * adultsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+                  </div>
+
+                  <div className='instructor-detail'>
+
+                    <div>Cocktail:</div>
+                    <input type="number" value={instructor3Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor3Cocktail(e.target.value)} onFocus={(e) => setInstructor3Cocktail(0)} onClick={(e) => setInstructor3Cocktail(0)}></input>
+                    <div >{frontTips !== 0 && instructor3Cocktail !== "" && (parseFloat(instructor3Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+                  </div>
+
+                  <div className='instructor-detail'>
+
+                    <div>Children:</div>
+                    <input type="number" value={instructor3Children} className="instructor-detail-input" onChange={(e) => setInstructor3Children(e.target.value)} onFocus={(e) => setInstructor3Children(0)} onClick={(e) => setInstructor3Children(0)}></input>
+                    <div >{frontTips !== 0 && instructor3Children !== "" && (parseFloat(instructor3Children) * kidsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+                  </div>
+
+                  <div className='instructor-detail'>
+
+                    <div>Field Trip:</div>
+                    <input type="number" value={instructor3FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor3FieldTrip(e.target.value)} onFocus={(e) => setInstructor3FieldTrip(0)} onClick={(e) => setInstructor3FieldTrip(0)}></input>
+                    <div >{frontTips !== 0 && instructor3FieldTrip !== "" && (parseFloat(instructor3FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
+                  </div>
+
+
+
+                  <div className='instructor-detail'>Total Instructor 3: {totalInstructor3} $</div>
+
                 </div>
+
+
               </div>
             }
           </div>
