@@ -12,12 +12,13 @@ function App() {
 
   const [color, setColor] = useState("black")
 
+  console.log("color app js", color)
 
   return (
     <>
       <Router>
         <Routes>
-          <Route exact path="/" element={<Closing />}></Route>
+          <Route exact path="/" element={<Closing color={color} setColor={setColor} />}></Route>
           <Route exact path="/closing" element={<Closing color={color} setColor={setColor} />}></Route>
           <Route exact path="/night" element={<ClosingNight color={color} setColor={setColor} />}></Route>
         </Routes>

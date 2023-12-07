@@ -19,6 +19,8 @@ import brushWhite from './images/brush-white.png'
 
 export default function Closing({ color, setColor }) {
 
+ 
+
   const fullTips = 100;
   const assistantTips = 40;
   const kidsPizzaPrice = 25;
@@ -435,6 +437,8 @@ const totalInstructors = parseFloat(totalInstructor1) + parseFloat(totalInstruct
 
 
     <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
+
+<div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}></div>
 
       <div
 
