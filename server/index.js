@@ -12,3 +12,15 @@ app.listen(port, () => {
   console.log(`RMF Tips Distribution app running on port ${port}.`);
 
 });
+
+app.get("/data", async (req, res) => {
+
+  try {
+    const getData = await pool.query(
+      'SELECT * FROM tipsdistributiondata'
+    );
+    res.json(getData.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+})
