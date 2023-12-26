@@ -6,20 +6,23 @@ import { Link } from 'react-router-dom';
 //Libraries
 
 import ReactToPrint from 'react-to-print'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //Components
 
 import Now from './Now';
 import AmButton from './AmButton';
+import DataComponent from './DataComponent';
 
 //Images
 
 import brush from './images/brush.png'
 import brushWhite from './images/brush-white.png'
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 export default function Closing({ color, setColor }) {
 
- 
+
 
   const fullTips = 100;
   const assistantTips = 40;
@@ -32,12 +35,15 @@ export default function Closing({ color, setColor }) {
   const frontTipsPercent = 70;
 
   const [toggle, setToggle] = useState(false);
+  const [showData, setShowData] = useState(false)
 
   const handleToggle = () => {
     setToggle(prev => !prev)
   }
 
-
+const handleData = () => {
+  setShowData(!showData)
+}
 
   const now = Now()
 
@@ -251,29 +257,29 @@ export default function Closing({ color, setColor }) {
 
   ).toFixed(2)
 
-const totalInstructor3 = parseFloat(
-  (parseFloat(instructor3Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor3Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor3Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor3FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+  const totalInstructor3 = parseFloat(
+    (parseFloat(instructor3Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor3Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor3Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor3FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
 
-).toFixed(2)
+  ).toFixed(2)
 
-const totalInstructor2 = parseFloat(
-  (parseFloat(instructor2Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor2Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor2Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor2FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+  const totalInstructor2 = parseFloat(
+    (parseFloat(instructor2Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor2Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor2Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor2FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
 
-).toFixed(2)
+  ).toFixed(2)
 
-const totalInstructors = parseFloat(totalInstructor1) + parseFloat(totalInstructor2) + parseFloat(totalInstructor3)
+  const totalInstructors = parseFloat(totalInstructor1) + parseFloat(totalInstructor2) + parseFloat(totalInstructor3)
 
   const totalHours = parseFloat(server1Hours) + parseFloat(server2Hours) + parseFloat(server3Hours) + parseFloat(server4Hours) + parseFloat(server5Hours) + parseFloat(assistant1Hours) * assistantTips / 100 + parseFloat(assistant2Hours) * assistantTips / 100 + parseFloat(assistant3Hours) * assistantTips / 100;
 
@@ -351,7 +357,7 @@ const totalInstructors = parseFloat(totalInstructor1) + parseFloat(totalInstruct
     setInstructor3FieldTrip(0);
     showInstructors();
     setPizzaParties(prev => !prev)
-    
+
   }
 
   const clearServers = () => {
@@ -438,12 +444,15 @@ const totalInstructors = parseFloat(totalInstructor1) + parseFloat(totalInstruct
 
     <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
-<div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}></div>
+      <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}></div>
 
       <div
 
 
         className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
+
+
+
 
 
         {color === 'black' &&
@@ -468,16 +477,30 @@ const totalInstructors = parseFloat(totalInstructor1) + parseFloat(totalInstruct
           <input type="checkbox" onChange={handleToggle} />
           <span className="slider round"></span>
         </label> */}
+        <div className='navbar'>
+
+          <div className='switch'>{now}</div>
+          <div className='switch'
+          
+          >
+            
+           <FontAwesomeIcon icon={faGear} 
+           onClick={handleData}
+           />
+            
+            </div>
 
 
-        <div className='switch'>{now}</div>
+        </div>
+
+
 
         <div className='seccion'>
 
 
 
-
-
+       {showData && <DataComponent />
+} 
           <div className='title'>Shift</div>
           <Link to='/night' className='subtitle'><AmButton toggle={toggle} /></Link>
 
@@ -965,15 +988,15 @@ const totalInstructors = parseFloat(totalInstructor1) + parseFloat(totalInstruct
 
 
 
-{ parseInt(totalInstructors) !== parseInt(pizzaTips) && 
+                {parseInt(totalInstructors) !== parseInt(pizzaTips) &&
 
-<section className='servers warning-message'>
-  <div className='warning-message'>Warning!! The pizza instructors' tips and the tips distributed amongst the 3 instructors do not match! The sum of the total tips for the three instructors must match the total pizza instructor tips shown above:</div>
-  <div className='warning-message-inside'>{pizzaTips}$.</div>
-  <div className='warning-message-inside'>Currently, the total of the tips for the three instructors listed below is:</div>
-  <div className='warning-message-inside'>{parseFloat(totalInstructors).toFixed(2)} $.</div>
-</section>
-}
+                  <section className='servers warning-message'>
+                    <div className='warning-message'>Warning!! The pizza instructors' tips and the tips distributed amongst the 3 instructors do not match! The sum of the total tips for the three instructors must match the total pizza instructor tips shown above:</div>
+                    <div className='warning-message-inside'>{pizzaTips}$.</div>
+                    <div className='warning-message-inside'>Currently, the total of the tips for the three instructors listed below is:</div>
+                    <div className='warning-message-inside'>{parseFloat(totalInstructors).toFixed(2)} $.</div>
+                  </section>
+                }
 
                 <div className='instructor'>
                   <div className='instructor-detail'>Instructor 1:</div>
@@ -1277,19 +1300,19 @@ const totalInstructors = parseFloat(totalInstructor1) + parseFloat(totalInstruct
 
               {parseInt(totalInstructor1) !== 0 && <div className='print-server'>
                 <div className='server-details'>Instructor 1: </div>
-      
+
                 <div className='server-details'>{totalInstructor1}$</div>
               </div>}
 
               {parseInt(totalInstructor2) !== 0 && <div className='print-server'>
                 <div className='server-details'>Instructor 2: </div>
-      
+
                 <div className='server-details'>{totalInstructor2}$</div>
               </div>}
 
               {parseInt(totalInstructor3) !== 0 && <div className='print-server'>
                 <div className='server-details'>Instructor 3: </div>
-      
+
                 <div className='server-details'>{totalInstructor3}$</div>
               </div>}
 

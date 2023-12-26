@@ -6,16 +6,19 @@ import { Link } from "react-router-dom"
 //Libraries
 
 import ReactToPrint from 'react-to-print'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //Components
 
 import Now from './Now';
 import PmButton from "./PmButton";
+import DataComponent from './DataComponent';
 
 //Images
 
 import brush from './images/brush.png'
 import brushWhite from './images/brush-white.png'
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 export default function ClosingNight({color, setColor}) {
 
@@ -32,9 +35,15 @@ export default function ClosingNight({color, setColor}) {
 
   const [toggle, setToggle] = useState(false);
 
+  const [showData, setShowData] = useState(false)
+
   const handleToggle = () => {
     setToggle(prev => !prev)
   }
+
+const handleData = () => {
+  setShowData(!showData)
+}
 
   const now = Now()
 
@@ -484,10 +493,25 @@ className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
           <span className="slider round"></span>
         </label> */}
 
-        <div className='switch'>{now}</div>
+<div className='navbar'>
+
+<div className='switch'>{now}</div>
+<div className='switch'><FontAwesomeIcon icon={faGear} 
+onClick={handleData}/></div>
+
+
+</div>
+
+
+
+
+
 
 
         <div className='seccion'>
+
+        {showData && <DataComponent />
+} 
 
           <div className='title'>Shift</div>
           <Link to='/closing'>< PmButton /></Link>

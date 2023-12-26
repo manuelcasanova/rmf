@@ -12,7 +12,7 @@ function App() {
 
   const [color, setColor] = useState("black")
 
-  console.log("color app js", color)
+  // console.log("color app js", color)
 
   return (
     <>

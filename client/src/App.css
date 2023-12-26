@@ -45,6 +45,7 @@
 
 .seccion {
   max-width: 600px;
+  padding-top: 50px;
   /* display: flex;
   flex-direction: column; */
 }
@@ -54,6 +55,7 @@
   margin: 1em 0 0.5em 0;
   font-size: 2em;
 }
+
 /* 
 .subtitle {
   display: flex;
@@ -65,11 +67,22 @@
 } */
 
 .navbar {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  /* width: 100%; */
   text-align: center;
-  height: 3em;
+  height: 3em; */
+
+
+  /* margin-top: 2%;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end */
+
+
+position: absolute;
+top: 2%;
+right: 2%;
+display: flex;
 
 }
 
@@ -117,7 +130,8 @@
 }
 
 .clear-all-x {
-  width: 50px; /* Adjust the width and height for the desired circle size */
+  width: 50px;
+  /* Adjust the width and height for the desired circle size */
   height: 50px;
   border-radius: 50%;
   font-weight: 900;
@@ -125,8 +139,10 @@
   color: red;
   text-align: center;
   /* line-height: 50px; */
-  font-size: 100%; /* Adjust the font size */
-  padding: 5px; /* Add padding for some spacing between text and border */
+  font-size: 100%;
+  /* Adjust the font size */
+  padding: 5px;
+  /* Add padding for some spacing between text and border */
   cursor: pointer;
 }
 
@@ -225,7 +241,7 @@ label {
 }
 
 .server-name-width {
-  width:50%;
+  width: 50%;
 }
 
 .cash-input-small {
@@ -321,12 +337,14 @@ input {
   display: flex;
   flex-direction: column;
 }
+
 .instructor {
   margin-bottom: 1em;
 
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center items horizontally */
+  align-items: center;
+  /* Center items horizontally */
 }
 
 
@@ -337,15 +355,16 @@ input {
   align-items: center;
 }
 
-.instructor-detail > div,
-.instructor-detail > input {
+.instructor-detail>div,
+.instructor-detail>input {
   flex: 1;
   text-align: center;
-  width: 33.33%; /* Each div (or input) takes up 33.33% of the container width */
-  
+  width: 33.33%;
+  /* Each div (or input) takes up 33.33% of the container width */
+
 }
 
-.instructor-detail > div:first-child {
+.instructor-detail>div:first-child {
   text-align: left;
 }
 
@@ -354,19 +373,24 @@ input {
 }
 
 .warning-message {
-  background-color: #ffc107; /* Yellow background */
-  color: #721c24; /* Dark red text color */
+  background-color: #ffc107;
+  /* Yellow background */
+  color: #721c24;
+  /* Dark red text color */
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #ffc107; /* Border color matches the background */
+  border: 1px solid #ffc107;
+  /* Border color matches the background */
   border-radius: 10px;
   font-weight: bold;
   text-align: center;
 }
 
 .warning-message-inside {
-  background-color: #ffc107; /* Yellow background */
-  color: #721c24; /* Dark red text color */
+  background-color: #ffc107;
+  /* Yellow background */
+  color: #721c24;
+  /* Dark red text color */
   margin: 0.5em 0 0.5em 0;
 }
 
@@ -407,33 +431,41 @@ input {
 }
 
 .color-toggle {
-position: absolute;
-/* right: 90%; */
-top: 2%;
-left: 5%;
+  position: absolute;
+  /* right: 90%; */
+  top: 2%;
+  left: 5%;
 
 }
 
 .brush {
+  /* position: absolute;
+  top: 2%;
+  left: 5%; */
   position: absolute;
   top: 2%;
   left: 5%;
-  width: 40px;
- 
+  width: 20px;
+
+
 }
 
 .colors {
-  position: absolute;
+  /* position: absolute;
   display: flex;
   flex-direction: row;
   top: 1%;
-  left: 12%
+  left: 12% */
+
+  position: absolute;
+  top: 6%;
+  left: 5%
 }
 
 .color {
   border-radius: 50px;
   margin-top: 1em;
-  margin-left: 1em;
+  /* margin-left: 1em; */
   width: 1.5em;
   height: 1.5em;
 }
@@ -513,16 +545,21 @@ left: 5%;
   /* border-color: red; */
 }
 
-/* TOGGLE BUTTON */
+
+
+.datawheel {}
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  margin: 9px;
-  margin-left: 80%;
+
+  margin: 0px 10px 0px 10px;
 }
+
+.data-component {
+  text-align: center;
+}
+
+/* TOGGLE BUTTON */
+
 
 .switch input {
   opacity: 0;
@@ -611,13 +648,14 @@ input:checked+.slider:before {
   flex-direction: row;
 }
 
-.server-details  {
+.server-details {
   margin-right: 0.2em;
 }
 
 /* ALL CSS AM */
 
-.AmButton, .PmButton {
+.AmButton,
+.PmButton {
   background-color: var(--color1);
   width: 5.6em;
   height: 2.4em;
@@ -649,7 +687,8 @@ input:checked+.slider:before {
   border-radius: 50px;
   width: 1.9em;
   height: 1.9em;
-  color: var(--color0);;
+  color: var(--color0);
+  ;
   background-color: var(--color0);
   margin-right: 0.1em;
 }
