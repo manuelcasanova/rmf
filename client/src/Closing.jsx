@@ -20,19 +20,19 @@ import brush from './images/brush.png'
 import brushWhite from './images/brush-white.png'
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
-export default function Closing({ color, setColor }) {
+export default function Closing({ color, setColor, data }) {
 
+  // console.log("data closing", data)
 
-
-  const fullTips = 100;
-  const assistantTips = 40;
-  const kidsPizzaPrice = 25;
-  const adultsPizzaPrice = 40;
-  const adultsCocktailPrice = 25;
-  const fieldTripPrice = 12.19;
-  const pizzaTipsPercent = 10;
-  const kitchenTipsPercent = 30;
-  const frontTipsPercent = 70;
+  const fullTips = data[0].fulltips;
+  const assistantTips = data[0].assistanttips;
+  const kidsPizzaPrice = data[0].kidspizzaprice;
+  const adultsPizzaPrice = data[0].adultspizzaprice;
+  const adultsCocktailPrice = data[0].adultscocktailprice;
+  const fieldTripPrice = data[0].fieldtripprice;
+  const pizzaTipsPercent = data[0].pizzatipspercent;
+  const kitchenTipsPercent = data[0].kitchentipspercent;
+  const frontTipsPercent = data[0].fronttipspercent;
 
   const [toggle, setToggle] = useState(false);
   const [showData, setShowData] = useState(false)
@@ -41,9 +41,9 @@ export default function Closing({ color, setColor }) {
     setToggle(prev => !prev)
   }
 
-const handleData = () => {
-  setShowData(!showData)
-}
+  const handleData = () => {
+    setShowData(!showData)
+  }
 
   const now = Now()
 
@@ -441,6 +441,8 @@ const handleData = () => {
 
   return (
 
+   
+
 
     <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
@@ -481,14 +483,14 @@ const handleData = () => {
 
           <div className='switch'>{now}</div>
           <div className='switch'
-          
+
           >
-            
-           <FontAwesomeIcon icon={faGear} 
-           onClick={handleData}
-           />
-            
-            </div>
+
+            <FontAwesomeIcon icon={faGear}
+              onClick={handleData}
+            />
+
+          </div>
 
 
         </div>
@@ -499,8 +501,8 @@ const handleData = () => {
 
 
 
-       {showData && <DataComponent />
-} 
+          {showData && <DataComponent data={data} />
+          }
           <div className='title'>Shift</div>
           <Link to='/night' className='subtitle'><AmButton toggle={toggle} /></Link>
 
@@ -608,9 +610,9 @@ const handleData = () => {
               </div>}
           </div>
 
-          {/* {<div className='clear-all-div'>
+          {<div className='clear-all-div'>
             <button className="clear-all" onClick={test}>Set an example</button>
-          </div>} */}
+          </div>}
 
 
 
@@ -769,28 +771,9 @@ const handleData = () => {
               }
             </div>
 
-            {/* <div className='inline'>
-  <label className='inline-label'>Per server</label>
-  <div className='pizza-input'>{pizzaAdults !== "" && pizzaAdults !== 0 && pizzaAdults !== 0 && pizzaServers !== 0 && pizzaServers !== 0 && pizzaServers !== "" && (pizzaTips / pizzaServers).toFixed(2)}</div>
-</div> */}
-
 
             <div className='inline'>
-              {/* <label className='inline-label'>Per server</label> */}
-              {/* <div className='pizza-input'>
-                {
-                  !perServer < "1"
-                  && !perServer < 1
-                  && perServer !== "Infinity"
-                  && !isNaN(perServer)
-                  // pizzaServers === "1" || pizzaServers === "2" || pizzaServers === "3" || pizzaServers === 1 || pizzaServers === 2 || pizzaServers === 3
-                  && roundToTwo(perServer)}</div> */}
 
-
-              {/* {pizzaServers !== "1" && pizzaServers !== "2" && pizzaServers !== "3"
-    &&
-    <div className='error-message'>Only accepts 1, 2 or 3.</div>
-  } */}
             </div>
 
 
@@ -1328,5 +1311,8 @@ const handleData = () => {
 
 
     </div>
+
+
+
   )
 }

@@ -20,18 +20,22 @@ import brush from './images/brush.png'
 import brushWhite from './images/brush-white.png'
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
-export default function ClosingNight({color, setColor}) {
+export default function ClosingNight({color, setColor, data}) {
 
-  const fullTips = 100;
-  const assistantTips = 40;
-  const kidsPizzaPrice = 25;
-  const adultsPizzaPrice = 40;
-  const adultsCocktailPrice = 25;
-  const fieldTripPrice = 12.19;
-  const pizzaTipsPercent = 10;
-  const kitchenTipsPercent = 30;
-  const frontTipsPercent = 70;
-  const sundaysPizzaTip = 5;
+// console.log("data night", data)
+
+  const fullTips = data[0].fulltips;
+  const assistantTips = data[0].assistanttips;
+  const kidsPizzaPrice = data[0].kidspizzaprice;
+  const adultsPizzaPrice = data[0].adultspizzaprice;
+  const adultsCocktailPrice = data[0].adultscocktailprice;
+  const fieldTripPrice = data[0].fieldtripprice;
+  const pizzaTipsPercent = data[0].pizzatipspercent;
+  const kitchenTipsPercent = data[0].kitchentipspercent;
+  const frontTipsPercent = data[0].fronttipspercent;
+  const sundaysPizzaTip = data[0].sundayspizzatip;
+
+
 
   const [toggle, setToggle] = useState(false);
 
@@ -510,7 +514,7 @@ onClick={handleData}/></div>
 
         <div className='seccion'>
 
-        {showData && <DataComponent />
+        {showData && <DataComponent data={data}/>
 } 
 
           <div className='title'>Shift</div>
@@ -620,9 +624,9 @@ onClick={handleData}/></div>
               </div>}
           </div>
 
-          {/* {<div className='clear-all-div'>
+          {<div className='clear-all-div'>
             <button className="clear-all" onClick={test}>Set an example</button>
-          </div>} */}
+          </div>}
 
           <section className='money'>
 
