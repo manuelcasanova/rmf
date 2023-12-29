@@ -20,7 +20,7 @@ import brush from './images/brush.png'
 import brushWhite from './images/brush-white.png'
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
-export default function Closing({ color, setColor, data }) {
+export default function Closing({ color, setColor, data, setData }) {
 
   // console.log("data closing", data)
 
@@ -501,7 +501,7 @@ export default function Closing({ color, setColor, data }) {
 
 
 
-          {showData && <DataComponent data={data} />
+          {showData && <DataComponent data={data} setData={setData}/>
           }
           <div className='title'>Shift</div>
           <Link to='/night' className='subtitle'><AmButton toggle={toggle} /></Link>

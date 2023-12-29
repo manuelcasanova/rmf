@@ -20,7 +20,7 @@ import brush from './images/brush.png'
 import brushWhite from './images/brush-white.png'
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
-export default function ClosingNight({color, setColor, data}) {
+export default function ClosingNight({color, setColor, data, setData}) {
 
 // console.log("data night", data)
 
@@ -514,7 +514,7 @@ onClick={handleData}/></div>
 
         <div className='seccion'>
 
-        {showData && <DataComponent data={data}/>
+        {showData && <DataComponent data={data} setData={setData}/>
 } 
 
           <div className='title'>Shift</div>

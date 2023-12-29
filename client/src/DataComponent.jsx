@@ -1,13 +1,50 @@
-export default function DataComponent({ data }) {
+//Hooks
+
+import { useState } from "react";
+
+//Libraries
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+//Images
+
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+
+//Components
+
+import EditData from "./EditData";
+
+export default function DataComponent({ data, setData }) {
 
   // console.log("data component data", data)
+
+
+//Hide show EDIT
+
+  const [showfulltips, setShowfulltips] = useState(false)
+
+
+//Edit input
+
+
+
+
+const handleEditfulltips = () => {
+  setShowfulltips(!showfulltips)
+}
+
 
   return (
     <div className="data-component">
       <div className="data-line">
         <div className="data-left">{`Supervisor / Server Tips: `}</div>
         <div className="data-right">{`${data[0]?.fulltips} %`}</div>
+        <FontAwesomeIcon icon={faEdit}
+        onClick={handleEditfulltips}
+        />
       </div>
+
+      {showfulltips && <EditData data={data} setData={setData}/>}
 
       <div className="data-line">
         <div className="data-left">{`Server Support tips: `}</div>
