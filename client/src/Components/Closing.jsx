@@ -828,7 +828,7 @@ export default function Closing({ color, setColor, data, setData }) {
             <div className='th margin-top margin-bottom'>
               <div className='thirty-three server-name-width'>Server</div>
               <div className='thirty-three'>Hours</div>
-              <div className='thirty-three'>100%</div>
+              <div className='thirty-three'>{fullTips}%</div>
               <div className='thirty-three'>Tips</div>
             </div>
 
@@ -878,7 +878,7 @@ export default function Closing({ color, setColor, data, setData }) {
             <div className='th margin-top margin-bottom'>
               <div className='thirty-three server-name-width'>Support</div>
               <div className='thirty-three'>Hours</div>
-              <div className='thirty-three'>40%</div>
+              <div className='thirty-three'>{assistantTips}%</div>
               <div className='thirty-three'>Tips</div>
             </div>
 
