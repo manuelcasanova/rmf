@@ -54,21 +54,21 @@ export default function DataComponent({ data, setData }) {
         <div className="data-left">{label}</div>
         {/* <div className="data-right">{`${value}`}</div> */}
 
-<div className="data-right">
-  {label.toLowerCase() === 'supervisor / server tips:' ? `${value}%` : 
-    label.toLowerCase() === 'server support tips:' ? `${value}%` :
-    label.toLowerCase() === 'adults pizza price:' ? `${value}$` :
-    label.toLowerCase() === 'adults cocktail price:' ? `${value}$` :
-    label.toLowerCase() === 'kids pizza price:' ? `${value}$` :
-    label.toLowerCase() === 'field trip price:' ? `${value}$` :
-    label.toLowerCase() === 'pizza party tips:' ? `${value}%` :
-    label.toLowerCase() === 'kitchen tips:' ? `${value}%` :
-    label.toLowerCase() === 'foh tips:' ? `${value}%` :
-    label.toLowerCase() === 'sundays pizza tips per hour:' ? `${value}$` :
-    null
-  }
-</div>
-       
+        <div className="data-right">
+          {label.toLowerCase() === 'supervisor / server tips:' ? `${value}%` :
+            label.toLowerCase() === 'server support tips:' ? `${value}%` :
+              label.toLowerCase() === 'adults pizza price:' ? `${value}$` :
+                label.toLowerCase() === 'adults cocktail price:' ? `${value}$` :
+                  label.toLowerCase() === 'kids pizza price:' ? `${value}$` :
+                    label.toLowerCase() === 'field trip price:' ? `${value}$` :
+                      label.toLowerCase() === 'pizza party tips:' ? `${value}%` :
+                        label.toLowerCase() === 'kitchen tips:' ? `${value}%` :
+                          label.toLowerCase() === 'foh tips:' ? `${value}%` :
+                            label.toLowerCase() === 'sundays pizza tips per hour:' ? `${value}$` :
+                              null
+          }
+        </div>
+
 
         <FontAwesomeIcon icon={faEdit} onClick={handleToggle} />
       </div>
@@ -79,6 +79,16 @@ export default function DataComponent({ data, setData }) {
           setData={setData}
           property={property}
           endpoint={endpoint}
+          setShowFulltips={setShowFulltips}
+          setShowAssistanttips={setShowAssistanttips}
+          setShowAdultspizzaprice={setShowAdultspizzaprice}
+          setShowhowAdultscocktailprice={setShowhowAdultscocktailprice}
+          setShowKidspizzaprice={setShowKidspizzaprice}
+          setShowFieldtripprice={setShowFieldtripprice}
+          setShowPizzatipspercent={setShowPizzatipspercent}
+          setShowKitchentipspercent={setShowKitchentipspercent}
+          setShowFronttipspercent={setShowFronttipspercent}
+          setShowSundayspizzatip={setShowSundayspizzatip}
         />
       )}
 
@@ -107,7 +117,7 @@ export default function DataComponent({ data, setData }) {
 
       {generateDataLine("Sundays pizza tips per hour:", data[0]?.sundayspizzatip, showSundayspizzatip, () => handleEditToggle("sundayspizzatip"), "sundayspizzatip", "sundayspizzatip", data, setData)}
 
-  
+
 
 
 
