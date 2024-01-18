@@ -765,6 +765,7 @@ onClick={handleData}/></div>
           <div
             className='pizza-making-question'
           >
+            
             Pizza parties or Pizza making for children?
 
             <div className='yes-no'>
