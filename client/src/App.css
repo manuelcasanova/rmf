@@ -155,7 +155,7 @@ display: flex;
   justify-content: center;
 }
 
-.clear-all {
+/* .clear-all {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,6 +171,27 @@ display: flex;
   border-radius: 15px;
   box-shadow: 0 9px #999;
   margin: 1em;
+} */
+
+.clear-all {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #ffffff;
+  background-color: var(--color3);
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin: 1em;
+}
+
+.clear-all:hover {
+  background-color: var(--color1);
 }
 
 .clear-all-x {
@@ -257,19 +278,31 @@ label {
   /* white-space: nowrap; */
 }
 
+
+
 .money-input,
 .pizza-input,
 .tips-input {
-  margin: 0.5em auto;
-  height: 3em;
-  width: 6em;
+  margin: 1em auto;
+  height: 40px;
+  width: 120px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 900;
-  font-size: 1.5em;
+  font-weight: bold;
+  font-size: 16px;
+  /* border: 2px solid #3498db; */
+  border-radius: 5px;
+  outline: none;
+  /* transition: border-color 0.3s; */
 }
+
+.money-input:focus,
+.pizza-input:focus,
+.tips-input:focus {
+  border-color: #2980b9;
+} 
 
 .cash-input {
   margin: 0.5em auto;
@@ -288,7 +321,7 @@ label {
   width: 50%;
 }
 
-.cash-input-small {
+/* .cash-input-small {
   margin: 0.5em auto;
   padding: 0.5em;
   height: 1em;
@@ -299,16 +332,63 @@ label {
   justify-content: center;
   font-weight: 400;
   font-size: 1.5em;
+} */
+
+.cash-input-small {
+  margin: 0.5em auto;
+  height: 40px;
+  width: 120px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  /* border: 2px solid #3498db; */
+  border-radius: 5px;
+  outline: none;
+  /* transition: border-color 0.3s; */
 }
+
+.cash-input-small:focus {
+  border-color: #2980b9;
+} 
+
 
 .white-font {
   color: white;
 }
 
-.nameinput {
+/* .nameinput {
+  
   height: 3em;
   font-size: 120%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+ 
+  border-radius: 5px;
+  outline: none;
+} */
+
+ .nameinput {
+
+  
+  height: 3em;
+  font-size: 120%;
+
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 5px;
+  outline: none;
 }
+
+.nameinput:focus {
+  border-color: #2980b9;
+}  
+
 
 .inline {
   display: flex;
@@ -406,7 +486,19 @@ input {
   width: 33.33%;
   /* Each div (or input) takes up 33.33% of the container width */
 
+  
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;
+  
+
 }
+
+.instructor-detail-input:focus {
+  border-color: #2980b9;
+}  
+
 
 .instructor-detail>div:first-child {
   text-align: left;
@@ -520,6 +612,7 @@ input {
   --color0: black;
   --color1: white;
   --color2: rgb(43, 43, 43);
+  --color3: #4025b9;
 }
 
 .white {
@@ -528,6 +621,7 @@ input {
   --color0: white;
   --color1: black;
   --color2: rgb(43, 43, 43);
+  --color3: #4025b9;
 }
 
 .pink {
@@ -536,6 +630,7 @@ input {
   --color0: pink;
   --color1: purple;
   --color2: rgb(43, 43, 43);
+  --color3: purple;
 }
 
 .blue {
@@ -544,6 +639,7 @@ input {
   --color0: blue;
   --color1: lightblue;
   --color2: rgb(43, 43, 43);
+  --color3: darkblue;
 }
 
 .green {
@@ -552,6 +648,7 @@ input {
   --color0: green;
   --color1: lightgreen;
   --color2: rgb(43, 43, 43);
+  --color3: rgb(43, 43, 43);
 }
 
 .red {
@@ -560,6 +657,7 @@ input {
   --color0: coral;
   --color1: darkred;
   --color2: rgb(43, 43, 43);
+  --color3: darkred;
 }
 
 .black-line {

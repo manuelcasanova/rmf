@@ -534,7 +534,7 @@ onClick={handleData}/></div>
               {!cashCount && <button className='clear-all' onClick={showCashCount}>Support for Cash Counting</button>}
               {/* {!cashCount && <button className='clear-all' onClick={showRedLine}>No</button>} */}
             </div>
-            {cashCount && <button className='clear-all' onClick={showCashCount}>x</button>}
+            {cashCount && <button className='clear-all-x' onClick={showCashCount}>x</button>}
             {cashCount &&
               <div>
 
@@ -1238,7 +1238,7 @@ onClick={handleData}/></div>
 
 
 {summary && <div>
-<button className='clear-all' onClick={showSummary}>X</button>
+<button className='clear-all-x' onClick={showSummary}>X</button>
 
 </div>}
 
