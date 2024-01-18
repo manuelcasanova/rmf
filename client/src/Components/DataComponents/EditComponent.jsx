@@ -9,11 +9,11 @@ export default function EditTips({ data, setData, property, endpoint }) {
   const editComponent = async (e) => {
     e.preventDefault();
     try {
-      const body = { [property]: value };
-      await axios.put(`http://localhost:8001/data/${endpoint}`, body, {
+      const body = { value }; // Assuming "value" is the property name expected by the backend
+      await axios.put(`http://localhost:8001/data/${property}`, body, {
         headers: { "Content-Type": "application/json" },
       });
-
+  
       const response = await axios.get(`http://localhost:8001/data`);
       setData([...response.data]);
     } catch (err) {
