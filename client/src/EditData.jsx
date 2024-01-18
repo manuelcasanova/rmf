@@ -1,6 +1,7 @@
 //Hooks
 
 import { useState } from "react";
+import axios from 'axios'
 
 //Libraries
 
@@ -18,6 +19,31 @@ export default function EditData ({data, setData}) {
 const [fulltips, setFullTips] = useState(data[0].fulltips)
 
 
+// Edit fulltips function
+
+const editFulltips = async (e) => {
+  e.preventDefault()
+  try {
+    const body = { fulltips};
+    const response = await fetch(`http://localhost:8001/data/fulltips`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    })
+
+    //Render changes without page refresh:
+
+    axios.get(`http://localhost:8001/data`)
+    .then(function (res) {
+      setData([...res.data])
+    })
+
+
+  } catch (err) {
+    console.error(err.message)
+  }
+}
+
   return (
     <div className="data-line">
     <div className="data-left"></div>
@@ -31,7 +57,15 @@ const [fulltips, setFullTips] = useState(data[0].fulltips)
 
     </div>
     <FontAwesomeIcon className="fa-check" icon={faCheck}
-  onClick={() => console.log(`http call using ${fulltips} as number`)}
+    
+  onClick={
+    
+    // () => console.log(`http call using ${fulltips} as number`)
+
+    e => editFulltips(e)
+  
+  
+  }
     />
   </div>
 

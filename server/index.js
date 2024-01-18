@@ -24,3 +24,17 @@ app.get("/data", async (req, res) => {
     console.error(err.message)
   }
 })
+
+app.put("/data/fulltips", async (req, res) => {
+  try {
+    const { fulltips } = req.body
+
+
+      const editFulltips = await pool.query('UPDATE tipsdistributiondata SET fulltips = $1', [fulltips])
+      res.json(`Fulltips was updated to ${fulltips} %`)
+
+
+  } catch (err) {
+    console.error(err.message)
+  }
+})
