@@ -70,25 +70,25 @@ export default function DataComponent({ data, setData }) {
 
   return (
     <div className="data-component">
-      {generateDataLine("Supervisor / Server Tips:", data[0]?.fulltips, showFulltips, () => handleEditToggle("fulltips"), "fulltips", "fulltips", data, setData)}
+      {generateDataLine("Supervisor / Server Tips: %", data[0]?.fulltips, showFulltips, () => handleEditToggle("fulltips"), "fulltips", "fulltips", data, setData)}
 
-      {generateDataLine("Server Support tips:", data[0]?.assistanttips, showAssistanttips, () => handleEditToggle("assistanttips"), "assistanttips", "assistanttips", data, setData)}
+      {generateDataLine("Server Support tips: %", data[0]?.assistanttips, showAssistanttips, () => handleEditToggle("assistanttips"), "assistanttips", "assistanttips", data, setData)}
 
-      {generateDataLine("Adults Pizza Price:", data[0]?.adultspizzaprice, showAdultspizzaprice, () => handleEditToggle("adultspizzaprice"), "adultspizzaprice", "adultspizzaprice", data, setData)}
+      {generateDataLine("Adults Pizza Price: $", data[0]?.adultspizzaprice, showAdultspizzaprice, () => handleEditToggle("adultspizzaprice"), "adultspizzaprice", "adultspizzaprice", data, setData)}
 
-      {generateDataLine("Adults Cocktail Price:", data[0]?.adultscocktailprice, showAdultscocktailprice, () => handleEditToggle("adultscocktailprice"), "adultscocktailprice", "adultscocktailprice", data, setData)}
+      {generateDataLine("Adults Cocktail Price: $", data[0]?.adultscocktailprice, showAdultscocktailprice, () => handleEditToggle("adultscocktailprice"), "adultscocktailprice", "adultscocktailprice", data, setData)}
 
-      {generateDataLine("Kids Pizza Price:", data[0]?.kidspizzaprice, showKidspizzaprice, () => handleEditToggle("kidspizzaprice"), "kidspizzaprice", "kidspizzaprice", data, setData)}
+      {generateDataLine("Kids Pizza Price: $", data[0]?.kidspizzaprice, showKidspizzaprice, () => handleEditToggle("kidspizzaprice"), "kidspizzaprice", "kidspizzaprice", data, setData)}
 
-      {generateDataLine("Field Trip Price: ", data[0]?.fieldtripprice, showFieldtripprice, () => handleEditToggle("fieldtripprice"), "fieldtripprice", "fieldtripprice", data, setData)}
+      {generateDataLine("Field Trip Price: $ ", data[0]?.fieldtripprice, showFieldtripprice, () => handleEditToggle("fieldtripprice"), "fieldtripprice", "fieldtripprice", data, setData)}
 
-      {generateDataLine("Pizza Party Tips %:", data[0]?.pizzatipspercent, showPizzatipspercent, () => handleEditToggle("pizzatipspercent"), "pizzatipspercent", "pizzatipspercent", data, setData)}
+      {generateDataLine("Pizza Party Tips: %", data[0]?.pizzatipspercent, showPizzatipspercent, () => handleEditToggle("pizzatipspercent"), "pizzatipspercent", "pizzatipspercent", data, setData)}
 
-      {generateDataLine("Kitchen Tips %: ", data[0]?.kitchentipspercent, showKitchentipspercent, () => handleEditToggle("kitchentipspercent"), "kitchentipspercent", "kitchentipspercent", data, setData)}
+      {generateDataLine("Kitchen Tips: %", data[0]?.kitchentipspercent, showKitchentipspercent, () => handleEditToggle("kitchentipspercent"), "kitchentipspercent", "kitchentipspercent", data, setData)}
 
-      {generateDataLine("FOH Tips %: ", data[0]?.fronttipspercent, showFronttipspercent, () => handleEditToggle("fronttipspercent"), "fronttipspercent", "fronttipspercent", data, setData)}
+      {generateDataLine("FOH Tips: %", data[0]?.fronttipspercent, showFronttipspercent, () => handleEditToggle("fronttipspercent"), "fronttipspercent", "fronttipspercent", data, setData)}
 
-      {generateDataLine("Sundays pizza tips per hour: ", data[0]?.sundayspizzatip, showSundayspizzatip, () => handleEditToggle("sundayspizzatip"), "sundayspizzatip", "sundayspizzatip", data, setData)}
+      {generateDataLine("Sundays pizza tips per hour: $ ", data[0]?.sundayspizzatip, showSundayspizzatip, () => handleEditToggle("sundayspizzatip"), "sundayspizzatip", "sundayspizzatip", data, setData)}
 
   
 
