@@ -12,25 +12,26 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 //Components
 
-import EditData from "./EditData";
+import Editfulltips from "./Editfulltips";
+import Editassistanttips from "./Editassistanttips";
 
 export default function DataComponent({ data, setData }) {
 
-  // console.log("data component data", data)
 
-
-//Hide show EDIT
 
   const [showfulltips, setShowfulltips] = useState(false)
+  const [showassitanttips, setShowassistanttips] = useState(false)
 
 
 //Edit input
 
 
-
-
 const handleEditfulltips = () => {
   setShowfulltips(!showfulltips)
+}
+
+const handleEditassistanttips = () => {
+  setShowassistanttips(!showassitanttips)
 }
 
 
@@ -44,12 +45,17 @@ const handleEditfulltips = () => {
         />
       </div>
 
-      {showfulltips && <EditData data={data} setData={setData}/>}
+      {showfulltips && <Editfulltips data={data} setData={setData}/>}
 
       <div className="data-line">
         <div className="data-left">{`Server Support tips: `}</div>
         <div className="data-right">{`${data[0]?.assistanttips} %`}</div>
+        <FontAwesomeIcon icon={faEdit}
+        onClick={handleEditassistanttips}
+        />
       </div>
+
+      {showassitanttips && <Editassistanttips data={data} setData={setData}/>}
 
       <div className="data-line">
         <div className="data-left">{`Adults Pizza Price: `}</div>
@@ -93,12 +99,3 @@ const handleEditfulltips = () => {
 }
 
 
-// const assistantTips = data[0].assistanttips;
-// const kidsPizzaPrice = data[0].kidspizzaprice;
-// const adultsPizzaPrice = data[0].adultspizzaprice;
-// const adultsCocktailPrice = data[0].adultscocktailprice;
-// const fieldTripPrice = data[0].fieldtripprice;
-// const pizzaTipsPercent = data[0].pizzatipspercent;
-// const kitchenTipsPercent = data[0].kitchentipspercent;
-// const frontTipsPercent = data[0].fronttipspercent;
-// const sundaysPizzaTip = data[0].sundayspizzatip;

@@ -12,12 +12,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Now from './Now';
 import AmButton from './AmButton';
-import DataComponent from './DataComponent';
+import DataComponent from './DataComponents/DataComponent';
 
 //Images
 
-import brush from './images/brush.png'
-import brushWhite from './images/brush-white.png'
+import brush from '../images/brush.png'
+import brushWhite from '../images/brush-white.png'
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 export default function Closing({ color, setColor, data, setData }) {
