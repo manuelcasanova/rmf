@@ -41,7 +41,6 @@ export default function Editassistanttips({ data, setData }) {
   );
 }
 
-// const assistantTips = data[0].assistanttips;
 // const kidsPizzaPrice = data[0].kidspizzaprice;
 // const adultsPizzaPrice = data[0].adultspizzaprice;
 // const adultsCocktailPrice = data[0].adultscocktailprice;
