@@ -15,10 +15,10 @@ function App() {
   const [color, setColor] = useState("black");
   const [data, setData] = useState([]);
 
-
+  const BACKEND = 'https://backend.rmf.manucasanova.com'
 
   useEffect(() => {
-    axios.get(`http://localhost:8001/data`)
+    axios.get(`${BACKEND}/data`)
       .then(function (res) {
         
         setData([...res.data])

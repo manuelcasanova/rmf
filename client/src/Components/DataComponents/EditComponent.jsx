@@ -15,17 +15,24 @@ export default function EditTips({ data, setData, property, endpoint,
   setShowFronttipspercent,
   setShowSundayspizzatip
 }) {
+
+
   const [value, setValue] = useState(data[0][property]);
+
+  // const BACKEND = 'http://localhost:8001'
+  const BACKEND = 'https://backend.rmf.manucasanova.com'
 
   const editComponent = async (e) => {
     e.preventDefault();
     try {
+      
       const body = { value }; // Assuming "value" is the property name expected by the backend
-      await axios.put(`http://localhost:8001/data/${property}`, body, {
+  
+      await axios.put(`${BACKEND}/data/${property}`, body, {
         headers: { "Content-Type": "application/json" },
       });
 
-      const response = await axios.get(`http://localhost:8001/data`);
+      const response = await axios.get(`${BACKEND}/data`);
       setData([...response.data]);
 
 
