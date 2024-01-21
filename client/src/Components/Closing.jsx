@@ -610,9 +610,9 @@ export default function Closing({ color, setColor, data, setData }) {
               </div>}
           </div>
 
-          {<div className='clear-all-div'>
+          {/* {<div className='clear-all-div'>
             <button className="clear-all" onClick={test}>Set an example</button>
-          </div>}
+          </div>} */}
 
 
 

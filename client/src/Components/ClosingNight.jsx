@@ -624,9 +624,9 @@ onClick={handleData}/></div>
               </div>}
           </div>
 
-          {<div className='clear-all-div'>
+          {/* {<div className='clear-all-div'>
             <button className="clear-all" onClick={test}>Set an example</button>
-          </div>}
+          </div>} */}
 
           <section className='money'>
 
