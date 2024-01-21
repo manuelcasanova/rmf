@@ -1,17 +1,27 @@
 const express = require('express');
+const corsOptions = require('./config/corsOptions');
 const cors = require('cors');
 const app = express();
-const port = 8001;
+const PORT = process.env.PORT || 3500;
 const pool = require('./db');
 
-app.use(cors());
-app.use(express.json()); //req.body
+// Apply CORS middleware with custom options
+app.use(cors(corsOptions));
 
-app.listen(port, () => {
-  console.log(`RMF Tips Distribution app running on port ${port}.`);
+// Parse JSON in incoming requests
+app.use(express.json());
+
+// Server listening on the specified port
+app.listen(PORT, () => {
+  console.log(`RMF Tips Distribution app running on port ${PORT}.`);
 });
 
+// Basic route for checking if the server is running
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
 
+// Route to retrieve data from the database
 app.get("/data", async (req, res) => {
   try {
     const getData = await pool.query('SELECT * FROM tipsdistributiondata');
@@ -22,11 +32,51 @@ app.get("/data", async (req, res) => {
   }
 });
 
+// app.get("/data", async (req, res) => {
+//   try {
+//     // Replace the database query with a hardcoded object
+//     const hardcodedData = [
+//       {
+//         fulltips: 100,
+//   assistanttips: 40,
+//   kidspizzaprice: 25,
+//   adultspizzaprice: 40,
+//   adultscocktailprice: 25,
+//   fieldtripprice: 12.19,
+//   pizzatipspercent: 10,
+//   kitchentipspercent: 30,
+//   fronttipspercent: 70,
+//   sundayspizzatip: 5
+//       }
+//       // Add more objects as needed
+//     ];
+
+
+//     // Send the hardcoded object as the JSON response
+//     res.json(hardcodedData);
+//   } catch (err) {
+//     // Handle errors, if any
+//     console.error(err.message);
+//     res.status(500).send('Internal Server Error');
+//   }
+// });
+
+// // Route to handle OPTIONS requests explicitly
+// app.options("/data/:property", (req, res) => {
+//   // Set the necessary CORS headers for the OPTIONS response
+//   res.header('Access-Control-Allow-Origin', corsOptions.origin);
+//   res.header('Access-Control-Allow-Methods', corsOptions.methods);
+//   res.header('Access-Control-Allow-Headers', corsOptions.allowedHeaders.join(','));
+//   res.sendStatus(204); // No content for OPTIONS request
+// });
+
+// Route to update a specific property in the database
 app.put("/data/:property", async (req, res) => {
   const { property } = req.params;
   const { value } = req.body;
 
   try {
+    // Use parameterized queries to prevent SQL injection
     await pool.query(`UPDATE tipsdistributiondata SET ${property} = $1`, [value]);
     res.json(`${property} was updated to ${value}`);
   } catch (err) {
@@ -34,6 +84,8 @@ app.put("/data/:property", async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
+
 
 
 // Below: NOT DRY CODE
