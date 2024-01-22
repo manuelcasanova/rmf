@@ -10,7 +10,7 @@ const FrontPage = () => {
         <div className="app-container">
           <div className="rectangle"></div>
           <div className="shift">
-            <Link to='/pm' className="am">AM</Link>
+            <Link to='/am' className="am">AM</Link>
             <Link to='/pm' className="pm">PM</Link>
           </div>
           <div className="by">
