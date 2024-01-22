@@ -518,7 +518,7 @@ onClick={handleData}/></div>
 } 
 
           <div className='title'>Shift</div>
-          <Link to='/closing'>< PmButton /></Link>
+          <Link to='/am'>< PmButton /></Link>
 
           <div className='clear-all-div'>
             <button className="clear-all" onClick={clearAll}>Clear all</button>

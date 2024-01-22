@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import './App.css';
-import Closing from './Components/Closing';
-import ClosingNight from "./Components/ClosingNight";
+import ClosingAM from './Components/ClosingAM';
+import ClosingPM from "./Components/ClosingPM";
+import FrontPage from "./Components/FrontPage";
 
 
 
@@ -41,9 +42,9 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route exact path="/" element={<Closing color={color} setColor={setColor} data={data} setData={setData}/>}></Route>
-          <Route exact path="/closing" element={<Closing color={color} setColor={setColor} data={data} setData={setData}/>}></Route>
-          <Route exact path="/night" element={<ClosingNight color={color} setColor={setColor} data={data} setData={setData}/>}></Route>
+          <Route exact path="/" element={<FrontPage />}></Route>
+          <Route exact path="/am" element={<ClosingAM color={color} setColor={setColor} data={data} setData={setData}/>}></Route>
+          <Route exact path="/pm" element={<ClosingPM color={color} setColor={setColor} data={data} setData={setData}/>}></Route>
         </Routes>
       </Router>
 

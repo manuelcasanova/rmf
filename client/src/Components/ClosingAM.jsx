@@ -504,7 +504,7 @@ export default function Closing({ color, setColor, data, setData }) {
           {showData && <DataComponent data={data} setData={setData}/>
           }
           <div className='title'>Shift</div>
-          <Link to='/night' className='subtitle'><AmButton toggle={toggle} /></Link>
+          <Link to='/pm' className='subtitle'><AmButton toggle={toggle} /></Link>
 
           <div className='clear-all-div'>
             <button className="clear-all" onClick={clearAll}>Clear all</button>
