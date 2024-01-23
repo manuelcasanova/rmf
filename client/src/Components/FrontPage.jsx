@@ -8,7 +8,9 @@ const FrontPage = () => {
   return (
 
         <div className="app-container">
-          <div className="rectangle"></div>
+          <div className="rectangle">
+          <img src="tips-final.jpg" alt="Logo" />
+          </div>
           <div className="shift">
             <Link to='/am' className="am">AM</Link>
             <Link to='/pm' className="pm">PM</Link>
