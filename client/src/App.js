@@ -16,7 +16,8 @@ function App() {
   const [color, setColor] = useState("black");
   const [data, setData] = useState([]);
 
-  const BACKEND = 'https://backend.rmf.manucasanova.com'
+  // const BACKEND = 'https://backend.rmf.manucasanova.com'
+  const BACKEND = 'http://localhost:3500'
 
   useEffect(() => {
     axios.get(`${BACKEND}/data`)

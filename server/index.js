@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3500;
 const pool = require('./db');
 
 // Apply CORS middleware with custom options
-app.use(cors(corsOptions));
+ app.use(cors(corsOptions));
 
 // Parse JSON in incoming requests
 app.use(express.json());

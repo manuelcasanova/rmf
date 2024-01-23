@@ -19,8 +19,8 @@ export default function EditTips({ data, setData, property, endpoint,
 
   const [value, setValue] = useState(data[0][property]);
 
-  // const BACKEND = 'http://localhost:8001'
-  const BACKEND = 'https://backend.rmf.manucasanova.com'
+const BACKEND = 'http://localhost:3500'
+  // const BACKEND = 'https://backend.rmf.manucasanova.com'
 
   const editComponent = async (e) => {
     e.preventDefault();
