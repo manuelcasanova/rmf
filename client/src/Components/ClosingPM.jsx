@@ -20,7 +20,7 @@ import Navbar from "./SubComponents/Navbar";
 import Colors from "./SubComponents/Colors";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
-export default function ClosingNight({ color, setColor, data, setData }) {
+export default function ClosingPM({ color, setColor, data, setData }) {
 
   // console.log("data night", data)
 
