@@ -6,23 +6,21 @@ import { Link } from 'react-router-dom';
 //Libraries
 
 import ReactToPrint from 'react-to-print'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 //Components
 
-import Now from './Now';
-import AmButton from './AmButton';
+import AmButton from './SubComponents/AmButton';
 import DataComponent from './DataComponents/DataComponent';
+import Colors from './SubComponents/Colors';
+import Navbar from './SubComponents/Navbar';
 
 //Images
 
-import brush from '../images/brush.png'
-import brushWhite from '../images/brush-white.png'
-import { faGear } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Closing({ color, setColor, data, setData }) {
 
-  // console.log("data closing", data)
 
   const fullTips = data[0].fulltips;
   const assistantTips = data[0].assistanttips;
@@ -40,14 +38,6 @@ export default function Closing({ color, setColor, data, setData }) {
   const handleToggle = () => {
     setToggle(prev => !prev)
   }
-
-  const handleData = () => {
-    setShowData(!showData)
-  }
-
-  const now = Now()
-
-
 
   const [hundred, setHundred] = useState(0);
   const [fifty, setFifty] = useState(0);
@@ -117,7 +107,7 @@ export default function Closing({ color, setColor, data, setData }) {
   const [supportServerInfo, setSupportServerInfo] = useState(true)
   const [cashCount, setCashCount] = useState(false)
 
-  const [colors, setColors] = useState(false)
+
   const [summary, setSummary] = useState(false)
   const [instructors, setInstructors] = useState(false)
   const [redLine, setRedLine] = useState(false)
@@ -179,10 +169,6 @@ export default function Closing({ color, setColor, data, setData }) {
     setSupportServerInfo(prev => !prev)
   }
 
-  const showColors = () => {
-    // e.preventDefault();
-    setColors(prev => !prev)
-  }
 
   const showSummary = () => {
     // e.preventDefault();
@@ -221,14 +207,6 @@ export default function Closing({ color, setColor, data, setData }) {
   const [assistant1Name, setAssistant1Name] = useState("");
   const [assistant2Name, setAssistant2Name] = useState("");
   const [assistant3Name, setAssistant3Name] = useState("");
-
-  // const [pizzaMaking1Hours, setPizzaMaking1Hours] = useState(0);
-  // const [pizzaMaking2Hours, setPizzaMaking2Hours] = useState(0);
-  // const [pizzaMaking3Hours, setPizzaMaking3Hours] = useState(0);
-
-  // const [pizzaMaking1Name, setPizzaMaking1Name] = useState("");
-  // const [pizzaMaking2Name, setPizzaMaking2Name] = useState("");
-  // const [pizzaMaking3Name, setPizzaMaking3Name] = useState("");
 
   const [instructor1Adults, setInstructor1Adults] = useState(0);
   const [instructor2Adults, setInstructor2Adults] = useState(0);
@@ -295,9 +273,6 @@ export default function Closing({ color, setColor, data, setData }) {
     return +(Math.round(num + "e+2") + "e-2");
   }
 
-  // useEffect(() => {
-  //   console.log("tipsPerHour", frontTips / totalHours)
-  // }, [tipsPerHour])
 
   const clearAll = () => {
     setCashCounted(0);
@@ -324,12 +299,6 @@ export default function Closing({ color, setColor, data, setData }) {
     setAssistant1Hours(0);
     setAssistant2Hours(0);
     setAssistant3Hours(0);
-    // setPizzaMaking1Hours(0);
-    // setPizzaMaking2Hours(0);
-    // setPizzaMaking3Hours(0);
-    // setPizzaMaking1Name("");
-    // setPizzaMaking2Name("");
-    // setPizzaMaking3Name("");
     setHundred(0);
     setFifty(0);
     setTwenty(0);
@@ -377,12 +346,6 @@ export default function Closing({ color, setColor, data, setData }) {
     setAssistant1Hours(0);
     setAssistant2Hours(0);
     setAssistant3Hours(0);
-    // setPizzaMaking1Hours(0);
-    // setPizzaMaking2Hours(0);
-    // setPizzaMaking3Hours(0);
-    // setPizzaMaking1Name("");
-    // setPizzaMaking2Name("");
-    // setPizzaMaking3Name("");
     setInstructor1Adults(0);
     setInstructor2Adults(0);
     setInstructor3Adults(0);
@@ -430,10 +393,6 @@ export default function Closing({ color, setColor, data, setData }) {
     setServer2Hours(5);
     setServer3Hours(4);
     setAssistant1Hours(4);
-    // setPizzaMaking1Hours(0);
-    // setPizzaMaking2Hours(0);
-    // setPizzaMaking1Name("Liz");
-    // setPizzaMaking2Name("Akasha");
   }
 
 
@@ -441,70 +400,21 @@ export default function Closing({ color, setColor, data, setData }) {
 
   return (
 
-   
-
 
     <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
-
-      <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}></div>
-
-      <div
+      <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
 
-        className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
-
-
-
-
-
-        {color === 'black' &&
-          <><img className='brush' src={brushWhite} alt="Brush" onClick={showColors} /></>
-        }
-
-        {color !== 'black' &&
-          <><img className='brush' src={brush} alt="Brush" onClick={showColors} /></>
-        }
-
-
-        {colors && <div className='colors'>
-          <div className='color black white-line' onClick={(e) => setColor("black")}></div>
-          <div className='color white black-line' onClick={(e) => setColor("white")}></div>
-          <div className='color pink black-line' onClick={(e) => setColor("pink")}></div>
-          <div className='color blue black-line' onClick={(e) => setColor("blue")}></div>
-          <div className='color green black-line' onClick={(e) => setColor("green")}></div>
-          <div className='color red black-line' onClick={(e) => setColor("red")}></div>
-        </div>}
-
-        {/* <label className="switch">
-          <input type="checkbox" onChange={handleToggle} />
-          <span className="slider round"></span>
-        </label> */}
-        <div className='navbar'>
-
-          <div className='switch'>{now}</div>
-          <div className='switch'
-
-          >
-
-            <FontAwesomeIcon icon={faGear}
-              onClick={handleData}
-            />
-
-          </div>
-
-
-        </div>
+        <Colors color={color} setColor={setColor} />
+        <Navbar showData={showData} setShowData={setShowData} />
 
 
 
         <div className='seccion'>
 
-
-
-          {showData && <DataComponent data={data} setData={setData}/>
-          }
+          {showData && <DataComponent data={data} setData={setData} />}
           <div className='title'>Shift</div>
-          <Link to='/pm' className='subtitle'><AmButton toggle={toggle} /></Link>
+          <Link to='/pm'><AmButton/></Link>
 
           <div className='clear-all-div'>
             <button className="clear-all" onClick={clearAll}>Clear all</button>
@@ -1209,9 +1119,11 @@ export default function Closing({ color, setColor, data, setData }) {
           />
 
           <div className='print-component' ref={componentRef}>
-            <div className='print-line'>{now}</div>
+            <div className='print-line'>{ }</div>
+            {/* NOW MISSING IN THE LINE BEFORE. HERE */}
+
             <div className='print-line'>Cash counted: {cash > 0 ? cash : cashCounted}$</div>
-            {/* HERE */}
+
             <div className='print-line'>Receipts: {receipts}$</div>
             <div className='print-line'>TOTAL CASH: {totalCash}$</div>
             <div className='print-line'>Float: {float}$</div>

@@ -10,19 +10,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //Components
 
-import Now from './Now';
-import PmButton from "./PmButton";
+import Now from './SubComponents/Now';
+import PmButton from "./SubComponents/PmButton";
 import DataComponent from './DataComponents/DataComponent';
+import Navbar from "./SubComponents/Navbar";
 
 //Images
 
-import brush from '../images/brush.png'
-import brushWhite from '../images/brush-white.png'
+import Colors from "./SubComponents/Colors";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
-export default function ClosingNight({color, setColor, data, setData}) {
+export default function ClosingNight({ color, setColor, data, setData }) {
 
-// console.log("data night", data)
+  // console.log("data night", data)
 
   const fullTips = data[0].fulltips;
   const assistantTips = data[0].assistanttips;
@@ -45,9 +45,9 @@ export default function ClosingNight({color, setColor, data, setData}) {
     setToggle(prev => !prev)
   }
 
-const handleData = () => {
-  setShowData(!showData)
-}
+  const handleData = () => {
+    setShowData(!showData)
+  }
 
   const now = Now()
 
@@ -87,7 +87,7 @@ const handleData = () => {
       ? (parseFloat(cash) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
       : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
   );
-  
+
   const [creditCardsTipsAM, setCreditCardsTipsAM] = useState(0)
   const [creditCardsTipsPrintOut, setCreditCardsTipsPrintOut] = useState(0)
   const totalTips = parseFloat(cashTips) + parseFloat(creditCardsTipsPrintOut) - parseFloat(creditCardsTipsAM)
@@ -97,17 +97,17 @@ const handleData = () => {
   const [fieldTrip, setFieldTrip] = useState(0)
   const [sundaysServerHours, setSundaysServerHours] = useState(0)
   const [pizzaServers, setPizzaServers] = useState(0)
-  const pizzaTips = 
-  (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100) 
-  + 
-  parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100 
-  + 
-  (parseFloat(cocktailAdults) * adultsCocktailPrice * pizzaTipsPercent / 100) 
-  + 
-  (parseFloat(sundaysServerHours) * sundaysPizzaTip)
-  +
-  (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
-  
+  const pizzaTips =
+    (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100
+    +
+    (parseFloat(cocktailAdults) * adultsCocktailPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(sundaysServerHours) * sundaysPizzaTip)
+    +
+    (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+
   const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
   const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
   const frontTips = (tipsAfterPizzaParty * frontTipsPercent / 100).toFixed(2);
@@ -127,8 +127,8 @@ const handleData = () => {
   const [pizzaParties, setPizzaParties] = useState(false)
   const [cashSalesPMInfo, setCashSalesPMInfo] = useState(false)
   const [supportServerInfo, setSupportServerInfo] = useState(true)
-const [sundaysInfo, setSundaysInfo] = useState(false)
-const [cashCount, setCashCount] = useState(false) 
+  const [sundaysInfo, setSundaysInfo] = useState(false)
+  const [cashCount, setCashCount] = useState(false)
 
   const [colors, setColors] = useState(false)
   const [summary, setSummary] = useState(false)
@@ -292,31 +292,31 @@ const [cashCount, setCashCount] = useState(false)
 
   ).toFixed(2)
 
-const totalInstructor3 = parseFloat(
-  (parseFloat(instructor3Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor3Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor3Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor3FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+  const totalInstructor3 = parseFloat(
+    (parseFloat(instructor3Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor3Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor3Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor3FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
 
-).toFixed(2)
+  ).toFixed(2)
 
-const totalInstructor2 = parseFloat(
-  (parseFloat(instructor2Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor2Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor2Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(instructor2FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+  const totalInstructor2 = parseFloat(
+    (parseFloat(instructor2Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor2Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor2Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor2FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
 
-).toFixed(2)
+  ).toFixed(2)
 
-const totalInstructors = parseFloat(totalInstructor1) + parseFloat(totalInstructor2) + parseFloat(totalInstructor3)
+  const totalInstructors = parseFloat(totalInstructor1) + parseFloat(totalInstructor2) + parseFloat(totalInstructor3)
 
-  const totalHours = parseFloat(server1Hours) * fullTips / 100 + parseFloat(server2Hours) * fullTips / 100  + parseFloat(server3Hours) * fullTips / 100 + parseFloat(server4Hours) * fullTips / 100  + parseFloat(server5Hours) * fullTips / 100  + parseFloat(assistant1Hours) * assistantTips / 100 + parseFloat(assistant2Hours) * assistantTips / 100 + parseFloat(assistant3Hours) * assistantTips / 100;
+  const totalHours = parseFloat(server1Hours) * fullTips / 100 + parseFloat(server2Hours) * fullTips / 100 + parseFloat(server3Hours) * fullTips / 100 + parseFloat(server4Hours) * fullTips / 100 + parseFloat(server5Hours) * fullTips / 100 + parseFloat(assistant1Hours) * assistantTips / 100 + parseFloat(assistant2Hours) * assistantTips / 100 + parseFloat(assistant3Hours) * assistantTips / 100;
 
   const tipsPerHour = () => {
     if (isNaN(frontTips / totalHours)) {
@@ -467,45 +467,10 @@ const totalInstructors = parseFloat(totalInstructor1) + parseFloat(totalInstruct
 
   return (
     <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
+      <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
-<div
-
-
-className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
-
-
-{color === 'black' &&
-<><img className='brush' src={brushWhite} alt="Brush" onClick={showColors} /></>
-}
-
-{color !== 'black' &&
-<><img className='brush' src={brush} alt="Brush" onClick={showColors} /></>
-}
-
-
-{colors && <div className='colors'>
-<div className='color black white-line' onClick={(e) => setColor("black")}></div>
-  <div className='color white black-line' onClick={(e) => setColor("white")}></div>
-  <div className='color pink black-line' onClick={(e) => setColor("pink")}></div>
-  <div className='color blue black-line' onClick={(e) => setColor("blue")}></div>
-  <div className='color green black-line' onClick={(e) => setColor("green")}></div>
-  <div className='color red black-line' onClick={(e) => setColor("red")}></div>
-</div>}
-
-        {/* <label className="switch">
-          <input type="checkbox" onChange={handleToggle} />
-          <span className="slider round"></span>
-        </label> */}
-
-<div className='navbar'>
-
-<div className='switch'>{now}</div>
-<div className='switch'><FontAwesomeIcon icon={faGear} 
-onClick={handleData}/></div>
-
-
-</div>
-
+      <Colors color={color} setColor={setColor} />
+        <Navbar showData={showData} setShowData={setShowData} />
 
 
 
@@ -514,9 +479,7 @@ onClick={handleData}/></div>
 
         <div className='seccion'>
 
-        {showData && <DataComponent data={data} setData={setData}/>
-} 
-
+          {showData && <DataComponent data={data} setData={setData} />}
           <div className='title'>Shift</div>
           <Link to='/am'>< PmButton /></Link>
 
@@ -630,24 +593,24 @@ onClick={handleData}/></div>
 
           <section className='money'>
 
-          {!cashCount && (
+            {!cashCount && (
 
-<div className='inline'>
-  <label className='inline-label'>Cash counted</label>
-  <input type="number" className='money-input' value={cashCounted} onChange={(e) => setCashCounted(e.target.value)}
-    onClick={(e) => setCashCounted("")}
-    onFocus={(e) => setCashCounted("")}
-  ></input>
-</div>
-)}
+              <div className='inline'>
+                <label className='inline-label'>Cash counted</label>
+                <input type="number" className='money-input' value={cashCounted} onChange={(e) => setCashCounted(e.target.value)}
+                  onClick={(e) => setCashCounted("")}
+                  onFocus={(e) => setCashCounted("")}
+                ></input>
+              </div>
+            )}
 
-{cashCount && (
+            {cashCount && (
 
-<div className='inline'>
-  <label className='inline-label'>Cash counted</label>
-  <div className='money-input'>{cash}</div>
-</div>
-)}
+              <div className='inline'>
+                <label className='inline-label'>Cash counted</label>
+                <div className='money-input'>{cash}</div>
+              </div>
+            )}
 
 
             <div className='inline'>
@@ -765,7 +728,7 @@ onClick={handleData}/></div>
           <div
             className='pizza-making-question'
           >
-            
+
             Pizza parties or Pizza making for children?
 
             <div className='yes-no'>
@@ -972,7 +935,7 @@ onClick={handleData}/></div>
               <div className="thirty-three"></div>
               <div className="thirty-three">{!isNaN(pizzaTips) && pizzaTips.toFixed(2)}</div>
 
-          
+
 
 
 
@@ -1009,7 +972,7 @@ onClick={handleData}/></div>
 
           </section> */}
 
-<div className='pizza-making-question'>
+          <div className='pizza-making-question'>
 
             {!instructors && <div className='padding-bottom'>
               <button className='clear-all' onClick={showInstructors}>More than one pizza maker?</button>
@@ -1028,12 +991,12 @@ onClick={handleData}/></div>
 
 
 
-{ parseInt(totalInstructors) !== parseInt(pizzaTips) && 
+                {parseInt(totalInstructors) !== parseInt(pizzaTips) &&
 
-<section className='servers'>
-  <div className='warning-message'>Warning!! The pizza instructors' tips and the tips distributed amongst the 3 instructors do not match! The sum of the total tips for the three instructors must match the total pizza instructor tips shown above: {pizzaTips}$.</div>
-</section>
-}
+                  <section className='servers'>
+                    <div className='warning-message'>Warning!! The pizza instructors' tips and the tips distributed amongst the 3 instructors do not match! The sum of the total tips for the three instructors must match the total pizza instructor tips shown above: {pizzaTips}$.</div>
+                  </section>
+                }
 
                 <div className='instructor'>
                   <div className='instructor-detail'>Instructor 1:</div>
@@ -1175,7 +1138,7 @@ onClick={handleData}/></div>
               <label className='inline-label'>TOTAL HOURS <div className={color !== 'blue' ? "info" : "info-red"} onClick={showTotalHoursInfo}>i</div></label>
 
               <div className='tips-input'>
-              
+
                 {
                   !isNaN(totalHours.toFixed(2)) &&
                   totalHours.toFixed(2)
@@ -1232,134 +1195,134 @@ onClick={handleData}/></div>
       </div>
 
       {!summary && <div className='padding-bottom'>
-<button className='clear-all' onClick={showSummary}>Show summary</button>
+        <button className='clear-all' onClick={showSummary}>Show summary</button>
 
-</div>
-}
-
-
-{summary && <div>
-<button className='clear-all-x' onClick={showSummary}>X</button>
-
-</div>}
+      </div>
+      }
 
 
-{summary && 
-      <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
+      {summary && <div>
+        <button className='clear-all-x' onClick={showSummary}>X</button>
 
-<ReactToPrint
-  trigger={() => {
-    return <button className='clear-all'>Print summary</button>
-  }}
-  content={() => componentRef.current}
-  documentTitle="new document"
-  pageStyle="print"
-
-/>
-
-<div className='print-component' ref={componentRef}>
-  <div className='print-line'>{now}</div>
-  <div className='print-line'>Cash counted: {cash > 0 ? cash : cashCounted}$</div>
-  <div className='print-line'>Receipts: {receipts}$</div>
-  <div className='print-line'>TOTAL CASH: {totalCash}$</div>
-  <div className='print-line'>Float: {float}$</div>
-  <div className='print-line'>Cash sales AM: {cashSalesAM}$</div>
-  <div className='print-line'>Cash sales Print Out: {cashSalesPrintOut}$</div>
-  <div className='print-line'>Cash sales PM: {cashSalesPM}$</div>
-  <div className='print-line'>Cash tips: {cashTips}$</div>
-  <div className='print-line'>Credit card tips AM: {creditCardsTipsAM}$</div>
-  <div className='print-line'>Credit card tips Print Out: {creditCardsTipsPrintOut}$</div>
-  <div className='print-line'>Credit card tips PM: {roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)}$</div>
-  <div className='print-line'>TOTAL TIPS PM: {(roundToTwo(cashTips) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)).toFixed(2)}$</div>
-  <div className='print-line'></div>
-  <div className='print-line'>Pizza making Tips: {pizzaTips}$</div>
-  <div className='print-line'>Kitchen Tips: {kitchenTips}$</div>
-  <div className='print-line'>Front Tips: {frontTips}$</div>
-  <div className='print-line'>Total hours: {totalHours.toFixed(2)}</div>
-  <div className='print-line'>Tips per hour: {tipsPerHour().toFixed(2)}$</div>
-  <div className='print-line'>NEW FLOAT: {(cash > 0 ? (cash - frontTips - pizzaTips) : (cashCounted - frontTips - pizzaTips)).toFixed(2)}$</div>
-  <div className='print-line'></div>
-  <div className='print-line'>TIPS DISTRIBUTION:</div>
-
-  <div className='print-servers-tip'>
-
-  {server1Hours !== 0 && server1Hours !== "0" && <div className='print-server'>
-      <div className='server-details'>{server1Name}</div>
-      <div className='server-details'>{server1Hours} hours </div>
-      <div className='server-details'>{(frontTips / totalHours * server1Hours).toFixed(2)}$</div>
-    </div>}
-
-    {server2Hours !== 0 && server2Hours !== "0" &&  <div className='print-server'>
-      <div className='server-details'>{server2Name}</div>
-      <div className='server-details'>{server2Hours} hours </div>
-      <div className='server-details'>{(frontTips / totalHours * server2Hours).toFixed(2)}$</div>
-    </div>}
-
-    {server3Hours !== 0 && server3Hours !== "0" &&  <div className='print-server'>
-      <div className='server-details'>{server3Name}</div>
-      <div className='server-details'>{server3Hours} hours </div>
-      <div className='server-details'>{(frontTips / totalHours * server3Hours).toFixed(2)}$</div>
-    </div>}
-
-    {server4Hours !== 0 && server4Hours !== "0" &&  <div className='print-server'>
-      <div className='server-details'>{server4Name}</div>
-      <div className='server-details'>{server4Hours} hours </div>
-      <div className='server-details'>{(frontTips / totalHours * server4Hours).toFixed(2)}$</div>
-    </div>}
+      </div>}
 
 
-    {server5Hours !== 0 && server5Hours !== "0" &&  <div className='print-server'>
-      <div className='server-details'>{server5Name}</div>
-      <div className='server-details'>{server5Hours} hours </div>
-      <div className='server-details'>{(frontTips / totalHours * server5Hours).toFixed(2)}$</div>
-    </div>}
+      {summary &&
+        <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
-    {assistant1Hours !== 0 && assistant1Hours !== "0" && <div className='print-server'>
-      <div className='server-details'>{assistant1Name}</div>
-      <div className='server-details'>{assistant1Hours} hours </div>
-      <div className='server-details'>{(frontTips / totalHours * assistant1Hours * assistantTips / 100).toFixed(2)}$</div>
-    </div>}
+          <ReactToPrint
+            trigger={() => {
+              return <button className='clear-all'>Print summary</button>
+            }}
+            content={() => componentRef.current}
+            documentTitle="new document"
+            pageStyle="print"
 
-    {assistant2Hours !== 0 && assistant2Hours !== "0" && assistant2Hours !== 0 && <div className='print-server'>
-      <div className='server-details'>{assistant2Name}</div>
-      <div className='server-details'>{assistant2Hours} hours </div>
-      <div className='server-details'>{(frontTips / totalHours * assistant2Hours * assistantTips / 100).toFixed(2)}$</div>
-    </div>}
+          />
 
-    {assistant3Hours !== 0 && assistant3Hours !== "0" && <div className='print-server'>
-      <div className='server-details'>{assistant3Name}</div>
-      <div className='server-details'>{assistant3Hours} hours </div>
-      <div className='server-details'>{(frontTips / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}$</div>
-    </div>}
+          <div className='print-component' ref={componentRef}>
+            <div className='print-line'>{now}</div>
+            <div className='print-line'>Cash counted: {cash > 0 ? cash : cashCounted}$</div>
+            <div className='print-line'>Receipts: {receipts}$</div>
+            <div className='print-line'>TOTAL CASH: {totalCash}$</div>
+            <div className='print-line'>Float: {float}$</div>
+            <div className='print-line'>Cash sales AM: {cashSalesAM}$</div>
+            <div className='print-line'>Cash sales Print Out: {cashSalesPrintOut}$</div>
+            <div className='print-line'>Cash sales PM: {cashSalesPM}$</div>
+            <div className='print-line'>Cash tips: {cashTips}$</div>
+            <div className='print-line'>Credit card tips AM: {creditCardsTipsAM}$</div>
+            <div className='print-line'>Credit card tips Print Out: {creditCardsTipsPrintOut}$</div>
+            <div className='print-line'>Credit card tips PM: {roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)}$</div>
+            <div className='print-line'>TOTAL TIPS PM: {(roundToTwo(cashTips) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)).toFixed(2)}$</div>
+            <div className='print-line'></div>
+            <div className='print-line'>Pizza making Tips: {pizzaTips}$</div>
+            <div className='print-line'>Kitchen Tips: {kitchenTips}$</div>
+            <div className='print-line'>Front Tips: {frontTips}$</div>
+            <div className='print-line'>Total hours: {totalHours.toFixed(2)}</div>
+            <div className='print-line'>Tips per hour: {tipsPerHour().toFixed(2)}$</div>
+            <div className='print-line'>NEW FLOAT: {(cash > 0 ? (cash - frontTips - pizzaTips) : (cashCounted - frontTips - pizzaTips)).toFixed(2)}$</div>
+            <div className='print-line'></div>
+            <div className='print-line'>TIPS DISTRIBUTION:</div>
 
-    {parseInt(totalInstructor1) !== 0 && <div className='print-server'>
+            <div className='print-servers-tip'>
+
+              {server1Hours !== 0 && server1Hours !== "0" && <div className='print-server'>
+                <div className='server-details'>{server1Name}</div>
+                <div className='server-details'>{server1Hours} hours </div>
+                <div className='server-details'>{(frontTips / totalHours * server1Hours).toFixed(2)}$</div>
+              </div>}
+
+              {server2Hours !== 0 && server2Hours !== "0" && <div className='print-server'>
+                <div className='server-details'>{server2Name}</div>
+                <div className='server-details'>{server2Hours} hours </div>
+                <div className='server-details'>{(frontTips / totalHours * server2Hours).toFixed(2)}$</div>
+              </div>}
+
+              {server3Hours !== 0 && server3Hours !== "0" && <div className='print-server'>
+                <div className='server-details'>{server3Name}</div>
+                <div className='server-details'>{server3Hours} hours </div>
+                <div className='server-details'>{(frontTips / totalHours * server3Hours).toFixed(2)}$</div>
+              </div>}
+
+              {server4Hours !== 0 && server4Hours !== "0" && <div className='print-server'>
+                <div className='server-details'>{server4Name}</div>
+                <div className='server-details'>{server4Hours} hours </div>
+                <div className='server-details'>{(frontTips / totalHours * server4Hours).toFixed(2)}$</div>
+              </div>}
+
+
+              {server5Hours !== 0 && server5Hours !== "0" && <div className='print-server'>
+                <div className='server-details'>{server5Name}</div>
+                <div className='server-details'>{server5Hours} hours </div>
+                <div className='server-details'>{(frontTips / totalHours * server5Hours).toFixed(2)}$</div>
+              </div>}
+
+              {assistant1Hours !== 0 && assistant1Hours !== "0" && <div className='print-server'>
+                <div className='server-details'>{assistant1Name}</div>
+                <div className='server-details'>{assistant1Hours} hours </div>
+                <div className='server-details'>{(frontTips / totalHours * assistant1Hours * assistantTips / 100).toFixed(2)}$</div>
+              </div>}
+
+              {assistant2Hours !== 0 && assistant2Hours !== "0" && assistant2Hours !== 0 && <div className='print-server'>
+                <div className='server-details'>{assistant2Name}</div>
+                <div className='server-details'>{assistant2Hours} hours </div>
+                <div className='server-details'>{(frontTips / totalHours * assistant2Hours * assistantTips / 100).toFixed(2)}$</div>
+              </div>}
+
+              {assistant3Hours !== 0 && assistant3Hours !== "0" && <div className='print-server'>
+                <div className='server-details'>{assistant3Name}</div>
+                <div className='server-details'>{assistant3Hours} hours </div>
+                <div className='server-details'>{(frontTips / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}$</div>
+              </div>}
+
+              {parseInt(totalInstructor1) !== 0 && <div className='print-server'>
                 <div className='server-details'>Instructor 1: </div>
-      
+
                 <div className='server-details'>{totalInstructor1}$</div>
               </div>}
 
               {parseInt(totalInstructor2) !== 0 && <div className='print-server'>
                 <div className='server-details'>Instructor 2: </div>
-      
+
                 <div className='server-details'>{totalInstructor2}$</div>
               </div>}
 
               {parseInt(totalInstructor3) !== 0 && <div className='print-server'>
                 <div className='server-details'>Instructor 3: </div>
-      
+
                 <div className='server-details'>{totalInstructor3}$</div>
               </div>}
 
-  </div>
+            </div>
 
-</div>
-
-
+          </div>
 
 
-</div>
-}
-      
+
+
+        </div>
+      }
+
 
     </div>
   )
