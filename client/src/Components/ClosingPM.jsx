@@ -20,7 +20,7 @@ import Navbar from "./SubComponents/Navbar";
 
 export default function ClosingPM() {
 
-  const { BACKEND, data, setData, color, setColor, fullTips, assistantTips, kidsPizzaPrice, adultsPizzaPrice, adultsCocktailPrice, fieldTripPrice, pizzaTipsPercent, kitchenTipsPercent, frontTipsPercent, toggle, setToggle, showData, setShowData, handleToggle, hundred, setHundred, fifty, setFifty, twenty, setTwenty, ten, setTen, five, setFive, two, setTwo, one, setOne, quarter, setQuarter, cash, cashCounted, setCashCounted, receipts, setReceipts, totalCash, float, setFloat, cashSales, setCashSales, 
+  const { BACKEND, data, setData, color, setColor, fullTips, assistantTips, kidsPizzaPrice, adultsPizzaPrice, adultsCocktailPrice, fieldTripPrice, pizzaTipsPercent, kitchenTipsPercent, frontTipsPercent, toggle, setToggle, showData, setShowData, handleToggle, hundred, setHundred, fifty, setFifty, twenty, setTwenty, ten, setTen, five, setFive, two, setTwo, one, setOne, quarter, setQuarter, cash, cashCounted, setCashCounted, receipts, setReceipts, totalCash, float, setFloat, cashSales, setCashSales, cashSalesAM, setCashSalesAM, setCashSalesPM, cashSalesPM, cashSalesPrintOut, setCashSalesPrintOut, creditCardsTipsAM, setCreditCardsTipsAM, creditCardsTipsPrintOut, setCreditCardsTipsPrintOut,
     // cashTips, 
     creditCardTips, setCreditCardTips, 
     // totalTips, 
@@ -48,18 +48,13 @@ export default function ClosingPM() {
 
 
 
-  const [cashSalesAM, setCashSalesAM] = useState(0);
-  const [cashSalesPrintOut, setCashSalesPrintOut] = useState(0)
-  const cashSalesPM = (cashSalesPrintOut - cashSalesAM).toFixed(2)
-
   const cashTips = (
     cash > 0
       ? (parseFloat(cash) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
       : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
   );
 
-  const [creditCardsTipsAM, setCreditCardsTipsAM] = useState(0)
-  const [creditCardsTipsPrintOut, setCreditCardsTipsPrintOut] = useState(0)
+ 
   const totalTips = parseFloat(cashTips) + parseFloat(creditCardsTipsPrintOut) - parseFloat(creditCardsTipsAM)
 
 

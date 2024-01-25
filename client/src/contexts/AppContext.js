@@ -74,6 +74,11 @@ const AppContextProvider = ({ children }) => {
 
   const [float, setFloat] = useState(0);
   const [cashSales, setCashSales] = useState(0);
+  const [cashSalesAM, setCashSalesAM] = useState(0);
+  const [cashSalesPrintOut, setCashSalesPrintOut] = useState(0)
+  const cashSalesPM = (cashSalesPrintOut - cashSalesAM).toFixed(2)
+  const [creditCardsTipsAM, setCreditCardsTipsAM] = useState(0)
+  const [creditCardsTipsPrintOut, setCreditCardsTipsPrintOut] = useState(0)
 
 
   const cashTips = (
@@ -389,8 +394,11 @@ const AppContextProvider = ({ children }) => {
     setReceipts(10);
     setFloat(400);
     setCashSales(500);
-  
-    setCreditCardTips(500)
+  setCashSalesAM(500);
+  setCashSalesPrintOut(1000);
+    setCreditCardTips(500);
+  setCreditCardsTipsAM(200);
+  setCreditCardsTipsPrintOut(800);
     setPizzaAdults(10);
     setPizzaChildren(10);
     setPizzaServers(2)
@@ -403,7 +411,8 @@ const AppContextProvider = ({ children }) => {
     setServer3Hours(4);
     setAssistant1Hours(4);
     setInstructor1Adults(10);
-    setInstructor2Children(10)
+    setInstructor2Children(10);
+    setSundaysServerHours(3)
   }
 
 
@@ -438,8 +447,12 @@ const AppContextProvider = ({ children }) => {
       totalCash,
       float, setFloat,
       cashSales, setCashSales,
+      cashSalesAM, setCashSalesAM,
+      cashSalesPrintOut, setCashSalesPrintOut,
+      cashSalesPM,
       cashTips,
       creditCardTips, setCreditCardTips,
+      creditCardsTipsAM, creditCardsTipsPrintOut,
       totalTips,
       pizzaAdults, setPizzaAdults,
       cocktailAdults, setCocktailAdults,
