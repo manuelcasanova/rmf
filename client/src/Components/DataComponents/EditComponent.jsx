@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+//Hooks
+
+import { useState, useContext } from 'react'
 import axios from 'axios';
+import { AppContext } from '../../contexts/AppContext';
+
+
+//Images, icons
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-export default function EditTips({ data, setData, property, endpoint,
+
+
+export default function EditTips({ property, endpoint,
   setShowFulltips,
   setShowAssistanttips,
   setShowAdultspizzaprice,
@@ -16,11 +25,14 @@ export default function EditTips({ data, setData, property, endpoint,
   setShowSundayspizzatip
 }) {
 
+    const { BACKEND, data, setData, color, setColor 
+
+} = useContext(AppContext);
+
 
   const [value, setValue] = useState(data[0][property]);
 
-const BACKEND = 'http://localhost:3500'
-  // const BACKEND = 'https://backend.rmf.manucasanova.com'
+
 
   const editComponent = async (e) => {
     e.preventDefault();

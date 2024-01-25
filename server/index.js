@@ -5,8 +5,15 @@ const app = express();
 const PORT = process.env.PORT || 3500;
 const pool = require('./db');
 
+
+
 // Apply CORS middleware with custom options
  app.use(cors(corsOptions));
+
+// Simple /ping endpoint
+app.get('/ping', (req, res) => {
+  res.status(200).send('pong');
+});
 
 // Parse JSON in incoming requests
 app.use(express.json());

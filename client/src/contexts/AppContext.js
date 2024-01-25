@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const AppContext = createContext();
 
@@ -10,6 +11,22 @@ export const useAppContext = () => {
 const AppContextProvider = ({ children }) => {
   // Common variables for the entire application
 
+  const [color, setColor] = useState("black");
+
+  const [data, setData] = useState([]);
+
+   const BACKEND = 'https://backend.rmf.manucasanova.com'
+ //const BACKEND = 'http://localhost:3500'
+
+ useEffect(() => {
+   axios.get(`${BACKEND}/data`)
+     .then(function (res) {
+
+       setData([...res.data])
+
+     })
+ }, [])
+
 
   const fullTips = 100
   const assistantTips = 40
@@ -20,6 +37,7 @@ const AppContextProvider = ({ children }) => {
   const pizzaTipsPercent = 10
   const kitchenTipsPercent = 30
   const frontTipsPercent = 70
+  const sundaysPizzaTip = 5
 
   const [toggle, setToggle] = useState(false);
   const [showData, setShowData] = useState(false)
@@ -71,15 +89,17 @@ const AppContextProvider = ({ children }) => {
   const [pizzaChildren, setPizzaChildren] = useState(0)
   const [fieldTrip, setFieldTrip] = useState(0)
   const [pizzaServers, setPizzaServers] = useState(0)
+  const [sundaysServerHours, setSundaysServerHours] = useState(0)
   const pizzaTips =
-    (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100)
-    +
-    (parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100)
-    +
-    (parseFloat(cocktailAdults) * adultsCocktailPrice * pizzaTipsPercent / 100)
-    +
-    (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
-
+  (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100)
+  +
+  parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100
+  +
+  (parseFloat(cocktailAdults) * adultsCocktailPrice * pizzaTipsPercent / 100)
+  +
+  (parseFloat(sundaysServerHours) * sundaysPizzaTip)
+  +
+  (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
   const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
   const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
   const frontTips = (tipsAfterPizzaParty * frontTipsPercent / 100).toFixed(2);
@@ -369,6 +389,7 @@ const AppContextProvider = ({ children }) => {
     setReceipts(10);
     setFloat(400);
     setCashSales(500);
+  
     setCreditCardTips(500)
     setPizzaAdults(10);
     setPizzaChildren(10);
@@ -388,6 +409,10 @@ const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{
+      BACKEND,
+      data, setData,
+      color, setColor,
+      showData, setShowData,
       fullTips,
       assistantTips,
       kidsPizzaPrice,
@@ -422,6 +447,7 @@ const AppContextProvider = ({ children }) => {
       fieldTrip, setFieldTrip,
       pizzaServers,
       pizzaTips,
+      sundaysPizzaTip,
       tipsAfterPizzaParty,
       kitchenTips,
       frontTips,
@@ -465,6 +491,7 @@ const AppContextProvider = ({ children }) => {
       assistant1Name, setAssistant1Name,
       assistant2Name, setAssistant2Name,
       assistant3Name, setAssistant3Name,
+      sundaysServerHours, setSundaysServerHours,
       instructor1Adults, setInstructor1Adults,
       instructor2Adults, setInstructor2Adults,
       instructor3Adults, setInstructor3Adults,
