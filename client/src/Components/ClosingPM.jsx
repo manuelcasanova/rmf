@@ -102,7 +102,7 @@ export default function ClosingPM() {
     sundaysServerHours, setSundaysServerHours,
 
     // Total Hours, Tips Per Hour, and Rounding
-    totalHours, tipsPerHour, roundToTwo,
+    totalHours, roundToTwo,
 
     // Instructor Information
     instructors,

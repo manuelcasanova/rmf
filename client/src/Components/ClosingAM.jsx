@@ -32,7 +32,9 @@ export default function ClosingAM() {
     // Tips
     fullTips, assistantTips,
     pizzaTips, tipsAfterPizzaParty,
-    kitchenTips, frontTips,
+    kitchenTips, frontTips, 
+    totalTipsAM, cashTips, 
+    creditCardTips, setCreditCardTips,
 
     // Prices
     kidsPizzaPrice, adultsPizzaPrice,
@@ -54,10 +56,6 @@ export default function ClosingAM() {
     cash, cashCount, cashCounted, setCashCounted,
     receipts, setReceipts, totalCash,
     float, setFloat, cashSales, setCashSales,
- 
-
-    // Tips 
-    totalTipsAM, cashTips, creditCardTips, setCreditCardTips,
 
     // Information
     totalCashInfo, totalHoursInfo,
@@ -93,6 +91,7 @@ export default function ClosingAM() {
     assistant1Name, setAssistant1Name,
     assistant2Name, setAssistant2Name,
     assistant3Name, setAssistant3Name,
+
 
     // Total Hours, Tips Per Hour, and Rounding
     totalHours, tipsPerHour, roundToTwo,
