@@ -22,11 +22,105 @@ import Navbar from './SubComponents/Navbar';
 export default function ClosingAM() {
 
 
-  const { BACKEND, data, setData, color, setColor, fullTips, assistantTips, kidsPizzaPrice, adultsPizzaPrice, adultsCocktailPrice, fieldTripPrice, pizzaTipsPercent, kitchenTipsPercent, frontTipsPercent, toggle, setToggle, showData, setShowData, handleToggle, hundred, setHundred, fifty, setFifty, twenty, setTwenty, ten, setTen, five, setFive, two, setTwo, one, setOne, quarter, setQuarter, cash, cashCounted, setCashCounted, receipts, setReceipts, totalCash, float, setFloat, cashSales, setCashSales, cashTips, creditCardTips, setCreditCardTips, totalTipsAM, pizzaAdults, setPizzaAdults, cocktailAdults, setCocktailAdults, pizzaChildren, setPizzaChildren, fieldTrip, setFieldTrip, pizzaServers, pizzaTips, tipsAfterPizzaParty, kitchenTips, frontTips, totalCashInfo, setTotalCashInfo, totalHoursInfo, setTotalHoursInfo, cashTipsInfo, setCashTipsInfo, cashSalesInfo, setCashSalesInfo, creditCardTipsInfo, setCreditCardTipsInfo, newFloatInfo, setNewFloatInfo, pizzaParties, setPizzaParties, supportServerInfo, setSupportServerInfo, cashCount, setCashCount, summary, setSummary, instructors, setInstructors, redLine, setRedLine, showTotalCashInfo, showTotalHoursInfo, showCashSalesInfo, showCashTipsInfo, showCreditCardTipsInfo, showNewFloatInfo, showPizzaParties, showCashCount, showSupportServerInfo, showSummary, showInstructors, showRedLine, server1Hours, setServer1Hours, server2Hours, setServer2Hours, server3Hours, setServer3Hours, server4Hours, setServer4Hours, server5Hours, setServer5Hours, server1Name, setServer1Name, server2Name, setServer2Name, server3Name, setServer3Name, server4Name, setServer4Name, server5Name, setServer5Name, assistant1Hours, setAssistant1Hours, assistant2Hours, setAssistant2Hours, assistant3Hours, setAssistant3Hours, assistant1Name, setAssistant1Name, assistant2Name, setAssistant2Name, assistant3Name, setAssistant3Name, instructor1Adults, setInstructor1Adults, instructor2Adults, setInstructor2Adults, instructor3Adults, setInstructor3Adults, instructor1Cocktail, setInstructor1Cocktail, instructor2Cocktail, setInstructor2Cocktail, instructor3Cocktail, setInstructor3Cocktail, instructor1Children, setInstructor1Children, instructor2Children, setInstructor2Children, instructor3Children, setInstructor3Children, instructor1FieldTrip, setInstructor1FieldTrip, instructor2FieldTrip, setInstructor2FieldTrip, instructor3FieldTrip, setInstructor3FieldTrip, totalInstructor1, totalInstructor2, totalInstructor3, totalInstructors, totalHours, tipsPerHour, roundToTwo, clearAll, clearServers, clearInstructors, test
+  const {
+    // Data
+    data, setData,
 
-} = useContext(AppContext);
+    // Color
+    color, setColor,
 
-// console.log("data am", data)
+    // Tips
+    fullTips, assistantTips,
+    pizzaTips, tipsAfterPizzaParty,
+    kitchenTips, frontTips,
+
+    // Prices
+    kidsPizzaPrice, adultsPizzaPrice,
+    adultsCocktailPrice, fieldTripPrice,
+
+    // Percentages
+    pizzaTipsPercent,
+
+    // Toggle and Visibility
+    toggle, showData, setShowData,
+
+    // Currency Denominations
+    hundred, setHundred, fifty, setFifty,
+    twenty, setTwenty, ten, setTen,
+    five, setFive, two, setTwo,
+    one, setOne, quarter, setQuarter,
+
+    // Cash
+    cash, cashCount, cashCounted, setCashCounted,
+    receipts, setReceipts, totalCash,
+    float, setFloat, cashSales, setCashSales,
+ 
+
+    // Tips 
+    totalTipsAM, cashTips, creditCardTips, setCreditCardTips,
+
+    // Information
+    totalCashInfo, totalHoursInfo,
+    cashTipsInfo, cashSalesInfo, creditCardTipsInfo,
+    newFloatInfo, supportServerInfo,
+
+
+    // Party numbers
+    pizzaParties, pizzaAdults, setPizzaAdults, cocktailAdults, setCocktailAdults, pizzaChildren, setPizzaChildren, fieldTrip, setFieldTrip,
+
+
+    // Summary
+    summary,
+
+    // Red Line and Display Toggle
+    redLine, showTotalCashInfo, showTotalHoursInfo,
+    showCashSalesInfo, showCashTipsInfo,
+    showCreditCardTipsInfo, showNewFloatInfo,
+    showPizzaParties, showCashCount,
+    showSummary, showInstructors, showRedLine,
+
+    // Server Hours and Names
+    server1Hours, setServer1Hours, server2Hours, setServer2Hours,
+    server3Hours, setServer3Hours, server4Hours, setServer4Hours,
+    server5Hours, setServer5Hours, server1Name, setServer1Name,
+    server2Name, setServer2Name, server3Name, setServer3Name,
+    server4Name, setServer4Name, server5Name, setServer5Name,
+
+    // Assistant Hours and Names
+    assistant1Hours, setAssistant1Hours,
+    assistant2Hours, setAssistant2Hours,
+    assistant3Hours, setAssistant3Hours,
+    assistant1Name, setAssistant1Name,
+    assistant2Name, setAssistant2Name,
+    assistant3Name, setAssistant3Name,
+
+    // Total Hours, Tips Per Hour, and Rounding
+    totalHours, tipsPerHour, roundToTwo,
+
+    // Instructor Information
+    instructors,
+    instructor1Adults, setInstructor1Adults,
+    instructor2Adults, setInstructor2Adults,
+    instructor3Adults, setInstructor3Adults,
+    instructor1Cocktail, setInstructor1Cocktail,
+    instructor2Cocktail, setInstructor2Cocktail,
+    instructor3Cocktail, setInstructor3Cocktail,
+    instructor1Children, setInstructor1Children,
+    instructor2Children, setInstructor2Children,
+    instructor3Children, setInstructor3Children,
+    instructor1FieldTrip, setInstructor1FieldTrip,
+    instructor2FieldTrip, setInstructor2FieldTrip,
+    instructor3FieldTrip, setInstructor3FieldTrip,
+
+    // Total Instructors
+    totalInstructor1, totalInstructor2,
+    totalInstructor3, totalInstructors,
+
+    // Clear Functions and Test
+    clearAll, clearServers, test
+  } = useContext(AppContext);
+
+  // console.log("data am", data)
 
   const componentRef = useRef();
 
@@ -46,7 +140,7 @@ export default function ClosingAM() {
 
           {showData && <DataComponent data={data} setData={setData} />}
           <div className='title'>Shift</div>
-          <Link to='/pm'><AmButton/></Link>
+          <Link to='/pm'><AmButton /></Link>
 
           <div className='clear-all-div'>
             <button className="clear-all" onClick={clearAll}>Clear all</button>
@@ -70,8 +164,8 @@ export default function ClosingAM() {
                 <div className='inline'>
                   <label className='inline-label-small'>100 $</label>
                   <input type="number" className='cash-input-small' value={hundred} onChange={(e) => setHundred(e.target.value)}
-                    onClick={(e) => setHundred("")}
-                    onFocus={(e) => setHundred("")}
+                    onClick={() => setHundred("")}
+                    onFocus={() => setHundred("")}
                   ></input>
                   <label className='inline-label-small'>{hundred * 100} $</label>
 
@@ -80,8 +174,8 @@ export default function ClosingAM() {
                 <div className='inline'>
                   <label className='inline-label-small'>50 $</label>
                   <input type="number" className='cash-input-small' value={fifty} onChange={(e) => setFifty(e.target.value)}
-                    onClick={(e) => setFifty("")}
-                    onFocus={(e) => setFifty("")}
+                    onClick={() => setFifty("")}
+                    onFocus={() => setFifty("")}
                   ></input>
                   <label className='inline-label-small'>{fifty * 50} $</label>
 
@@ -90,8 +184,8 @@ export default function ClosingAM() {
                 <div className='inline'>
                   <label className='inline-label-small'>20 $</label>
                   <input type="number" className='cash-input-small' value={twenty} onChange={(e) => setTwenty(e.target.value)}
-                    onClick={(e) => setTwenty("")}
-                    onFocus={(e) => setTwenty("")}
+                    onClick={() => setTwenty("")}
+                    onFocus={() => setTwenty("")}
                   ></input>
                   <label className='inline-label-small'>{twenty * 20} $</label>
 
@@ -100,8 +194,8 @@ export default function ClosingAM() {
                 <div className='inline'>
                   <label className='inline-label-small'>10 $</label>
                   <input type="number" className='cash-input-small' value={ten} onChange={(e) => setTen(e.target.value)}
-                    onClick={(e) => setTen("")}
-                    onFocus={(e) => setTen("")}
+                    onClick={() => setTen("")}
+                    onFocus={() => setTen("")}
                   ></input>
                   <label className='inline-label-small'>{ten * 10} $</label>
 
@@ -110,8 +204,8 @@ export default function ClosingAM() {
                 <div className='inline'>
                   <label className='inline-label-small'>5 $</label>
                   <input type="number" className='cash-input-small' value={five} onChange={(e) => setFive(e.target.value)}
-                    onClick={(e) => setFive("")}
-                    onFocus={(e) => setFive("")}
+                    onClick={() => setFive("")}
+                    onFocus={() => setFive("")}
                   ></input>
                   <label className='inline-label-small'>{five * 5} $</label>
 
@@ -120,8 +214,8 @@ export default function ClosingAM() {
                 <div className='inline'>
                   <label className='inline-label-small'>2 $</label>
                   <input type="number" className='cash-input-small' value={two} onChange={(e) => setTwo(e.target.value)}
-                    onClick={(e) => setTwo("")}
-                    onFocus={(e) => setTwo("")}
+                    onClick={() => setTwo("")}
+                    onFocus={() => setTwo("")}
                   ></input>
                   <label className='inline-label-small'>{two * 2} $</label>
 
@@ -130,8 +224,8 @@ export default function ClosingAM() {
                 <div className='inline'>
                   <label className='inline-label-small'>1 $</label>
                   <input type="number" className='cash-input-small' value={one} onChange={(e) => setOne(e.target.value)}
-                    onClick={(e) => setOne("")}
-                    onFocus={(e) => setOne("")}
+                    onClick={() => setOne("")}
+                    onFocus={() => setOne("")}
                   ></input>
                   <label className='inline-label-small'>{one * 1} $</label>
 
@@ -140,8 +234,8 @@ export default function ClosingAM() {
                 <div className='inline'>
                   <label className='inline-label-small'>.25 c</label>
                   <input type="number" className='cash-input-small' value={quarter} onChange={(e) => setQuarter(e.target.value)}
-                    onClick={(e) => setQuarter("")}
-                    onFocus={(e) => setQuarter("")}
+                    onClick={() => setQuarter("")}
+                    onFocus={() => setQuarter("")}
                   ></input>
                   <label className='inline-label-small'>{quarter * 0.25} $</label>
 
@@ -154,7 +248,7 @@ export default function ClosingAM() {
 
           {<div className='clear-all-div'>
             <button className="clear-all" onClick={test}>Set an example</button>
-          </div>} 
+          </div>}
 
 
 
@@ -165,8 +259,8 @@ export default function ClosingAM() {
               <div className='inline'>
                 <label className='inline-label'>Cash counted</label>
                 <input type="number" className='money-input' value={cashCounted} onChange={(e) => setCashCounted(e.target.value)}
-                  onClick={(e) => setCashCounted("")}
-                  onFocus={(e) => setCashCounted("")}
+                  onClick={() => setCashCounted("")}
+                  onFocus={() => setCashCounted("")}
                 ></input>
               </div>
             )}
@@ -185,8 +279,8 @@ export default function ClosingAM() {
 
             <div className='inline'>
               <label className='inline-label'>Receipts</label>
-              <input type="number" className='money-input' value={receipts} onChange={(e) => setReceipts(e.target.value)} onClick={(e) => setReceipts("")}
-                onFocus={(e) => setReceipts("")}></input>
+              <input type="number" className='money-input' value={receipts} onChange={(e) => setReceipts(e.target.value)} onClick={() => setReceipts("")}
+                onFocus={() => setReceipts("")}></input>
             </div>
 
             <div className='inline'>
@@ -204,16 +298,16 @@ export default function ClosingAM() {
             <div className='inline'>
               <label className='inline-label'>Float</label>
               <input type="number" className='money-input' value={float} onChange={(e) => setFloat(e.target.value)}
-                onClick={(e) => setFloat("")}
-                onFocus={(e) => setFloat("")}></input>
+                onClick={() => setFloat("")}
+                onFocus={() => setFloat("")}></input>
             </div>
 
             <div className='inline'>
               <label className='inline-label'>Cash sales<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashSalesInfo}>i</div></label>
 
               <input type="number" className='money-input' value={cashSales} onChange={(e) => setCashSales(e.target.value)}
-                onClick={(e) => setCashSales("")}
-                onFocus={(e) => setCashSales("")}
+                onClick={() => setCashSales("")}
+                onFocus={() => setCashSales("")}
               ></input>
             </div>
 
@@ -233,8 +327,8 @@ export default function ClosingAM() {
 
             <div className='inline'>
               <label className='inline-label'>Credit card tips<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardTipsInfo}>i</div></label>
-              <input type="number" className='money-input' value={creditCardTips} onChange={(e) => setCreditCardTips(e.target.value)} onClick={(e) => setCreditCardTips("")}
-                onFocus={(e) => setCreditCardTips("")}></input>
+              <input type="number" className='money-input' value={creditCardTips} onChange={(e) => setCreditCardTips(e.target.value)} onClick={() => setCreditCardTips("")}
+                onFocus={() => setCreditCardTips("")}></input>
             </div>
 
             {creditCardTipsInfo && <div className='info-message'>Tips paid on print out</div>}
@@ -274,26 +368,26 @@ export default function ClosingAM() {
 
             <div className='inline'>
               <label className='inline-label'>Pizza party adults</label>
-              <input type="number" className='pizza-input' value={pizzaAdults} onChange={(e) => setPizzaAdults(e.target.value)} onClick={(e) => setPizzaAdults("")}
-                onFocus={(e) => setPizzaAdults("")}></input>
+              <input type="number" className='pizza-input' value={pizzaAdults} onChange={(e) => setPizzaAdults(e.target.value)} onClick={() => setPizzaAdults("")}
+                onFocus={() => setPizzaAdults("")}></input>
             </div>
 
             <div className='inline'>
               <label className='inline-label'>Cocktail making adults</label>
-              <input type="number" className='pizza-input' value={cocktailAdults} onChange={(e) => setCocktailAdults(e.target.value)} onClick={(e) => setCocktailAdults("")}
-                onFocus={(e) => setCocktailAdults("")}></input>
+              <input type="number" className='pizza-input' value={cocktailAdults} onChange={(e) => setCocktailAdults(e.target.value)} onClick={() => setCocktailAdults("")}
+                onFocus={() => setCocktailAdults("")}></input>
             </div>
 
             <div className='inline'>
               <label className='inline-label'>Pizza party children</label>
-              <input type="number" className='pizza-input' value={pizzaChildren} onChange={(e) => setPizzaChildren(e.target.value)} onClick={(e) => setPizzaChildren("")}
-                onFocus={(e) => setPizzaChildren("")}></input>
+              <input type="number" className='pizza-input' value={pizzaChildren} onChange={(e) => setPizzaChildren(e.target.value)} onClick={() => setPizzaChildren("")}
+                onFocus={() => setPizzaChildren("")}></input>
             </div>
 
             <div className='inline'>
               <label className='inline-label'>Field Trip</label>
-              <input type="number" className='pizza-input' value={fieldTrip} onChange={(e) => setFieldTrip(e.target.value)} onClick={(e) => setFieldTrip("")}
-                onFocus={(e) => setFieldTrip("")}></input>
+              <input type="number" className='pizza-input' value={fieldTrip} onChange={(e) => setFieldTrip(e.target.value)} onClick={() => setFieldTrip("")}
+                onFocus={() => setFieldTrip("")}></input>
             </div>
 
             {/* HERE */}
@@ -377,8 +471,8 @@ export default function ClosingAM() {
 
             <div className='server'>
               <input type="text" required value={server1Name} placeholder="Name" className="thirty-three input-width nameinput server-name-width" onChange={(e) => setServer1Name(e.target.value)}></input>
-              <input type="number" value={(server1Hours)} className="thirty-three input-width nameinput" onChange={(e) => setServer1Hours(e.target.value)} onClick={(e) => setServer1Hours("")}
-                onFocus={(e) => setServer1Hours("")}></input>
+              <input type="number" value={(server1Hours)} className="thirty-three input-width nameinput" onChange={(e) => setServer1Hours(e.target.value)} onClick={() => setServer1Hours("")}
+                onFocus={() => setServer1Hours("")}></input>
               <div className="thirty-three">{frontTips !== 0 && server1Hours !== "" && (parseFloat(server1Hours) * fullTips / 100).toFixed(2)}</div>
               <div className="thirty-three">{frontTips !== 0 && server1Hours !== "" && server1Hours > 0 && (frontTips / totalHours * server1Hours).toFixed(2)}</div>
             </div>
@@ -386,32 +480,32 @@ export default function ClosingAM() {
 
             <div className='server'>
               <input value={server2Name} placeholder="Name" className="thirty-three server-name-width nameinput" onChange={(e) => setServer2Name(e.target.value)}></input>
-              <input type="number" value={server2Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer2Hours(e.target.value)} onClick={(e) => setServer2Hours("")}
-                onFocus={(e) => setServer2Hours("")}></input>
+              <input type="number" value={server2Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer2Hours(e.target.value)} onClick={() => setServer2Hours("")}
+                onFocus={() => setServer2Hours("")}></input>
               <div className="thirty-three">{frontTips !== 0 && server2Hours !== "" && (parseFloat(server2Hours) * fullTips / 100).toFixed(2)}</div>
               <div className="thirty-three">{frontTips !== 0 && server2Hours !== "" && server1Hours > 0 && (frontTips / totalHours * server2Hours).toFixed(2)}</div>
             </div>
 
             <div className='server'>
               <input value={server3Name} placeholder="Name" className="thirty-three server-name-width nameinput" onChange={(e) => setServer3Name(e.target.value)}></input>
-              <input type="number" value={server3Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer3Hours(e.target.value)} onClick={(e) => setServer3Hours("")}
-                onFocus={(e) => setServer3Hours("")}></input>
+              <input type="number" value={server3Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer3Hours(e.target.value)} onClick={() => setServer3Hours("")}
+                onFocus={() => setServer3Hours("")}></input>
               <div className="thirty-three">{frontTips !== 0 && server3Hours !== "" && (parseFloat(server3Hours) * fullTips / 100).toFixed(2)}</div>
               <div className="thirty-three">{frontTips !== 0 && server3Hours !== "" && server1Hours > 0 && (frontTips / totalHours * server3Hours).toFixed(2)}</div>
             </div>
 
             <div className='server'>
               <input value={server4Name} placeholder="Name" className="thirty-three server-name-width  nameinput" onChange={(e) => setServer4Name(e.target.value)}></input>
-              <input type="number" value={server4Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer4Hours(e.target.value)} onClick={(e) => setServer4Hours("")}
-                onFocus={(e) => setServer4Hours("")}></input>
+              <input type="number" value={server4Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer4Hours(e.target.value)} onClick={() => setServer4Hours("")}
+                onFocus={() => setServer4Hours("")}></input>
               <div className="thirty-three">{frontTips !== 0 && server4Hours !== "" && (parseFloat(server4Hours) * fullTips / 100).toFixed(2)}</div>
               <div className="thirty-three">{frontTips !== 0 && server4Hours !== "" && server1Hours > 0 && (frontTips / totalHours * server4Hours).toFixed(2)}</div>
             </div>
 
             <div className='server'>
               <input value={server5Name} placeholder="Name" className="thirty-three server-name-width nameinput" onChange={(e) => setServer5Name(e.target.value)}></input>
-              <input type="number" value={server5Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer5Hours(e.target.value)} onClick={(e) => setServer5Hours("")}
-                onFocus={(e) => setServer5Hours("")}></input>
+              <input type="number" value={server5Hours} className="thirty-three input-width nameinput" onChange={(e) => setServer5Hours(e.target.value)} onClick={() => setServer5Hours("")}
+                onFocus={() => setServer5Hours("")}></input>
               <div className="thirty-three">{frontTips !== 0 && server5Hours !== "" && (parseFloat(server5Hours) * fullTips / 100).toFixed(2)}</div>
               <div className="thirty-three">{frontTips !== 0 && server5Hours !== "" && server1Hours > 0 && (frontTips / totalHours * server5Hours).toFixed(2)}</div>
             </div>
@@ -426,21 +520,21 @@ export default function ClosingAM() {
 
             <div className='server'>
               <input value={assistant1Name} placeholder="Name" className="thirty-three server-name-width  nameinput" onChange={(e) => setAssistant1Name(e.target.value)}></input>
-              <input type="number" value={assistant1Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant1Hours(e.target.value)} onFocus={(e) => setAssistant1Hours("")} onClick={(e) => setAssistant1Hours("")}></input>
+              <input type="number" value={assistant1Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant1Hours(e.target.value)} onFocus={() => setAssistant1Hours("")} onClick={() => setAssistant1Hours("")}></input>
               <div className="thirty-three">{frontTips !== 0 && assistant1Hours !== "" && (parseFloat(assistant1Hours) * assistantTips / 100).toFixed(2)}</div>
               <div className="thirty-three">{frontTips !== 0 && assistant1Hours !== "" && server1Hours > 0 && (frontTips / totalHours * assistant1Hours * assistantTips / 100).toFixed(2)}</div>
             </div>
 
             <div className='server'>
               <input value={assistant2Name} placeholder="Name" className="thirty-three server-name-width nameinput" onChange={(e) => setAssistant2Name(e.target.value)}></input>
-              <input type="number" value={assistant2Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant2Hours(e.target.value)} onFocus={(e) => setAssistant2Hours("")} onClick={(e) => setAssistant2Hours("")}></input>
+              <input type="number" value={assistant2Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant2Hours(e.target.value)} onFocus={() => setAssistant2Hours("")} onClick={() => setAssistant2Hours("")}></input>
               <div className="thirty-three">{frontTips !== 0 && assistant2Hours !== "" && (parseFloat(assistant2Hours) * assistantTips / 100).toFixed(2)}</div>
               <div className="thirty-three">{frontTips !== 0 && assistant2Hours !== "" && server1Hours > 0 && (frontTips / totalHours * assistant2Hours * assistantTips / 100).toFixed(2)}</div>
             </div>
 
             <div className='server'>
               <input value={assistant3Name} placeholder="Name" className="thirty-three server-name-width nameinput" onChange={(e) => setAssistant3Name(e.target.value)}></input>
-              <input type="number" value={assistant3Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant3Hours(e.target.value)} onFocus={(e) => setAssistant3Hours("")} onClick={(e) => setAssistant1Hours("")}></input>
+              <input type="number" value={assistant3Hours} className="thirty-three input-width nameinput" onChange={(e) => setAssistant3Hours(e.target.value)} onFocus={() => setAssistant3Hours("")} onClick={() => setAssistant1Hours("")}></input>
               <div className="thirty-three">{frontTips !== 0 && assistant3Hours !== "" && (parseFloat(assistant3Hours) * assistantTips / 100).toFixed(2)}</div>
               <div className="thirty-three">{frontTips !== 0 && assistant3Hours !== "" && server1Hours > 0 && (frontTips / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}</div>
             </div>
@@ -534,28 +628,28 @@ export default function ClosingAM() {
                   <div className='instructor-detail'>
 
                     <div>Adults:</div>
-                    <input type="number" value={instructor1Adults} className="instructor-detail-input" onChange={(e) => setInstructor1Adults(e.target.value)} onFocus={(e) => setInstructor1Adults("")} onClick={(e) => setInstructor1Adults("")}></input>
+                    <input type="number" value={instructor1Adults} className="instructor-detail-input" onChange={(e) => setInstructor1Adults(e.target.value)} onFocus={() => setInstructor1Adults("")} onClick={() => setInstructor1Adults("")}></input>
                     <div >{frontTips !== 0 && instructor1Adults !== "" && (parseFloat(instructor1Adults) * adultsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 
                   <div className='instructor-detail'>
 
                     <div>Cocktail:</div>
-                    <input type="number" value={instructor1Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor1Cocktail(e.target.value)} onFocus={(e) => setInstructor1Cocktail("")} onClick={(e) => setInstructor1Cocktail("")}></input>
+                    <input type="number" value={instructor1Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor1Cocktail(e.target.value)} onFocus={() => setInstructor1Cocktail("")} onClick={() => setInstructor1Cocktail("")}></input>
                     <div >{frontTips !== 0 && instructor1Cocktail !== "" && (parseFloat(instructor1Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 
                   <div className='instructor-detail'>
 
                     <div>Children:</div>
-                    <input type="number" value={instructor1Children} className="instructor-detail-input" onChange={(e) => setInstructor1Children(e.target.value)} onFocus={(e) => setInstructor1Children("")} onClick={(e) => setInstructor1Children("")}></input>
+                    <input type="number" value={instructor1Children} className="instructor-detail-input" onChange={(e) => setInstructor1Children(e.target.value)} onFocus={() => setInstructor1Children("")} onClick={() => setInstructor1Children("")}></input>
                     <div >{frontTips !== 0 && instructor1Children !== "" && (parseFloat(instructor1Children) * kidsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 
                   <div className='instructor-detail'>
 
                     <div>Field Trip:</div>
-                    <input type="number" value={instructor1FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor1FieldTrip(e.target.value)} onFocus={(e) => setInstructor1FieldTrip("")} onClick={(e) => setInstructor1FieldTrip("")}></input>
+                    <input type="number" value={instructor1FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor1FieldTrip(e.target.value)} onFocus={() => setInstructor1FieldTrip("")} onClick={() => setInstructor1FieldTrip("")}></input>
                     <div >{frontTips !== 0 && instructor1FieldTrip !== "" && (parseFloat(instructor1FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 
@@ -577,28 +671,28 @@ export default function ClosingAM() {
                   <div className='instructor-detail'>
 
                     <div>Adults:</div>
-                    <input type="number" value={instructor2Adults} className="instructor-detail-input" onChange={(e) => setInstructor2Adults(e.target.value)} onFocus={(e) => setInstructor2Adults("")} onClick={(e) => setInstructor2Adults("")}></input>
+                    <input type="number" value={instructor2Adults} className="instructor-detail-input" onChange={(e) => setInstructor2Adults(e.target.value)} onFocus={() => setInstructor2Adults("")} onClick={() => setInstructor2Adults("")}></input>
                     <div >{frontTips !== 0 && instructor2Adults !== "" && (parseFloat(instructor2Adults) * adultsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 
                   <div className='instructor-detail'>
 
                     <div>Cocktail:</div>
-                    <input type="number" value={instructor2Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor2Cocktail(e.target.value)} onFocus={(e) => setInstructor2Cocktail("")} onClick={(e) => setInstructor2Cocktail("")}></input>
+                    <input type="number" value={instructor2Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor2Cocktail(e.target.value)} onFocus={() => setInstructor2Cocktail("")} onClick={() => setInstructor2Cocktail("")}></input>
                     <div >{frontTips !== 0 && instructor2Cocktail !== "" && (parseFloat(instructor2Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 
                   <div className='instructor-detail'>
 
                     <div>Children:</div>
-                    <input type="number" value={instructor2Children} className="instructor-detail-input" onChange={(e) => setInstructor2Children(e.target.value)} onFocus={(e) => setInstructor2Children("")} onClick={(e) => setInstructor2Children("")}></input>
+                    <input type="number" value={instructor2Children} className="instructor-detail-input" onChange={(e) => setInstructor2Children(e.target.value)} onFocus={() => setInstructor2Children("")} onClick={() => setInstructor2Children("")}></input>
                     <div >{frontTips !== 0 && instructor2Children !== "" && (parseFloat(instructor2Children) * kidsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 
                   <div className='instructor-detail'>
 
                     <div>Field Trip:</div>
-                    <input type="number" value={instructor2FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor2FieldTrip(e.target.value)} onFocus={(e) => setInstructor2FieldTrip("")} onClick={(e) => setInstructor2FieldTrip("")}></input>
+                    <input type="number" value={instructor2FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor2FieldTrip(e.target.value)} onFocus={() => setInstructor2FieldTrip("")} onClick={() => setInstructor2FieldTrip("")}></input>
                     <div >{frontTips !== 0 && instructor2FieldTrip !== "" && (parseFloat(instructor2FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 
@@ -620,28 +714,28 @@ export default function ClosingAM() {
                   <div className='instructor-detail'>
 
                     <div>Adults:</div>
-                    <input type="number" value={instructor3Adults} className="instructor-detail-input" onChange={(e) => setInstructor3Adults(e.target.value)} onFocus={(e) => setInstructor3Adults("")} onClick={(e) => setInstructor3Adults("")}></input>
+                    <input type="number" value={instructor3Adults} className="instructor-detail-input" onChange={(e) => setInstructor3Adults(e.target.value)} onFocus={() => setInstructor3Adults("")} onClick={() => setInstructor3Adults("")}></input>
                     <div >{frontTips !== 0 && instructor3Adults !== "" && (parseFloat(instructor3Adults) * adultsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 
                   <div className='instructor-detail'>
 
                     <div>Cocktail:</div>
-                    <input type="number" value={instructor3Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor3Cocktail(e.target.value)} onFocus={(e) => setInstructor3Cocktail("")} onClick={(e) => setInstructor3Cocktail("")}></input>
+                    <input type="number" value={instructor3Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor3Cocktail(e.target.value)} onFocus={() => setInstructor3Cocktail("")} onClick={() => setInstructor3Cocktail("")}></input>
                     <div >{frontTips !== 0 && instructor3Cocktail !== "" && (parseFloat(instructor3Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 
                   <div className='instructor-detail'>
 
                     <div>Children:</div>
-                    <input type="number" value={instructor3Children} className="instructor-detail-input" onChange={(e) => setInstructor3Children(e.target.value)} onFocus={(e) => setInstructor3Children("")} onClick={(e) => setInstructor3Children("")}></input>
+                    <input type="number" value={instructor3Children} className="instructor-detail-input" onChange={(e) => setInstructor3Children(e.target.value)} onFocus={() => setInstructor3Children("")} onClick={() => setInstructor3Children("")}></input>
                     <div >{frontTips !== 0 && instructor3Children !== "" && (parseFloat(instructor3Children) * kidsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 
                   <div className='instructor-detail'>
 
                     <div>Field Trip:</div>
-                    <input type="number" value={instructor3FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor3FieldTrip(e.target.value)} onFocus={(e) => setInstructor3FieldTrip("")} onClick={(e) => setInstructor3FieldTrip("")}></input>
+                    <input type="number" value={instructor3FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor3FieldTrip(e.target.value)} onFocus={() => setInstructor3FieldTrip("")} onClick={() => setInstructor3FieldTrip("")}></input>
                     <div >{frontTips !== 0 && instructor3FieldTrip !== "" && (parseFloat(instructor3FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
                   </div>
 

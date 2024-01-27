@@ -46,6 +46,9 @@ const AppContextProvider = ({ children }) => {
     setToggle(prev => !prev)
   }
 
+  const roundToTwo = (num) => {
+    return +(Math.round(num + "e+2") + "e-2");
+  }
 
 
   const [hundred, setHundred] = useState(0);
@@ -87,8 +90,16 @@ const AppContextProvider = ({ children }) => {
       : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSales) - parseFloat(float)).toFixed(2)
   );
 
+  const cashTipsPM = (
+    cash > 0
+      ? (parseFloat(cash) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
+      : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
+  );
+
+
   const [creditCardTips, setCreditCardTips] = useState(0)
   const totalTips = parseFloat(cashTips) + parseFloat(creditCardTips)
+  const totalTipsPM = roundToTwo((roundToTwo(cashTips) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))
   const [pizzaAdults, setPizzaAdults] = useState(0)
   const [cocktailAdults, setCocktailAdults] = useState(0)
   const [pizzaChildren, setPizzaChildren] = useState(0)
@@ -106,8 +117,11 @@ const AppContextProvider = ({ children }) => {
   +
   (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
   const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
+  const tipsAfterPizzaPartyPM = (totalTipsPM - pizzaTips).toFixed(2)
   const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
+  const kitchenTipsPM = (tipsAfterPizzaPartyPM * kitchenTipsPercent / 100).toFixed(2);
   const frontTips = (tipsAfterPizzaParty * frontTipsPercent / 100).toFixed(2);
+  const frontTipsPM = (tipsAfterPizzaPartyPM * frontTipsPercent / 100).toFixed(2);
 
 
   const [totalCashInfo, setTotalCashInfo] = useState(false)
@@ -282,9 +296,16 @@ const AppContextProvider = ({ children }) => {
     }
   }
 
-  const roundToTwo = (num) => {
-    return +(Math.round(num + "e+2") + "e-2");
+
+  const tipsPerHourPM = () => {
+    if (isNaN(frontTipsPM / totalHours)) {
+      return 0
+    } else {
+      return frontTipsPM / totalHours
+    }
   }
+
+
 
 
   const clearAll = () => {
@@ -450,10 +471,11 @@ const AppContextProvider = ({ children }) => {
       cashSalesAM, setCashSalesAM,
       cashSalesPrintOut, setCashSalesPrintOut,
       cashSalesPM,
-      cashTips,
+      cashTips, cashTipsPM,
       creditCardTips, setCreditCardTips,
       creditCardsTipsAM, creditCardsTipsPrintOut,
       totalTips,
+      totalTipsPM,
       pizzaAdults, setPizzaAdults,
       cocktailAdults, setCocktailAdults,
       pizzaChildren, setPizzaChildren,
@@ -462,8 +484,11 @@ const AppContextProvider = ({ children }) => {
       pizzaTips,
       sundaysPizzaTip,
       tipsAfterPizzaParty,
+      tipsAfterPizzaPartyPM,
       kitchenTips,
+      kitchenTipsPM,
       frontTips,
+      frontTipsPM,
       totalCashInfo, setTotalCashInfo,
       totalHoursInfo, setTotalHoursInfo,
       cashSalesInfo, setCashSalesInfo,
@@ -523,6 +548,7 @@ const AppContextProvider = ({ children }) => {
       totalInstructors,
       totalHours,
       tipsPerHour,
+      tipsPerHourPM, 
       roundToTwo,
       clearAll,
       clearServers,

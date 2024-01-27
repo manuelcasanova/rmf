@@ -48,7 +48,7 @@ export default function DataComponent({ data, setData }) {
   };
 
   // Function to generate common data line structure
-  const generateDataLine = (label, value, show, handleToggle, property, endpoint, data, setData) => (
+  const generateDataLine = (label, value, show, handleToggle, property, data, setData) => (
     <div>
       <div className="data-line">
         <div className="data-left">{label}</div>
@@ -78,7 +78,6 @@ export default function DataComponent({ data, setData }) {
           data={data}
           setData={setData}
           property={property}
-          endpoint={endpoint}
           setShowFulltips={setShowFulltips}
           setShowAssistanttips={setShowAssistanttips}
           setShowAdultspizzaprice={setShowAdultspizzaprice}

@@ -12,7 +12,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 
 
-export default function EditTips({ property, endpoint,
+export default function EditTips({ property,
   setShowFulltips,
   setShowAssistanttips,
   setShowAdultspizzaprice,
