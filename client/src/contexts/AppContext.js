@@ -107,6 +107,7 @@ const AppContextProvider = ({ children }) => {
   const [pizzaServers, setPizzaServers] = useState(0)
   const [sundaysServerHours, setSundaysServerHours] = useState(0)
   const pizzaTips =
+  
   (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100)
   +
   parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100
@@ -116,6 +117,7 @@ const AppContextProvider = ({ children }) => {
   (parseFloat(sundaysServerHours) * sundaysPizzaTip)
   +
   (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+
   const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
   const tipsAfterPizzaPartyPM = (totalTipsPM - pizzaTips).toFixed(2)
   const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
@@ -205,7 +207,7 @@ const AppContextProvider = ({ children }) => {
   const showInstructors = () => {
     // e.preventDefault();
     setInstructors(prev => !prev)
-    clearInstructors()
+    // clearInstructors()
   }
 
   const showRedLine = () => {
@@ -420,8 +422,10 @@ const AppContextProvider = ({ children }) => {
     setCreditCardTips(500);
   setCreditCardsTipsAM(200);
   setCreditCardsTipsPrintOut(800);
-    setPizzaAdults(10);
-    setPizzaChildren(10);
+    setPizzaAdults(7);
+    setPizzaChildren(9);
+    setCocktailAdults(9);
+    setFieldTrip(9);
     setPizzaServers(2)
     setServer1Name("Manuel");
     setServer2Name("Dom");
@@ -433,7 +437,21 @@ const AppContextProvider = ({ children }) => {
     setAssistant1Hours(4);
     setInstructor1Adults(10);
     setInstructor2Children(10);
-    setSundaysServerHours(3)
+    // setSundaysServerHours(3)
+    setInstructor1Adults(0);
+    setInstructor1Children(3);
+    setInstructor1Cocktail(3);
+    setInstructor1FieldTrip(3);
+    setInstructor2Adults(3);
+    setInstructor2Children(3);
+    setInstructor2Cocktail(3);
+    setInstructor2FieldTrip(3);
+    setInstructor3Adults(3);
+    setInstructor3Children(3);
+    setInstructor3Cocktail(3);
+    setInstructor3FieldTrip(3);
+    showInstructors(prev => !prev)
+    showPizzaParties(prev => !prev)
   }
 
 
