@@ -17,7 +17,8 @@ import DataComponent from './DataComponents/DataComponent';
 import Colors from "./SubComponents/Colors";
 import Navbar from "./SubComponents/Navbar";
 import SupportCashCounting from './SubComponents/SupportCashCounting';
-
+import SetExample from './SubComponents/SetExample';
+import ClearAll from "./SubComponents/ClearAll";
 
 
 export default function ClosingPM() {
@@ -30,13 +31,13 @@ export default function ClosingPM() {
     color, setColor,
 
     // Tips
-    fullTips, assistantTips, 
-    pizzaTips, 
+    fullTips, assistantTips,
+    pizzaTips,
     creditCardsTipsAM, setCreditCardsTipsAM,
-    creditCardsTipsPrintOut, setCreditCardsTipsPrintOut, 
-    cashTipsPM, tipsAfterPizzaPartyPM, 
-    totalTipsPM, kitchenTipsPM, 
-    frontTipsPM, sundaysPizzaTip, 
+    creditCardsTipsPrintOut, setCreditCardsTipsPrintOut,
+    cashTipsPM, tipsAfterPizzaPartyPM,
+    totalTipsPM, kitchenTipsPM,
+    frontTipsPM, sundaysPizzaTip,
     tipsPerHourPM,
 
     // Prices
@@ -60,7 +61,7 @@ export default function ClosingPM() {
     receipts, setReceipts, totalCash,
     float, setFloat, cashSalesAM, setCashSalesAM,
     cashSalesPM, cashSalesPrintOut, setCashSalesPrintOut, cashCount,
-  
+
 
     // Information
     totalCashInfo, totalHoursInfo, cashTipsInfo, newFloatInfo, pizzaParties, supportServerInfo,
@@ -220,16 +221,11 @@ export default function ClosingPM() {
           <div className='title'>Shift</div>
           <Link to='/am'>< PmButton /></Link>
 
-          <div className='clear-all-div'>
-            <button className="clear-all" onClick={clearAll}>Clear all</button>
-          </div>
+          <ClearAll />
 
-<SupportCashCounting />
-   
+          <SupportCashCounting />
 
-          {<div className='clear-all-div'>
-            <button className="clear-all" onClick={test}>Set an example</button>
-          </div>}
+          <SetExample />
 
           <section className='money'>
 

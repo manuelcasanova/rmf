@@ -17,6 +17,8 @@ import DataComponent from './DataComponents/DataComponent';
 import Colors from './SubComponents/Colors';
 import Navbar from './SubComponents/Navbar';
 import SupportCashCounting from './SubComponents/SupportCashCounting';
+import SetExample from './SubComponents/SetExample';
+import ClearAll from './SubComponents/ClearAll';
 
 
 
@@ -33,8 +35,8 @@ export default function ClosingAM() {
     // Tips
     fullTips, assistantTips,
     pizzaTips, tipsAfterPizzaParty,
-    kitchenTips, frontTips, 
-    totalTipsAM, cashTips, 
+    kitchenTips, frontTips,
+    totalTipsAM, cashTips,
     creditCardTips, setCreditCardTips,
 
     // Prices
@@ -129,26 +131,17 @@ export default function ClosingAM() {
         <Colors color={color} setColor={setColor} />
         <Navbar showData={showData} setShowData={setShowData} />
 
-
-
         <div className='seccion'>
 
           {showData && <DataComponent data={data} setData={setData} />}
           <div className='title'>Shift</div>
           <Link to='/pm'><AmButton /></Link>
 
-          <div className='clear-all-div'>
-            <button className="clear-all" onClick={clearAll}>Clear all</button>
-          </div>
+          <ClearAll />
 
+          <SupportCashCounting />
 
-         <SupportCashCounting />
-
-          {<div className='clear-all-div'>
-            <button className="clear-all" onClick={test}>Set an example</button>
-          </div>}
-
-
+          <SetExample />
 
           <section className='money'>
 

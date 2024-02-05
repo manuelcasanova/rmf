@@ -451,7 +451,7 @@ const AppContextProvider = ({ children }) => {
     setInstructor3Cocktail(3);
     setInstructor3FieldTrip(3);
     showInstructors(prev => !prev)
-    showPizzaParties(prev => !prev)
+    setPizzaParties(prev => !prev)
   }
 
 
