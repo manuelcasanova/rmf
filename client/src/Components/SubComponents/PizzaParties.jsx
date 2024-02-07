@@ -3,6 +3,10 @@
 import { useContext } from "react";
 import { AppContext } from '../../contexts/AppContext';
 
+//Components
+
+import ErrorMessageInputField from "./ErrorMessageInputField";
+
 export default function PizzaParties() {
 
   const {
@@ -81,7 +85,7 @@ export default function PizzaParties() {
         <div className='pizza-input'>{!isNaN(pizzaTips) && pizzaTips.toFixed(2)}</div>
         {isNaN(pizzaTips)
           &&
-          <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+          <ErrorMessageInputField />
         }
       </div>
 
@@ -97,7 +101,7 @@ export default function PizzaParties() {
         <div className='tips-input'>{!isNaN(pizzaTips) && tipsAfterPizzaParty}</div>
         {isNaN(pizzaTips)
           &&
-          <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+          <ErrorMessageInputField />
         }
       </div>
 

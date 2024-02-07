@@ -4,14 +4,8 @@ import { useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom"
 import { AppContext } from '../contexts/AppContext';
 
-//Libraries
-
-import ReactToPrint from 'react-to-print'
-
-
 //Components
 
-import Now from './SubComponents/Now';
 import PmButton from "./SubComponents/PmButton";
 import DataComponent from './DataComponents/DataComponent';
 import Colors from "./SubComponents/Colors";
@@ -25,7 +19,7 @@ import PizzaParties from "./SubComponents/PizzaParties";
 import TipsDistribution from "./SubComponents/TipsDistribution";
 import Totals from "./SubComponents/Totals";
 import Summary from "./SubComponents/Summary";
-
+import ErrorMessageInputField from "./SubComponents/ErrorMessageInputField";
 
 export default function ClosingPM() {
 
@@ -135,18 +129,6 @@ export default function ClosingPM() {
     // Clear Functions and Test
     clearAll, clearServers, test
   } = useContext(AppContext);
-
-
-
-
-  const now = Now()
-
-
-
-
-
-
-
 
 
 
@@ -265,7 +247,7 @@ export default function ClosingPM() {
               <div className='money-input'>{!isNaN(cashSalesPM) && cashSalesPM}</div>
               {isNaN(cashSalesPM)
                 &&
-                <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+                <ErrorMessageInputField />
               }
             </div>
 
@@ -277,7 +259,7 @@ export default function ClosingPM() {
               <div className='money-input'>{!isNaN(cashTipsPM) && cashTipsPM}</div>
               {isNaN(cashTipsPM)
                 &&
-                <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+                <ErrorMessageInputField />
               }
             </div>
 
@@ -306,7 +288,7 @@ export default function ClosingPM() {
               <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && roundToTwo((roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))}</div>
               {!creditCardsTipsAM && creditCardsTipsAM !== 0
                 &&
-                <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+                <ErrorMessageInputField />
               }
             </div>
 
@@ -319,7 +301,7 @@ export default function ClosingPM() {
               <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && totalTipsPM}</div>
               {!creditCardsTipsPrintOut && creditCardsTipsPrintOut !== 0
                 &&
-                <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+                <ErrorMessageInputField />
               }
             </div>
 

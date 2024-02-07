@@ -4,6 +4,10 @@ import { useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom"
 import { AppContext } from '../../contexts/AppContext';
 
+//Components
+
+import ErrorMessageInputField from "./ErrorMessageInputField";
+
 export default function Totals() {
 
   const {
@@ -50,7 +54,7 @@ export default function Totals() {
 
         {isNaN(totalHours.toFixed(2))
           &&
-          <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+          <ErrorMessageInputField />
         }
 
 

@@ -4,6 +4,10 @@ import { useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom"
 import { AppContext } from '../../contexts/AppContext';
 
+//Components
+
+import ErrorMessageInputField from "./ErrorMessageInputField";
+
 export default function TipsDistribution() {
 
   const {
@@ -88,7 +92,7 @@ export default function TipsDistribution() {
           <div className='tips-input'>{!isNaN(pizzaTips) && kitchenTips}</div>
           {isNaN(pizzaTips)
             &&
-            <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+            <ErrorMessageInputField />
           }
         </div>
 
@@ -98,7 +102,7 @@ export default function TipsDistribution() {
           <div className='tips-input'>{!isNaN(pizzaTips) && frontTips}</div>
           {isNaN(pizzaTips)
             &&
-            <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+            <ErrorMessageInputField />
           }
         </div>
 

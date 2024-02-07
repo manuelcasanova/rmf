@@ -20,6 +20,7 @@ import PizzaParties from './SubComponents/PizzaParties';
 import TipsDistribution from './SubComponents/TipsDistribution';
 import Totals from './SubComponents/Totals';
 import Summary from './SubComponents/Summary';
+import ErrorMessageInputField from './SubComponents/ErrorMessageInputField';
 
 
 
@@ -140,7 +141,7 @@ export default function ClosingAM() {
               <div className='money-input'>{!isNaN(cashTips) && cashTips}</div>
               {isNaN(cashTips)
                 &&
-                <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+                <ErrorMessageInputField />
               }
             </div>
 
@@ -168,7 +169,7 @@ export default function ClosingAM() {
               {!creditCardTips && creditCardTips !== 0
 
                 &&
-                <div className='error-message'>Input fields cannot be empty. Set to 0 if necessary.</div>
+                <ErrorMessageInputField />
               }
             </div>
 
