@@ -15,9 +15,17 @@ function App() {
     <AppContextProvider>
       <Router>
         <Routes>
-          <Route exact path="/" element={<FrontPage />}></Route>
+          {/* <Route exact path="/" element={<FrontPage />}></Route> */}
+
+          
+          <Route exact path="/" element={<ClosingAM />}></Route>
           <Route exact path="/am" element={<ClosingAM />}></Route>
           <Route exact path="/pm" element={<ClosingPM />}></Route>
+
+{/* Old URL shared with staff */}
+
+          <Route exact path="/closing" element={<ClosingAM />}></Route>
+
         </Routes>
       </Router>
     </AppContextProvider>
