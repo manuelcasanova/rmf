@@ -7,7 +7,7 @@ import { AppContext } from '../../contexts/AppContext';
 
 import ErrorMessageInputField from "./ErrorMessageInputField";
 
-export default function PizzaParties() {
+export default function PizzaParties({isAM}) {
 
   const {
 
@@ -17,7 +17,7 @@ export default function PizzaParties() {
 
     //Tips 
 
-    pizzaTips, sundaysPizzaTip, tipsAfterPizzaParty,
+    pizzaTips, sundaysPizzaTip, tipsAfterPizzaParty, tipsAfterPizzaPartyPM,
 
     // Party numbers
 
@@ -97,13 +97,21 @@ export default function PizzaParties() {
 
 
       <div className='inline'>
-        <label className='inline-label'>Tips after Pizza party</label>
-        <div className='tips-input'>{!isNaN(pizzaTips) && tipsAfterPizzaParty}</div>
+      
+      
+        <label className='inline-label'>{isAM ? 'AM' : 'PM'} Tips after Pizza party</label>
+
+        <div className='tips-input'>
+      {!isNaN(pizzaTips) && (isAM ? tipsAfterPizzaParty : tipsAfterPizzaPartyPM)}
+    </div>
+
+
         {isNaN(pizzaTips)
           &&
           <ErrorMessageInputField />
         }
       </div>
+
 
     </section>
   )

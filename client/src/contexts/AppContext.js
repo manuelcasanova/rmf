@@ -98,7 +98,7 @@ const AppContextProvider = ({ children }) => {
 
 
   const [creditCardTips, setCreditCardTips] = useState(0)
-  const totalTips = parseFloat(cashTips) + parseFloat(creditCardTips)
+  const totalTips = parseFloat(cashTips) + parseFloat(creditCardsTipsAM)
   const totalTipsPM = roundToTwo((roundToTwo(cashTips) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))
   const [pizzaAdults, setPizzaAdults] = useState(0)
   const [cocktailAdults, setCocktailAdults] = useState(0)

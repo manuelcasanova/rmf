@@ -19,7 +19,7 @@ import PizzaMakingQuestion from './SubComponents/PizzaMakingQuestion';
 import PizzaParties from './SubComponents/PizzaParties';
 import TipsDistribution from './SubComponents/TipsDistribution';
 import Totals from './SubComponents/Totals';
-import Summary from './SubComponents/Summary';
+import SummaryAm from './SubComponents/SummaryAm';
 import ErrorMessageInputField from './SubComponents/ErrorMessageInputField';
 
 
@@ -40,6 +40,7 @@ export default function ClosingAM() {
     kitchenTips, frontTips,
     totalTipsAM, cashTips,
     creditCardTips, setCreditCardTips,
+    creditCardsTipsAM,
 
     // Toggle and Visibility
     toggle, showData, setShowData,
@@ -150,7 +151,7 @@ export default function ClosingAM() {
 
             <div className='inline'>
               <label className='inline-label'>Credit card tips<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardTipsInfo}>i</div></label>
-              <input type="number" className='money-input' value={creditCardTips} onChange={(e) => setCreditCardTips(e.target.value)} onClick={() => setCreditCardTips("")}
+              <input type="number" className='money-input' value={creditCardsTipsAM} onChange={(e) => setCreditCardTips(e.target.value)} onClick={() => setCreditCardTips("")}
                 onFocus={() => setCreditCardTips("")}></input>
             </div>
 
@@ -160,13 +161,13 @@ export default function ClosingAM() {
               <label className='inline-label'>Total tips</label>
               <div className='money-input'>{
 
-                creditCardTips
+                creditCardsTipsAM
 
-                && roundToTwo((roundToTwo(cashTips) + roundToTwo(creditCardTips)))
+                && roundToTwo((roundToTwo(cashTips) + roundToTwo(creditCardsTipsAM)))
 
 
               }</div>
-              {!creditCardTips && creditCardTips !== 0
+              {!creditCardsTipsAM && creditCardsTipsAM !== 0
 
                 &&
                 <ErrorMessageInputField />
@@ -177,13 +178,13 @@ export default function ClosingAM() {
 
           <PizzaMakingQuestion />
 
-          <PizzaParties />
+          <PizzaParties isAM={true}/>
 
           <TipsDistribution />
 
           <Totals />
 
-          <Summary />
+          <SummaryAm />
 
         </div>
 

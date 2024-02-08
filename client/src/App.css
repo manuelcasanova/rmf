@@ -780,6 +780,14 @@ input:checked+.slider:before {
 
 .padding-bottom {
   padding-bottom: 5em;
+ 
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
 
 }
 
@@ -790,12 +798,22 @@ input:checked+.slider:before {
 
 .print-server {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
-.server-details {
-  margin-right: 0.2em;
+.server-details:nth-child(1) {
+  flex: 0 0 40%;
 }
+
+.server-details:nth-child(2) {
+  flex: 0 0 20%;
+}
+
+.server-details:nth-child(3) {
+  flex: 0 0 40%;
+}
+
 
 /* ALL CSS AM */
 

@@ -18,7 +18,7 @@ import PizzaMakingQuestion from "./SubComponents/PizzaMakingQuestion";
 import PizzaParties from "./SubComponents/PizzaParties";
 import TipsDistribution from "./SubComponents/TipsDistribution";
 import Totals from "./SubComponents/Totals";
-import Summary from "./SubComponents/Summary";
+import SummaryPm from "./SubComponents/SummaryPm";
 import ErrorMessageInputField from "./SubComponents/ErrorMessageInputField";
 
 export default function ClosingPM() {
@@ -309,13 +309,13 @@ export default function ClosingPM() {
 
           <PizzaMakingQuestion />
 
-          <PizzaParties />
+          <PizzaParties isAM={false}/>
 
           <TipsDistribution />
 
           <Totals />
 
-          <Summary />
+          <SummaryPm />
 
         </div>
 
