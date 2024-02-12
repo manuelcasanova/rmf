@@ -40,7 +40,7 @@ export default function ClosingAM() {
     kitchenTips, frontTips,
     totalTipsAM, cashTips,
     creditCardTips, setCreditCardTips,
-    creditCardsTipsAM,
+    creditCardsTipsAM, setCreditCardsTipsAM,
 
     // Toggle and Visibility
     toggle, showData, setShowData,
@@ -151,8 +151,8 @@ export default function ClosingAM() {
 
             <div className='inline'>
               <label className='inline-label'>Credit card tips<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardTipsInfo}>i</div></label>
-              <input type="number" className='money-input' value={creditCardsTipsAM} onChange={(e) => setCreditCardTips(e.target.value)} onClick={() => setCreditCardTips("")}
-                onFocus={() => setCreditCardTips("")}></input>
+              <input type="number" className='money-input' value={creditCardsTipsAM} onChange={(e) => setCreditCardsTipsAM(e.target.value)} onClick={() => setCreditCardsTipsAM("")}
+                onFocus={() => setCreditCardsTipsAM("")}></input>
             </div>
 
             {creditCardTipsInfo && <div className='info-message'>Tips paid on print out</div>}
@@ -182,7 +182,7 @@ export default function ClosingAM() {
 
           <TipsDistribution isAM={true}/>
 
-          <Totals isAM={false}/>
+          <Totals isAM={true}/>
 
           <SummaryAm />
 

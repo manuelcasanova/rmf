@@ -99,7 +99,7 @@ const AppContextProvider = ({ children }) => {
 
   const [creditCardTips, setCreditCardTips] = useState(0)
   const totalTips = parseFloat(cashTips) + parseFloat(creditCardsTipsAM)
-  const totalTipsPM = roundToTwo((roundToTwo(cashTips) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))
+  const totalTipsPM = roundToTwo((roundToTwo(cashTipsPM) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))
   const [pizzaAdults, setPizzaAdults] = useState(0)
   const [cocktailAdults, setCocktailAdults] = useState(0)
   const [pizzaChildren, setPizzaChildren] = useState(0)
@@ -122,7 +122,10 @@ const AppContextProvider = ({ children }) => {
   const tipsAfterPizzaPartyPM = (totalTipsPM - pizzaTips).toFixed(2)
   const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
   const kitchenTipsPM = (tipsAfterPizzaPartyPM * kitchenTipsPercent / 100).toFixed(2);
+
   const frontTips = (tipsAfterPizzaParty * frontTipsPercent / 100).toFixed(2);
+
+
   const frontTipsPM = (tipsAfterPizzaPartyPM * frontTipsPercent / 100).toFixed(2);
 
 
@@ -494,7 +497,8 @@ const AppContextProvider = ({ children }) => {
       cashSalesPM,
       cashTips, cashTipsPM,
       creditCardTips, setCreditCardTips,
-      creditCardsTipsAM, creditCardsTipsPrintOut,
+      creditCardsTipsAM, setCreditCardsTipsAM,
+      creditCardsTipsPrintOut, setCreditCardsTipsPrintOut,
       totalTips,
       totalTipsPM,
       pizzaAdults, setPizzaAdults,

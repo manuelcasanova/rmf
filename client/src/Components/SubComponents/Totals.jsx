@@ -91,7 +91,7 @@ export default function Totals({isAM}) {
             
             : 
             
-            (cash > 0 ? (cash - frontTipsPM - pizzaTipsPM) : (cashCounted - frontTipsPM - pizzaTipsPM)).toFixed(2)
+            (cash > 0 ? (cash - frontTipsPM - pizzaTipsPM) : (cashCounted - frontTipsPM - pizzaTips)).toFixed(2)
             
             )
           
