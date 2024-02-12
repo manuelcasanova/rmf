@@ -1,7 +1,6 @@
 //Hooks
 
-import { useState, useRef, useContext } from "react";
-import { Link } from "react-router-dom"
+import { useRef, useContext } from "react";
 import { AppContext } from '../../contexts/AppContext';
 
 //Libraries
@@ -20,98 +19,59 @@ export default function SummaryAm() {
     color,
 
     // Tips
-    fullTips, assistantTips,
+    assistantTips,
     pizzaTips,
-    creditCardsTipsAM, setCreditCardsTipsAM,
-    creditCardsTipsPrintOut, setCreditCardsTipsPrintOut,
-    cashTipsPM, tipsAfterPizzaPartyPM,
-    totalTipsPM, kitchenTipsPM,
-    frontTipsPM, sundaysPizzaTip,
-    tipsPerHourPM,
+    creditCardsTipsAM,
     totalTips,
     cashTips,
     frontTips,
     kitchenTips,
     tipsPerHour,
 
-
-
     // Toggle and Visibility
     toggle,
 
 
     // Cash
-    cash, cashCounted, setCashCounted,
-    receipts, setReceipts, totalCash,
-    float, setFloat, cashSalesAM, setCashSalesAM,
-    cashSalesPM, cashSalesPrintOut, setCashSalesPrintOut, cashCount,
-
-
-    // Information
-    totalCashInfo, totalHoursInfo, cashTipsInfo, newFloatInfo, pizzaParties, supportServerInfo,
-
-    // Party Numbers
-    pizzaAdults, setPizzaAdults,
-    cocktailAdults, setCocktailAdults,
-    pizzaChildren, setPizzaChildren, fieldTrip, setFieldTrip,
+    cash, cashCounted,
+    receipts, totalCash,
+    float, cashSalesAM,
 
     // Summary
     summary,
 
-    // Red Line and Display Toggle
-    redLine, showTotalCashInfo, showTotalHoursInfo,
-    showCashTipsInfo, showNewFloatInfo,
-    showPizzaParties, showCashCount,
-    showSummary, showInstructors, showRedLine,
+    // Display Toggle
+    showSummary,
 
     // Server Hours and Names
-    server1Hours, setServer1Hours,
-    server2Hours, setServer2Hours,
-    server3Hours, setServer3Hours,
-    server4Hours, setServer4Hours,
-    server5Hours, setServer5Hours,
+    server1Hours,
+    server2Hours,
+    server3Hours,
+    server4Hours,
+    server5Hours,
 
-    server1Name, setServer1Name,
-    server2Name, setServer2Name,
-    server3Name, setServer3Name,
-    server4Name, setServer4Name,
-    server5Name, setServer5Name,
+    server1Name,
+    server2Name,
+    server3Name,
+    server4Name,
+    server5Name,
 
     // Assistant Hours and Names
-    assistant1Hours, setAssistant1Hours,
-    assistant2Hours, setAssistant2Hours,
-    assistant3Hours, setAssistant3Hours,
-    assistant1Name, setAssistant1Name,
-    assistant2Name, setAssistant2Name,
-    assistant3Name, setAssistant3Name,
+    assistant1Hours,
+    assistant2Hours,
+    assistant3Hours,
+    assistant1Name,
+    assistant2Name,
+    assistant3Name,
 
-    // Sundays Server Hours
-    sundaysServerHours, setSundaysServerHours,
 
-    // Total Hours, Tips Per Hour, and Rounding
-    totalHours, roundToTwo,
-
-    // Instructor Information
-    instructors,
-    instructor1Adults, setInstructor1Adults,
-    instructor2Adults, setInstructor2Adults,
-    instructor3Adults, setInstructor3Adults,
-    instructor1Cocktail, setInstructor1Cocktail,
-    instructor2Cocktail, setInstructor2Cocktail,
-    instructor3Cocktail, setInstructor3Cocktail,
-    instructor1Children, setInstructor1Children,
-    instructor2Children, setInstructor2Children,
-    instructor3Children, setInstructor3Children,
-    instructor1FieldTrip, setInstructor1FieldTrip,
-    instructor2FieldTrip, setInstructor2FieldTrip,
-    instructor3FieldTrip, setInstructor3FieldTrip,
+    // Total Hours, 
+    totalHours,
 
     // Total Instructors
     totalInstructor1, totalInstructor2,
     totalInstructor3, totalInstructors,
 
-    // Clear Functions and Test
-    clearAll, clearServers, test
 
   } = useContext(AppContext);
 
@@ -218,43 +178,43 @@ export default function SummaryAm() {
                 <div className='server-details'>{(frontTips / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}$</div>
               </div>}
 
-              {parseInt(totalInstructor1) !== 0 && 
-              
-              parseInt(totalInstructors) === parseInt(pizzaTips) &&
-              
-              <div className='print-server'>
-                <div className='server-details'>Instructor 1: </div>
-                <div></div>
-                <div className='server-details'>{totalInstructor1}$</div>
-              </div>}
+              {parseInt(totalInstructor1) !== 0 &&
 
-              {parseInt(totalInstructor2) !== 0 && 
-              
-              parseInt(totalInstructors) === parseInt(pizzaTips) &&
-              
-              <div className='print-server'>
-                <div className='server-details'>Instructor 2: </div>
-                <div></div>
-                <div className='server-details'>{totalInstructor2}$</div>
-              </div>}
+                parseInt(totalInstructors) === parseInt(pizzaTips) &&
 
-              {parseInt(totalInstructor3) !== 0 && 
-              
-              parseInt(totalInstructors) === parseInt(pizzaTips) &&
-              
-              <div className='print-server'>
-                <div className='server-details'>Instructor 3: </div>
-                <div></div>
-                <div className='server-details'>{totalInstructor3}$</div>
-              </div>}
+                <div className='print-server'>
+                  <div className='server-details'>Instructor 1: </div>
+                  <div></div>
+                  <div className='server-details'>{totalInstructor1}$</div>
+                </div>}
+
+              {parseInt(totalInstructor2) !== 0 &&
+
+                parseInt(totalInstructors) === parseInt(pizzaTips) &&
+
+                <div className='print-server'>
+                  <div className='server-details'>Instructor 2: </div>
+                  <div></div>
+                  <div className='server-details'>{totalInstructor2}$</div>
+                </div>}
+
+              {parseInt(totalInstructor3) !== 0 &&
+
+                parseInt(totalInstructors) === parseInt(pizzaTips) &&
+
+                <div className='print-server'>
+                  <div className='server-details'>Instructor 3: </div>
+                  <div></div>
+                  <div className='server-details'>{totalInstructor3}$</div>
+                </div>}
 
               {parseInt(totalInstructors) !== parseInt(pizzaTips) &&
 
-<section className='servers warning-message'>
-  <div className='warning-message'>Warning!! The pizza instructors' total tips and the tips distributed amongst the 3 instructors do not match! The sum of the total tips for the three instructors must match the total pizza instructor tips: {pizzaTips}$. However, the total sum of the tips for the three instructors currently adds to {parseFloat(totalInstructors).toFixed(2)} $.</div>
- 
-</section>
-}
+                <section className='servers warning-message'>
+                  <div className='warning-message'>Warning!! The pizza instructors' total tips and the tips distributed amongst the 3 instructors do not match! The sum of the total tips for the three instructors must match the total pizza instructor tips: {pizzaTips}$. However, the total sum of the tips for the three instructors currently adds to {parseFloat(totalInstructors).toFixed(2)} $.</div>
+
+                </section>
+              }
 
             </div>
 

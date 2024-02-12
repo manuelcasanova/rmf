@@ -20,13 +20,13 @@ export default function SummaryPM() {
     color,
 
     // Tips
-    fullTips, assistantTips,
+    assistantTips,
     pizzaTips,
-    creditCardsTipsAM, setCreditCardsTipsAM,
-    creditCardsTipsPrintOut, setCreditCardsTipsPrintOut,
-    cashTipsPM, tipsAfterPizzaPartyPM,
-    totalTipsPM, kitchenTipsPM,
-    frontTipsPM, sundaysPizzaTip,
+    creditCardsTipsAM, 
+    creditCardsTipsPrintOut,
+    cashTipsPM, 
+     kitchenTipsPM,
+    frontTipsPM, 
     tipsPerHourPM,
 
 
@@ -36,77 +36,46 @@ export default function SummaryPM() {
 
 
     // Cash
-    cash, cashCounted, setCashCounted,
-    receipts, setReceipts, totalCash,
-    float, setFloat, cashSalesAM, setCashSalesAM,
-    cashSalesPM, cashSalesPrintOut, setCashSalesPrintOut, cashCount,
+    cash, cashCounted,
+    receipts, totalCash,
+    float, cashSalesAM,
+    cashSalesPM, cashSalesPrintOut,
 
-
-    // Information
-    totalCashInfo, totalHoursInfo, cashTipsInfo, newFloatInfo, pizzaParties, supportServerInfo,
-
-    // Party Numbers
-    pizzaAdults, setPizzaAdults,
-    cocktailAdults, setCocktailAdults,
-    pizzaChildren, setPizzaChildren, fieldTrip, setFieldTrip,
 
     // Summary
     summary,
 
-    // Red Line and Display Toggle
-    redLine, showTotalCashInfo, showTotalHoursInfo,
-    showCashTipsInfo, showNewFloatInfo,
-    showPizzaParties, showCashCount,
-    showSummary, showInstructors, showRedLine,
+    // Display Toggle
+    showSummary, 
 
     // Server Hours and Names
-    server1Hours, setServer1Hours,
-    server2Hours, setServer2Hours,
-    server3Hours, setServer3Hours,
-    server4Hours, setServer4Hours,
-    server5Hours, setServer5Hours,
+    server1Hours, 
+    server2Hours, 
+    server3Hours, 
+    server4Hours, 
+    server5Hours, 
 
-    server1Name, setServer1Name,
-    server2Name, setServer2Name,
-    server3Name, setServer3Name,
-    server4Name, setServer4Name,
-    server5Name, setServer5Name,
+    server1Name, 
+    server2Name, 
+    server3Name, 
+    server4Name, 
+    server5Name, 
 
     // Assistant Hours and Names
-    assistant1Hours, setAssistant1Hours,
-    assistant2Hours, setAssistant2Hours,
-    assistant3Hours, setAssistant3Hours,
-    assistant1Name, setAssistant1Name,
-    assistant2Name, setAssistant2Name,
-    assistant3Name, setAssistant3Name,
-
-    // Sundays Server Hours
-    sundaysServerHours, setSundaysServerHours,
+    assistant1Hours, 
+    assistant2Hours, 
+    assistant3Hours, 
+    assistant1Name, 
+    assistant2Name, 
+    assistant3Name, 
 
     // Total Hours, Tips Per Hour, and Rounding
     totalHours, roundToTwo,
-
-    // Instructor Information
-    instructors,
-    instructor1Adults, setInstructor1Adults,
-    instructor2Adults, setInstructor2Adults,
-    instructor3Adults, setInstructor3Adults,
-    instructor1Cocktail, setInstructor1Cocktail,
-    instructor2Cocktail, setInstructor2Cocktail,
-    instructor3Cocktail, setInstructor3Cocktail,
-    instructor1Children, setInstructor1Children,
-    instructor2Children, setInstructor2Children,
-    instructor3Children, setInstructor3Children,
-    instructor1FieldTrip, setInstructor1FieldTrip,
-    instructor2FieldTrip, setInstructor2FieldTrip,
-    instructor3FieldTrip, setInstructor3FieldTrip,
 
     // Total Instructors
     totalInstructor1, totalInstructor2,
     totalInstructor3, totalInstructors,
 
-    // Clear Functions and Test
-    clearAll, clearServers, test
 
   } = useContext(AppContext);
 

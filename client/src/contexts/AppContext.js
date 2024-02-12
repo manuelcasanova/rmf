@@ -83,6 +83,7 @@ const AppContextProvider = ({ children }) => {
   const [creditCardsTipsAM, setCreditCardsTipsAM] = useState(0)
   const [creditCardsTipsPrintOut, setCreditCardsTipsPrintOut] = useState(0)
 
+  const [sundaysInfo, setSundaysInfo] = useState(false)
 
   const cashTips = (
     cash > 0
@@ -218,6 +219,11 @@ const AppContextProvider = ({ children }) => {
     setRedLine(prev => !prev)
   }
 
+
+  const showSundaysInfo = (e) => {
+    e.preventDefault();
+    setSundaysInfo(prev => !prev)
+  }
 
 
   const [server1Hours, setServer1Hours] = useState(0);
@@ -538,6 +544,8 @@ const AppContextProvider = ({ children }) => {
       showSummary,
       showInstructors,
       showRedLine,
+      sundaysInfo,
+      showSundaysInfo,
       server1Hours, setServer1Hours,
       server2Hours, setServer2Hours,
       server3Hours, setServer3Hours,

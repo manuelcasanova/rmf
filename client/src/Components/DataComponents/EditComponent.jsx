@@ -25,13 +25,12 @@ export default function EditTips({ property,
   setShowSundayspizzatip
 }) {
 
-    const { BACKEND, data, setData, color, setColor 
+    const { BACKEND, data, setData
 
 } = useContext(AppContext);
 
 
   const [value, setValue] = useState(data[0][property]);
-
 
 
   const editComponent = async (e) => {

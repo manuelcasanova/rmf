@@ -1,6 +1,6 @@
 //Hooks
 
-import { useState, useRef, useContext } from 'react'
+import { useRef, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { AppContext } from '../contexts/AppContext';
 
@@ -35,67 +35,30 @@ export default function ClosingAM() {
     color, setColor,
 
     // Tips
-    fullTips, assistantTips,
-    pizzaTips, tipsAfterPizzaParty,
-    kitchenTips, frontTips,
-    totalTipsAM, cashTips,
-    creditCardTips, setCreditCardTips,
-    creditCardsTipsAM, setCreditCardsTipsAM,
+    cashTips, creditCardsTipsAM, setCreditCardsTipsAM,
 
     // Toggle and Visibility
     toggle, showData, setShowData,
 
-
     // Cash
-    cash, cashCounted,
-    receipts, totalCash,
-    float, cashSales, setCashSales,
+    cashSales, setCashSales,
 
     // Information
-    totalHoursInfo,
     cashTipsInfo, cashSalesInfo, creditCardTipsInfo,
-    newFloatInfo, supportServerInfo,
-
 
     // Summary
     summary,
 
     // Red Line and Display Toggle
-    redLine, showTotalCashInfo, showTotalHoursInfo,
     showCashSalesInfo, showCashTipsInfo,
-    showCreditCardTipsInfo, showNewFloatInfo,
-    showPizzaParties,
-    showSummary, showInstructors, showRedLine,
-
-    // Server Hours and Names
-    server1Hours, setServer1Hours, server2Hours, setServer2Hours,
-    server3Hours, setServer3Hours, server4Hours, setServer4Hours,
-    server5Hours, setServer5Hours, server1Name, setServer1Name,
-    server2Name, setServer2Name, server3Name, setServer3Name,
-    server4Name, setServer4Name, server5Name, setServer5Name,
-
-    // Assistant Hours and Names
-    assistant1Hours, setAssistant1Hours,
-    assistant2Hours, setAssistant2Hours,
-    assistant3Hours, setAssistant3Hours,
-    assistant1Name, setAssistant1Name,
-    assistant2Name, setAssistant2Name,
-    assistant3Name, setAssistant3Name,
+    showCreditCardTipsInfo,
 
 
-    // Total Hours, Tips Per Hour, and Rounding
-    totalHours, tipsPerHour, roundToTwo,
+    // Rounding
+    roundToTwo,
 
-
-    // Total Instructors
-    totalInstructor1, totalInstructor2,
-    totalInstructor3, totalInstructors,
-
-    // Clear Functions and Test
-    clearAll, clearServers, test
   } = useContext(AppContext);
 
-  // console.log("data am", data)
 
   const componentRef = useRef();
 
@@ -178,11 +141,11 @@ export default function ClosingAM() {
 
           <PizzaMakingQuestion />
 
-          <PizzaParties isAM={true}/>
+          <PizzaParties isAM={true} />
 
-          <TipsDistribution isAM={true}/>
+          <TipsDistribution isAM={true} />
 
-          <Totals isAM={true}/>
+          <Totals isAM={true} />
 
           <SummaryAm />
 

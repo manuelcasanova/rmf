@@ -1,7 +1,6 @@
 //Hooks
 
-import { useState, useRef, useContext } from "react";
-import { Link } from "react-router-dom"
+import { useContext } from "react";
 import { AppContext } from '../../contexts/AppContext';
 
 //Components
@@ -135,13 +134,13 @@ export default function TipsDistribution({ isAM }) {
             onFocus={() => setServer1Hours("")}></input>
           <div className="thirty-three">{(isAM ? frontTips : frontTipsPM) !== 0 && server1Hours !== "" && (parseFloat(server1Hours) * fullTips / 100).toFixed(2)}</div>
           <div className="thirty-three">{(isAM ? frontTips : frontTipsPM) !== 0 && server1Hours !== "" && server1Hours > 0 && (
-            
-             
+
+
             (isAM ? frontTips : frontTipsPM)
-            
-            / 
-          
-          totalHours * server1Hours).toFixed(2)}</div>
+
+            /
+
+            totalHours * server1Hours).toFixed(2)}</div>
         </div>
 
         {/* Here */}
@@ -223,40 +222,6 @@ export default function TipsDistribution({ isAM }) {
       </section>
 
 
-
-
-
-
-      {/* <section className={pizzaParties ? '' : 'pizza'}>
-
-
-<div className='pmserv'>
-
-
-  <div className='th margin-top margin-bottom'>
-    <div className='thirty-three'>Pizza making</div>
-    <div className='thirty-three'>Tips</div>
-  </div>
-
-  <div className='server'>
-    <input value={pizzaMaking1Name} onChange={(e) => setPizzaMaking1Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
-    <div className="thirty-three">{pizzaTips !== 0 && (pizzaServers === 1 || pizzaServers === 2 || pizzaServers === 3 || pizzaServers === "1" || pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
-  </div>
-
-  <div className='server'>
-    <input value={pizzaMaking2Name} onChange={(e) => setPizzaMaking2Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
-    <div className="thirty-three">{pizzaTips !== 0 && (pizzaServers === 2 || pizzaServers === 3 || pizzaServers === "2" || pizzaServers === "3") && (pizzaTips / pizzaServers).toFixed(2)}</div>
-  </div>
-
-  <div className='server'>
-    <input value={pizzaMaking3Name} onChange={(e) => setPizzaMaking3Name(e.target.value)} placeholder="Name" className="thirty-three input-width nameinput"></input>
-    <div className="thirty-three">{(pizzaTips !== 0 && (pizzaServers === 3 || pizzaServers === "3")) && (pizzaTips / pizzaServers).toFixed(2)}</div>
-  </div>
-
-</div>
-
-</section> */}
-
       <div className='pizza-making-question'>
 
         {!instructors && <div className='padding-bottom'>
@@ -288,10 +253,6 @@ export default function TipsDistribution({ isAM }) {
 
             <div className='instructor'>
               <div className='instructor-detail'>Instructor 1:</div>
-
-
-
-
 
 
               <div className='instructor-detail'>

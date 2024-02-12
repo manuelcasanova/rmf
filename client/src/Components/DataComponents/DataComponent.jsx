@@ -116,16 +116,6 @@ export default function DataComponent({ data, setData }) {
 
       {generateDataLine("Sundays pizza tips per hour:", data[0]?.sundayspizzatip, showSundayspizzatip, () => handleEditToggle("sundayspizzatip"), "sundayspizzatip", "sundayspizzatip", data, setData)}
 
-
-
-
-
-
-
-
-
-
-
     </div>
   );
 }

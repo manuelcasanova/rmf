@@ -1,6 +1,6 @@
 //Hooks
 
-import { useState, useRef, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom"
 import { AppContext } from '../contexts/AppContext';
 
@@ -31,123 +31,39 @@ export default function ClosingPM() {
     color, setColor,
 
     // Tips
-    fullTips, assistantTips,
-    pizzaTips,
     creditCardsTipsAM, setCreditCardsTipsAM,
     creditCardsTipsPrintOut, setCreditCardsTipsPrintOut,
-    cashTipsPM, tipsAfterPizzaPartyPM,
-    totalTipsPM, kitchenTipsPM,
-    frontTipsPM, sundaysPizzaTip,
-    tipsPerHourPM,
-
-    // Prices
-    kidsPizzaPrice, adultsPizzaPrice,
-    adultsCocktailPrice, fieldTripPrice,
-
-    // Percentages
-    pizzaTipsPercent,
+    cashTipsPM,
+    totalTipsPM,
 
     // Toggle and Visibility
     toggle, showData, setShowData,
 
-    // Currency Denominations
-    hundred, setHundred, fifty, setFifty,
-    twenty, setTwenty, ten, setTen,
-    five, setFive, two, setTwo,
-    one, setOne, quarter, setQuarter,
-
     // Cash
-    cash, cashCounted, setCashCounted,
-    receipts, setReceipts, totalCash,
-    float, setFloat, cashSalesAM, setCashSalesAM,
+    cashSalesAM, setCashSalesAM,
     cashSalesPM, cashSalesPrintOut, setCashSalesPrintOut, cashCount,
 
 
     // Information
-    totalCashInfo, totalHoursInfo, cashTipsInfo, newFloatInfo, pizzaParties, supportServerInfo,
+    cashTipsInfo,
 
-    // Party Numbers
-    pizzaAdults, setPizzaAdults,
-    cocktailAdults, setCocktailAdults,
-    pizzaChildren, setPizzaChildren, fieldTrip, setFieldTrip,
 
-    // Summary
-    summary,
+    // Display Toggle
+    showCashTipsInfo,
 
-    // Red Line and Display Toggle
-    redLine, showTotalCashInfo, showTotalHoursInfo,
-    showCashTipsInfo, showNewFloatInfo,
-    showPizzaParties, showCashCount,
-    showSummary, showInstructors, showRedLine,
 
-    // Server Hours and Names
-    server1Hours, setServer1Hours,
-    server2Hours, setServer2Hours,
-    server3Hours, setServer3Hours,
-    server4Hours, setServer4Hours,
-    server5Hours, setServer5Hours,
+    // Rounding
+    roundToTwo,
 
-    server1Name, setServer1Name,
-    server2Name, setServer2Name,
-    server3Name, setServer3Name,
-    server4Name, setServer4Name,
-    server5Name, setServer5Name,
-
-    // Assistant Hours and Names
-    assistant1Hours, setAssistant1Hours,
-    assistant2Hours, setAssistant2Hours,
-    assistant3Hours, setAssistant3Hours,
-    assistant1Name, setAssistant1Name,
-    assistant2Name, setAssistant2Name,
-    assistant3Name, setAssistant3Name,
-
-    // Sundays Server Hours
-    sundaysServerHours, setSundaysServerHours,
-
-    // Total Hours, Tips Per Hour, and Rounding
-    totalHours, roundToTwo,
-
-    // Instructor Information
-    instructors,
-    instructor1Adults, setInstructor1Adults,
-    instructor2Adults, setInstructor2Adults,
-    instructor3Adults, setInstructor3Adults,
-    instructor1Cocktail, setInstructor1Cocktail,
-    instructor2Cocktail, setInstructor2Cocktail,
-    instructor3Cocktail, setInstructor3Cocktail,
-    instructor1Children, setInstructor1Children,
-    instructor2Children, setInstructor2Children,
-    instructor3Children, setInstructor3Children,
-    instructor1FieldTrip, setInstructor1FieldTrip,
-    instructor2FieldTrip, setInstructor2FieldTrip,
-    instructor3FieldTrip, setInstructor3FieldTrip,
-
-    // Total Instructors
-    totalInstructor1, totalInstructor2,
-    totalInstructor3, totalInstructors,
-
-    // Clear Functions and Test
-    clearAll, clearServers, test
   } = useContext(AppContext);
-
-
 
 
   const [cashSalesAMInfo, setCashSalesAMInfo] = useState(false)
   const [cashSalesPrintOutInfo, setCashSalesPrintOutInfo] = useState(false)
-
   const [creditCardsTipsAMInfo, setCreditCardsTipsAMInfo] = useState(false)
   const [creditCardsTipsPMInfo, setCreditCardsTipsPMInfo] = useState(false)
   const [creditCardsPrintOutInfo, setCreditCardsTipsPrintOutInfo] = useState(false)
-
   const [cashSalesPMInfo, setCashSalesPMInfo] = useState(false)
-
-  const [sundaysInfo, setSundaysInfo] = useState(false)
-
-
-  const [colors, setColors] = useState(false)
-
-
 
   const showCashSalesAMInfo = (e) => {
     e.preventDefault();
@@ -164,7 +80,6 @@ export default function ClosingPM() {
     setCashSalesPMInfo(prev => !prev)
   }
 
-
   const showCreditCardsTipsAMInfo = (e) => {
     e.preventDefault();
     setCreditCardsTipsAMInfo(prev => !prev)
@@ -179,21 +94,6 @@ export default function ClosingPM() {
     e.preventDefault();
     setCreditCardsTipsPMInfo(prev => !prev)
   }
-
-
-
-  const showSundaysInfo = (e) => {
-    e.preventDefault();
-    setSundaysInfo(prev => !prev)
-  }
-
-
-
-
-
-  const componentRef = useRef();
-
-
 
 
   return (
@@ -309,11 +209,11 @@ export default function ClosingPM() {
 
           <PizzaMakingQuestion />
 
-          <PizzaParties isAM={false}/>
+          <PizzaParties isAM={false} />
 
-          <TipsDistribution isAM={false}/>
+          <TipsDistribution isAM={false} />
 
-          <Totals isAM={false}/>
+          <Totals isAM={false} />
 
           <SummaryPm />
 
