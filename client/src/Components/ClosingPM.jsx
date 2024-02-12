@@ -311,7 +311,7 @@ export default function ClosingPM() {
 
           <PizzaParties isAM={false}/>
 
-          <TipsDistribution />
+          <TipsDistribution isAM={false}/>
 
           <Totals />
 
