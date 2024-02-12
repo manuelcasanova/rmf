@@ -217,23 +217,45 @@ export default function SummaryPM() {
                 <div className='server-details'>{(frontTipsPM / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}$</div>
               </div>}
 
-              {parseInt(totalInstructor1) !== 0 && <div className='print-server'>
+              {parseInt(totalInstructor1) !== 0 && 
+              
+              
+              parseInt(totalInstructors) === parseInt(pizzaTips) &&
+              
+              
+              <div className='print-server'>
                 <div className='server-details'>Instructor 1: </div>
                 <div></div>
                 <div className='server-details'>{totalInstructor1}$</div>
               </div>}
 
-              {parseInt(totalInstructor2) !== 0 && <div className='print-server'>
+              {parseInt(totalInstructor2) !== 0 && 
+              
+              parseInt(totalInstructors) === parseInt(pizzaTips) &&
+              
+              <div className='print-server'>
                 <div className='server-details'>Instructor 2: </div>
                 <div></div>
                 <div className='server-details'>{totalInstructor2}$</div>
               </div>}
 
-              {parseInt(totalInstructor3) !== 0 && <div className='print-server'>
+              {parseInt(totalInstructor3) !== 0 && 
+              
+              parseInt(totalInstructors) === parseInt(pizzaTips) &&
+              
+              <div className='print-server'>
                 <div className='server-details'>Instructor 3: </div>
                 <div></div>
                 <div className='server-details'>{totalInstructor3}$</div>
               </div>}
+
+              {parseInt(totalInstructors) !== parseInt(pizzaTips) &&
+
+<section className='servers warning-message'>
+  <div className='warning-message'>Warning!! The pizza instructors' total tips and the tips distributed amongst the 3 instructors do not match! The sum of the total tips for the three instructors must match the total pizza instructor tips: {pizzaTips}$. However, the total sum of the tips for the three instructors currently adds to {parseFloat(totalInstructors).toFixed(2)} $.</div>
+ 
+</section>
+}
 
             </div>
 
