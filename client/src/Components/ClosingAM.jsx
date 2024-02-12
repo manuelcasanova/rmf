@@ -180,7 +180,7 @@ export default function ClosingAM() {
 
           <PizzaParties isAM={true}/>
 
-          <TipsDistribution />
+          <TipsDistribution isAM={true}/>
 
           <Totals />
 
