@@ -182,7 +182,7 @@ export default function ClosingAM() {
 
           <TipsDistribution isAM={true}/>
 
-          <Totals />
+          <Totals isAM={false}/>
 
           <SummaryAm />
 

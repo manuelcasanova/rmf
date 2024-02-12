@@ -313,7 +313,7 @@ export default function ClosingPM() {
 
           <TipsDistribution isAM={false}/>
 
-          <Totals />
+          <Totals isAM={false}/>
 
           <SummaryPm />
 

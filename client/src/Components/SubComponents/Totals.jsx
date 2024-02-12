@@ -8,7 +8,7 @@ import { AppContext } from '../../contexts/AppContext';
 
 import ErrorMessageInputField from "./ErrorMessageInputField";
 
-export default function Totals() {
+export default function Totals({isAM}) {
 
   const {
 
@@ -28,8 +28,11 @@ export default function Totals() {
     //Tips
 
     tipsPerHour, 
+    tipsPerHourPM,
     frontTips,
+    frontTipsPM,
     pizzaTips,
+    pizzaTipsPM,
 
     // Info
 
@@ -65,7 +68,9 @@ export default function Totals() {
 
     <div className='inline'>
       <label className='inline-label'>TIPS per HOUR</label>
-      <div className='tips-input'>{totalHours !== 0 && tipsPerHour().toFixed(2)}</div>
+      <div className='tips-input'>{totalHours !== 0 && 
+      (isAM ? tipsPerHour : tipsPerHourPM)
+      ().toFixed(2)}</div>
     </div>
 
     <div className='inline'>
@@ -79,9 +84,20 @@ export default function Totals() {
           // &&
 
           // (cashCounted - frontTips - pizzaTips).toFixed(2)
-          (cash > 0 ? (cash - frontTips - pizzaTips) : (cashCounted - frontTips - pizzaTips)).toFixed(2)
 
+          (isAM ? 
+            
+            (cash > 0 ? (cash - frontTips - pizzaTips) : (cashCounted - frontTips - pizzaTips)).toFixed(2)
+            
+            : 
+            
+            (cash > 0 ? (cash - frontTipsPM - pizzaTipsPM) : (cashCounted - frontTipsPM - pizzaTipsPM)).toFixed(2)
+            
+            )
+          
+       
 
+          
 
 
         }</div>
