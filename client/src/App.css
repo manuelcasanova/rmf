@@ -971,15 +971,6 @@ input:checked+.slider:before {
 
 /* Toggle button */
 
-body {
-  /* font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f0f0f0; Default light mode background color */
-}
 
 .container {
   position: absolute;
@@ -1011,7 +1002,7 @@ body {
   left: 2px;
   width: 22px;
   height: 22px;
-  background-color: #fff; /* Default toggle button color */
+  background-color: black; /* Default toggle button color */
   border-radius: 50%;
   transition: transform 0.3s;
 }
@@ -1022,14 +1013,7 @@ body {
 
 .toggle-input:checked + .toggle-label:before {
   transform: translateX(24px);
+  background-color: white;
 }
 
-.toggle-text {
-  margin-left: 60px;
-  font-size: 18px;
-  color: #333; /* Default text color */
-}
 
-.toggle-input:checked + .toggle-label ~ .toggle-text {
-  color: #fff; /* Dark mode text color */
-}

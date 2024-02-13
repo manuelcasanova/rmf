@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import brushWhite from "../../images/brush-white.png";
-import brush from "../../images/brush.png";
 
 function DarkLightToggle({ color, setColor }) {
   const [isDarkMode, setIsDarkMode] = useState(false);

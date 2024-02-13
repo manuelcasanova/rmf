@@ -114,7 +114,7 @@ export default function ClosingPM() {
 
           <SupportCashCounting />
 
-          <SetExample />
+          {/* <SetExample /> */}
 
           <section className='money'>
 

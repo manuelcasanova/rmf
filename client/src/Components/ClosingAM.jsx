@@ -68,7 +68,6 @@ export default function ClosingAM() {
     <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
       <div className={toggle ? `App day-mode ${color}` : `App night-mode ${color}`}>
 
-
         <Colors color={color} setColor={setColor} />
 
         <Navbar showData={showData} setShowData={setShowData} />
@@ -83,7 +82,7 @@ export default function ClosingAM() {
 
           <SupportCashCounting />
 
-          <SetExample />
+          {/* <SetExample /> */}
 
           <section className='money'>
 
