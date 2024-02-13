@@ -11,7 +11,7 @@ import DataComponent from './DataComponents/DataComponent';
 import Colors from "./SubComponents/Colors";
 import Navbar from "./SubComponents/Navbar";
 import SupportCashCounting from './SubComponents/SupportCashCounting';
-// import SetExample from './SubComponents/SetExample';
+import SetExample from './SubComponents/SetExample';
 import ClearAll from "./SubComponents/ClearAll";
 import TotalCash from "./SubComponents/TotalCash";
 import PizzaMakingQuestion from "./SubComponents/PizzaMakingQuestion";
@@ -114,7 +114,7 @@ export default function ClosingPM() {
 
           <SupportCashCounting />
 
-          {/* <SetExample /> */}
+          <SetExample />
 
           <section className='money'>
 
