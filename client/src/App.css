@@ -845,13 +845,16 @@ input:checked+.slider:before {
   justify-content: space-between;
   flex-wrap: nowrap;
 }
+.server-details {
+  margin: 0.25rem 0rem 0.25rem 0rem;
+}
 
 .server-details:nth-child(1) {
-  flex: 0 0 40%;
+  flex: 0 0 45%;
 }
 
 .server-details:nth-child(2) {
-  flex: 0 0 20%;
+  flex: 0 0 15%;
 }
 
 .server-details:nth-child(3) {
