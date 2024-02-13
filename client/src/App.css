@@ -12,8 +12,6 @@
   background-color: var(--color0);
 }
 
-
-
 .App {
   height: 100%;
   display: flex;
@@ -22,25 +20,6 @@
   /* padding-bottom: 5em; */
   justify-content: center;
   align-items: center;
-
-}
-
-.night-mode {
-  --color0: black;
-  --color1: white;
-  --color2: rgb(246, 233, 233);
-}
-
-.day-mode {
-  --color0: white;
-  --color1: black;
-  --color2: rgb(43, 43, 43);
-}
-
-.top-toggle {
-  display: flex;
-  flex-direction: row;
-
 }
 
 .seccion {
@@ -56,58 +35,17 @@
   font-size: 2em;
 }
 
-/* 
-.subtitle {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  text-align: center;
-  font-size: 1.5em;
-  text-decoration: none;
-} */
-
 .navbar {
-  /* display: flex;
-  flex-direction: row;
-  text-align: center;
-  height: 3em; */
-
-
-  /* margin-top: 2%;
+  position: absolute;
+  top: 2%;
+  right: 2%;
   display: flex;
-  width: 100%;
-  justify-content: flex-end */
-
-
-position: absolute;
-top: 2%;
-right: 2%;
-display: flex;
-
-}
-
-.navbar-day {
-
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.navbar-night {
-
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
 }
 
 /* Basic styling for the data component container */
 .data-component {
   width: 100%;
-  max-width: 300px; /* Adjust the max-width as needed */
+  max-width: 300px;
   margin: 0 auto;
 }
 
@@ -118,12 +56,14 @@ display: flex;
   align-items: center;
   margin-bottom: 10px;
   padding: 8px;
-  border: 1px solid #ddd; /* Border for each data line */
+  border: 1px solid #ddd;
+  /* Border for each data line */
   border-radius: 4px;
 }
 
 .data-line .fa-check {
-  color: #28a745 !important; /* Green color for the check icon */
+  color: #28a745 !important;
+  /* Green color for the check icon */
   cursor: pointer;
   margin-left: 5px;
 }
@@ -135,8 +75,10 @@ display: flex;
 
 /* Styling for the right side of the data line */
 .data-right {
-  color: #007bff; /* Adjust the color as needed */
-  margin-left: auto; /* Align to the right end */
+  color: #007bff;
+  /* Adjust the color as needed */
+  margin-left: auto;
+  /* Align to the right end */
   margin-right: 10px;
 }
 
@@ -144,7 +86,8 @@ display: flex;
 .edit-input {
   width: 40%;
   padding: 8px;
-  border: 1px solid #ddd; /* Border for the input */
+  border: 1px solid #ddd;
+  /* Border for the input */
   border-radius: 4px;
   font-size: 14px;
   margin-bottom: 5px;
@@ -156,24 +99,6 @@ display: flex;
   display: flex;
   justify-content: center;
 }
-
-/* .clear-all {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: var(--color0);
-  background-color: var(--color1);
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-  margin: 1em;
-} */
 
 .clear-all {
   display: inline-block;
@@ -198,18 +123,14 @@ display: flex;
 
 .clear-all-x {
   width: 50px;
-  /* Adjust the width and height for the desired circle size */
   height: 50px;
   border-radius: 50%;
   font-weight: 900;
   border: 2px solid transparent;
   color: red;
   text-align: center;
-  /* line-height: 50px; */
   font-size: 100%;
-  /* Adjust the font size */
   padding: 5px;
-  /* Add padding for some spacing between text and border */
   cursor: pointer;
 }
 
@@ -222,7 +143,6 @@ display: flex;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
 
 section {
   margin: 1em;
@@ -242,7 +162,6 @@ label {
   justify-content: space-between;
   width: 90%;
 }
-
 
 .margin-top {
   margin-top: 2em;
@@ -267,20 +186,14 @@ label {
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* white-space: nowrap; */
 }
 
 .inline-label-small {
-  /* width: 50%; */
   margin: 0 0.5em 0 0.5em;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  /* white-space: nowrap; */
 }
-
-
 
 .money-input,
 .pizza-input,
@@ -294,17 +207,15 @@ label {
   justify-content: center;
   font-weight: bold;
   font-size: 16px;
-  /* border: 2px solid #3498db; */
   border-radius: 5px;
   outline: none;
-  /* transition: border-color 0.3s; */
 }
 
 .money-input:focus,
 .pizza-input:focus,
 .tips-input:focus {
   border-color: #2980b9;
-} 
+}
 
 .cash-input {
   margin: 0.5em auto;
@@ -323,19 +234,6 @@ label {
   width: 50%;
 }
 
-/* .cash-input-small {
-  margin: 0.5em auto;
-  padding: 0.5em;
-  height: 1em;
-  width: 5em;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 400;
-  font-size: 1.5em;
-} */
-
 .cash-input-small {
   margin: 0.5em auto;
   height: 40px;
@@ -346,41 +244,17 @@ label {
   justify-content: center;
   font-weight: bold;
   font-size: 16px;
-  /* border: 2px solid #3498db; */
   border-radius: 5px;
   outline: none;
-  /* transition: border-color 0.3s; */
 }
 
 .cash-input-small:focus {
   border-color: #2980b9;
-} 
-
-
-.white-font {
-  color: white;
 }
 
-/* .nameinput {
-  
+.nameinput {
   height: 3em;
   font-size: 120%;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
- 
-  border-radius: 5px;
-  outline: none;
-} */
-
- .nameinput {
-
-  
-  height: 3em;
-  font-size: 120%;
-
   font-weight: bold;
   font-size: 16px;
   border-radius: 5px;
@@ -389,12 +263,10 @@ label {
 
 .nameinput:focus {
   border-color: #2980b9;
-}  
-
+}
 
 .inline {
   display: flex;
-
 }
 
 .info {
@@ -436,22 +308,15 @@ label {
 input {
   background-color: var(--color1);
   color: var(--color0)
-    /* height: 3em; */
 }
-
-.money {}
 
 .pizza {
   display: none;
 }
 
 .pmserv {
-
   margin-left: 2em;
 }
-
-
-.tips {}
 
 .servers {
   display: flex;
@@ -466,14 +331,9 @@ input {
 
 .instructor {
   margin-bottom: 1em;
-
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* Center items horizontally */
 }
-
-
 
 .instructor-detail {
   display: flex;
@@ -487,19 +347,15 @@ input {
   text-align: center;
   width: 33.33%;
   /* Each div (or input) takes up 33.33% of the container width */
-
-  
-    font-weight: bold;
-    font-size: 16px;
-    border-radius: 5px;
-    outline: none;
-  
-
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 5px;
+  outline: none;
 }
 
 .instructor-detail-input:focus {
   border-color: #2980b9;
-}  
+}
 
 
 .instructor-detail>div:first-child {
@@ -512,13 +368,10 @@ input {
 
 .warning-message {
   background-color: #ffc107;
-  /* Yellow background */
   color: #721c24;
-  /* Dark red text color */
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ffc107;
-  /* Border color matches the background */
   border-radius: 10px;
   font-weight: bold;
   text-align: center;
@@ -526,23 +379,13 @@ input {
 
 .warning-message-inside {
   background-color: #ffc107;
-  /* Yellow background */
   color: #721c24;
-  /* Dark red text color */
   margin: 0.5em 0 0.5em 0;
 }
 
 .error-message {
-  /* background-color: var(--color0);;
-  color: var(--color1);;
-  padding: 1em;
-  font-size: small; */
-
-
-
   font-style: italic;
   text-align: center;
-  /* margin: 0 2em 0 2em; */
   border: 3px double var(--color1);
   border-radius: 20px;
   padding: 1em;
@@ -553,9 +396,7 @@ input {
   align-items: center;
 }
 
-
 /* Toggle button */
-
 
 .container {
   position: absolute;
@@ -575,7 +416,7 @@ input {
   left: 0;
   width: 50px;
   height: 26px;
-  background-color: #ccc; /* Default toggle color */
+  background-color: #ccc;
   border-radius: 13px;
   transition: background-color 0.3s;
 }
@@ -587,16 +428,16 @@ input {
   left: 2px;
   width: 22px;
   height: 22px;
-  background-color: black; /* Default toggle button color */
+  background-color: black;
   border-radius: 50%;
   transition: transform 0.3s;
 }
 
-.toggle-input:checked + .toggle-label {
-  background-color: #333; /* Dark mode toggle color */
+.toggle-input:checked+.toggle-label {
+  background-color: #333;
 }
 
-.toggle-input:checked + .toggle-label:before {
+.toggle-input:checked+.toggle-label:before {
   transform: translateX(24px);
   background-color: white;
 }
@@ -608,14 +449,15 @@ input {
   margin-top: 1em;
 }
 
-.card > div {
-  flex: 1; /* Each card takes up equal space */
-  margin-right: 10px; /* Adjust spacing between cards */
+.card>div {
+  flex: 1;
+  /* Each card takes up equal space */
+  margin-right: 10px;
 }
 
 .cardtotal {
-  margin-right: 0; /* Remove margin for the last card */
-  
+  margin-right: 0;
+  /* Remove margin for the last card */
 }
 
 .total-card {
@@ -631,8 +473,6 @@ input {
   border: 2px solid #3498db;
   border-radius: 5px;
 }
-
-
 
 @media only screen and (max-width: 400px) {
   * {
@@ -654,31 +494,19 @@ input {
 
 .color-toggle {
   position: absolute;
-  /* right: 90%; */
   top: 2%;
   left: 5%;
 
 }
 
 .brush {
-  /* position: absolute;
-  top: 2%;
-  left: 5%; */
   position: absolute;
   top: 2%;
   left: 5%;
   width: 20px;
-
-
 }
 
 .colors {
-  /* position: absolute;
-  display: flex;
-  flex-direction: row;
-  top: 1%;
-  left: 12% */
-
   position: absolute;
   top: 6%;
   left: 5%
@@ -687,7 +515,6 @@ input {
 .color {
   border-radius: 50px;
   margin-top: 1em;
-  /* margin-left: 1em; */
   width: 1.5em;
   height: 1.5em;
 }
@@ -727,19 +554,15 @@ input {
 }
 
 .yes-no {
-  /* background-color: red; */
   display: flex;
   flex-direction: row;
 }
 
 .red-line {
-  /* background-color: red; */
   color: red;
-  /* border-color: red; */
 }
 
 .switch {
-
   margin: 0px 10px 0px 10px;
 }
 
@@ -814,7 +637,6 @@ input:checked+.slider:before {
 }
 
 .print-component {
-  /* display: none; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -824,15 +646,11 @@ input:checked+.slider:before {
 
 .padding-bottom {
   padding-bottom: 5em;
- 
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-
-
 }
 
 .print-line {
@@ -845,6 +663,7 @@ input:checked+.slider:before {
   justify-content: space-between;
   flex-wrap: nowrap;
 }
+
 .server-details {
   margin: 0.25rem 0rem 0.25rem 0rem;
 }
@@ -967,18 +786,17 @@ input:checked+.slider:before {
   border-radius: 50%;
 }
 
-@media (max-width: 500px), (max-height: 650px) {
+@media (max-width: 500px),
+(max-height: 650px) {
   .rectangle img {
     width: 150px;
     height: 150px;
-    
   }
 
   .am,
   .pm {
     padding: 1em 1.5em;
     font-size: 0.8em;
-   
   }
 
   .by img {
@@ -1003,13 +821,12 @@ input:checked+.slider:before {
   }
 }
 
-@media (max-height: 300px), (max-width: 300px) {
+@media (max-height: 300px),
+(max-width: 300px) {
   .rectangle img {
     width: 75px;
     height: 75px;
   }
-
-
 
   .by img {
     width: 30px;
