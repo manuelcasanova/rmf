@@ -21,6 +21,7 @@ import TipsDistribution from './SubComponents/TipsDistribution';
 import Totals from './SubComponents/Totals';
 import SummaryAm from './SubComponents/SummaryAm';
 import ErrorMessageInputField from './SubComponents/ErrorMessageInputField';
+import PayTerminalMatch from './SubComponents/PaymentTerminalMatch';
 
 
 
@@ -81,6 +82,8 @@ export default function ClosingAM() {
           <ClearAll />
 
           <SupportCashCounting />
+
+          <PayTerminalMatch />
 
           {/* <SetExample /> */}
 

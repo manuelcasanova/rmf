@@ -20,6 +20,7 @@ import TipsDistribution from "./SubComponents/TipsDistribution";
 import Totals from "./SubComponents/Totals";
 import SummaryPm from "./SubComponents/SummaryPm";
 import ErrorMessageInputField from "./SubComponents/ErrorMessageInputField";
+import PayTerminalMatch from "./SubComponents/PaymentTerminalMatch";
 
 export default function ClosingPM() {
 
@@ -113,6 +114,8 @@ export default function ClosingPM() {
           <ClearAll />
 
           <SupportCashCounting />
+
+          <PayTerminalMatch />
 
           {/* <SetExample /> */}
 
