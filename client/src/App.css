@@ -16,8 +16,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* margin-bottom: 5em; */
-  /* padding-bottom: 5em; */
   justify-content: center;
   align-items: center;
 }
@@ -25,8 +23,6 @@
 .seccion {
   max-width: 600px;
   padding-top: 50px;
-  /* display: flex;
-  flex-direction: column; */
 }
 
 .title {
@@ -95,7 +91,6 @@
 
 
 .clear-all-div {
-  /* background-color: red; */
   display: flex;
   justify-content: center;
 }
@@ -152,7 +147,6 @@ section {
 
 label {
   font-weight: 600;
-  /* margin: 0.5em 0 0.5em 0; */
 }
 
 .th,
