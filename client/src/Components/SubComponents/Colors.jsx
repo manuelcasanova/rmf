@@ -1,48 +1,27 @@
+import React, { useState } from 'react';
 import brushWhite from "../../images/brush-white.png";
 import brush from "../../images/brush.png";
 
-export default function Colors({ color, setColor }) {
+function DarkLightToggle({ color, setColor }) {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   const toggleColors = () => {
-    setColor(color === "black" ? "white" : "black");
+    setIsDarkMode(!isDarkMode);
+    setColor(isDarkMode ? "black" : "white");
   };
 
   return (
-    <div>
-      <img
-        className="brush"
-        src={color === "black" ? brushWhite : brush}
-        alt="Brush"
-        onClick={toggleColors}
-      />
+    <div className={`container ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+      <input type="checkbox" id="toggle" className="toggle-input" onChange={toggleColors} checked={isDarkMode} />
+      <label htmlFor="toggle" className="toggle-label"></label>
+    </div>
+  );
+}
 
-      {color !== "black" && (
-        <div className="colors">
-          <div
-            className="color black white-line"
-            onClick={() => setColor("black")}
-          ></div>
-          <div
-            className="color white black-line"
-            onClick={() => setColor("white")}
-          ></div>
-          <div
-            className="color pink black-line"
-            onClick={() => setColor("pink")}
-          ></div>
-          <div
-            className="color blue black-line"
-            onClick={() => setColor("blue")}
-          ></div>
-          <div
-            className="color green black-line"
-            onClick={() => setColor("green")}
-          ></div>
-          <div
-            className="color red black-line"
-            onClick={() => setColor("red")}
-          ></div>
-        </div>
-      )}
+export default function Colors({ color, setColor }) {
+  return (
+    <div>
+      <DarkLightToggle color={color} setColor={setColor} />
     </div>
   );
 }

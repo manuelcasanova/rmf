@@ -43,7 +43,7 @@ const AppContextProvider = ({ children }) => {
   const [showData, setShowData] = useState(false)
 
   const handleToggle = () => {
-    setToggle(prev => !prev)
+    setToggle(!toggle); // Update toggle state
   }
 
   const roundToTwo = (num) => {
