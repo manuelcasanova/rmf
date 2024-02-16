@@ -10,6 +10,8 @@ export default function PayTerminalMatch() {
   };
 
   const resetValues = () => {
+    setAmex1(0);
+    setAmex2(0);
     setVisa1(0);
     setVisa2(0);
     setMasterCard1(0);
@@ -17,6 +19,10 @@ export default function PayTerminalMatch() {
     setDebit1(0);
     setDebit2(0);
   };
+
+  const [amex1, setAmex1] = useState(0);
+  const [amex2, setAmex2] = useState(0);
+  const totalAmex = parseFloat(amex1) + parseFloat(amex2);
 
   const [visa1, setVisa1] = useState(0);
   const [visa2, setVisa2] = useState(0);
@@ -38,9 +44,10 @@ export default function PayTerminalMatch() {
       {terminal && <button className='clear-all-x' onClick={showTerminal}>x</button>}
       {terminal && (
         <>
-          <CardInput label1='Visa 1' label2='Visa 2' value1={visa1} value2={visa2} setValue1={setVisa1} setValue2={setVisa2} total={totalVisa} totalLabel='Total Visa:' />
-          <CardInput label1='MasterCard 1' label2='MasterCard 2' value1={masterCard1} value2={masterCard2} setValue1={setMasterCard1} setValue2={setMasterCard2} total={totalMasterCard} totalLabel='Total MC:' />
-          <CardInput label1='Debit 1' label2='Debit 2' value1={debit1} value2={debit2} setValue1={setDebit1} setValue2={setDebit2} total={totalDebit} totalLabel='Total Debit:' />
+          <CardInput label1='Amex 1' label2='Amex 2' value1={amex1} value2={amex2} setValue1={setAmex1} setValue2={setAmex2} total={isNaN(totalAmex) ? "Avoid empty values" : totalAmex}totalLabel='Total Amex:' />
+          <CardInput label1='Visa 1' label2='Visa 2' value1={visa1} value2={visa2} setValue1={setVisa1} setValue2={setVisa2} total={isNaN(totalVisa) ? "Avoid empty values" : totalVisa} totalLabel='Total Visa:' />
+          <CardInput label1='MasterCard 1' label2='MasterCard 2' value1={masterCard1} value2={masterCard2} setValue1={setMasterCard1} setValue2={setMasterCard2} total={isNaN(totalMasterCard) ? "Avoid empty values" : totalMasterCard} totalLabel='Total MC:' />
+          <CardInput label1='Debit 1' label2='Debit 2' value1={debit1} value2={debit2} setValue1={setDebit1} setValue2={setDebit2} total={isNaN(totalDebit) ? "Avoid empty values" : totalDebit} totalLabel='Total Debit:' />
         </>
       )}
     </div>
@@ -65,3 +72,7 @@ function CardInput({ label1, label2, value1, value2, setValue1, setValue2, total
     </div>
   );
 }
+
+
+
+  
