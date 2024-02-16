@@ -84,8 +84,7 @@ export default function TipsDistribution({ isAM }) {
 
 
   } = useContext(AppContext);
-
-
+  
   return (
 
     <>
@@ -93,6 +92,7 @@ export default function TipsDistribution({ isAM }) {
         <div className='inline'>
           <label className='inline-label'>Kitchen tips</label>
           <div className='tips-input'>
+            
             {!isNaN(pizzaTips) && (isAM ? kitchenTips : kitchenTipsPM)}
           </div>
           {isNaN(pizzaTips)

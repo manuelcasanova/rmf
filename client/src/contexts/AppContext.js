@@ -120,36 +120,46 @@ const AppContextProvider = ({ children }) => {
 
 
 
-  let fullTips
-  let assistantTips
-  let kidsPizzaPrice
-  let adultsPizzaPrice
-  let adultsCocktailPrice
-  let fieldTripPrice
-  let pizzaTipsPercent
-  let kitchenTipsPercent
-  let frontTipsPercent
-  let sundaysPizzaTip
-
+  let fullTips = 100;
+  let assistantTips = 40;
+  let kidsPizzaPrice = 25;
+  let adultsPizzaPrice = 40;
+  let adultsCocktailPrice = 25;
+  let fieldTripPrice = 12.19;
+  let pizzaTipsPercent = 10;
+  let kitchenTipsPercent = 30;
+  let frontTipsPercent = 70;
+  let sundaysPizzaTip = 5;
 
 
   useEffect(() => {
     // Perform calculations here using the fetched data
     if (data.length > 0) {
 
-      const fullTips = data[0]?.fulltips
-      const assistantTips = data[0]?.assistanttips
-      const kidsPizzaPrice = data[0]?.kidspizzaprice
-      const adultsPizzaPrice = data[0]?.adultspizzaprice
-      const adultsCocktailPrice = data[0]?.adultscocktailprice
-      const fieldTripPrice = data[0]?.fieldtripprice
-      const pizzaTipsPercent = data[0]?.pizzatipspercent
-      const kitchenTipsPercent = data[0]?.kitchentipspercent
-      const frontTipsPercent = data[0]?.fronttipspercent
-      const sundaysPizzaTip = data[0]?.sundayspizzatip
+      fullTips = data[0]?.fulltips
+      assistantTips = data[0]?.assistanttips
+      kidsPizzaPrice = data[0]?.kidspizzaprice
+      adultsPizzaPrice = data[0]?.adultspizzaprice
+      adultsCocktailPrice = data[0]?.adultscocktailprice
+      fieldTripPrice = data[0]?.fieldtripprice
+      pizzaTipsPercent = data[0]?.pizzatipspercent
+      kitchenTipsPercent = data[0]?.kitchentipspercent
+      frontTipsPercent = data[0]?.fronttipspercent
+      sundaysPizzaTip = data[0]?.sundayspizzatip
 
+    //  let fullTips = data[0]?.fulltips
+    //  let assistantTips = data[0]?.assistanttips
+    //  let kidsPizzaPrice = data[0]?.kidspizzaprice
+    //  let adultsPizzaPrice = data[0]?.adultspizzaprice
+    //  let adultsCocktailPrice = data[0]?.adultscocktailprice
+    //  let fieldTripPrice = data[0]?.fieldtripprice
+    //  let pizzaTipsPercent = data[0]?.pizzatipspercent
+    //  let kitchenTipsPercent = data[0]?.kitchentipspercent
+    //  let frontTipsPercent = data[0]?.fronttipspercent
+    //  let sundaysPizzaTip = data[0]?.sundayspizzatip
 
-    }
+    } 
+    
   }, [data]);
 
 
