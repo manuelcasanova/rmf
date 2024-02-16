@@ -21,7 +21,8 @@ export default function EditTips({ property,
   setShowPizzatipspercent,
   setShowKitchentipspercent,
   setShowFronttipspercent,
-  setShowSundayspizzatip
+  setShowSundayspizzatip,
+  isAM
 }) {
 
     const { BACKEND, data, setData
@@ -68,7 +69,8 @@ export default function EditTips({ property,
       } else if (property === "sundayspizzatip") {
         setShowSundayspizzatip((prev) => !prev);
       }
-
+     
+     isAM ? window.location.href = '/am' : window.location.href = '/pm' 
 
     } catch (err) {
       console.error(err.message);

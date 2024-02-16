@@ -5,7 +5,7 @@ import EditComponent from "./EditComponent";
 import { AppContext } from '../../contexts/AppContext';
 import { useContext } from "react";
 
-export default function DataComponent() {
+export default function DataComponent({isAM}) {
   const [showFulltips, setShowFulltips] = useState(false);
   const [showAssistanttips, setShowAssistanttips] = useState(false);
   const [showAdultspizzaprice, setShowAdultspizzaprice] = useState(false);
@@ -94,6 +94,7 @@ export default function DataComponent() {
           setShowKitchentipspercent={setShowKitchentipspercent}
           setShowFronttipspercent={setShowFronttipspercent}
           setShowSundayspizzatip={setShowSundayspizzatip}
+          isAM={isAM}
         />
       )}
 

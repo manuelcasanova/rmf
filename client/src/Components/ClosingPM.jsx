@@ -107,7 +107,7 @@ export default function ClosingPM() {
 
         <div className='seccion'>
 
-          {showData && <DataComponent data={data} setData={setData} />}
+          {showData && <DataComponent isAM={false}/>}
           <div className='title'>Shift</div>
           <Link to='/am'>< PmButton /></Link>
 
