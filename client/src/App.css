@@ -19,7 +19,33 @@
   justify-content: center;
   align-items: center;
 }
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust as needed */
+}
 
+.error-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust as needed */
+  background-color: black;
+  font-size: 75px;
+  color: white; /* Adjust color as needed */
+}
+
+.loading-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust as needed */
+  width: 100vw;
+  background-color: black;
+  font-size: 75px;
+  color: white; /* Adjust color as needed */
+}
 .seccion {
   max-width: 600px;
   padding-top: 50px;

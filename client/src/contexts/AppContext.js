@@ -9,48 +9,15 @@ export const useAppContext = () => {
 
 
 const AppContextProvider = ({ children }) => {
-  // Common variables for the entire application
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [color, setColor] = useState("black");
-
   const [data, setData] = useState([]);
-
-   const BACKEND = 'https://backend.rmf.manucasanova.com'
- //const BACKEND = 'http://localhost:3500'
-
- useEffect(() => {
-   axios.get(`${BACKEND}/data`)
-     .then(function (res) {
-
-       setData([...res.data])
-
-     })
- }, [])
-
-
-  const fullTips = 100
-  const assistantTips = 40
-  const kidsPizzaPrice = 25
-  const adultsPizzaPrice = 40
-  const adultsCocktailPrice = 25
-  const fieldTripPrice = 12.19
-  const pizzaTipsPercent = 10
-  const kitchenTipsPercent = 30
-  const frontTipsPercent = 70
-  const sundaysPizzaTip = 5
+  const BACKEND = 'https://backend.rmf.manucasanova.com'
+  //const BACKEND = 'http://localhost:3500'
 
   const [toggle, setToggle] = useState(false);
   const [showData, setShowData] = useState(false)
-
-  const handleToggle = () => {
-    setToggle(!toggle); // Update toggle state
-  }
-
-  const roundToTwo = (num) => {
-    return +(Math.round(num + "e+2") + "e-2");
-  }
-
-
   const [hundred, setHundred] = useState(0);
   const [fifty, setFifty] = useState(0);
   const [twenty, setTwenty] = useState(0);
@@ -59,76 +26,29 @@ const AppContextProvider = ({ children }) => {
   const [two, setTwo] = useState(0);
   const [one, setOne] = useState(0);
   const [quarter, setQuarter] = useState(0);
-  let cash =
-    (
-      parseFloat(hundred * 100) +
-      parseFloat(fifty * 50) +
-      parseFloat(twenty * 20) +
-      parseFloat(ten * 10) +
-      parseFloat(five * 5) +
-      parseFloat(two * 2) +
-      parseFloat(one * 1) +
-      parseFloat(quarter * 0.25)
-    ).toFixed(2);
+
 
   const [cashCounted, setCashCounted] = useState(0);
   const [receipts, setReceipts] = useState(0);
-  const totalCash = cash > 0 ? parseFloat(cash) + parseFloat(receipts) : parseFloat(cashCounted) + parseFloat(receipts);
 
   const [float, setFloat] = useState(0);
   const [cashSales, setCashSales] = useState(0);
   const [cashSalesAM, setCashSalesAM] = useState(0);
   const [cashSalesPrintOut, setCashSalesPrintOut] = useState(0)
-  const cashSalesPM = (cashSalesPrintOut - cashSalesAM).toFixed(2)
+
   const [creditCardsTipsAM, setCreditCardsTipsAM] = useState(0)
   const [creditCardsTipsPrintOut, setCreditCardsTipsPrintOut] = useState(0)
 
   const [sundaysInfo, setSundaysInfo] = useState(false)
 
-  const cashTips = (
-    cash > 0
-      ? (parseFloat(cash) + parseFloat(receipts) - parseFloat(cashSales) - parseFloat(float)).toFixed(2)
-      : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSales) - parseFloat(float)).toFixed(2)
-  );
-
-  const cashTipsPM = (
-    cash > 0
-      ? (parseFloat(cash) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
-      : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
-  );
-
 
   const [creditCardTips, setCreditCardTips] = useState(0)
-  const totalTips = parseFloat(cashTips) + parseFloat(creditCardsTipsAM)
-  const totalTipsPM = roundToTwo((roundToTwo(cashTipsPM) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))
   const [pizzaAdults, setPizzaAdults] = useState(0)
   const [cocktailAdults, setCocktailAdults] = useState(0)
   const [pizzaChildren, setPizzaChildren] = useState(0)
   const [fieldTrip, setFieldTrip] = useState(0)
   const [pizzaServers, setPizzaServers] = useState(0)
   const [sundaysServerHours, setSundaysServerHours] = useState(0)
-  const pizzaTips =
-  
-  (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100)
-  +
-  parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100
-  +
-  (parseFloat(cocktailAdults) * adultsCocktailPrice * pizzaTipsPercent / 100)
-  +
-  (parseFloat(sundaysServerHours) * sundaysPizzaTip)
-  +
-  (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
-
-  const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
-  const tipsAfterPizzaPartyPM = (totalTipsPM - pizzaTips).toFixed(2)
-  const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
-  const kitchenTipsPM = (tipsAfterPizzaPartyPM * kitchenTipsPercent / 100).toFixed(2);
-
-  const frontTips = (tipsAfterPizzaParty * frontTipsPercent / 100).toFixed(2);
-
-
-  const frontTipsPM = (tipsAfterPizzaPartyPM * frontTipsPercent / 100).toFixed(2);
-
 
   const [totalCashInfo, setTotalCashInfo] = useState(false)
   const [totalHoursInfo, setTotalHoursInfo] = useState(false)
@@ -145,7 +65,161 @@ const AppContextProvider = ({ children }) => {
   const [instructors, setInstructors] = useState(false)
   const [redLine, setRedLine] = useState(false)
 
+  const [server1Hours, setServer1Hours] = useState(0);
+  const [server2Hours, setServer2Hours] = useState(0);
+  const [server3Hours, setServer3Hours] = useState(0);
+  const [server4Hours, setServer4Hours] = useState(0);
+  const [server5Hours, setServer5Hours] = useState(0);
 
+  const [server1Name, setServer1Name] = useState("");
+  const [server2Name, setServer2Name] = useState("");
+  const [server3Name, setServer3Name] = useState("");
+  const [server4Name, setServer4Name] = useState("");
+  const [server5Name, setServer5Name] = useState("");
+
+  const [assistant1Hours, setAssistant1Hours] = useState(0);
+  const [assistant2Hours, setAssistant2Hours] = useState(0);
+  const [assistant3Hours, setAssistant3Hours] = useState(0);
+
+  const [assistant1Name, setAssistant1Name] = useState("");
+  const [assistant2Name, setAssistant2Name] = useState("");
+  const [assistant3Name, setAssistant3Name] = useState("");
+
+  const [instructor1Adults, setInstructor1Adults] = useState(0);
+  const [instructor2Adults, setInstructor2Adults] = useState(0);
+  const [instructor3Adults, setInstructor3Adults] = useState(0);
+
+  const [instructor1Cocktail, setInstructor1Cocktail] = useState(0);
+  const [instructor2Cocktail, setInstructor2Cocktail] = useState(0);
+  const [instructor3Cocktail, setInstructor3Cocktail] = useState(0);
+
+  const [instructor1Children, setInstructor1Children] = useState(0);
+  const [instructor2Children, setInstructor2Children] = useState(0);
+  const [instructor3Children, setInstructor3Children] = useState(0);
+
+  const [instructor1FieldTrip, setInstructor1FieldTrip] = useState(0);
+  const [instructor2FieldTrip, setInstructor2FieldTrip] = useState(0);
+  const [instructor3FieldTrip, setInstructor3FieldTrip] = useState(0);
+
+
+  useEffect(() => {
+    axios.get(`${BACKEND}/data`)
+
+      .then(function (res) {
+        setData([...res.data]);
+        setLoading(false);
+      })
+
+
+      .catch(function (error) {
+        console.error('Error fetching data:', error);
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+
+
+
+  let fullTips
+  let assistantTips
+  let kidsPizzaPrice
+  let adultsPizzaPrice
+  let adultsCocktailPrice
+  let fieldTripPrice
+  let pizzaTipsPercent
+  let kitchenTipsPercent
+  let frontTipsPercent
+  let sundaysPizzaTip
+
+
+
+  useEffect(() => {
+    // Perform calculations here using the fetched data
+    if (data.length > 0) {
+
+      const fullTips = data[0]?.fulltips
+      const assistantTips = data[0]?.assistanttips
+      const kidsPizzaPrice = data[0]?.kidspizzaprice
+      const adultsPizzaPrice = data[0]?.adultspizzaprice
+      const adultsCocktailPrice = data[0]?.adultscocktailprice
+      const fieldTripPrice = data[0]?.fieldtripprice
+      const pizzaTipsPercent = data[0]?.pizzatipspercent
+      const kitchenTipsPercent = data[0]?.kitchentipspercent
+      const frontTipsPercent = data[0]?.fronttipspercent
+      const sundaysPizzaTip = data[0]?.sundayspizzatip
+
+
+    }
+  }, [data]);
+
+
+
+  const handleToggle = () => {
+    setToggle(!toggle); // Update toggle state
+  }
+
+  const roundToTwo = (num) => {
+    return +(Math.round(num + "e+2") + "e-2");
+  }
+
+
+
+  let cash =
+    (
+      parseFloat(hundred * 100) +
+      parseFloat(fifty * 50) +
+      parseFloat(twenty * 20) +
+      parseFloat(ten * 10) +
+      parseFloat(five * 5) +
+      parseFloat(two * 2) +
+      parseFloat(one * 1) +
+      parseFloat(quarter * 0.25)
+    ).toFixed(2);
+
+  const totalCash = cash > 0 ? parseFloat(cash) + parseFloat(receipts) : parseFloat(cashCounted) + parseFloat(receipts);
+
+
+  const cashSalesPM = (cashSalesPrintOut - cashSalesAM).toFixed(2)
+
+
+  const cashTips = (
+    cash > 0
+      ? (parseFloat(cash) + parseFloat(receipts) - parseFloat(cashSales) - parseFloat(float)).toFixed(2)
+      : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSales) - parseFloat(float)).toFixed(2)
+  );
+
+  const cashTipsPM = (
+    cash > 0
+      ? (parseFloat(cash) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
+      : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
+  );
+
+
+
+  const totalTips = parseFloat(cashTips) + parseFloat(creditCardsTipsAM)
+  const totalTipsPM = roundToTwo((roundToTwo(cashTipsPM) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))
+
+  const pizzaTips =
+
+    (parseFloat(pizzaChildren) * kidsPizzaPrice * pizzaTipsPercent / 100)
+    +
+    parseFloat(pizzaAdults) * adultsPizzaPrice * pizzaTipsPercent / 100
+    +
+    (parseFloat(cocktailAdults) * adultsCocktailPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(sundaysServerHours) * sundaysPizzaTip)
+    +
+    (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+
+  const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
+  const tipsAfterPizzaPartyPM = (totalTipsPM - pizzaTips).toFixed(2)
+  const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
+  const kitchenTipsPM = (tipsAfterPizzaPartyPM * kitchenTipsPercent / 100).toFixed(2);
+
+  const frontTips = (tipsAfterPizzaParty * frontTipsPercent / 100).toFixed(2);
+
+
+  const frontTipsPM = (tipsAfterPizzaPartyPM * frontTipsPercent / 100).toFixed(2);
 
   const showTotalCashInfo = (e) => {
     e.preventDefault();
@@ -224,43 +298,6 @@ const AppContextProvider = ({ children }) => {
     e.preventDefault();
     setSundaysInfo(prev => !prev)
   }
-
-
-  const [server1Hours, setServer1Hours] = useState(0);
-  const [server2Hours, setServer2Hours] = useState(0);
-  const [server3Hours, setServer3Hours] = useState(0);
-  const [server4Hours, setServer4Hours] = useState(0);
-  const [server5Hours, setServer5Hours] = useState(0);
-
-  const [server1Name, setServer1Name] = useState("");
-  const [server2Name, setServer2Name] = useState("");
-  const [server3Name, setServer3Name] = useState("");
-  const [server4Name, setServer4Name] = useState("");
-  const [server5Name, setServer5Name] = useState("");
-
-  const [assistant1Hours, setAssistant1Hours] = useState(0);
-  const [assistant2Hours, setAssistant2Hours] = useState(0);
-  const [assistant3Hours, setAssistant3Hours] = useState(0);
-
-  const [assistant1Name, setAssistant1Name] = useState("");
-  const [assistant2Name, setAssistant2Name] = useState("");
-  const [assistant3Name, setAssistant3Name] = useState("");
-
-  const [instructor1Adults, setInstructor1Adults] = useState(0);
-  const [instructor2Adults, setInstructor2Adults] = useState(0);
-  const [instructor3Adults, setInstructor3Adults] = useState(0);
-
-  const [instructor1Cocktail, setInstructor1Cocktail] = useState(0);
-  const [instructor2Cocktail, setInstructor2Cocktail] = useState(0);
-  const [instructor3Cocktail, setInstructor3Cocktail] = useState(0);
-
-  const [instructor1Children, setInstructor1Children] = useState(0);
-  const [instructor2Children, setInstructor2Children] = useState(0);
-  const [instructor3Children, setInstructor3Children] = useState(0);
-
-  const [instructor1FieldTrip, setInstructor1FieldTrip] = useState(0);
-  const [instructor2FieldTrip, setInstructor2FieldTrip] = useState(0);
-  const [instructor3FieldTrip, setInstructor3FieldTrip] = useState(0);
 
   const totalInstructor1 = parseFloat(
     (parseFloat(instructor1Adults) * adultsPizzaPrice * pizzaTipsPercent / 100)
@@ -429,11 +466,11 @@ const AppContextProvider = ({ children }) => {
     setReceipts(10);
     setFloat(400);
     setCashSales(500);
-  setCashSalesAM(500);
-  setCashSalesPrintOut(1000);
+    setCashSalesAM(500);
+    setCashSalesPrintOut(1000);
     setCreditCardTips(500);
-  setCreditCardsTipsAM(200);
-  setCreditCardsTipsPrintOut(800);
+    setCreditCardsTipsAM(200);
+    setCreditCardsTipsPrintOut(800);
     setPizzaAdults(7);
     setPizzaChildren(9);
     setCocktailAdults(9);
@@ -466,6 +503,20 @@ const AppContextProvider = ({ children }) => {
     setPizzaParties(prev => !prev)
   }
 
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <p className="loading-text">Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="error-text">Error: {error.message}</div>;
+
+
+
+  }
 
   return (
     <AppContext.Provider value={{
@@ -581,7 +632,7 @@ const AppContextProvider = ({ children }) => {
       totalInstructors,
       totalHours,
       tipsPerHour,
-      tipsPerHourPM, 
+      tipsPerHourPM,
       roundToTwo,
       clearAll,
       clearServers,
