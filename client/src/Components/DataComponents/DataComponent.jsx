@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import EditComponent from "./EditComponent";
+import { AppContext } from '../../contexts/AppContext';
+import { useContext } from "react";
 
-export default function DataComponent({ data, setData }) {
+export default function DataComponent() {
   const [showFulltips, setShowFulltips] = useState(false);
   const [showAssistanttips, setShowAssistanttips] = useState(false);
   const [showAdultspizzaprice, setShowAdultspizzaprice] = useState(false);
@@ -14,6 +16,12 @@ export default function DataComponent({ data, setData }) {
   const [showKitchentipspercent, setShowKitchentipspercent] = useState(false);
   const [showFronttipspercent, setShowFronttipspercent] = useState(false);
   const [showSundayspizzatip, setShowSundayspizzatip] = useState(false);
+
+  const {
+    // Data
+    data, setData,
+
+  } = useContext(AppContext);
 
   const handleEditToggle = (property) => {
     if (property === "fulltips") {
@@ -75,8 +83,6 @@ export default function DataComponent({ data, setData }) {
 
       {show && (
         <EditComponent
-          data={data}
-          setData={setData}
           property={property}
           setShowFulltips={setShowFulltips}
           setShowAssistanttips={setShowAssistanttips}

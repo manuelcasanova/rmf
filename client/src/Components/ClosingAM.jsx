@@ -75,7 +75,7 @@ export default function ClosingAM() {
 
         <div className='seccion'>
 
-          {showData && <DataComponent data={data} setData={setData} />}
+          {showData && <DataComponent />}
           <div className='title'>Shift</div>
           <Link to='/pm'><AmButton /></Link>
 
@@ -85,7 +85,7 @@ export default function ClosingAM() {
 
           <PayTerminalMatch />
 
-          {/* <SetExample /> */}
+          <SetExample />
 
           <section className='money'>
 

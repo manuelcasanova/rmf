@@ -101,51 +101,71 @@ const AppContextProvider = ({ children }) => {
   const [instructor2FieldTrip, setInstructor2FieldTrip] = useState(0);
   const [instructor3FieldTrip, setInstructor3FieldTrip] = useState(0);
 
+  const [fullTips, setFullTips] = useState();
+  const [assistantTips, setAssistantTips] = useState();
+  const [kidsPizzaPrice, setKidsPizzaPrice] = useState();
+  const [adultsPizzaPrice, setAdultsPizzaPrice] = useState();
+  const [adultsCocktailPrice, setAdultsCocktailPrice] = useState();
+  const [fieldTripPrice, setFieldTripPrice] = useState();
+  const [pizzaTipsPercent, setPizzaTipsPercent] = useState();
+  const [kitchenTipsPercent, setKitchenTipsPercent] = useState();
+  const [frontTipsPercent, setFrontTipsPercent] = useState();
+  const [sundaysPizzaTip, setSundaysPizzaTip] = useState();
 
   useEffect(() => {
     axios.get(`${BACKEND}/data`)
-
       .then(function (res) {
         setData([...res.data]);
         setLoading(false);
+  
+        // Set state variables using setter functions
+        setFullTips(res.data[0].fulltips);
+        setAssistantTips(res.data[0].assistanttips);
+        setKidsPizzaPrice(res.data[0].kidspizzaprice);
+        setAdultsPizzaPrice(res.data[0].adultspizzaprice);
+        setAdultsCocktailPrice(res.data[0].adultscocktailprice);
+        setFieldTripPrice(res.data[0].fieldtripprice);
+        setPizzaTipsPercent(res.data[0].pizzatipspercent);
+        setKitchenTipsPercent(res.data[0].kitchentipspercent);
+        setFrontTipsPercent(res.data[0].fronttipspercent);
+        setSundaysPizzaTip(res.data[0].sundayspizzatip);
       })
-
-
       .catch(function (error) {
         console.error('Error fetching data:', error);
         setError(error);
         setLoading(false);
       });
   }, []);
+  
 
 
 
-  let fullTips = 100;
-  let assistantTips = 40;
-  let kidsPizzaPrice = 25;
-  let adultsPizzaPrice = 40;
-  let adultsCocktailPrice = 25;
-  let fieldTripPrice = 12.19;
-  let pizzaTipsPercent = 10;
-  let kitchenTipsPercent = 30;
-  let frontTipsPercent = 70;
-  let sundaysPizzaTip = 5;
+  // let fullTips = 100;
+  // let assistantTips = 40;
+  // let kidsPizzaPrice = 25;
+  // let adultsPizzaPrice = 40;
+  // let adultsCocktailPrice = 25;
+  // let fieldTripPrice = 12.19;
+  // let pizzaTipsPercent = 10;
+  // let kitchenTipsPercent = 30;
+  // let frontTipsPercent = 70;
+  // let sundaysPizzaTip = 5;
 
 
   useEffect(() => {
     // Perform calculations here using the fetched data
     if (data.length > 0) {
 
-      fullTips = data[0]?.fulltips
-      assistantTips = data[0]?.assistanttips
-      kidsPizzaPrice = data[0]?.kidspizzaprice
-      adultsPizzaPrice = data[0]?.adultspizzaprice
-      adultsCocktailPrice = data[0]?.adultscocktailprice
-      fieldTripPrice = data[0]?.fieldtripprice
-      pizzaTipsPercent = data[0]?.pizzatipspercent
-      kitchenTipsPercent = data[0]?.kitchentipspercent
-      frontTipsPercent = data[0]?.fronttipspercent
-      sundaysPizzaTip = data[0]?.sundayspizzatip
+      // fullTips = data[0]?.fulltips
+      // assistantTips = data[0]?.assistanttips
+      // kidsPizzaPrice = data[0]?.kidspizzaprice
+      // adultsPizzaPrice = data[0]?.adultspizzaprice
+      // adultsCocktailPrice = data[0]?.adultscocktailprice
+      // fieldTripPrice = data[0]?.fieldtripprice
+      // pizzaTipsPercent = data[0]?.pizzatipspercent
+      // kitchenTipsPercent = data[0]?.kitchentipspercent
+      // frontTipsPercent = data[0]?.fronttipspercent
+      // sundaysPizzaTip = data[0]?.sundayspizzatip
 
     //  let fullTips = data[0]?.fulltips
     //  let assistantTips = data[0]?.assistanttips
