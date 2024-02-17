@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import LoadingSpinner from '../components/SubComponents/LoadingSpinner';
 
 export const AppContext = createContext();
 
@@ -117,6 +118,11 @@ const AppContextProvider = ({ children }) => {
       .then(function (res) {
         setData([...res.data]);
         setLoading(false);
+
+         // Delay setting loading to false by 2 seconds
+        //  setTimeout(() => {
+        //   setLoading(false);
+        // }, 2000);
   
         // Set state variables using setter functions
         setFullTips(res.data[0].fulltips);
@@ -535,9 +541,7 @@ const AppContextProvider = ({ children }) => {
 
   if (loading) {
     return (
-      <div className="loading-container">
-        <p className="loading-text">Loading...</p>
-      </div>
+      <LoadingSpinner />
     );
   }
 
