@@ -37,7 +37,7 @@ export default function EditTips({ property,
     e.preventDefault();
     try {
       
-      const body = { value }; // Assuming "value" is the property name expected by the backend
+      const body = { value };
   
       await axios.put(`${BACKEND}/data/${property}`, body, {
         headers: { "Content-Type": "application/json" },

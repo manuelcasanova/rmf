@@ -157,41 +157,8 @@ const AppContextProvider = ({ children }) => {
   // let frontTipsPercent = 70;
   // let sundaysPizzaTip = 5;
 
-
-  useEffect(() => {
-    // Perform calculations here using the fetched data
-    if (data.length > 0) {
-
-      // fullTips = data[0]?.fulltips
-      // assistantTips = data[0]?.assistanttips
-      // kidsPizzaPrice = data[0]?.kidspizzaprice
-      // adultsPizzaPrice = data[0]?.adultspizzaprice
-      // adultsCocktailPrice = data[0]?.adultscocktailprice
-      // fieldTripPrice = data[0]?.fieldtripprice
-      // pizzaTipsPercent = data[0]?.pizzatipspercent
-      // kitchenTipsPercent = data[0]?.kitchentipspercent
-      // frontTipsPercent = data[0]?.fronttipspercent
-      // sundaysPizzaTip = data[0]?.sundayspizzatip
-
-    //  let fullTips = data[0]?.fulltips
-    //  let assistantTips = data[0]?.assistanttips
-    //  let kidsPizzaPrice = data[0]?.kidspizzaprice
-    //  let adultsPizzaPrice = data[0]?.adultspizzaprice
-    //  let adultsCocktailPrice = data[0]?.adultscocktailprice
-    //  let fieldTripPrice = data[0]?.fieldtripprice
-    //  let pizzaTipsPercent = data[0]?.pizzatipspercent
-    //  let kitchenTipsPercent = data[0]?.kitchentipspercent
-    //  let frontTipsPercent = data[0]?.fronttipspercent
-    //  let sundaysPizzaTip = data[0]?.sundayspizzatip
-
-    } 
-    
-  }, [data]);
-
-
-
   const handleToggle = () => {
-    setToggle(!toggle); // Update toggle state
+    setToggle(!toggle); 
   }
 
   const roundToTwo = (num) => {
