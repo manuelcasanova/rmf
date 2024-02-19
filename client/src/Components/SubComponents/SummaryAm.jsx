@@ -118,7 +118,7 @@ export default function SummaryAm() {
             <div className='print-line'>Credit card tips: {creditCardsTipsAM}$</div>
             <div className='print-line'>TOTAL TIPS: {totalTips}$</div>
             <div className='print-line'></div>
-            <div className='print-line'>Pizza making Tips: {pizzaTips}$</div>
+            <div className='print-line'>Special Events Tips: {pizzaTips}$</div>
             <div className='print-line'>Kitchen Tips: {kitchenTips}$</div>
             <div className='print-line'>Front Tips: {frontTips}$</div>
             <div className='print-line'>Total hours: {totalHours.toFixed(2)}</div>
@@ -183,7 +183,7 @@ export default function SummaryAm() {
                 parseInt(totalInstructors) === parseInt(pizzaTips) &&
 
                 <div className='print-server'>
-                  <div className='server-details'>Instructor 1: </div>
+                  <div className='server-details'>Special event server 1: </div>
                   <div></div>
                   <div className='server-details'>{totalInstructor1}$</div>
                 </div>}
@@ -193,7 +193,7 @@ export default function SummaryAm() {
                 parseInt(totalInstructors) === parseInt(pizzaTips) &&
 
                 <div className='print-server'>
-                  <div className='server-details'>Instructor 2: </div>
+                  <div className='server-details'>Special event server 2: </div>
                   <div></div>
                   <div className='server-details'>{totalInstructor2}$</div>
                 </div>}
@@ -203,7 +203,7 @@ export default function SummaryAm() {
                 parseInt(totalInstructors) === parseInt(pizzaTips) &&
 
                 <div className='print-server'>
-                  <div className='server-details'>Instructor 3: </div>
+                  <div className='server-details'>Special event server 3: </div>
                   <div></div>
                   <div className='server-details'>{totalInstructor3}$</div>
                 </div>}

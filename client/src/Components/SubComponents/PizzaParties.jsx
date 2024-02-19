@@ -35,7 +35,7 @@ const PizzaParties = ({ isAM }) => {
   return (
     <section className={pizzaParties ? '' : 'pizza'}>
       <div className='inline'>
-        <label className='inline-label'>Pizza party adults</label>
+        <label className='inline-label'>Special event Menu#1</label>
         <input 
           type="number" 
           className='pizza-input' 
@@ -47,7 +47,7 @@ const PizzaParties = ({ isAM }) => {
       </div>
 
       <div className='inline'>
-        <label className='inline-label'>Cocktail making adults</label>
+        <label className='inline-label'>Special event Menu#2</label>
         <input 
           type="number" 
           className='pizza-input' 
@@ -59,7 +59,7 @@ const PizzaParties = ({ isAM }) => {
       </div>
 
       <div className='inline'>
-        <label className='inline-label'>Pizza party children</label>
+        <label className='inline-label'>Special event Menu#3</label>
         <input 
           type="number" 
           className='pizza-input' 
@@ -71,7 +71,7 @@ const PizzaParties = ({ isAM }) => {
       </div>
 
       <div className='inline'>
-        <label className='inline-label'>Field Trip</label>
+        <label className='inline-label'>Special event Menu#4</label>
         <input 
           type="number" 
           className='pizza-input' 
@@ -84,7 +84,7 @@ const PizzaParties = ({ isAM }) => {
 
       {cashSalesPM > 0 &&
         <div className='inline'>
-          <label className='inline-label'>Sunday's pizza making server hours 
+          <label className='inline-label'>Special server support
             <div className={color !== 'blue' ? "info" : "info-red"} onClick={showSundaysInfo}>i</div>
           </label>
           <input 
@@ -98,10 +98,10 @@ const PizzaParties = ({ isAM }) => {
         </div>
       }
 
-      {sundaysInfo && <div className='info-message'>Sunday's pizza maker gets {sundaysPizzaTip} $ per hour worked</div>}
+      {sundaysInfo && <div className='info-message'>Special server support, such as staff in training, receive {sundaysPizzaTip} $ per hour worked</div>}
 
       <div className='inline'>
-        <label className='inline-label'>Pizza/Cocktail making tips</label>
+        <label className='inline-label'>Special events total tips</label>
         <div className='pizza-input'>
           {!isNaN(pizzaTips) && pizzaTips.toFixed(2)}
         </div>
@@ -109,11 +109,11 @@ const PizzaParties = ({ isAM }) => {
       </div>
 
       {pizzaTips !== 0 && supportServerInfo &&
-        <div className='error-message'>Do not forget that the pizza making servers may have as well work as support over the shift. Tip accordingly.</div>
+        <div className='error-message'>Do not forget that the special events servers may have as well work as support or servers over the shift. Tip accordingly.</div>
       }
 
       <div className='inline'>
-        <label className='inline-label'>{isAM ? 'AM' : 'PM'} Tips after Pizza party</label>
+        <label className='inline-label'>{isAM ? 'AM' : 'PM'} Tips after special events</label>
         <div className='tips-input'>
           {!isNaN(pizzaTips) && (isAM ? tipsAfterPizzaParty : tipsAfterPizzaPartyPM)}
         </div>

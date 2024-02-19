@@ -65,14 +65,14 @@ export default function DataComponent({isAM}) {
         <div className="data-right">
           {label.toLowerCase() === 'supervisor / server tips:' ? `${value}%` :
             label.toLowerCase() === 'server support tips:' ? `${value}%` :
-              label.toLowerCase() === 'adults pizza price:' ? `${value}$` :
-                label.toLowerCase() === 'adults cocktail price:' ? `${value}$` :
-                  label.toLowerCase() === 'kids pizza price:' ? `${value}$` :
-                    label.toLowerCase() === 'field trip price:' ? `${value}$` :
-                      label.toLowerCase() === 'pizza party tips:' ? `${value}%` :
+              label.toLowerCase() === 'special menu #1:' ? `${value}$` :
+                label.toLowerCase() === 'special menu #2:' ? `${value}$` :
+                  label.toLowerCase() === 'special menu #3:' ? `${value}$` :
+                    label.toLowerCase() === 'special menu #4:' ? `${value}$` :
+                      label.toLowerCase() === 'special menu tips:' ? `${value}%` :
                         label.toLowerCase() === 'kitchen tips:' ? `${value}%` :
                           label.toLowerCase() === 'foh tips:' ? `${value}%` :
-                            label.toLowerCase() === 'sundays pizza tips per hour:' ? `${value}$` :
+                            label.toLowerCase() === 'special support tips per hour:' ? `${value}$` :
                               null
           }
         </div>
@@ -107,21 +107,21 @@ export default function DataComponent({isAM}) {
 
       {generateDataLine("Server Support tips:", data[0]?.assistanttips, showAssistanttips, () => handleEditToggle("assistanttips"), "assistanttips", "assistanttips", data, setData)}
 
-      {generateDataLine("Adults Pizza Price:", data[0]?.adultspizzaprice, showAdultspizzaprice, () => handleEditToggle("adultspizzaprice"), "adultspizzaprice", "adultspizzaprice", data, setData)}
+      {generateDataLine("Special menu #1:", data[0]?.adultspizzaprice, showAdultspizzaprice, () => handleEditToggle("adultspizzaprice"), "adultspizzaprice", "adultspizzaprice", data, setData)}
 
-      {generateDataLine("Adults Cocktail Price:", data[0]?.adultscocktailprice, showAdultscocktailprice, () => handleEditToggle("adultscocktailprice"), "adultscocktailprice", "adultscocktailprice", data, setData)}
+      {generateDataLine("Special menu #2:", data[0]?.adultscocktailprice, showAdultscocktailprice, () => handleEditToggle("adultscocktailprice"), "adultscocktailprice", "adultscocktailprice", data, setData)}
 
-      {generateDataLine("Kids Pizza Price:", data[0]?.kidspizzaprice, showKidspizzaprice, () => handleEditToggle("kidspizzaprice"), "kidspizzaprice", "kidspizzaprice", data, setData)}
+      {generateDataLine("Special menu #3:", data[0]?.kidspizzaprice, showKidspizzaprice, () => handleEditToggle("kidspizzaprice"), "kidspizzaprice", "kidspizzaprice", data, setData)}
 
-      {generateDataLine("Field Trip Price:", data[0]?.fieldtripprice, showFieldtripprice, () => handleEditToggle("fieldtripprice"), "fieldtripprice", "fieldtripprice", data, setData)}
+      {generateDataLine("Special menu #4:", data[0]?.fieldtripprice, showFieldtripprice, () => handleEditToggle("fieldtripprice"), "fieldtripprice", "fieldtripprice", data, setData)}
 
-      {generateDataLine("Pizza Party Tips:", data[0]?.pizzatipspercent, showPizzatipspercent, () => handleEditToggle("pizzatipspercent"), "pizzatipspercent", "pizzatipspercent", data, setData)}
+      {generateDataLine("Special Menu Tips:", data[0]?.pizzatipspercent, showPizzatipspercent, () => handleEditToggle("pizzatipspercent"), "pizzatipspercent", "pizzatipspercent", data, setData)}
 
       {generateDataLine("Kitchen Tips:", data[0]?.kitchentipspercent, showKitchentipspercent, () => handleEditToggle("kitchentipspercent"), "kitchentipspercent", "kitchentipspercent", data, setData)}
 
       {generateDataLine("FOH Tips:", data[0]?.fronttipspercent, showFronttipspercent, () => handleEditToggle("fronttipspercent"), "fronttipspercent", "fronttipspercent", data, setData)}
 
-      {generateDataLine("Sundays pizza tips per hour:", data[0]?.sundayspizzatip, showSundayspizzatip, () => handleEditToggle("sundayspizzatip"), "sundayspizzatip", "sundayspizzatip", data, setData)}
+      {generateDataLine("Special Support tips per hour:", data[0]?.sundayspizzatip, showSundayspizzatip, () => handleEditToggle("sundayspizzatip"), "sundayspizzatip", "sundayspizzatip", data, setData)}
 
     </div>
   );

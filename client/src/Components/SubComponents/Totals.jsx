@@ -53,7 +53,7 @@ export default function Totals({ isAM }) {
         <div className='tips-input'>{calculateNewFloat()}</div>
       </div>
 
-      {newFloatInfo && <div className='info-message'>New float = Cash counted - Pizza making tips - front tips</div>}
+      {newFloatInfo && <div className='info-message'>New float = Cash counted - Special Events Tips - front tips</div>}
     </section>
   );
 }

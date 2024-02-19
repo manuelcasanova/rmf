@@ -479,10 +479,10 @@ const AppContextProvider = ({ children }) => {
     setCocktailAdults(9);
     setFieldTrip(9);
     setPizzaServers(2)
-    setServer1Name("Manuel");
-    setServer2Name("Dom");
-    setServer3Name("Suz");
-    setAssistant1Name("Jasmine");
+    setServer1Name("Anna");
+    setServer2Name("Susan");
+    setServer3Name("Jonas");
+    setAssistant1Name("Josh");
     setServer1Hours(5);
     setServer2Hours(5);
     setServer3Hours(4);
@@ -490,7 +490,7 @@ const AppContextProvider = ({ children }) => {
     setInstructor1Adults(10);
     setInstructor2Children(10);
     // setSundaysServerHours(3)
-    setInstructor1Adults(0);
+    setInstructor1Adults(1);
     setInstructor1Children(3);
     setInstructor1Cocktail(3);
     setInstructor1FieldTrip(3);

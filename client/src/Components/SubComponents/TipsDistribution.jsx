@@ -214,7 +214,7 @@ export default function TipsDistribution({ isAM }) {
 
       <section className='servers'>
         <div className='th margin-top margin-bottom'>
-          <div className='thirty-three'>Pizza instructors</div>
+          <div className='thirty-three'>Special event servers</div>
           <div className="thirty-three"></div>
           <div className="thirty-three"></div>
           <div className="thirty-three">{!isNaN(pizzaTips) && pizzaTips.toFixed(2)}</div>
@@ -225,7 +225,7 @@ export default function TipsDistribution({ isAM }) {
       <div className='pizza-making-question'>
 
         {!instructors && <div className='padding-bottom'>
-          <button className='clear-all' onClick={showInstructors}>More than one pizza maker?</button>
+          <button className='clear-all' onClick={showInstructors}>More than one server for special events?</button>
 
         </div>
         }
@@ -252,46 +252,46 @@ export default function TipsDistribution({ isAM }) {
             }
 
             <div className='instructor'>
-              <div className='instructor-detail'>Instructor 1:</div>
+              <div className='instructor-detail'>Special Event Server 1:</div>
 
 
               <div className='instructor-detail'>
 
-                <div>Adults:</div>
+                <div>Menu #1:</div>
                 <input type="number" value={instructor1Adults} className="instructor-detail-input" onChange={(e) => setInstructor1Adults(e.target.value)} onFocus={() => setInstructor1Adults("")} onClick={() => setInstructor1Adults("")}></input>
                 <div >{frontTips !== 0 && instructor1Adults !== "" && (parseFloat(instructor1Adults) * adultsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
               <div className='instructor-detail'>
 
-                <div>Cocktail:</div>
+                <div>Menu #2:</div>
                 <input type="number" value={instructor1Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor1Cocktail(e.target.value)} onFocus={() => setInstructor1Cocktail("")} onClick={() => setInstructor1Cocktail("")}></input>
                 <div >{frontTips !== 0 && instructor1Cocktail !== "" && (parseFloat(instructor1Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
               <div className='instructor-detail'>
 
-                <div>Children:</div>
+                <div>Menu #3:</div>
                 <input type="number" value={instructor1Children} className="instructor-detail-input" onChange={(e) => setInstructor1Children(e.target.value)} onFocus={() => setInstructor1Children("")} onClick={() => setInstructor1Children("")}></input>
                 <div >{frontTips !== 0 && instructor1Children !== "" && (parseFloat(instructor1Children) * kidsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
               <div className='instructor-detail'>
 
-                <div>Field Trip:</div>
+                <div>Menu #4:</div>
                 <input type="number" value={instructor1FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor1FieldTrip(e.target.value)} onFocus={() => setInstructor1FieldTrip("")} onClick={() => setInstructor1FieldTrip("")}></input>
                 <div >{frontTips !== 0 && instructor1FieldTrip !== "" && (parseFloat(instructor1FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
 
 
-              <div className='instructor-detail'>Total Instructor 1: {totalInstructor1} $</div>
+              <div className='instructor-detail'>Total Special Event Server 1: {totalInstructor1} $</div>
 
             </div>
 
 
             <div className='instructor'>
-              <div className='instructor-detail'>Instructor 2:</div>
+              <div className='instructor-detail'>Special Event Server 2:</div>
 
 
 
@@ -300,41 +300,41 @@ export default function TipsDistribution({ isAM }) {
 
               <div className='instructor-detail'>
 
-                <div>Adults:</div>
+                <div>Menu #1:</div>
                 <input type="number" value={instructor2Adults} className="instructor-detail-input" onChange={(e) => setInstructor2Adults(e.target.value)} onFocus={() => setInstructor2Adults("")} onClick={() => setInstructor2Adults("")}></input>
                 <div >{frontTips !== 0 && instructor2Adults !== "" && (parseFloat(instructor2Adults) * adultsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
               <div className='instructor-detail'>
 
-                <div>Cocktail:</div>
+                <div>Menu #2:</div>
                 <input type="number" value={instructor2Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor2Cocktail(e.target.value)} onFocus={() => setInstructor2Cocktail("")} onClick={() => setInstructor2Cocktail("")}></input>
                 <div >{frontTips !== 0 && instructor2Cocktail !== "" && (parseFloat(instructor2Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
               <div className='instructor-detail'>
 
-                <div>Children:</div>
+                <div>Menu #3:</div>
                 <input type="number" value={instructor2Children} className="instructor-detail-input" onChange={(e) => setInstructor2Children(e.target.value)} onFocus={() => setInstructor2Children("")} onClick={() => setInstructor2Children("")}></input>
                 <div >{frontTips !== 0 && instructor2Children !== "" && (parseFloat(instructor2Children) * kidsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
               <div className='instructor-detail'>
 
-                <div>Field Trip:</div>
+                <div>Menu #4:</div>
                 <input type="number" value={instructor2FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor2FieldTrip(e.target.value)} onFocus={() => setInstructor2FieldTrip("")} onClick={() => setInstructor2FieldTrip("")}></input>
                 <div >{frontTips !== 0 && instructor2FieldTrip !== "" && (parseFloat(instructor2FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
 
 
-              <div className='instructor-detail'>Total Instructor 1: {totalInstructor2} $</div>
+              <div className='instructor-detail'>Total Special Event Server 1: {totalInstructor2} $</div>
 
             </div>
 
 
             <div className='instructor'>
-              <div className='instructor-detail'>Instructor 3:</div>
+              <div className='instructor-detail'>Special Event Server 3:</div>
 
 
 
@@ -343,35 +343,35 @@ export default function TipsDistribution({ isAM }) {
 
               <div className='instructor-detail'>
 
-                <div>Adults:</div>
+                <div>Menu #1:</div>
                 <input type="number" value={instructor3Adults} className="instructor-detail-input" onChange={(e) => setInstructor3Adults(e.target.value)} onFocus={() => setInstructor3Adults("")} onClick={() => setInstructor3Adults("")}></input>
                 <div >{frontTips !== 0 && instructor3Adults !== "" && (parseFloat(instructor3Adults) * adultsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
               <div className='instructor-detail'>
 
-                <div>Cocktail:</div>
+                <div>Menu #2:</div>
                 <input type="number" value={instructor3Cocktail} className="instructor-detail-input" onChange={(e) => setInstructor3Cocktail(e.target.value)} onFocus={() => setInstructor3Cocktail("")} onClick={() => setInstructor3Cocktail("")}></input>
                 <div >{frontTips !== 0 && instructor3Cocktail !== "" && (parseFloat(instructor3Cocktail) * adultsCocktailPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
               <div className='instructor-detail'>
 
-                <div>Children:</div>
+                <div>Menu #3:</div>
                 <input type="number" value={instructor3Children} className="instructor-detail-input" onChange={(e) => setInstructor3Children(e.target.value)} onFocus={() => setInstructor3Children("")} onClick={() => setInstructor3Children("")}></input>
                 <div >{frontTips !== 0 && instructor3Children !== "" && (parseFloat(instructor3Children) * kidsPizzaPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
               <div className='instructor-detail'>
 
-                <div>Field Trip:</div>
+                <div>Menu #4:</div>
                 <input type="number" value={instructor3FieldTrip} className="instructor-detail-input" onChange={(e) => setInstructor3FieldTrip(e.target.value)} onFocus={() => setInstructor3FieldTrip("")} onClick={() => setInstructor3FieldTrip("")}></input>
                 <div >{frontTips !== 0 && instructor3FieldTrip !== "" && (parseFloat(instructor3FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
 
 
-              <div className='instructor-detail'>Total Instructor 3: {totalInstructor3} $</div>
+              <div className='instructor-detail'>Total Special Event Server 3: {totalInstructor3} $</div>
 
             </div>
 

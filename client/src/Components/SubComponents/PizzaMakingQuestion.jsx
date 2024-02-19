@@ -11,7 +11,7 @@ export default function PizzaMakingQuestion() {
 
   return (
     <div className='pizza-making-question'>
-      Pizza parties or Pizza making for children?
+      Special events?
 
       <div className='yes-no'>
         {!pizzaParties && (
