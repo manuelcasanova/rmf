@@ -784,6 +784,10 @@ input:checked+.slider:before {
   transition: transform 1s ease-in-out;
 }
 
+.shift {
+  margin-bottom: 3em; /* Adjust margin to ensure footer is always below shift */
+}
+
 .am,
 .pm {
   color: #fff;
@@ -818,6 +822,51 @@ input:checked+.slider:before {
   border-radius: 50%;
 }
 
+/* Frontpage footer */
+
+.home-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+.footerp {
+  /* margin-bottom: 1em; */
+}
+
+.home-ext-link {
+  color: white;
+}
+
+/* For smaller screens */
+@media screen and (max-width: 768px) {
+  .home-footer {
+    /* position: static; */
+    padding: 1em; /* Adjust padding as needed */
+  }
+
+  .footerp, .home-ext-link {
+    /* display: block; */
+    margin-bottom: 1em; /* Adjust spacing between elements on smaller screens */
+  }
+}
+
+/* For wider screens */
+@media screen and (min-aspect-ratio: 16/9) {
+  .home-footer {
+
+  }
+
+  .shift {
+
+  }
+}
+
 @media (max-width: 500px),
 (max-height: 650px) {
   .rectangle img {
@@ -835,6 +884,7 @@ input:checked+.slider:before {
     width: 50px;
   }
 }
+
 
 @media (max-height: 400px) {
   .rectangle img {
