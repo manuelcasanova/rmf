@@ -81,18 +81,19 @@ export default function EditTips({ property,
     <div className="data-line">
       <div className="data-left"></div>
       <div className="data-right">
-        <input
+        <div>This version of the app is a sample version, and the data within it cannot be modified.</div>
+        {/* <input
           type="number"
           className="edit-input"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-        />
+        /> */}
       </div>
-      <FontAwesomeIcon
+      {/* <FontAwesomeIcon
         className="fa-check"
         icon={faCheck}
         onClick={(e) => editComponent(e)}
-      />
+      /> */}
     </div>
   );
 }
