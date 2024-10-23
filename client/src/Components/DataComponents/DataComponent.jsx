@@ -103,6 +103,15 @@ export default function DataComponent({isAM}) {
 
   return (
     <div className="data-component">
+
+{data.length === 0 ? (
+        <div className="server-issue">
+          <p>There's a server issue. You may use the app but cannot modify pricing or percentages. Contact the administrator at manucasanova@hotmail.com</p>
+        </div>
+      ) : (
+        <>
+
+
       {generateDataLine("Supervisor / Server Tips:", data[0]?.fulltips, showFulltips, () => handleEditToggle("fulltips"), "fulltips", "fulltips", data, setData)}
 
       {generateDataLine("Server Support tips:", data[0]?.assistanttips, showAssistanttips, () => handleEditToggle("assistanttips"), "assistanttips", "assistanttips", data, setData)}
@@ -122,7 +131,7 @@ export default function DataComponent({isAM}) {
       {generateDataLine("FOH Tips:", data[0]?.fronttipspercent, showFronttipspercent, () => handleEditToggle("fronttipspercent"), "fronttipspercent", "fronttipspercent", data, setData)}
 
       {generateDataLine("Sundays pizza tips per hour:", data[0]?.sundayspizzatip, showSundayspizzatip, () => handleEditToggle("sundayspizzatip"), "sundayspizzatip", "sundayspizzatip", data, setData)}
-
+      </> )}
     </div>
   );
 }

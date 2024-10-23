@@ -113,6 +113,19 @@ const AppContextProvider = ({ children }) => {
   const [frontTipsPercent, setFrontTipsPercent] = useState();
   const [sundaysPizzaTip, setSundaysPizzaTip] = useState();
 
+  const defaultPricing = {
+    fulltips: 100,
+    assistanttips: 40,
+    kidspizzaprice: 27,
+    adultspizzaprice: 42.5,
+    adultscocktailprice: 27,
+    fieldtripprice: 12.19,
+    pizzatipspercent: 10,
+    kitchentipspercent: 30,
+    fronttipspercent: 70,
+    sundayspizzatip: 5
+  };
+
   useEffect(() => {
     axios.get(`${BACKEND}/data`)
       .then(function (res) {
@@ -136,26 +149,28 @@ const AppContextProvider = ({ children }) => {
         setFrontTipsPercent(res.data[0].fronttipspercent);
         setSundaysPizzaTip(res.data[0].sundayspizzatip);
       })
-      .catch(function (error) {
-        console.error('Error fetching data:', error);
-        setError(error);
-        setLoading(false);
-      });
+
+  
+        // Fallback default values in case of error
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+          setError(error);
+          setLoading(false);
+  
+          // Apply fallback values
+          setFullTips(defaultPricing.fulltips);
+          setAssistantTips(defaultPricing.assistanttips);
+          setKidsPizzaPrice(defaultPricing.kidspizzaprice);
+          setAdultsPizzaPrice(defaultPricing.adultspizzaprice);
+          setAdultsCocktailPrice(defaultPricing.adultscocktailprice);
+          setFieldTripPrice(defaultPricing.fieldtripprice);
+          setPizzaTipsPercent(defaultPricing.pizzatipspercent);
+          setKitchenTipsPercent(defaultPricing.kitchentipspercent);
+          setFrontTipsPercent(defaultPricing.fronttipspercent);
+          setSundaysPizzaTip(defaultPricing.sundayspizzatip);
+        });
   }, []);
   
-
-
-
-  // let fullTips = 100;
-  // let assistantTips = 40;
-  // let kidsPizzaPrice = 25;
-  // let adultsPizzaPrice = 40;
-  // let adultsCocktailPrice = 25;
-  // let fieldTripPrice = 12.19;
-  // let pizzaTipsPercent = 10;
-  // let kitchenTipsPercent = 30;
-  // let frontTipsPercent = 70;
-  // let sundaysPizzaTip = 5;
 
   const handleToggle = () => {
     setToggle(!toggle); 
@@ -512,12 +527,9 @@ const AppContextProvider = ({ children }) => {
     );
   }
 
-  if (error) {
-    return <div className="error-text">Error: {error.message}</div>;
-
-
-
-  }
+  // if (error) {
+  //   return <div className="error-text">Error: {error.message}</div>;
+  // }
 
   return (
     <AppContext.Provider value={{
