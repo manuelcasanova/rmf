@@ -764,7 +764,8 @@ input:checked+.slider:before {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #3498db;
+  /* background-color: #3498db; */
+  background: linear-gradient(to bottom left, #003366, #99ccff); /* Dark blue to light blue */
   flex-direction: column;
 }
 
@@ -784,6 +785,7 @@ input:checked+.slider:before {
   transition: transform 1s ease-in-out;
 }
 
+/*
 .am,
 .pm {
   color: #fff;
@@ -792,11 +794,42 @@ input:checked+.slider:before {
   padding: 1em 2em;
   border-radius: 10px;
   background-color: #005689;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   text-decoration: none;
 }
+*/
+
+.am,
+.pm {
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding: 1em 2em;
+  border-radius: 10px;
+  background-color: #005689; /* Button color */
+  background-image: linear-gradient(to bottom right, #007bb8, #005689); /* Gradient for relief */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease; /* Smooth transition for background and scale */
+  text-decoration: none; /* Remove underline for links */
+}
+
+/* Hover effect */
+.am:hover,
+.pm:hover {
+  background-color: #007bb8; /* Lighter shade on hover */
+  background-image: linear-gradient(to bottom right, #0099cc, #007bb8); /* Lighter gradient on hover */
+}
+
+/* Active effect */
+.am:active,
+.pm:active {
+  transform: scale(0.95); /* Slightly shrink when pressed */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Reduce shadow on click */
+}
+
 
 .am {
   margin-right: 3em;
