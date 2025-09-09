@@ -38,9 +38,9 @@ export default function PayTerminalMatch() {
 
   return (
     <div className='pizza-making-question'>
-      <div className='yes-no'>
+      {/* <div className='yes-no'>
         {!terminal && <button className='clear-all' onClick={showTerminal}>Payment Terminal Match</button>}
-      </div>
+      </div> */}
       {terminal && <button className='clear-all-x' onClick={showTerminal}>x</button>}
       {terminal && (
         <>

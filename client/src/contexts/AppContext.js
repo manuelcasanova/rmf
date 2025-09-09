@@ -40,6 +40,11 @@ const AppContextProvider = ({ children }) => {
   const [creditCardsTipsAM, setCreditCardsTipsAM] = useState(0)
   const [creditCardsTipsPrintOut, setCreditCardsTipsPrintOut] = useState(0)
 
+  const [creditCardsSurchargeAM, setCreditCardsSurchargeAM] = useState(0)
+  const [creditCardsSurchargePM, setCreditCardsSurchargePM] = useState(0)
+  const [creditCardsSurchargePrintOut, setCreditCardsSurchargePrintOut] = useState(0)
+
+
   const [sundaysInfo, setSundaysInfo] = useState(false)
 
 
@@ -132,11 +137,11 @@ const AppContextProvider = ({ children }) => {
         setData([...res.data]);
         setLoading(false);
 
-         // Delay setting loading to false by 2 seconds
+        // Delay setting loading to false by 2 seconds
         //  setTimeout(() => {
         //   setLoading(false);
         // }, 2000);
-  
+
         // Set state variables using setter functions
         setFullTips(res.data[0].fulltips);
         setAssistantTips(res.data[0].assistanttips);
@@ -150,30 +155,30 @@ const AppContextProvider = ({ children }) => {
         setSundaysPizzaTip(res.data[0].sundayspizzatip);
       })
 
-  
-        // Fallback default values in case of error
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-          setError(error);
-          setLoading(false);
-  
-          // Apply fallback values
-          setFullTips(defaultPricing.fulltips);
-          setAssistantTips(defaultPricing.assistanttips);
-          setKidsPizzaPrice(defaultPricing.kidspizzaprice);
-          setAdultsPizzaPrice(defaultPricing.adultspizzaprice);
-          setAdultsCocktailPrice(defaultPricing.adultscocktailprice);
-          setFieldTripPrice(defaultPricing.fieldtripprice);
-          setPizzaTipsPercent(defaultPricing.pizzatipspercent);
-          setKitchenTipsPercent(defaultPricing.kitchentipspercent);
-          setFrontTipsPercent(defaultPricing.fronttipspercent);
-          setSundaysPizzaTip(defaultPricing.sundayspizzatip);
-        });
+
+      // Fallback default values in case of error
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+        setError(error);
+        setLoading(false);
+
+        // Apply fallback values
+        setFullTips(defaultPricing.fulltips);
+        setAssistantTips(defaultPricing.assistanttips);
+        setKidsPizzaPrice(defaultPricing.kidspizzaprice);
+        setAdultsPizzaPrice(defaultPricing.adultspizzaprice);
+        setAdultsCocktailPrice(defaultPricing.adultscocktailprice);
+        setFieldTripPrice(defaultPricing.fieldtripprice);
+        setPizzaTipsPercent(defaultPricing.pizzatipspercent);
+        setKitchenTipsPercent(defaultPricing.kitchentipspercent);
+        setFrontTipsPercent(defaultPricing.fronttipspercent);
+        setSundaysPizzaTip(defaultPricing.sundayspizzatip);
+      });
   }, []);
-  
+
 
   const handleToggle = () => {
-    setToggle(!toggle); 
+    setToggle(!toggle);
   }
 
   const roundToTwo = (num) => {
@@ -214,8 +219,20 @@ const AppContextProvider = ({ children }) => {
 
 
 
-  const totalTips = parseFloat(cashTips) + parseFloat(creditCardsTipsAM)
-  const totalTipsPM = roundToTwo((roundToTwo(cashTipsPM) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))
+  const totalTipsAndSurcharge = parseFloat(cashTips) + parseFloat(creditCardsTipsAM)
+  const totalTipsAndSurchargePM = roundToTwo((roundToTwo(cashTipsPM) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))
+
+  const totalTipsAM = parseFloat(cashTips) + parseFloat(creditCardsTipsAM) - parseFloat(creditCardsSurchargeAM)
+  const totalTipsPM = roundToTwo(
+    (
+      roundToTwo(cashTipsPM)
+      + roundToTwo(creditCardsTipsPrintOut)
+      - roundToTwo(creditCardsTipsAM)
+      - roundToTwo(creditCardsSurchargePM)
+      + roundToTwo(creditCardsSurchargeAM)
+    )
+  )
+
 
   const pizzaTips =
 
@@ -229,8 +246,12 @@ const AppContextProvider = ({ children }) => {
     +
     (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
 
-  const tipsAfterPizzaParty = (totalTips - pizzaTips).toFixed(2)
-  const tipsAfterPizzaPartyPM = (totalTipsPM - pizzaTips).toFixed(2)
+  const tipsAfterPizzaParty = (totalTipsAndSurcharge - creditCardsSurchargeAM - pizzaTips).toFixed(2)
+  const tipsAfterPizzaPartyPM = (totalTipsAndSurchargePM - creditCardsSurchargePM - pizzaTips).toFixed(2) //HERE
+
+
+
+
   const kitchenTips = (tipsAfterPizzaParty * kitchenTipsPercent / 100).toFixed(2);
   const kitchenTipsPM = (tipsAfterPizzaPartyPM * kitchenTipsPercent / 100).toFixed(2);
 
@@ -569,7 +590,12 @@ const AppContextProvider = ({ children }) => {
       creditCardTips, setCreditCardTips,
       creditCardsTipsAM, setCreditCardsTipsAM,
       creditCardsTipsPrintOut, setCreditCardsTipsPrintOut,
-      totalTips,
+      creditCardsSurchargeAM, setCreditCardsSurchargeAM,
+      creditCardsSurchargePM, setCreditCardsSurchargePM,
+      creditCardsSurchargePrintOut, setCreditCardsSurchargePrintOut,
+      totalTipsAndSurcharge,
+      totalTipsAndSurchargePM,
+      totalTipsAM,
       totalTipsPM,
       pizzaAdults, setPizzaAdults,
       cocktailAdults, setCocktailAdults,

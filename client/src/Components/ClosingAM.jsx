@@ -38,6 +38,9 @@ export default function ClosingAM() {
     // Tips
     cashTips, creditCardsTipsAM, setCreditCardsTipsAM,
 
+    //Surcharge
+    creditCardsSurchargeAM, setCreditCardsSurchargeAM, creditCardsSurchargePrintOut, setCreditCardsSurchargePM,
+
     // Toggle and Visibility
     toggle, showData, setShowData,
 
@@ -75,7 +78,7 @@ export default function ClosingAM() {
 
         <div className='seccion'>
 
-          {showData && <DataComponent isAM={true}/>}
+          {showData && <DataComponent isAM={true} />}
           <div className='title'>Shift</div>
           <Link to='/pm'><AmButton /></Link>
 
@@ -115,12 +118,48 @@ export default function ClosingAM() {
             {cashTipsInfo && <div className='info-message'>Cash tips = Total cash - Float - Cash sales</div>}
 
             <div className='inline'>
-              <label className='inline-label'>Credit card tips<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardTipsInfo}>i</div></label>
+              <label className='inline-label'>CC tips and CC Surcharge<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardTipsInfo}>i</div></label>
+
               <input type="number" className='money-input' value={creditCardsTipsAM} onChange={(e) => setCreditCardsTipsAM(e.target.value)} onClick={() => setCreditCardsTipsAM("")}
                 onFocus={() => setCreditCardsTipsAM("")}></input>
+
+
             </div>
 
-            {creditCardTipsInfo && <div className='info-message'>Tips paid on print out</div>}
+            {creditCardTipsInfo && <div className='info-message'>Tips paid on Touch Bistro's print out</div>}
+
+
+            <div className='inline'>
+              <label className='inline-label'>Credit Card Surcharge</label>
+
+              <input type="number" className='money-input' value={creditCardsSurchargeAM} onChange={(e) => setCreditCardsSurchargeAM(e.target.value)} onClick={() => setCreditCardsSurchargeAM("")}
+                onFocus={() => setCreditCardsSurchargeAM("")}></input>
+
+
+            </div>
+
+                        <div className='inline'>
+              <label className='inline-label'>Actual Credit Card Tips</label>
+              <div className='money-input'>{
+
+                creditCardsTipsAM
+
+                && roundToTwo((roundToTwo(
+                  creditCardsTipsAM
+                ) - roundToTwo(
+                  creditCardsSurchargeAM
+                )))
+
+
+              }</div>
+
+              {!creditCardsTipsAM && creditCardsTipsAM !== 0
+
+                &&
+                <ErrorMessageInputField />
+              }
+            </div>
+
 
             <div className='inline'>
               <label className='inline-label'>Total tips</label>
@@ -128,10 +167,11 @@ export default function ClosingAM() {
 
                 creditCardsTipsAM
 
-                && roundToTwo((roundToTwo(cashTips) + roundToTwo(creditCardsTipsAM)))
+                && roundToTwo((roundToTwo(cashTips) + roundToTwo(creditCardsTipsAM) -  roundToTwo(creditCardsSurchargeAM)))
 
 
               }</div>
+
               {!creditCardsTipsAM && creditCardsTipsAM !== 0
 
                 &&

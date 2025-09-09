@@ -22,7 +22,9 @@ export default function SummaryAm() {
     assistantTips,
     pizzaTips,
     creditCardsTipsAM,
-    totalTips,
+    totalTipsAndSurcharge,
+    totalTipsAM,
+    totalTipsPM,
     cashTips,
     frontTips,
     kitchenTips,
@@ -116,7 +118,7 @@ export default function SummaryAm() {
             <div className='print-line'>Cash sales: {cashSalesAM}$</div>
             <div className='print-line'>Cash tips: {cashTips}$</div>
             <div className='print-line'>Credit card tips: {creditCardsTipsAM}$</div>
-            <div className='print-line'>TOTAL TIPS: {totalTips}$</div>
+            <div className='print-line'>TOTAL TIPS: {totalTipsAndSurcharge}$</div>
             <div className='print-line'></div>
             <div className='print-line'>Pizza making Tips: {pizzaTips}$</div>
             <div className='print-line'>Kitchen Tips: {kitchenTips}$</div>

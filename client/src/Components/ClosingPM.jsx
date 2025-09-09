@@ -35,7 +35,13 @@ export default function ClosingPM() {
     creditCardsTipsAM, setCreditCardsTipsAM,
     creditCardsTipsPrintOut, setCreditCardsTipsPrintOut,
     cashTipsPM,
-    totalTipsPM,
+    totalTipsAndSurchargePM,
+  
+    //Surcharge
+    creditCardsSurchargeAM,
+    setCreditCardsSurchargeAM,
+    creditCardsSurchargePM,
+    setCreditCardsSurchargePM,
 
     // Toggle and Visibility
     toggle, showData, setShowData,
@@ -177,18 +183,51 @@ export default function ClosingPM() {
 
             {creditCardsTipsAMInfo && <div className='info-message'>Credit Card tips from the AM shift</div>}
 
+            <div className='inline'>
+              <label className='inline-label'>Credit card Surcharge AM</label>
+              <input type="number" className='money-input' value={creditCardsSurchargeAM} onChange={(e) => setCreditCardsSurchargeAM(e.target.value)} onClick={() => setCreditCardsSurchargeAM("")}
+                onFocus={() => setCreditCardsSurchargeAM("")}></input>
+            </div>
 
             <div className='inline'>
-              <label className='inline-label'>Credit card tips Print Out<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPrintOutInfo}>i</div></label>
+              <label className='inline-label'>CC tips and CC Surcharge<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPrintOutInfo}>i</div></label>
               <input type="number" className='money-input' value={creditCardsTipsPrintOut} onChange={(e) => setCreditCardsTipsPrintOut(e.target.value)} onClick={() => setCreditCardsTipsPrintOut("")}
                 onFocus={() => setCreditCardsTipsPrintOut("")}></input>
             </div>
 
-            {creditCardsPrintOutInfo && <div className='info-message'>Credit Card tips from the Print Out</div>}
+            {creditCardsPrintOutInfo && <div className='info-message'>Credit Card Tips paid on Touch Bistro's print out</div>}
+
+                        <div className='inline'>
+              <label className='inline-label'>Credit card Surcharge Print Out (All day)</label>
+              <input type="number" className='money-input' value={creditCardsSurchargePM} onChange={(e) => setCreditCardsSurchargePM(e.target.value)} onClick={() => setCreditCardsSurchargePM("")}
+                onFocus={() => setCreditCardsSurchargePM("")}></input>
+            </div>
+
+                        <div className='inline'>
+              <label className='inline-label'>Credit Cards Surcharge PM (All day - AM)</label>
+              <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && 
+              roundToTwo(creditCardsSurchargePM) -
+              roundToTwo(creditCardsSurchargeAM)
+              } 
+              
+              </div>
+              {!creditCardsTipsAM && creditCardsTipsAM !== 0
+                &&
+                <ErrorMessageInputField />
+              }
+            </div>
 
             <div className='inline'>
-              <label className='inline-label'>Credit card tips PM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPMInfo}>i</div></label>
-              <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && roundToTwo((roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)))}</div>
+              <label className='inline-label'>Actual Credit card tips PM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPMInfo}>i</div></label>
+              <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && 
+              roundToTwo(
+              roundToTwo(creditCardsTipsPrintOut) - 
+              roundToTwo(creditCardsTipsAM) -
+              roundToTwo(creditCardsSurchargePM)
+              )
+              } 
+              
+              </div>
               {!creditCardsTipsAM && creditCardsTipsAM !== 0
                 &&
                 <ErrorMessageInputField />
@@ -201,7 +240,7 @@ export default function ClosingPM() {
 
             <div className='inline'>
               <label className='inline-label'>Total Tips PM</label>
-              <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && totalTipsPM}</div>
+              <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && totalTipsAndSurchargePM - creditCardsSurchargePM }</div>
               {!creditCardsTipsPrintOut && creditCardsTipsPrintOut !== 0
                 &&
                 <ErrorMessageInputField />

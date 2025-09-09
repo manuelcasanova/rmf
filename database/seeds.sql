@@ -4,5 +4,5 @@ INSERT INTO tipsdistributiondata
 
 VALUES
 
-(100, 40, 25, 40, 25, 12.19, 10, 30, 70, 5)
+(100, 40, 30, 45, 30, 16.26, 10, 30, 70, 5)
 
