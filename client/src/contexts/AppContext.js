@@ -17,7 +17,7 @@ const AppContextProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const BACKEND = process.env.REACT_APP_BACKEND_URL;
 
-  console.log('Backend', BACKEND)
+  // console.log('Backend', BACKEND)
 
   const [toggle, setToggle] = useState(false);
   const [showData, setShowData] = useState(false)
@@ -431,9 +431,12 @@ const AppContextProvider = ({ children }) => {
     setCreditCardsTipsAM(0);
     setCashSalesPrintOut(0);
     setCreditCardsTipsPrintOut(0);
+    setCreditCardsSurchargeAM(0);
+    setCreditCardsSurchargePM(0);
     setPizzaAdults(0);
     setPizzaChildren(0);
-    setPizzaServers(0)
+    setPizzaServers(0);
+    setSundaysServerHours(0);
     setServer1Name("");
     setServer2Name("");
     setServer3Name("");

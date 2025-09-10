@@ -82,7 +82,7 @@ const PizzaParties = ({ isAM }) => {
         />
       </div>
 
-      {cashSalesPM > 0 &&
+
         <div className='inline'>
           <label className='inline-label'>Sunday's pizza making server hours 
             <div className={color !== 'blue' ? "info" : "info-red"} onClick={showSundaysInfo}>i</div>
@@ -96,7 +96,7 @@ const PizzaParties = ({ isAM }) => {
             onFocus={() => setSundaysServerHours("")} 
           />
         </div>
-      }
+  
 
       {sundaysInfo && <div className='info-message'>Sunday's pizza maker gets {sundaysPizzaTip} $ per hour worked</div>}
 
