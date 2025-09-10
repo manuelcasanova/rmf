@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import LoadingSpinner from '../components/SubComponents/LoadingSpinner';
@@ -14,8 +15,9 @@ const AppContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [color, setColor] = useState("black");
   const [data, setData] = useState([]);
-  const BACKEND = 'https://backend.rmf.manucasanova.com'
-  // const BACKEND = 'http://localhost:3500'
+  const BACKEND = process.env.REACT_APP_BACKEND_URL;
+
+  console.log('Backend', BACKEND)
 
   const [toggle, setToggle] = useState(false);
   const [showData, setShowData] = useState(false)
@@ -177,6 +179,8 @@ const AppContextProvider = ({ children }) => {
   }, []);
 
 
+// console.log('data in AppContext.js', data)
+
   const handleToggle = () => {
     setToggle(!toggle);
   }
@@ -246,23 +250,23 @@ const AppContextProvider = ({ children }) => {
     +
     (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
 
-console.log('pizzaChildren:', pizzaChildren);
-console.log('kidsPizzaPrice:', kidsPizzaPrice);
-console.log('pizzaTipsPercent:', pizzaTipsPercent);
+// console.log('pizzaChildren:', pizzaChildren);
+// console.log('kidsPizzaPrice:', kidsPizzaPrice);
+// console.log('pizzaTipsPercent:', pizzaTipsPercent);
 
-console.log('pizzaAdults:', pizzaAdults);
-console.log('adultsPizzaPrice:', adultsPizzaPrice);
+// console.log('pizzaAdults:', pizzaAdults);
+// console.log('adultsPizzaPrice:', adultsPizzaPrice);
 
-console.log('cocktailAdults:', cocktailAdults);
-console.log('adultsCocktailPrice:', adultsCocktailPrice);
+// console.log('cocktailAdults:', cocktailAdults);
+// console.log('adultsCocktailPrice:', adultsCocktailPrice);
 
-console.log('sundaysServerHours:', sundaysServerHours);
-console.log('sundaysPizzaTip:', sundaysPizzaTip);
+// console.log('sundaysServerHours:', sundaysServerHours);
+// console.log('sundaysPizzaTip:', sundaysPizzaTip);
 
-console.log('fieldTrip:', fieldTrip);
-console.log('fieldTripPrice:', fieldTripPrice);
+// console.log('fieldTrip:', fieldTrip);
+// console.log('fieldTripPrice:', fieldTripPrice);
 
-console.log('Final pizzaTips:', pizzaTips);
+// console.log('Final pizzaTips:', pizzaTips);
 
 
 

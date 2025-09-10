@@ -23,6 +23,8 @@ export default function DataComponent({isAM}) {
 
   } = useContext(AppContext);
 
+  // console.log('data in DataComponent.jsx', data)
+
   const handleEditToggle = (property) => {
     if (property === "fulltips") {
       setShowFulltips((prev) => !prev);

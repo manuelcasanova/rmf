@@ -32,6 +32,7 @@ app.get("/", (req, res) => {
 app.get("/data", async (req, res) => {
   try {
     const getData = await pool.query('SELECT * FROM tipsdistributiondata');
+    console.log('getData', getData)
     res.json(getData.rows);
   } catch (err) {
     console.error(err.message);
