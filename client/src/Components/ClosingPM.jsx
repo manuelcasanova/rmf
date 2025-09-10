@@ -223,7 +223,8 @@ export default function ClosingPM() {
               roundToTwo(
               roundToTwo(creditCardsTipsPrintOut) - 
               roundToTwo(creditCardsTipsAM) -
-              roundToTwo(creditCardsSurchargePM)
+              roundToTwo(creditCardsSurchargePM) +
+              roundToTwo(creditCardsSurchargeAM)
               )
               } 
               
@@ -240,7 +241,13 @@ export default function ClosingPM() {
 
             <div className='inline'>
               <label className='inline-label'>Total Tips PM</label>
-              <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && totalTipsAndSurchargePM - creditCardsSurchargePM }</div>
+              <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && 
+              roundToTwo(
+              roundToTwo(totalTipsAndSurchargePM)
+              - roundToTwo(creditCardsSurchargePM)
+              + roundToTwo(creditCardsSurchargeAM)
+              )
+              }</div>
               {!creditCardsTipsPrintOut && creditCardsTipsPrintOut !== 0
                 &&
                 <ErrorMessageInputField />

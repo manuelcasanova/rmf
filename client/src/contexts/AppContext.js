@@ -15,7 +15,7 @@ const AppContextProvider = ({ children }) => {
   const [color, setColor] = useState("black");
   const [data, setData] = useState([]);
   const BACKEND = 'https://backend.rmf.manucasanova.com'
-  //const BACKEND = 'http://localhost:3500'
+  // const BACKEND = 'http://localhost:3500'
 
   const [toggle, setToggle] = useState(false);
   const [showData, setShowData] = useState(false)
@@ -121,10 +121,10 @@ const AppContextProvider = ({ children }) => {
   const defaultPricing = {
     fulltips: 100,
     assistanttips: 40,
-    kidspizzaprice: 27,
-    adultspizzaprice: 42.5,
-    adultscocktailprice: 27,
-    fieldtripprice: 12.19,
+    kidspizzaprice: 30,
+    adultspizzaprice: 45,
+    adultscocktailprice: 30,
+    fieldtripprice: 16.26,
     pizzatipspercent: 10,
     kitchentipspercent: 30,
     fronttipspercent: 70,
@@ -246,9 +246,32 @@ const AppContextProvider = ({ children }) => {
     +
     (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
 
-  const tipsAfterPizzaParty = (totalTipsAndSurcharge - creditCardsSurchargeAM - pizzaTips).toFixed(2)
-  const tipsAfterPizzaPartyPM = (totalTipsAndSurchargePM - creditCardsSurchargePM - pizzaTips).toFixed(2) //HERE
+console.log('pizzaChildren:', pizzaChildren);
+console.log('kidsPizzaPrice:', kidsPizzaPrice);
+console.log('pizzaTipsPercent:', pizzaTipsPercent);
 
+console.log('pizzaAdults:', pizzaAdults);
+console.log('adultsPizzaPrice:', adultsPizzaPrice);
+
+console.log('cocktailAdults:', cocktailAdults);
+console.log('adultsCocktailPrice:', adultsCocktailPrice);
+
+console.log('sundaysServerHours:', sundaysServerHours);
+console.log('sundaysPizzaTip:', sundaysPizzaTip);
+
+console.log('fieldTrip:', fieldTrip);
+console.log('fieldTripPrice:', fieldTripPrice);
+
+console.log('Final pizzaTips:', pizzaTips);
+
+
+
+  const tipsAfterPizzaParty = (totalTipsAndSurcharge - creditCardsSurchargeAM - pizzaTips).toFixed(2)
+  const tipsAfterPizzaPartyPM = (
+    roundToTwo(totalTipsAndSurchargePM) - 
+    roundToTwo(creditCardsSurchargePM) + 
+    roundToTwo(creditCardsSurchargeAM) - 
+    roundToTwo(pizzaTips)).toFixed(2) //HERE
 
 
 
