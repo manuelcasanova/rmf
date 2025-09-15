@@ -45,7 +45,7 @@ export default function ClosingAM() {
     toggle, showData, setShowData,
 
     // Cash
-    cashSales, setCashSales,
+    cashSalesAM, setCashSalesAM,
 
     // Information
     cashTipsInfo, cashSalesInfo, creditCardTipsInfo,
@@ -86,7 +86,7 @@ export default function ClosingAM() {
 
           <SupportCashCounting />
 
-          <PayTerminalMatch />
+          {/* <PayTerminalMatch /> */}
 
           {/* <SetExample /> */}
 
@@ -97,9 +97,9 @@ export default function ClosingAM() {
             <div className='inline'>
               <label className='inline-label highlight'>CASH SALES<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashSalesInfo}>i</div></label>
 
-              <input type="number" className='money-input' value={cashSales} onChange={(e) => setCashSales(e.target.value)}
-                onClick={() => setCashSales("")}
-                onFocus={() => setCashSales("")}
+              <input type="number" className='money-input' value={cashSalesAM} onChange={(e) => setCashSalesAM(e.target.value)}
+                onClick={() => setCashSalesAM("")}
+                onFocus={() => setCashSalesAM("")}
               ></input>
             </div>
 

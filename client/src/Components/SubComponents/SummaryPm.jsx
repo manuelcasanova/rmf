@@ -22,12 +22,14 @@ export default function SummaryPM() {
     // Tips
     assistantTips,
     pizzaTips,
-    creditCardsTipsAM, 
+    creditCardsTipsAM,
     creditCardsTipsPrintOut,
-    cashTipsPM, 
-     kitchenTipsPM,
-    frontTipsPM, 
+    cashTipsPM,
+    kitchenTipsPM,
+    frontTipsPM,
     tipsPerHourPM,
+    creditCardsSurchargeAM,
+    creditCardsSurchargePM,
 
 
 
@@ -46,28 +48,28 @@ export default function SummaryPM() {
     summary,
 
     // Display Toggle
-    showSummary, 
+    showSummary,
 
     // Server Hours and Names
-    server1Hours, 
-    server2Hours, 
-    server3Hours, 
-    server4Hours, 
-    server5Hours, 
+    server1Hours,
+    server2Hours,
+    server3Hours,
+    server4Hours,
+    server5Hours,
 
-    server1Name, 
-    server2Name, 
-    server3Name, 
-    server4Name, 
-    server5Name, 
+    server1Name,
+    server2Name,
+    server3Name,
+    server4Name,
+    server5Name,
 
     // Assistant Hours and Names
-    assistant1Hours, 
-    assistant2Hours, 
-    assistant3Hours, 
-    assistant1Name, 
-    assistant2Name, 
-    assistant3Name, 
+    assistant1Hours,
+    assistant2Hours,
+    assistant3Hours,
+    assistant1Name,
+    assistant2Name,
+    assistant3Name,
 
     // Total Hours, Tips Per Hour, and Rounding
     totalHours, roundToTwo,
@@ -117,16 +119,20 @@ export default function SummaryPM() {
             <div className='print-line'>Receipts: {receipts}$</div>
             <div className='print-line'>TOTAL CASH: {totalCash}$</div>
             <div className='print-line'>Float: {float}$</div>
-            <div className='print-line'>Cash sales AM: {cashSalesAM}$</div>
-            <div className='print-line'>Cash sales Print Out: {cashSalesPrintOut}$</div>
+            {/* <div className='print-line'>Cash sales AM: {cashSalesAM}$</div>
+            <div className='print-line'>Cash sales Print Out: {cashSalesPrintOut}$</div> */}
             <div className='print-line'>Cash sales PM: {cashSalesPM}$</div>
             <div className='print-line'>Cash tips: {cashTipsPM}$</div>
-            <div className='print-line'>Credit card tips AM: {creditCardsTipsAM}$</div>
-            <div className='print-line'>Credit card tips Print Out: {creditCardsTipsPrintOut}$</div>
-            <div className='print-line'>Credit card tips PM: {roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)}$</div>
-            <div className='print-line'>TOTAL TIPS PM: {(roundToTwo(cashTipsPM) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM)).toFixed(2)}$</div>
+            {/* <div className='print-line'>Credit card tips AM: {creditCardsTipsAM}$</div>
+            <div className='print-line'>Credit card tips Print Out: {creditCardsTipsPrintOut}$</div> */}
+            <div className='print-line'>Credit card surcharge PM: {
+              roundToTwo(creditCardsSurchargePM) -
+              roundToTwo(creditCardsSurchargeAM)
+            }$</div>
+            <div className='print-line'>Actual Credit card tips PM: {roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM) - roundToTwo(creditCardsSurchargePM) + roundToTwo(creditCardsSurchargeAM)}$</div>
+            <div className='print-line'>TOTAL TIPS PM: {(roundToTwo(cashTipsPM) + roundToTwo(creditCardsTipsPrintOut) - roundToTwo(creditCardsTipsAM) - roundToTwo(creditCardsSurchargePM) + roundToTwo(creditCardsSurchargeAM)).toFixed(2)}$</div>
             <div className='print-line'></div>
-            <div className='print-line'>Pizza making Tips: {pizzaTips}$</div>
+            <div className='print-line'>Pizza making Tips: {pizzaTips.toFixed(2)}$</div>
             <div className='print-line'>Kitchen Tips: {kitchenTipsPM}$</div>
             <div className='print-line'>Front Tips: {frontTipsPM}$</div>
             <div className='print-line'>Total hours: {totalHours.toFixed(2)}</div>
@@ -186,45 +192,45 @@ export default function SummaryPM() {
                 <div className='server-details'>{(frontTipsPM / totalHours * assistant3Hours * assistantTips / 100).toFixed(2)}$</div>
               </div>}
 
-              {parseInt(totalInstructor1) !== 0 && 
-              
-              
-              parseInt(totalInstructors) === parseInt(pizzaTips) &&
-              
-              
-              <div className='print-server'>
-                <div className='server-details'>Instructor 1: </div>
-                <div></div>
-                <div className='server-details'>{totalInstructor1}$</div>
-              </div>}
+              {parseInt(totalInstructor1) !== 0 &&
 
-              {parseInt(totalInstructor2) !== 0 && 
-              
-              parseInt(totalInstructors) === parseInt(pizzaTips) &&
-              
-              <div className='print-server'>
-                <div className='server-details'>Instructor 2: </div>
-                <div></div>
-                <div className='server-details'>{totalInstructor2}$</div>
-              </div>}
 
-              {parseInt(totalInstructor3) !== 0 && 
-              
-              parseInt(totalInstructors) === parseInt(pizzaTips) &&
-              
-              <div className='print-server'>
-                <div className='server-details'>Instructor 3: </div>
-                <div></div>
-                <div className='server-details'>{totalInstructor3}$</div>
-              </div>}
+                parseInt(totalInstructors) === parseInt(pizzaTips) &&
+
+
+                <div className='print-server'>
+                  <div className='server-details'>Instructor 1: </div>
+                  <div></div>
+                  <div className='server-details'>{totalInstructor1}$</div>
+                </div>}
+
+              {parseInt(totalInstructor2) !== 0 &&
+
+                parseInt(totalInstructors) === parseInt(pizzaTips) &&
+
+                <div className='print-server'>
+                  <div className='server-details'>Instructor 2: </div>
+                  <div></div>
+                  <div className='server-details'>{totalInstructor2}$</div>
+                </div>}
+
+              {parseInt(totalInstructor3) !== 0 &&
+
+                parseInt(totalInstructors) === parseInt(pizzaTips) &&
+
+                <div className='print-server'>
+                  <div className='server-details'>Instructor 3: </div>
+                  <div></div>
+                  <div className='server-details'>{totalInstructor3}$</div>
+                </div>}
 
               {parseInt(totalInstructors) !== parseInt(pizzaTips) &&
 
-<section className='servers warning-message'>
-  <div className='warning-message'>Warning!! The pizza instructors' total tips and the tips distributed amongst the 3 instructors do not match! The sum of the total tips for the three instructors must match the total pizza instructor tips: {pizzaTips}$. However, the total sum of the tips for the three instructors currently adds to {parseFloat(totalInstructors).toFixed(2)} $.</div>
- 
-</section>
-}
+                <section className='servers warning-message'>
+                  <div className='warning-message'>Warning!! The pizza instructors' total tips and the tips distributed amongst the 3 instructors do not match! The sum of the total tips for the three instructors must match the total pizza instructor tips: {pizzaTips}$. However, the total sum of the tips for the three instructors currently adds to {parseFloat(totalInstructors).toFixed(2)} $.</div>
+
+                </section>
+              }
 
             </div>
 

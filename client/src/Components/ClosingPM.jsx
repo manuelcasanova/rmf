@@ -121,7 +121,7 @@ export default function ClosingPM() {
 
           <SupportCashCounting />
 
-          <PayTerminalMatch />
+          {/* <PayTerminalMatch /> */}
 
           {/* <SetExample /> */}
 

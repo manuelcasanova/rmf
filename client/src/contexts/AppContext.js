@@ -219,6 +219,8 @@ const AppContextProvider = ({ children }) => {
       : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSales) - parseFloat(float)).toFixed(2)
   );
 
+  // console.log('cash', 'receipts', receipts, 'cashSales', cashSales, 'cashCounted', cashCounted, 'float', float)
+
   const cashTipsPM = (
     cash > 0
       ? (parseFloat(cash) + parseFloat(receipts) - parseFloat(cashSalesPM) - parseFloat(float)).toFixed(2)
@@ -550,43 +552,44 @@ const AppContextProvider = ({ children }) => {
 
 
   const test = () => {
-    setCashCounted(990);
-    setReceipts(10);
-    setFloat(400);
-    setCashSales(500);
-    setCashSalesAM(500);
-    setCashSalesPrintOut(1000);
+    setCashCounted(995);
+    setReceipts(5);
+    setFloat(800);
+    setCashSales(135);
+    setCashSalesAM(135);
+    setCashSalesPrintOut(380);
     setCreditCardTips(500);
-    setCreditCardsTipsAM(200);
-    setCreditCardsTipsPrintOut(800);
-    setPizzaAdults(7);
-    setPizzaChildren(9);
-    setCocktailAdults(9);
-    setFieldTrip(9);
+    setCreditCardsTipsAM(442);
+    setCreditCardsSurchargeAM(30);
+    setCreditCardsTipsPrintOut(1012);
+    setPizzaAdults(1);
+    setPizzaChildren(1);
+    setCocktailAdults(1);
+    setFieldTrip(1);
     setPizzaServers(2)
-    setServer1Name("Manuel");
-    setServer2Name("Dom");
-    setServer3Name("Suz");
-    setAssistant1Name("Jasmine");
-    setServer1Hours(5);
-    setServer2Hours(5);
-    setServer3Hours(4);
+    setServer1Name("A");
+    setServer2Name("B");
+    setServer3Name("C");
+    setAssistant1Name("D");
+    setServer1Hours(4);
+    setServer2Hours(3);
+    setServer3Hours(2);
+    setServer4Hours(1);
     setAssistant1Hours(4);
-    setInstructor1Adults(10);
-    setInstructor2Children(10);
+    setAssistant2Hours(2);
     // setSundaysServerHours(3)
-    setInstructor1Adults(0);
-    setInstructor1Children(3);
-    setInstructor1Cocktail(3);
-    setInstructor1FieldTrip(3);
-    setInstructor2Adults(3);
-    setInstructor2Children(3);
-    setInstructor2Cocktail(3);
-    setInstructor2FieldTrip(3);
-    setInstructor3Adults(3);
-    setInstructor3Children(3);
-    setInstructor3Cocktail(3);
-    setInstructor3FieldTrip(3);
+    setInstructor1Adults(1);
+    setInstructor1Children(0);
+    setInstructor1Cocktail(0.5);
+    setInstructor1FieldTrip(0);
+    setInstructor2Adults(0);
+    setInstructor2Children(1);
+    setInstructor2Cocktail(0);
+    setInstructor2FieldTrip(0.5);
+    setInstructor3Adults(0);
+    setInstructor3Children(0);
+    setInstructor3Cocktail(0.5);
+    setInstructor3FieldTrip(0.5);
     showInstructors(prev => !prev)
     setPizzaParties(prev => !prev)
   }

@@ -29,6 +29,7 @@ export default function SummaryAm() {
     frontTips,
     kitchenTips,
     tipsPerHour,
+    creditCardsSurchargeAM,
 
     // Toggle and Visibility
     toggle,
@@ -117,10 +118,13 @@ export default function SummaryAm() {
             <div className='print-line'>Float: {float}$</div>
             <div className='print-line'>Cash sales: {cashSalesAM}$</div>
             <div className='print-line'>Cash tips: {cashTips}$</div>
-            <div className='print-line'>Credit card tips: {creditCardsTipsAM}$</div>
-            <div className='print-line'>TOTAL TIPS: {totalTipsAndSurcharge}$</div>
+            <div className='print-line'>Credit card surcharge: {creditCardsSurchargeAM}$</div>
+            <div className='print-line'>Credit card tips: {
+            creditCardsTipsAM - creditCardsSurchargeAM
+            }$</div>
+            <div className='print-line'>TOTAL TIPS: {totalTipsAndSurcharge - creditCardsSurchargeAM}$</div>
             <div className='print-line'></div>
-            <div className='print-line'>Pizza making Tips: {pizzaTips}$</div>
+            <div className='print-line'>Pizza making Tips: {pizzaTips.toFixed(2)}$</div>
             <div className='print-line'>Kitchen Tips: {kitchenTips}$</div>
             <div className='print-line'>Front Tips: {frontTips}$</div>
             <div className='print-line'>Total hours: {totalHours.toFixed(2)}</div>
