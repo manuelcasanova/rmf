@@ -109,7 +109,7 @@ const PizzaParties = ({ isAM }) => {
       </div>
 
       {pizzaTips !== 0 && supportServerInfo &&
-        <div className='error-message'>Do not forget that the pizza making servers may have as well work as support over the shift. Tip accordingly.</div>
+        <div className='error-message'>Do not forget that the pizza making servers may have as well work as server or server support over the shift. Tip accordingly.</div>
       }
 
       <div className='inline'>

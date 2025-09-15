@@ -35,7 +35,7 @@ export default function Totals({ isAM }) {
   return (
     <section className='summary'>
       <div className='inline'>
-        <label className='inline-label'>TOTAL HOURS <div className={color !== 'blue' ? "info" : "info-red"} onClick={showTotalHoursInfo}>i</div></label>
+        <label className='inline-label highlight'>TOTAL HOURS <div className={color !== 'blue' ? "info" : "info-red"} onClick={showTotalHoursInfo}>i</div></label>
         <div className='tips-input'>
           {!isNaN(totalHours.toFixed(2)) && totalHours.toFixed(2)}
           {isNaN(totalHours.toFixed(2)) && <ErrorMessageInputField />}
@@ -44,12 +44,12 @@ export default function Totals({ isAM }) {
       {totalHoursInfo && <div className='info-message'>Total hours considered for tips. It takes into consideration the difference between server and server support.</div>}
 
       <div className='inline'>
-        <label className='inline-label'>TIPS per HOUR</label>
+        <label className='inline-label highlight'>TIPS per HOUR</label>
         <div className='tips-input'>{totalHours !== 0 && (isAM ? tipsPerHour : tipsPerHourPM)().toFixed(2)}</div>
       </div>
 
       <div className='inline'>
-        <label className='inline-label'>NEW FLOAT <div className={color !== 'blue' ? "info" : "info-red"} onClick={showNewFloatInfo}>i</div></label>
+        <label className='inline-label highlight'>NEW FLOAT <div className={color !== 'blue' ? "info" : "info-red"} onClick={showNewFloatInfo}>i</div></label>
         <div className='tips-input'>{calculateNewFloat()}</div>
       </div>
 

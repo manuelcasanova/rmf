@@ -109,6 +109,10 @@ const AppContextProvider = ({ children }) => {
   const [instructor2FieldTrip, setInstructor2FieldTrip] = useState(0);
   const [instructor3FieldTrip, setInstructor3FieldTrip] = useState(0);
 
+  const [instructor1Sunday, setInstructor1Sunday] = useState(0);
+  const [instructor2Sunday, setInstructor2Sunday] = useState(0);
+  const [instructor3Sunday, setInstructor3Sunday] = useState(0);
+
   const [fullTips, setFullTips] = useState();
   const [assistantTips, setAssistantTips] = useState();
   const [kidsPizzaPrice, setKidsPizzaPrice] = useState();
@@ -179,7 +183,7 @@ const AppContextProvider = ({ children }) => {
   }, []);
 
 
-// console.log('data in AppContext.js', data)
+  // console.log('data in AppContext.js', data)
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -250,31 +254,31 @@ const AppContextProvider = ({ children }) => {
     +
     (parseFloat(fieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
 
-// console.log('pizzaChildren:', pizzaChildren);
-// console.log('kidsPizzaPrice:', kidsPizzaPrice);
-// console.log('pizzaTipsPercent:', pizzaTipsPercent);
+  // console.log('pizzaChildren:', pizzaChildren);
+  // console.log('kidsPizzaPrice:', kidsPizzaPrice);
+  // console.log('pizzaTipsPercent:', pizzaTipsPercent);
 
-// console.log('pizzaAdults:', pizzaAdults);
-// console.log('adultsPizzaPrice:', adultsPizzaPrice);
+  // console.log('pizzaAdults:', pizzaAdults);
+  // console.log('adultsPizzaPrice:', adultsPizzaPrice);
 
-// console.log('cocktailAdults:', cocktailAdults);
-// console.log('adultsCocktailPrice:', adultsCocktailPrice);
+  // console.log('cocktailAdults:', cocktailAdults);
+  // console.log('adultsCocktailPrice:', adultsCocktailPrice);
 
-// console.log('sundaysServerHours:', sundaysServerHours);
-// console.log('sundaysPizzaTip:', sundaysPizzaTip);
+  // console.log('sundaysServerHours:', sundaysServerHours);
+  // console.log('sundaysPizzaTip:', sundaysPizzaTip);
 
-// console.log('fieldTrip:', fieldTrip);
-// console.log('fieldTripPrice:', fieldTripPrice);
+  // console.log('fieldTrip:', fieldTrip);
+  // console.log('fieldTripPrice:', fieldTripPrice);
 
-// console.log('Final pizzaTips:', pizzaTips);
+  // console.log('Final pizzaTips:', pizzaTips);
 
 
 
   const tipsAfterPizzaParty = (totalTipsAndSurcharge - creditCardsSurchargeAM - pizzaTips).toFixed(2)
   const tipsAfterPizzaPartyPM = (
-    roundToTwo(totalTipsAndSurchargePM) - 
-    roundToTwo(creditCardsSurchargePM) + 
-    roundToTwo(creditCardsSurchargeAM) - 
+    roundToTwo(totalTipsAndSurchargePM) -
+    roundToTwo(creditCardsSurchargePM) +
+    roundToTwo(creditCardsSurchargeAM) -
     roundToTwo(pizzaTips)).toFixed(2) //HERE
 
 
@@ -373,6 +377,8 @@ const AppContextProvider = ({ children }) => {
     (parseFloat(instructor1Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
     +
     (parseFloat(instructor1FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor1Sunday) * sundaysPizzaTip)
 
   ).toFixed(2)
 
@@ -384,6 +390,8 @@ const AppContextProvider = ({ children }) => {
     (parseFloat(instructor3Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
     +
     (parseFloat(instructor3FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor2Sunday) * sundaysPizzaTip)
 
   ).toFixed(2)
 
@@ -395,6 +403,8 @@ const AppContextProvider = ({ children }) => {
     (parseFloat(instructor2Children) * kidsPizzaPrice * pizzaTipsPercent / 100)
     +
     (parseFloat(instructor2FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100)
+    +
+    (parseFloat(instructor3Sunday) * sundaysPizzaTip)
 
   ).toFixed(2)
 
@@ -478,6 +488,9 @@ const AppContextProvider = ({ children }) => {
     setInstructor1FieldTrip(0);
     setInstructor2FieldTrip(0);
     setInstructor3FieldTrip(0);
+    setInstructor1Sunday(0);
+    setInstructor2Sunday(0);
+    setInstructor3Sunday(0);
     showInstructors();
     setPizzaParties(prev => !prev)
 
@@ -512,6 +525,9 @@ const AppContextProvider = ({ children }) => {
     setInstructor1FieldTrip(0);
     setInstructor2FieldTrip(0);
     setInstructor3FieldTrip(0);
+    setInstructor1Sunday(0);
+    setInstructor2Sunday(0);
+    setInstructor3Sunday(0);
   }
 
   const clearInstructors = () => {
@@ -527,6 +543,9 @@ const AppContextProvider = ({ children }) => {
     setInstructor1FieldTrip(0);
     setInstructor2FieldTrip(0);
     setInstructor3FieldTrip(0);
+    setInstructor1Sunday(0);
+    setInstructor2Sunday(0);
+    setInstructor3Sunday(0);
   }
 
 
@@ -695,6 +714,9 @@ const AppContextProvider = ({ children }) => {
       instructor1FieldTrip, setInstructor1FieldTrip,
       instructor2FieldTrip, setInstructor2FieldTrip,
       instructor3FieldTrip, setInstructor3FieldTrip,
+      instructor1Sunday, setInstructor1Sunday,
+      instructor2Sunday, setInstructor2Sunday,
+      instructor3Sunday, setInstructor3Sunday,
       totalInstructor1,
       totalInstructor2,
       totalInstructor3,

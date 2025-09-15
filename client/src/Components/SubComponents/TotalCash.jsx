@@ -30,25 +30,25 @@ export default function TotalCash() {
     <>
       {!cashCount && (
         <div className='inline'>
-          <label className='inline-label'>Cash counted</label>
+          <label className='inline-label highlight'>CASH COUNTED</label>
           <input type="number" className='money-input' value={cashCounted} onChange={handleCashCountChange} onClick={() => setCashCounted("")} onFocus={() => setCashCounted("")} />
         </div>
       )}
 
       {cashCount && (
         <div className='inline'>
-          <label className='inline-label'>Cash counted</label>
+          <label className='inline-label highlight'>CASH COUNTED</label>
           <div className='money-input'>{cash}</div>
         </div>
       )}
 
       <div className='inline'>
-        <label className='inline-label'>Receipts</label>
+        <label className='inline-label highlight'>RECEIPTS</label>
         <input type="number" className='money-input' value={receipts} onChange={(e) => setReceipts(e.target.value)} onClick={() => setReceipts("")} onFocus={() => setReceipts("")} />
       </div>
 
       <div className='inline'>
-        <label className='inline-label' onClick={showTotalCashInfo}>TOTAL CASH <div className={color !== 'blue' ? "info" : "info-red"} onClick={showTotalHoursInfo}>i</div></label>
+        <label className='inline-label highlight' onClick={showTotalCashInfo}>TOTAL CASH <div className={color !== 'blue' ? "info" : "info-red"} onClick={showTotalHoursInfo}>i</div></label>
         <div className='money-input'>{!isNaN(totalCash.toFixed(2)) && totalCash.toFixed(2)}</div>
 
         {isNaN(totalCash.toFixed(2)) && <ErrorMessageInputField />}
@@ -57,7 +57,7 @@ export default function TotalCash() {
       {totalCashInfo && <div className='info-message'>Cash counted + receipts</div>}
 
       <div className='inline'>
-        <label className='inline-label'>Float</label>
+        <label className='inline-label highlight'>FLOAT</label>
         <input type="number" className='money-input' value={float} onChange={(e) => setFloat(e.target.value)} onClick={() => setFloat("")} onFocus={() => setFloat("")} />
       </div>
     </>

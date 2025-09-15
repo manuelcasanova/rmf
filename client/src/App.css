@@ -48,6 +48,12 @@
   100% { transform: rotate(360deg); }
 }
 
+.highlight {
+
+  border: 1px solid grey;
+  padding: 1em
+}
+
 .error-text {
   display: flex;
   justify-content: center;
@@ -299,6 +305,7 @@ label {
 
 .inline {
   display: flex;
+  align-items: center;
 }
 
 .info {
@@ -311,6 +318,8 @@ label {
   margin: 0 0.5em 0;
   cursor: pointer;
   color: white;
+  height: 1em;
+  padding: 0.6em;
 }
 
 .info-red {

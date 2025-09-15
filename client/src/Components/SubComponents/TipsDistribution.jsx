@@ -21,6 +21,7 @@ export default function TipsDistribution({ isAM }) {
     frontTipsPM,
     fullTips,
     assistantTips,
+    sundaysPizzaTip,
 
     //Prices
 
@@ -77,6 +78,9 @@ export default function TipsDistribution({ isAM }) {
     instructor1FieldTrip, setInstructor1FieldTrip,
     instructor2FieldTrip, setInstructor2FieldTrip,
     instructor3FieldTrip, setInstructor3FieldTrip,
+    instructor1Sunday, setInstructor1Sunday,
+    instructor2Sunday, setInstructor2Sunday,
+    instructor3Sunday, setInstructor3Sunday,
     totalInstructor1,
     totalInstructor2,
     totalInstructor3,
@@ -85,12 +89,13 @@ export default function TipsDistribution({ isAM }) {
 
   } = useContext(AppContext);
   
+
   return (
 
     <>
       <section className='tips'>
         <div className='inline'>
-          <label className='inline-label'>Kitchen tips</label>
+          <label className='inline-label highlight'>KITCHEN TIPS</label>
           <div className='tips-input'>
             
             {!isNaN(pizzaTips) && (isAM ? kitchenTips : kitchenTipsPM)}
@@ -103,7 +108,7 @@ export default function TipsDistribution({ isAM }) {
 
 
         <div className='inline'>
-          <label className='inline-label'>Front tips</label>
+          <label className='inline-label highlight'>FRONT TIPS</label>
           <div className='tips-input'>{!isNaN(pizzaTips) && (isAM ? frontTips : frontTipsPM)}</div>
           {isNaN(pizzaTips)
             &&
@@ -284,6 +289,14 @@ export default function TipsDistribution({ isAM }) {
               </div>
 
 
+              <div className='instructor-detail'>
+
+                <div>Sunday hours:</div>
+                <input type="number" value={instructor1Sunday} className="instructor-detail-input" onChange={(e) => setInstructor1Sunday(e.target.value)} onFocus={() => setInstructor1Sunday("")} onClick={() => setInstructor1Sunday("")}></input>
+                <div >{frontTips !== 0 && instructor1Sunday !== "" && (parseFloat(instructor1Sunday) * sundaysPizzaTip).toFixed(2)}</div>
+              </div>
+
+
 
               <div className='instructor-detail'>Total Instructor 1: {totalInstructor1} $</div>
 
@@ -326,9 +339,15 @@ export default function TipsDistribution({ isAM }) {
                 <div >{frontTips !== 0 && instructor2FieldTrip !== "" && (parseFloat(instructor2FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
+              <div className='instructor-detail'>
+
+                <div>Sunday hours:</div>
+                <input type="number" value={instructor2Sunday} className="instructor-detail-input" onChange={(e) => setInstructor2Sunday(e.target.value)} onFocus={() => setInstructor2Sunday("")} onClick={() => setInstructor2Sunday("")}></input>
+                <div >{frontTips !== 0 && instructor2Sunday !== "" && (parseFloat(instructor2Sunday) * sundaysPizzaTip).toFixed(2)}</div>
+              </div>
 
 
-              <div className='instructor-detail'>Total Instructor 1: {totalInstructor2} $</div>
+              <div className='instructor-detail'>Total Instructor 2: {totalInstructor2} $</div>
 
             </div>
 
@@ -369,6 +388,12 @@ export default function TipsDistribution({ isAM }) {
                 <div >{frontTips !== 0 && instructor3FieldTrip !== "" && (parseFloat(instructor3FieldTrip) * fieldTripPrice * pizzaTipsPercent / 100).toFixed(2)}</div>
               </div>
 
+              <div className='instructor-detail'>
+
+                <div>Sunday hours:</div>
+                <input type="number" value={instructor3Sunday} className="instructor-detail-input" onChange={(e) => setInstructor3Sunday(e.target.value)} onFocus={() => setInstructor3Sunday("")} onClick={() => setInstructor3Sunday("")}></input>
+                <div >{frontTips !== 0 && instructor3Sunday !== "" && (parseFloat(instructor3Sunday) * sundaysPizzaTip).toFixed(2)}</div>
+              </div>
 
 
               <div className='instructor-detail'>Total Instructor 3: {totalInstructor3} $</div>

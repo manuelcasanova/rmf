@@ -95,7 +95,7 @@ export default function ClosingAM() {
             <TotalCash />
 
             <div className='inline'>
-              <label className='inline-label'>Cash sales<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashSalesInfo}>i</div></label>
+              <label className='inline-label highlight'>CASH SALES<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashSalesInfo}>i</div></label>
 
               <input type="number" className='money-input' value={cashSales} onChange={(e) => setCashSales(e.target.value)}
                 onClick={() => setCashSales("")}
@@ -106,7 +106,7 @@ export default function ClosingAM() {
             {cashSalesInfo && <div className='info-message'>Cash on print out</div>}
 
             <div className='inline'>
-              <label className='inline-label'>Cash tips<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashTipsInfo}>i</div></label>
+              <label className='inline-label highlight'>CASH TIPS<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashTipsInfo}>i</div></label>
               <div className='money-input'>{!isNaN(cashTips) && cashTips}</div>
               {isNaN(cashTips)
                 &&
@@ -118,7 +118,7 @@ export default function ClosingAM() {
             {cashTipsInfo && <div className='info-message'>Cash tips = Total cash - Float - Cash sales</div>}
 
             <div className='inline'>
-              <label className='inline-label'>CC tips and CC Surcharge<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardTipsInfo}>i</div></label>
+              <label className='inline-label'>Touch Bistro's tips<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardTipsInfo}>i</div></label>
 
               <input type="number" className='money-input' value={creditCardsTipsAM} onChange={(e) => setCreditCardsTipsAM(e.target.value)} onClick={() => setCreditCardsTipsAM("")}
                 onFocus={() => setCreditCardsTipsAM("")}></input>
@@ -126,11 +126,11 @@ export default function ClosingAM() {
 
             </div>
 
-            {creditCardTipsInfo && <div className='info-message'>Tips paid on Touch Bistro's print out</div>}
+            {creditCardTipsInfo && <div className='info-message'>Tips paid on Touch Bistro's print out (includes CC surcharge)</div>}
 
 
             <div className='inline'>
-              <label className='inline-label'>Credit Card Surcharge</label>
+              <label className='inline-label highlight'>CREDIT CARD SURCHARGE</label>
 
               <input type="number" className='money-input' value={creditCardsSurchargeAM} onChange={(e) => setCreditCardsSurchargeAM(e.target.value)} onClick={() => setCreditCardsSurchargeAM("")}
                 onFocus={() => setCreditCardsSurchargeAM("")}></input>
@@ -139,7 +139,7 @@ export default function ClosingAM() {
             </div>
 
                         <div className='inline'>
-              <label className='inline-label'>Actual Credit Card Tips</label>
+              <label className='inline-label highlight'>ACTUAL CREDIT CARD TIPS</label>
               <div className='money-input'>{
 
                 creditCardsTipsAM
@@ -162,7 +162,7 @@ export default function ClosingAM() {
 
 
             <div className='inline'>
-              <label className='inline-label'>Total tips</label>
+              <label className='inline-label highlight'>TOTAL TIPS</label>
               <div className='money-input'>{
 
                 creditCardsTipsAM

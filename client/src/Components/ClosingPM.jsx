@@ -152,7 +152,7 @@ export default function ClosingPM() {
 
 
             <div className='inline'>
-              <label className='inline-label'>Cash sales PM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashSalesPMInfo}>i</div></label>
+              <label className='inline-label highlight'>CASH SALES PM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashSalesPMInfo}>i</div></label>
               <div className='money-input'>{!isNaN(cashSalesPM) && cashSalesPM}</div>
               {isNaN(cashSalesPM)
                 &&
@@ -164,7 +164,7 @@ export default function ClosingPM() {
 
 
             <div className='inline'>
-              <label className='inline-label'>Cash tips PM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashTipsInfo}>i</div></label>
+              <label className='inline-label highlight'>CASH TIPS PM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashTipsInfo}>i</div></label>
               <div className='money-input'>{!isNaN(cashTipsPM) && cashTipsPM}</div>
               {isNaN(cashTipsPM)
                 &&
@@ -190,12 +190,12 @@ export default function ClosingPM() {
             </div>
 
             <div className='inline'>
-              <label className='inline-label'>CC tips and CC Surcharge (PM)<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPrintOutInfo}>i</div></label>
+              <label className='inline-label'>Touch Bistro's Tips<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPrintOutInfo}>i</div></label>
               <input type="number" className='money-input' value={creditCardsTipsPrintOut} onChange={(e) => setCreditCardsTipsPrintOut(e.target.value)} onClick={() => setCreditCardsTipsPrintOut("")}
                 onFocus={() => setCreditCardsTipsPrintOut("")}></input>
             </div>
 
-            {creditCardsPrintOutInfo && <div className='info-message'>Credit Card Tips paid on Touch Bistro's print out</div>}
+            {creditCardsPrintOutInfo && <div className='info-message'>Credit Card Tips paid on Touch Bistro's print out (include CC surcharge)</div>}
 
                         <div className='inline'>
               <label className='inline-label'>Credit card Surcharge Print Out (All day)</label>
@@ -204,7 +204,7 @@ export default function ClosingPM() {
             </div>
 
                         <div className='inline'>
-              <label className='inline-label'>Credit Cards Surcharge PM (All day - AM)</label>
+              <label className='inline-label highlight'>CREDIT CARDS SURCHARGE PM (ALL DAY MINUS AM)</label>
               <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && 
               roundToTwo(creditCardsSurchargePM) -
               roundToTwo(creditCardsSurchargeAM)
@@ -218,7 +218,7 @@ export default function ClosingPM() {
             </div>
 
             <div className='inline'>
-              <label className='inline-label'>Actual Credit card tips PM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPMInfo}>i</div></label>
+              <label className='inline-label highlight'>ACTUAL CREDIT CARD TIPS PM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPMInfo}>i</div></label>
               <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && 
               roundToTwo(
               roundToTwo(creditCardsTipsPrintOut) - 
@@ -240,7 +240,7 @@ export default function ClosingPM() {
 
 
             <div className='inline'>
-              <label className='inline-label'>Total Tips PM</label>
+              <label className='inline-label highlight'>TOTAL TIPS PM</label>
               <div className='money-input'>{creditCardsTipsAM && creditCardsTipsPrintOut && 
               roundToTwo(
               roundToTwo(totalTipsAndSurchargePM)
