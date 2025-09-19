@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import LoadingSpinner from '../components/SubComponents/LoadingSpinner';
+import LoadingSpinner from '../Components/SubComponents/LoadingSpinner';
 
 export const AppContext = createContext();
 
@@ -215,11 +215,11 @@ const AppContextProvider = ({ children }) => {
 
   const cashTips = (
     cash > 0
-      ? (parseFloat(cash) + parseFloat(receipts) - parseFloat(cashSales) - parseFloat(float)).toFixed(2)
-      : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSales) - parseFloat(float)).toFixed(2)
+      ? (parseFloat(cash) + parseFloat(receipts) - parseFloat(cashSalesAM) - parseFloat(float)).toFixed(2)
+      : (parseFloat(cashCounted) + parseFloat(receipts) - parseFloat(cashSalesAM) - parseFloat(float)).toFixed(2)
   );
 
-  // console.log('cash', 'receipts', receipts, 'cashSales', cashSales, 'cashCounted', cashCounted, 'float', float)
+  // console.log('cash', cash, 'receipts', receipts, 'cashSales', cashSales, 'cashCounted', cashCounted, 'float', float)
 
   const cashTipsPM = (
     cash > 0

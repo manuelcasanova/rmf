@@ -123,7 +123,7 @@ export default function ClosingPM() {
 
           {/* <PayTerminalMatch /> */}
 
-          {/* <SetExample /> */}
+          <SetExample />
 
           <section className='money'>
 
