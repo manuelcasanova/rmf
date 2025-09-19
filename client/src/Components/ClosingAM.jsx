@@ -88,7 +88,7 @@ export default function ClosingAM() {
 
           {/* <PayTerminalMatch /> */}
 
-          <SetExample />
+          {/* <SetExample /> */}
 
           <section className='money'>
 
