@@ -21,6 +21,7 @@ export default function Navbar ({showData, setShowData}) {
 
   return (
     <div className='navbar'>
+      <div>Version May 2026 - </div>
     <div className='switch'>{now}</div>
     <div className='switch'> <FontAwesomeIcon icon={faGear} onClick={handleData} /></div>
   </div>

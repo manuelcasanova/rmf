@@ -80,6 +80,7 @@ export default function ClosingAM() {
 
           {showData && <DataComponent isAM={true} />}
           <div className='title'>Shift</div>
+            
           <Link to='/pm'><AmButton /></Link>
 
           <ClearAll />

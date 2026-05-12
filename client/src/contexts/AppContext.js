@@ -279,8 +279,8 @@ const AppContextProvider = ({ children }) => {
   const tipsAfterPizzaParty = (totalTipsAndSurcharge - creditCardsSurchargeAM - pizzaTips).toFixed(2)
   const tipsAfterPizzaPartyPM = (
     roundToTwo(totalTipsAndSurchargePM) -
-    roundToTwo(creditCardsSurchargePM) +
-    roundToTwo(creditCardsSurchargeAM) -
+    roundToTwo(creditCardsSurchargePM) 
+    -
     roundToTwo(pizzaTips)).toFixed(2) //HERE
 
 

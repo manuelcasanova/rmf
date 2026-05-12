@@ -15,9 +15,11 @@ const FrontPage = () => {
             <Link to='/am' className="am">AM</Link>
             <Link to='/pm' className="pm">PM</Link>
           </div>
+          
           <div className="by">
             <img src="rmf.png" alt="Logo" />
           </div>
+          <div>Version 12/05/2026</div>
         </div>
 
   );

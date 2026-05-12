@@ -176,12 +176,12 @@ export default function ClosingPM() {
             {cashTipsInfo && <div className='info-message'>Cash tips = Total cash - Float - Cash sales</div>}
 
             <div className='inline'>
-              <label className='inline-label'>Credit card tips AM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsAMInfo}>i</div></label>
+              <label className='inline-label'>Actual (Touch Bistro - Surcharge) Credit card tips AM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsAMInfo}>i</div></label>
               <input type="number" className='money-input' value={creditCardsTipsAM} onChange={(e) => setCreditCardsTipsAM(e.target.value)} onClick={() => setCreditCardsTipsAM("")}
                 onFocus={() => setCreditCardsTipsAM("")}></input>
             </div>
 
-            {creditCardsTipsAMInfo && <div className='info-message'>Credit Card tips from the AM shift</div>}
+            {creditCardsTipsAMInfo && <div className='info-message'>Credit Card tips from the AM shift (the actual tips, meaning the surcharge has been substracted from Touch Bistro's tips)</div>}
 
             <div className='inline'>
               <label className='inline-label'>Credit card Surcharge AM</label>
@@ -195,7 +195,7 @@ export default function ClosingPM() {
                 onFocus={() => setCreditCardsTipsPrintOut("")}></input>
             </div>
 
-            {creditCardsPrintOutInfo && <div className='info-message'>Credit Card Tips paid on Touch Bistro's print out (include CC surcharge)</div>}
+            {creditCardsPrintOutInfo && <div className='info-message'>Credit Card Tips paid on Touch Bistro's print out (they include the CC surcharge)</div>}
 
                         <div className='inline'>
               <label className='inline-label'>Credit card Surcharge Print Out (All day)</label>
@@ -223,8 +223,7 @@ export default function ClosingPM() {
               roundToTwo(
               roundToTwo(creditCardsTipsPrintOut) - 
               roundToTwo(creditCardsTipsAM) -
-              roundToTwo(creditCardsSurchargePM) +
-              roundToTwo(creditCardsSurchargeAM)
+              roundToTwo(creditCardsSurchargePM)
               )
               } 
               
@@ -235,7 +234,7 @@ export default function ClosingPM() {
               }
             </div>
 
-            {creditCardsTipsPMInfo && <div className='info-message'>CC tips PM shift = CC tips on Print Out - CC tips AM shift</div>}
+            {creditCardsTipsPMInfo && <div className='info-message'>CC tips PM shift = CC tips on Print Out - CC tips from the AM print out (before removing the surcharge) - Total Day CC surcharge + AM CC surcharge</div>}
 
 
 
@@ -245,7 +244,6 @@ export default function ClosingPM() {
               roundToTwo(
               roundToTwo(totalTipsAndSurchargePM)
               - roundToTwo(creditCardsSurchargePM)
-              + roundToTwo(creditCardsSurchargeAM)
               )
               }</div>
               {!creditCardsTipsPrintOut && creditCardsTipsPrintOut !== 0
