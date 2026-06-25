@@ -61,6 +61,8 @@ const AppContextProvider = ({ children }) => {
   const [totalCashInfo, setTotalCashInfo] = useState(false)
   const [totalHoursInfo, setTotalHoursInfo] = useState(false)
   const [cashSalesInfo, setCashSalesInfo] = useState(false)
+  const [cashSalesAMInfo, setCashSalesAMInfo] = useState(false)
+  const [cashSalesPMInfo, setCashSalesPMInfo] = useState(false)
   const [cashTipsInfo, setCashTipsInfo] = useState(false)
   const [creditCardTipsInfo, setCreditCardTipsInfo] = useState(false)
   const [newFloatInfo, setNewFloatInfo] = useState(false)
@@ -68,6 +70,7 @@ const AppContextProvider = ({ children }) => {
   const [supportServerInfo, setSupportServerInfo] = useState(true)
   const [cashCount, setCashCount] = useState(false)
 
+  const [cashSalesPrintOutInfo, setCashSalesPrintOutInfo] = useState(false)
 
   const [summary, setSummary] = useState(false)
   const [instructors, setInstructors] = useState(false)
@@ -128,7 +131,7 @@ const AppContextProvider = ({ children }) => {
     fulltips: 100,
     assistanttips: 40,
     kidspizzaprice: 30,
-    adultspizzaprice: 45,
+    adultspizzaprice: 49.95,
     adultscocktailprice: 30,
     fieldtripprice: 16.26,
     pizzatipspercent: 10,
@@ -209,8 +212,11 @@ const AppContextProvider = ({ children }) => {
 
   const totalCash = cash > 0 ? parseFloat(cash) + parseFloat(receipts) : parseFloat(cashCounted) + parseFloat(receipts);
 
-
   const cashSalesPM = (cashSalesPrintOut - cashSalesAM).toFixed(2)
+
+  const netCashAccountedForAM = parseFloat(totalCash) - parseFloat(cashSalesAM)
+
+  const netCashAccountedForPM = parseFloat(totalCash) - parseFloat(cashSalesPM)
 
 
   const cashTips = (
@@ -279,7 +285,7 @@ const AppContextProvider = ({ children }) => {
   const tipsAfterPizzaParty = (totalTipsAndSurcharge - creditCardsSurchargeAM - pizzaTips).toFixed(2)
   const tipsAfterPizzaPartyPM = (
     roundToTwo(totalTipsAndSurchargePM) -
-    roundToTwo(creditCardsSurchargePM) 
+    roundToTwo(creditCardsSurchargePM)
     -
     roundToTwo(pizzaTips)).toFixed(2) //HERE
 
@@ -306,6 +312,22 @@ const AppContextProvider = ({ children }) => {
   const showCashSalesInfo = (e) => {
     e.preventDefault();
     setCashSalesInfo(prev => !prev)
+  }
+
+    const showCashSalesPrintOutInfo = (e) => {
+    e.preventDefault();
+    setCashSalesPrintOutInfo(prev => !prev)
+  }
+
+
+  const showCashSalesAMInfo = (e) => {
+    e.preventDefault();
+    setCashSalesAMInfo(prev => !prev)
+  }
+
+  const showCashSalesPMInfo = (e) => {
+    e.preventDefault();
+    setCashSalesPMInfo(prev => !prev)
   }
 
   const showCashTipsInfo = (e) => {
@@ -633,10 +655,13 @@ const AppContextProvider = ({ children }) => {
       setCashCounted,
       receipts, setReceipts,
       totalCash,
+      netCashAccountedForAM,
+      netCashAccountedForPM,
       float, setFloat,
       cashSales, setCashSales,
       cashSalesAM, setCashSalesAM,
       cashSalesPrintOut, setCashSalesPrintOut,
+      cashSalesPrintOutInfo, setCashSalesPrintOutInfo,
       cashSalesPM,
       cashTips, cashTipsPM,
       creditCardTips, setCreditCardTips,
@@ -665,6 +690,8 @@ const AppContextProvider = ({ children }) => {
       totalCashInfo, setTotalCashInfo,
       totalHoursInfo, setTotalHoursInfo,
       cashSalesInfo, setCashSalesInfo,
+      cashSalesPMInfo, setCashSalesPMInfo,
+      cashSalesAMInfo, setCashSalesAMInfo,
       cashTipsInfo, setCashTipsInfo,
       creditCardTipsInfo, setCreditCardTipsInfo,
       newFloatInfo, setNewFloatInfo,
@@ -677,6 +704,9 @@ const AppContextProvider = ({ children }) => {
       showTotalCashInfo,
       showTotalHoursInfo,
       showCashSalesInfo,
+      showCashSalesAMInfo,
+      showCashSalesPMInfo,
+      showCashSalesPrintOutInfo,
       showCashTipsInfo,
       showCreditCardTipsInfo,
       showNewFloatInfo,

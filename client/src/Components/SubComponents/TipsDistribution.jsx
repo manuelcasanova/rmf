@@ -95,7 +95,7 @@ export default function TipsDistribution({ isAM }) {
     <>
       <section className='tips'>
         <div className='inline'>
-          <label className='inline-label highlight'>KITCHEN TIPS</label>
+          <label className='inline-label highlight'>13. KITCHEN TIPS</label>
           <div className='tips-input'>
             
             {!isNaN(pizzaTips) && (isAM ? kitchenTips : kitchenTipsPM)}
@@ -108,7 +108,7 @@ export default function TipsDistribution({ isAM }) {
 
 
         <div className='inline'>
-          <label className='inline-label highlight'>FRONT TIPS</label>
+          <label className='inline-label highlight'>14. FRONT TIPS</label>
           <div className='tips-input'>{!isNaN(pizzaTips) && (isAM ? frontTips : frontTipsPM)}</div>
           {isNaN(pizzaTips)
             &&

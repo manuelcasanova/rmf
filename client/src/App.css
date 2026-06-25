@@ -224,6 +224,8 @@ label {
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-right: 1em;
+  margin-bottom: 1em;
 }
 
 .inline-label-small {
@@ -339,11 +341,11 @@ label {
   text-align: center;
   margin: 0 2em 0 2em;
   border: 3px double var(--color1);
-  ;
   border-radius: 20px;
   padding: 1em;
   background-color: var(--color1);
   color: var(--color0);
+  margin-bottom: 1em;
 }
 
 input {
@@ -435,6 +437,7 @@ input {
   font-size: small;
   display: flex;
   align-items: center;
+  margin-bottom: 1em;
 }
 
 /* Toggle button */

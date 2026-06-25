@@ -101,7 +101,7 @@ const PizzaParties = ({ isAM }) => {
       {sundaysInfo && <div className='info-message'>Sunday's pizza maker gets {sundaysPizzaTip} $ per hour worked</div>}
 
       <div className='inline'>
-        <label className='inline-label'>Pizza/Cocktail making tips</label>
+        <label className='inline-label highlight'>11. Pizza/Cocktail making tips</label>
         <div className='pizza-input'>
           {!isNaN(pizzaTips) && pizzaTips.toFixed(2)}
         </div>
@@ -113,7 +113,7 @@ const PizzaParties = ({ isAM }) => {
       }
 
       <div className='inline'>
-        <label className='inline-label'>{isAM ? 'AM' : 'PM'} Tips after Pizza party</label>
+        <label className='inline-label highlight'>12. {isAM ? 'AM' : 'PM'} Tips remaining after Pizza Party</label>
         <div className='tips-input'>
           {!isNaN(pizzaTips) && (isAM ? tipsAfterPizzaParty : tipsAfterPizzaPartyPM)}
         </div>
