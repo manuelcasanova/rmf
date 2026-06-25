@@ -19,7 +19,7 @@ const FrontPage = () => {
           <div className="by">
             <img src="rmf.png" alt="Logo" />
           </div>
-          <div>Version 12/05/2026</div>
+          <div>Version 3.0 (June 2026)</div>
         </div>
 
   );
