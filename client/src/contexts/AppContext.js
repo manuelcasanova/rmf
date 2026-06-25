@@ -59,6 +59,8 @@ const AppContextProvider = ({ children }) => {
   const [sundaysServerHours, setSundaysServerHours] = useState(0)
 
   const [totalCashInfo, setTotalCashInfo] = useState(false)
+  const [cashCountedInfo, setCashCountedInfo] = useState(false)
+  
   const [receiptsInfo, setReceiptsInfo] = useState(false)
   const [totalHoursInfo, setTotalHoursInfo] = useState(false)
   const [cashSalesInfo, setCashSalesInfo] = useState(false)
@@ -299,6 +301,11 @@ const AppContextProvider = ({ children }) => {
 
 
   const frontTipsPM = (tipsAfterPizzaPartyPM * frontTipsPercent / 100).toFixed(2);
+
+  const showCashCountedInfo = (e) => {
+    e.preventDefault();
+    setCashCountedInfo(prev => !prev)
+  }
 
   const showTotalCashInfo = (e) => {
     e.preventDefault();
@@ -694,6 +701,7 @@ const AppContextProvider = ({ children }) => {
       kitchenTipsPM,
       frontTips,
       frontTipsPM,
+      cashCountedInfo, setCashCountedInfo,
       totalCashInfo, setTotalCashInfo,
       receiptsInfo, setReceiptsInfo,
       totalHoursInfo, setTotalHoursInfo,
@@ -709,6 +717,7 @@ const AppContextProvider = ({ children }) => {
       summary, setSummary,
       instructors, setInstructors,
       redLine, setRedLine,
+      showCashCountedInfo,
       showTotalCashInfo,
       showReceiptsInfo,
       showTotalHoursInfo,

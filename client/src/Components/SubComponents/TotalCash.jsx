@@ -24,8 +24,10 @@ export default function TotalCash({ cashSalesAM, isAM }) {
     cashSalesPrintOut,
     setCashSalesPrintOut,
     // Info
+    cashCountedInfo,
     totalCashInfo,
     cashSalesAMInfo,
+    showCashCountedInfo,
     showTotalCashInfo,
     showReceiptsInfo,
     showTotalHoursInfo,
@@ -46,17 +48,19 @@ export default function TotalCash({ cashSalesAM, isAM }) {
     <>
       {!cashCount && (
         <div className='inline'>
-          <label className='inline-label highlight'>1. CASH COUNTED</label>
+          <label className='inline-label highlight'>1. CASH COUNTED<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashCountedInfo}>i</div></label>
           <input type="number" className='money-input' value={cashCounted} onChange={handleCashCountChange} onClick={() => setCashCounted("")} onFocus={() => setCashCounted("")} />
         </div>
       )}
 
       {cashCount && (
         <div className='inline'>
-          <label className='inline-label highlight'>1. CASH COUNTED</label>
+          <label className='inline-label highlight'>1. CASH COUNTED<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashCountedInfo}>i</div></label>
           <div className='money-input'>{cash}</div>
         </div>
       )}
+
+      {cashCountedInfo && <div className='info-message'>Only actual cash. Vouchers and receipts should be accounted for on line 2.</div>}
 
       <div className='inline'>
         <label className='inline-label highlight' >2. RECEIPTS and VOUCHERS<div className={color !== 'blue' ? "info" : "info-red"} onClick={showReceiptsInfo}>i</div></label>

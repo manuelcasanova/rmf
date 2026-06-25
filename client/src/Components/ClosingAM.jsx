@@ -181,7 +181,7 @@ export default function ClosingAM() {
 
           <Totals isAM={true} />
 
-          <SummaryAm />
+          {/* <SummaryAm /> */}
 
         </div>
 

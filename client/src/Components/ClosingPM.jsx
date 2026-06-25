@@ -265,7 +265,7 @@ export default function ClosingPM() {
 
           <Totals isAM={false} />
 
-          <SummaryPm />
+          {/* <SummaryPm /> */}
 
         </div>
 

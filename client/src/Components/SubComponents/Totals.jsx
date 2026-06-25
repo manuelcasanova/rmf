@@ -56,6 +56,7 @@ export default function Totals({ isAM }) {
       {newFloatInfo && 
       <>
       <div className='info-message'>New float = Cash counted - Pizza making tips - front tips</div>
+      <div className='info-message'>Vouchers (cash removed from the till without a corresponding store receipt, such as a refund of a Pizza Party deposit) should not be included here. They should be recorded on line 22 of the closing sheet. Line 23 should reflect actual cash only.</div>
       </>
       }
     </section>
