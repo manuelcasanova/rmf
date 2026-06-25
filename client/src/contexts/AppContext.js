@@ -13,7 +13,7 @@ export const useAppContext = () => {
 const AppContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [color, setColor] = useState("black");
+  const [color, setColor] = useState("white");
   const [data, setData] = useState([]);
   const BACKEND = process.env.REACT_APP_BACKEND_URL;
 
