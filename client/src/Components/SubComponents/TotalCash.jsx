@@ -17,6 +17,7 @@ export default function TotalCash({ cashSalesAM, isAM }) {
     cashCounted,
     setCashCounted,
     totalCash,
+    receiptsInfo,
     netCashAccountedForAM,
     netCashAccountedForPM,
     setCashSalesAM,
@@ -26,6 +27,7 @@ export default function TotalCash({ cashSalesAM, isAM }) {
     totalCashInfo,
     cashSalesAMInfo,
     showTotalCashInfo,
+    showReceiptsInfo,
     showTotalHoursInfo,
     showCashSalesInfo,
     cashSalesInfo,
@@ -57,9 +59,11 @@ export default function TotalCash({ cashSalesAM, isAM }) {
       )}
 
       <div className='inline'>
-        <label className='inline-label highlight'>2. BILLS and RECEIPTS</label>
+        <label className='inline-label highlight' >2. RECEIPTS and VOUCHERS<div className={color !== 'blue' ? "info" : "info-red"} onClick={showReceiptsInfo}>i</div></label>
         <input type="number" className='money-input' value={receipts} onChange={(e) => setReceipts(e.target.value)} onClick={() => setReceipts("")} onFocus={() => setReceipts("")} />
       </div>
+
+      {receiptsInfo && <div className='info-message'>Store receipts and vouchers (example: pizza party deposit refund in cash)</div>}
 
       <div className='inline'>
         <label className='inline-label' onClick={showTotalCashInfo}>Cash + Receipts or Notes<div className={color !== 'blue' ? "info" : "info-red"} onClick={showTotalHoursInfo}>i</div></label>
@@ -128,7 +132,7 @@ export default function TotalCash({ cashSalesAM, isAM }) {
       <div className='inline'>
         <label className='inline-label highlight' >4. NET CASH ACCOUNTED FOR</label>
 
-        {isAM ?         <div className='money-input'>{!isNaN(netCashAccountedForAM.toFixed(2)) && netCashAccountedForAM.toFixed(2)}</div> :          <div className='money-input'>{!isNaN(netCashAccountedForPM.toFixed(2)) && netCashAccountedForPM.toFixed(2)}</div>}
+        {isAM ? <div className='money-input'>{!isNaN(netCashAccountedForAM.toFixed(2)) && netCashAccountedForAM.toFixed(2)}</div> : <div className='money-input'>{!isNaN(netCashAccountedForPM.toFixed(2)) && netCashAccountedForPM.toFixed(2)}</div>}
 
 
 

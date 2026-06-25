@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AppContextProvider from './contexts/AppContext';
 import './App.css';
 
-import ClosingAM from './Components/ClosingAM';
-import ClosingPM from './Components/ClosingPM';
-import FrontPage from './Components/FrontPage';
+import ClosingAM from './components/ClosingAM';
+import ClosingPM from './components/ClosingPM';
+import FrontPage from './components/FrontPage';
 
 
 

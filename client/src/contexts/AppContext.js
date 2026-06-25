@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import LoadingSpinner from '../Components/SubComponents/LoadingSpinner';
+import LoadingSpinner from '../components/SubComponents/LoadingSpinner';
 
 export const AppContext = createContext();
 
@@ -59,6 +59,7 @@ const AppContextProvider = ({ children }) => {
   const [sundaysServerHours, setSundaysServerHours] = useState(0)
 
   const [totalCashInfo, setTotalCashInfo] = useState(false)
+  const [receiptsInfo, setReceiptsInfo] = useState(false)
   const [totalHoursInfo, setTotalHoursInfo] = useState(false)
   const [cashSalesInfo, setCashSalesInfo] = useState(false)
   const [cashSalesAMInfo, setCashSalesAMInfo] = useState(false)
@@ -303,6 +304,12 @@ const AppContextProvider = ({ children }) => {
     e.preventDefault();
     setTotalCashInfo(prev => !prev)
   }
+
+    const showReceiptsInfo = (e) => {
+    e.preventDefault();
+    setReceiptsInfo(prev => !prev)
+  }
+
 
   const showTotalHoursInfo = (e) => {
     e.preventDefault();
@@ -688,6 +695,7 @@ const AppContextProvider = ({ children }) => {
       frontTips,
       frontTipsPM,
       totalCashInfo, setTotalCashInfo,
+      receiptsInfo, setReceiptsInfo,
       totalHoursInfo, setTotalHoursInfo,
       cashSalesInfo, setCashSalesInfo,
       cashSalesPMInfo, setCashSalesPMInfo,
@@ -702,6 +710,7 @@ const AppContextProvider = ({ children }) => {
       instructors, setInstructors,
       redLine, setRedLine,
       showTotalCashInfo,
+      showReceiptsInfo,
       showTotalHoursInfo,
       showCashSalesInfo,
       showCashSalesAMInfo,
