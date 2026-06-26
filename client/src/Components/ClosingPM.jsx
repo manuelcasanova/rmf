@@ -123,7 +123,7 @@ export default function ClosingPM() {
 
           {/* <PayTerminalMatch /> */}
 
-          {/* <SetExample /> */}
+          <SetExample />
 
           <section className='money'>
 
@@ -176,7 +176,7 @@ export default function ClosingPM() {
             {cashTipsInfo && <div className='info-message'>Line 4 minus Line 5</div>}
 
             <div className='inline'>
-              <label className='inline-label'>Actual (Touch Bistro - Surcharge) Credit card tips AM (Line 9)<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsAMInfo}>i</div></label>
+              <label className='inline-label'>Actual (Touch Bistro - Surcharge) Credit card tips AM (Line 7)<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsAMInfo}>i</div></label>
               <input type="number" className='money-input' value={creditCardsTipsAM} onChange={(e) => setCreditCardsTipsAM(e.target.value)} onClick={() => setCreditCardsTipsAM("")}
                 onFocus={() => setCreditCardsTipsAM("")}></input>
             </div>
@@ -201,6 +201,19 @@ export default function ClosingPM() {
               <label className='inline-label'>Credit card Surcharge Print Out (All day)</label>
               <input type="number" className='money-input' value={creditCardsSurchargePM} onChange={(e) => setCreditCardsSurchargePM(e.target.value)} onClick={() => setCreditCardsSurchargePM("")}
                 onFocus={() => setCreditCardsSurchargePM("")}></input>
+            </div>
+
+            <div className='inline'>
+              <label className='inline-label highlight'>7. CREDIT CARD TIPS (Touch Bistro - AM Line 7)</label>
+              <div className='money-input'>
+{
+  creditCardsTipsPrintOut - creditCardsTipsAM
+}
+              </div>
+              {!creditCardsTipsAM && creditCardsTipsAM !== 0
+                &&
+                <ErrorMessageInputField />
+              }
             </div>
 
             <div className='inline'>
@@ -238,7 +251,7 @@ export default function ClosingPM() {
 
 
             <div className='inline'>
-              <label className='inline-label highlight'>10. TOTAL TIPS PMMM</label>
+              <label className='inline-label highlight'>10. TOTAL TIPS PM</label>
 
               {/* HERE */}
 
@@ -246,7 +259,8 @@ export default function ClosingPM() {
                 roundToTwo(
                   roundToTwo(creditCardsTipsPrintOut) -
                   roundToTwo(creditCardsTipsAM) -
-                  roundToTwo(creditCardsSurchargePM) 
+                  roundToTwo(creditCardsSurchargePM) +
+                  roundToTwo(cashTipsPM)
                 )
               }</div>
               {!creditCardsTipsPrintOut && creditCardsTipsPrintOut !== 0

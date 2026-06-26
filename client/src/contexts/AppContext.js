@@ -588,44 +588,45 @@ const AppContextProvider = ({ children }) => {
 
 
   const test = () => {
-    setCashCounted(995);
-    setReceipts(5);
-    setFloat(800);
-    setCashSales(135);
-    setCashSalesAM(135);
-    setCashSalesPrintOut(380);
-    setCreditCardTips(500);
-    setCreditCardsTipsAM(442);
-    setCreditCardsSurchargeAM(30);
-    setCreditCardsTipsPrintOut(1012);
-    setPizzaAdults(1);
-    setPizzaChildren(1);
-    setCocktailAdults(1);
-    setFieldTrip(1);
-    setPizzaServers(2)
+    setCashCounted(633.5);
+    setReceipts(0);
+    setFloat(548.5);
+    setCashSales(0);
+    setCashSalesAM(0);
+    setCashSalesPrintOut(73.8);
+    setCreditCardTips(0);
+    setCreditCardsTipsAM(84.62);
+    setCreditCardsSurchargeAM(10.79);
+    setCreditCardsSurchargePM(39.34);
+    setCreditCardsTipsPrintOut(398.94);
+    setPizzaAdults(0);
+    setPizzaChildren(0);
+    setCocktailAdults(0);
+    setFieldTrip(0);
+  setPizzaServers(0);
     setServer1Name("A");
     setServer2Name("B");
-    setServer3Name("C");
-    setAssistant1Name("D");
-    setServer1Hours(4);
-    setServer2Hours(3);
-    setServer3Hours(2);
-    setServer4Hours(1);
-    setAssistant1Hours(4);
-    setAssistant2Hours(2);
+    setServer3Name();
+    setAssistant1Name();
+    setServer1Hours(5);
+    setServer2Hours(3.5);
+    setServer3Hours(0);
+    setServer4Hours(0);
+    setAssistant1Hours(0);
+    setAssistant2Hours(0);
     // setSundaysServerHours(3)
-    setInstructor1Adults(1);
+    setInstructor1Adults(0);
     setInstructor1Children(0);
-    setInstructor1Cocktail(0.5);
+    setInstructor1Cocktail(0);
     setInstructor1FieldTrip(0);
     setInstructor2Adults(0);
-    setInstructor2Children(1);
+    setInstructor2Children(0);
     setInstructor2Cocktail(0);
-    setInstructor2FieldTrip(0.5);
+    setInstructor2FieldTrip(0);
     setInstructor3Adults(0);
     setInstructor3Children(0);
-    setInstructor3Cocktail(0.5);
-    setInstructor3FieldTrip(0.5);
+    setInstructor3Cocktail(0);
+    setInstructor3FieldTrip(0);
     showInstructors(prev => !prev)
     setPizzaParties(prev => !prev)
   }
