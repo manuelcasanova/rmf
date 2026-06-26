@@ -32,7 +32,7 @@ export default function Totals({ isAM }) {
     );
   };
 
-  console.log(cashCounted, frontTipsPM, pizzaTips)
+  // console.log(cashCounted, frontTipsPM, pizzaTips)
 
   return (
     <section className='summary'>
