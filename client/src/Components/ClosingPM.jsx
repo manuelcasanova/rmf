@@ -188,7 +188,7 @@ export default function ClosingPM() {
             </div>
 
             <div className='inline'>
-              <label className='inline-label'>Touch Bistro's Tips<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPrintOutInfo}>i</div></label>
+              <label className='inline-label'>Touch Bistro's Tips (All Day)<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsPrintOutInfo}>i</div></label>
               <input type="number" className='money-input' value={creditCardsTipsPrintOut} onChange={(e) => setCreditCardsTipsPrintOut(e.target.value)} onClick={() => setCreditCardsTipsPrintOut("")}
                 onFocus={() => setCreditCardsTipsPrintOut("")}></input>
             </div>
