@@ -176,12 +176,10 @@ export default function ClosingPM() {
             {cashTipsInfo && <div className='info-message'>Line 4 minus Line 5</div>}
 
             <div className='inline'>
-              <label className='inline-label'>Actual (Touch Bistro - Surcharge) Credit card tips AM (Line 7)<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsAMInfo}>i</div></label>
+              <label className='inline-label'>Actual Credit card tips AM (Line 9)<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCreditCardsTipsAMInfo}>i</div></label>
               <input type="number" className='money-input' value={creditCardsTipsAM} onChange={(e) => setCreditCardsTipsAM(e.target.value)} onClick={() => setCreditCardsTipsAM("")}
                 onFocus={() => setCreditCardsTipsAM("")}></input>
             </div>
-
-            {creditCardsTipsAMInfo && <div className='info-message'>Credit Card tips from the AM shift from Line 9 (the actual tips, meaning the surcharge has been substracted from Touch Bistro's tips)</div>}
 
             <div className='inline'>
               <label className='inline-label'>Credit card Surcharge AM</label>
@@ -207,7 +205,7 @@ export default function ClosingPM() {
               <label className='inline-label highlight'>7. CREDIT CARD TIPS (Touch Bistro - AM Line 7)</label>
               <div className='money-input'>
 {
-  creditCardsTipsPrintOut - creditCardsTipsAM
+  roundToTwo(creditCardsTipsPrintOut - creditCardsTipsAM - creditCardsSurchargeAM)
 }
               </div>
               {!creditCardsTipsAM && creditCardsTipsAM !== 0
