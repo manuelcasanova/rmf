@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { AppContext } from '../../contexts/AppContext';
 import ErrorMessageInputField from "./ErrorMessageInputField";
 
-export default function TotalCash({ cashSalesAM, isAM }) {
+export default function TotalCash({ isAM }) {
   const {
     // Color
     color,
     // Cash
     cash,
+    cashSalesAM,
     cashSalesPM,
     receipts,
     setReceipts,
@@ -93,11 +94,12 @@ export default function TotalCash({ cashSalesAM, isAM }) {
 
         <>
 
+{console.log(cashSalesAM)}
 
           <div className='inline'>
             <label className='inline-label'>Cash sales AM<div className={color !== 'blue' ? "info" : "info-red"} onClick={showCashSalesAMInfo}>i</div></label>
 
-            <input type="number" className='money-input' value={cashSalesAM} onChange={(e) => setCashSalesAM(e.target.value)}
+            <input type="number" className='money-input' value={cashSalesAM} onChange={(e) => setCashSalesAM(e.target.value)} 
               onClick={() => setCashSalesAM("")}
               onFocus={() => setCashSalesAM("")}
             ></input>
