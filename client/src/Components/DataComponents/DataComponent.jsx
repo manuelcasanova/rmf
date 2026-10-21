@@ -132,7 +132,7 @@ export default function DataComponent({isAM}) {
 
       {generateDataLine("FOH Tips:", data[0]?.fronttipspercent, showFronttipspercent, () => handleEditToggle("fronttipspercent"), "fronttipspercent", "fronttipspercent", data, setData)}
 
-      {generateDataLine("Sundays pizza tips per hour:", data[0]?.sundayspizzatip, showSundayspizzatip, () => handleEditToggle("sundayspizzatip"), "sundayspizzatip", "sundayspizzatip", data, setData)}
+      {/* {generateDataLine("Sundays pizza tips per hour:", data[0]?.sundayspizzatip, showSundayspizzatip, () => handleEditToggle("sundayspizzatip"), "sundayspizzatip", "sundayspizzatip", data, setData)} */}
       </> )}
     </div>
   );

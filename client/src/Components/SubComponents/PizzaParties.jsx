@@ -87,18 +87,11 @@ const PizzaParties = ({ isAM }) => {
           <label className='inline-label'>Sunday's pizza making server hours 
             <div className={color !== 'blue' ? "info" : "info-red"} onClick={showSundaysInfo}>i</div>
           </label>
-          <input 
-            type="number" 
-            className='pizza-input' 
-            value={sundaysServerHours} 
-            onChange={(e) => setSundaysServerHours(e.target.value)} 
-            onClick={() => setSundaysServerHours("")}
-            onFocus={() => setSundaysServerHours("")} 
-          />
+
         </div>
   
 
-      {sundaysInfo && <div className='info-message'>Sunday's pizza maker gets {sundaysPizzaTip} $ per hour worked</div>}
+      {sundaysInfo && <div className='info-message'>Sunday's pizza maker is now tipped out as a server support </div>}
 
       <div className='inline'>
         <label className='inline-label highlight'>11. Pizza/Cocktail making tips</label>

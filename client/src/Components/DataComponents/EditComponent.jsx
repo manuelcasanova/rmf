@@ -66,8 +66,9 @@ export default function EditTips({ property,
         setShowKitchentipspercent((prev) => !prev);
       } else if (property === "fronttipspercent") {
         setShowFronttipspercent((prev) => !prev);
-      } else if (property === "sundayspizzatip") {
-        setShowSundayspizzatip((prev) => !prev);
+      // } 
+      // else if (property === "sundayspizzatip") {
+      //   setShowSundayspizzatip((prev) => !prev);
       }
      
      isAM ? window.location.href = '/am' : window.location.href = '/pm' 
